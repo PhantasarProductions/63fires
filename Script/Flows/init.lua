@@ -34,10 +34,26 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
--- @USE libs/console
+-- $USE libs/console
+-- $USE libs/qgfx
+
 
 
 local finit = {}
+
+local iacts = {
+         { function() 
+                console.writeln("Directory checkup",180,0,255)
+                for d in each({"savegames","swap","swap/gameswap","swap/jswap"}) do
+                   if not love.filesystem.isDirectory(d) then 
+                      assert(love.filesystem.createDirectory(d),"I could not create work directory: "..d)
+                      CSay("= Created dir: "..d)
+                   end
+                end   
+           end }           
+      }
+      
+local iact=0   
 
 function finit.draw()
    console.show()
@@ -45,6 +61,26 @@ end
 
 function finit.arrive()
    laura.starttext()
+   console.csaycolor = {r=0,g=180,b=255}
+   CSay("Loading: "..RYANNA_TITLE)
+   local w,h = love.graphics.getDimensions( )
+   CSay("Screen dimensions: "..w.."x.."..h)
+   CSay("")
+end
+
+function finit.update()
+   iact = iact + 1
+   if not iacts[iact] then
+      flow.use("mainmenu","script/flow/mainmenu")
+      flow.set("mainmenu")
+      flow.undef("init")
+   end
+   local act = iacts[iact]
+   local f = act[1]
+   local p1 = act[2]
+   local p2 = act[3]
+   local p3 = act[4]
+   f(p1,p2,p3)   
 end
 
 
