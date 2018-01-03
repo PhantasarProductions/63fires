@@ -1,6 +1,6 @@
 --[[
   init.lua
-  Version: 18.01.02
+  Version: 18.01.03
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -38,6 +38,12 @@
 -- $USE libs/qgfx
 
 
+local function iLoadImage(pic,tag)
+    console.writeln("Load Image: "..pic,180,0,255)
+    return LoadImage(pic,tag)
+end
+
+
 
 local finit = {}
 
@@ -50,9 +56,12 @@ local iacts = {
                       CSay("= Created dir: "..d)
                    end
                 end   
-           end }           
+           end }   ,
+         {iLoadImage,"GFX/Logo/63.png","63logo"}        
       }
+
       
+for i=1,6 do iacts[#iacts+1]={iLoadImage,"GFX/Menu/Item"..i..".png","MenuItem"..i} end      
 local iact=0   
 
 function finit.draw()
@@ -71,9 +80,10 @@ end
 function finit.update()
    iact = iact + 1
    if not iacts[iact] then
-      flow.use("mainmenu","script/flow/mainmenu")
+      flow.use("mainmenu","script/flows/mainmenu")
       flow.set("mainmenu")
       flow.undef("init")
+      return
    end
    local act = iacts[iact]
    local f = act[1]
