@@ -73,7 +73,7 @@ mm.items[3].act = function()
     local url = "https://tricky.gamejolt.io/63fires/"
     local success = love.system.openURL( url )
     if not success then
-       love.window.showMessageBox( RYANNA_TITLE, "Somehow the system failed to access: "..url, error, false )
+       love.window.showMessageBox( RYANNA_TITLE, "Somehow the system failed to access: "..url, 'error', false )
     end   
 end    
 
@@ -81,7 +81,7 @@ mm.items[4].act = function()
     local url = "https://discord.gg/RU3V6YU"
     local success = love.system.openURL( url )
     if not success then
-       love.window.showMessageBox( RYANNA_TITLE, "Somehow the system failed to access: "..url, error, false )
+       love.window.showMessageBox( RYANNA_TITLE, "Somehow the system failed to access: "..url, 'error', false )
     end   
 end    
 
@@ -89,7 +89,7 @@ mm.items[5].act = function()
     local url = "https://github.com/PhantasarProductions/63fires/issues"
     local success = love.system.openURL( url )
     if not success then
-       love.window.showMessageBox( RYANNA_TITLE, "Somehow the system failed to access: "..url, error, false )
+       love.window.showMessageBox( RYANNA_TITLE, "Somehow the system failed to access: "..url, 'error', false )
     end   
 end    
 -- --[[
