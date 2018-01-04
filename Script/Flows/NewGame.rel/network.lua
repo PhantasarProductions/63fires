@@ -34,19 +34,39 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
+
+-- $USE nothing
+
 local net = { nomerge=true }
 
 local w,h = love.graphics.getDimensions( )
+
+local function CreateAnna(self)
+   local screenname = self.answers[3]
+   if trim(screenname) == "" then return end
+   local success,reason = AnnaCreate(screenname)
+   if success then      
+      --love.window.showMessageBox( RYANNA_TITLE, "Your Anna account was created.\nAnna needs you to verify you account. Failing to do so will cause Anna to delete it in approx 24 hours.\nI'll redirect you to Anna's website so you can do this", 'information', false )
+      self.answers[1]=reason.onlineid
+      self.answers[2]=reason.secucode
+   else
+     love.window.showMessageBox( RYANNA_TITLE, "Creating the Anna account failed. \nAnna responded with:"..reason, 'error', false )
+   end
+end
 
 local nw = {
       GJ = {
            name = 'Game Jolt',
            values = {'User Name','Token'},
+           notes = {},
+           picact = nothing,
            x = w/2
       },
       Anna = {
            name = 'Anna',
-           values = {'Id Number','Secu Code'},
+           values = {'Id Number','Secu Code',"New Anna Account Name"},
+           notes = {"If you want to create a new Anna Account","Please enter a desired screen name in the 'New Account' field","And click Anna's face above","If you have one, just fill in your login data and","ignore that field"},
+           picact = CreateAnna,
            x = 5
       }
 }
@@ -69,6 +89,8 @@ function net.draw()
    for key,nd in pairs(nw) do
        white()
        nd.img = nd.img or LoadImage("GFX/Network/"..key..".png")
+       local iw,ih=ImageSizes(nd.img)
+       if hit and x>nd.x and x<iw+nd.x and y>150 and y<150+ih then nd:picact() end
        DrawImage(nd.img,nd.x,150)
        nd.answers = nd.answers or {}           
        for i,n in ipairs(nd.values) do
@@ -84,8 +106,13 @@ function net.draw()
               white()
               cursor="."
            end
-           pxy(left(nd.answers[i]..cursor.."..........",10),nd.x+5,170+(i*40)+ImageHeight(nd.img)  ) 
+           pxy(left(nd.answers[i]..cursor.."..........",10),nd.x+5,170+(i*40)+ImageHeight(nd.img)  )            
        end
+       white()
+       local ny = 200+(#nd.values*40)+ImageHeight(nd.img)
+       for i,n in pairs(nd.notes) do
+           pxy(n,i+nd.x,ny+(i*20))
+       end    
    end
 end
 
