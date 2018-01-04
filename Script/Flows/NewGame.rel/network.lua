@@ -1,6 +1,6 @@
 --[[
   network.lua
-  Version: 18.01.03
+  Version: 18.01.04
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
