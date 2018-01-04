@@ -1,6 +1,6 @@
 --[[
   init.lua
-  Version: 18.01.03
+  Version: 18.01.04
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -34,6 +34,7 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
+-- $USE libs/omusic
 -- $USE libs/console
 -- $USE libs/qgfx
 
@@ -43,7 +44,10 @@ local function iLoadImage(pic,tag)
     return LoadImage(pic,tag)
 end
 
-
+local function titlemusic()
+    console.writeln("Starting music if available")
+    omusic.play('Music/Special/Angel Share.mp3')
+end    
 
 local finit = {}
 
@@ -57,12 +61,16 @@ local iacts = {
                    end
                 end   
            end }   ,
+         { function() omusic.swap = 'swap/jswap' CSay("Configured music library swap") end},  
          {iLoadImage,"GFX/Logo/63.png","63logo"}        
       }
 
       
 for i=1,6 do iacts[#iacts+1]={iLoadImage,"GFX/Menu/Item"..i..".png","MenuItem"..i} end      
 local iact=0   
+
+
+iacts[#iacts+1]={titlemusic} -- this MUST always be last!
 
 function finit.draw()
    console.show()

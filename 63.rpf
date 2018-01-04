@@ -1,45 +1,54 @@
 [rem]
 Generated file!
 
-Generated: 1/3/2018
+Generated: 1/4/2018
 
 [vars]
-SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/TRICKY_CC'].TYPE.DARWIN=ALL
+TEST.DARWIN=/Volumes/Scyndi/Projects/Applications/Ryanna/63/testbuilds
+TITLE=Sixty-Three Fires of Lung
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/TRICKY_SCRIPT'].LICENSE=This is stuff related to the story line of "63 fires of lung" or other productions of Jeroen P. Broks and are therefore copyrighted and property of Jeroen P. Broks, all rights reserved. They may only be freely distributed in an unmodified version of a production of Jeroen P. Broks. Extraction, modifications and any work based on these assets may only be distributed with prior written permission from the copyright holder!
+JCRSIG=578fd67572a62476b30a96531d0f5e13b12f953c79eff4d41b9cea2d173ffb99
+RELEASE.DARWIN=/Volumes/Scyndi/Releases/63
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/UNKNOWN ARTIST'].LICENSE=The artist of these pictures is not known, but this picture was taken from a public domain picture site.<br>If this is not in the Public Domain, please let me know and send me some proper evidence, and I shall remove it as soon as your claim has been confirmed.
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/UNKNOWN ARTIST'].TYPE.DARWIN=ALL
+MAINSCRIPT=Script/Ryanna_Main.lua
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/KLAINEN'].LICENSE=Public Domain
+WIN64=YES
+MAC64=YES
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/GAME'].LICENSE=This logo belongs to Game Jolt
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/TRICKY_SCRIPT'].TYPE.DARWIN=ALL
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/MUSIC/J'].AUTHOR=Jeroen P. Broks
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/MUSIC/KEVIN MCLEOD'].AUTHOR=Kevin McLeod
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/MUSIC/KEVIN MCLEOD'].LICENSE=Downloaded from http://incompetech.com/ -- Created by Kevin McLeod -- Licensed under Creative Commons: By Attribution 3.0 -- http://creativecommons.org/licenses/by/3.0/
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/MUSIC/KEVIN MCLEOD'].TYPE.DARWIN=FAD FAF
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/UNKNOWN ARTIST'].AUTHOR=Unknown Artist
+WIN32=YES
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/GAME JOLT'].LICENSE=This logo belongs to Game Jolt
+LIBS.DARWIN=/Volumes/Scyndi/Projects/Applications/Ryanna/RyannaLibs
+AUTHOR=Jeroen P. Broks
+PACKAGE=JCR
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/TRICKY_SCRIPT'].AUTHOR=Jeroen P. Broks
 EXE=Sixty-Three Fires of Lung
 SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/TRICKY_CC'].AUTHOR=Jeroen P. Broks
-LINUX=YES
-WIN64=YES
-SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/TRICKY_CC'].LICENSE=These are assets that were not specifically set up for any project in particular and they may be used under the terms of the Creative Commons - By Attribution - Non-Commercial - Sharae-Alike license. Just credit me as its creator in your production, and we're fine ^_^
-SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/UNKNOWN ARTIST'].AUTHOR=Unknown Artist
-JCRSIG=578fd67572a62476b30a96531d0f5e13b12f953c79eff4d41b9cea2d173ffb99
-LIBS.DARWIN=/Volumes/Scyndi/Projects/Applications/Ryanna/RyannaLibs
-SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/GAME'].LICENSE=This logo belongs to Game Jolt
-TEST.DARWIN=/Volumes/Scyndi/Projects/Applications/Ryanna/63/testbuilds
-MACICON.DARWIN=/Volumes/Scyndi/Projects/Applications/Ryanna/63/icons/Ryanna.icns
-MAC64=YES
-SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/TRICKY_SCRIPT'].TYPE.DARWIN=ALL
-TITLE=Sixty-Three Fires of Lung
-SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/TRICKY_PRIVATE'].AUTHOR=Jeroen P. Broks
-SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/TRICKY_SCRIPT'].LICENSE=This is stuff related to the story line of "63 fires of lung" or other productions of Jeroen P. Broks and are therefore copyrighted and property of Jeroen P. Broks, all rights reserved. They may only be freely distributed in an unmodified version of a production of Jeroen P. Broks. Extraction, modifications and any work based on these assets may only be distributed with prior written permission from the copyright holder!
-LOVEVERSION=0.10.2
-SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/KLAINEN'].LICENSE=Public Domain
 SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/TRICKY_PRIVATE'].TYPE.DARWIN=ALL
-SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/TRICKY_SCRIPT'].AUTHOR=Jeroen P. Broks
-SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/UNKNOWN ARTIST'].TYPE.DARWIN=ALL
-SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/GAME JOLT'].LICENSE=This logo belongs to Game Jolt
-SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/GAME'].AUTHOR=Game Jolt
-SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/KLAINEN'].TYPE.DARWIN=ALL
-RELEASE.DARWIN=/Volumes/Scyndi/Releases/63
-WIN32=YES
-SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/GAME JOLT'].TYPE.DARWIN=ALL
-AUTHOR=Jeroen P. Broks
-MAINSCRIPT=Script/Ryanna_Main.lua
-SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/KLAINEN'].AUTHOR=klainen
-SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/UNKNOWN ARTIST'].LICENSE=The artist of these pictures is not known, but this picture was taken from a public domain picture site.<br>If this is not in the Public Domain, please let me know and send me some proper evidence, and I shall remove it as soon as your claim has been confirmed.
-SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/GAME JOLT'].AUTHOR=Game Jolt
-PACKAGE=JCR
-SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/TRICKY_PRIVATE'].LICENSE=Unknown license
+LOVEVERSION=0.10.2
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/MUSIC/J'].TYPE.DARWIN=FAD
 SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/GAME'].TYPE.DARWIN=All
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/GAME JOLT'].TYPE.DARWIN=ALL
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/TRICKY_CC'].TYPE.DARWIN=ALL
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/TRICKY_PRIVATE'].AUTHOR=Jeroen P. Broks
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/TRICKY_CC'].LICENSE=These are assets that were not specifically set up for any project in particular and they may be used under the terms of the Creative Commons - By Attribution - Non-Commercial - Sharae-Alike license. Just credit me as its creator in your production, and we're fine ^_^
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/FULL/MUSIC/KEVIN MCLEOD'].TYPE.DARWIN=FAF
+LINUX=YES
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/MUSIC/J'].LICENSE=Mesa not care about license. All this file had to do was exist.
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/GAME'].AUTHOR=Game Jolt
+MACICON.DARWIN=/Volumes/Scyndi/Projects/Applications/Ryanna/63/icons/Ryanna.icns
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/FULL/MUSIC/KEVIN MCLEOD'].LICENSE=Downloaded from http://incompetech.com/ -- Created by Kevin McLeod -- Licensed under Creative Commons: By Attribution 3.0 -- http://creativecommons.org/licenses/by/3.0/
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/KLAINEN'].TYPE.DARWIN=ALL
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/TRICKY_PRIVATE'].LICENSE=Unknown license
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/GAME JOLT'].AUTHOR=Game Jolt
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/FULL/MUSIC/KEVIN MCLEOD'].AUTHOR=Kevin McLeod
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/KLAINEN'].AUTHOR=klainen
 
 
 [List:BUILDMODES]
@@ -62,4 +71,6 @@ NAF
 /Volumes/Scyndi/Projects/Applications/Ryanna/LauraInLove
 
 [List:ALIASES]
-Music/Ori/Jet Feuled Vixen.mp3 => Music/Dungeon/Final Dungeon.mp3
+Music/Ori/Jet Fueled Vixen.mp3 => Music/Dungeon/Final Dungeon.mp3
+Music/Ori/Dewdrop Fantasy.mp3 => Music/Dungeon/Forest1.mp3
+
