@@ -114,6 +114,19 @@ function net.draw()
            pxy(n,i+nd.x,ny+(i*20))
        end    
    end
+   local nextx = w - 350
+   local nexty = h - 200
+   DrawImage('NEXT',nextx,nexty)
+   if hit and nextx<x and nexty<y then
+      Var.D('$GAMEJOLT.USER',nw.GJ.answers[1] or "")
+      Var.D('$GAMEJOLT.TOKEN',nw.GJ.answers[2] or "")
+      Var.D('$ANNA.ID',nw.Anna.answers[1] or "")
+      Var.D("$ANNA.SECU",nw.Anna.answers[2] or "")
+      flow.use('startgame','script/Flows/startgame')
+      flow.get('startgame').starttype('newgame')
+      flow.set('startgame')
+      flow.undef('newgame')
+   end
 end
 
 function net.textinput( txt )

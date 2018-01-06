@@ -49,6 +49,12 @@ local function titlemusic()
     omusic.play('Music/Special/Angel Share.mp3')
 end    
 
+local function netconfig()
+     mynet = GAHD_get('DATA/GJ_ANNA/GJ_ANNA.ghd')
+     -- print ( serialize('mynet',mynet))
+     
+end
+
 local finit = {}
 
 local iacts = {
@@ -61,8 +67,11 @@ local iacts = {
                    end
                 end   
            end }   ,
+         { CSay, "Configuring networks"},  {netconfig},
          { function() omusic.swap = 'swap/jswap' CSay("Configured music library swap") end},  
-         {iLoadImage,"GFX/Logo/63.png","63logo"}        
+         {iLoadImage,"GFX/Logo/63.png","63logo"},
+         {iLoadImage,"GFX/General/Arrow_right.png",'NEXT'},
+         {iLoadImage,"GFX/PlayerSprites/Ryanna.South.jpbf","RYANNA.S"}        
       }
 
       
