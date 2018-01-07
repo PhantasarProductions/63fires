@@ -35,10 +35,13 @@ end
 
 field.cam = {x=0,y=0}
 
-function field:odraw()   
+function field:odraw()
+    local width, height = love.graphics.getDimensions( )   
+    local staty = height-120
     --for k,v in spairs(self) do print(type(v),k) end
     --print (serialize('map',map))
     kthura.drawmap(map.map,map.layer,self.cam.x,self.cam.y)
+    love.graphics.print(Var.S("Time: $PLAYTIME"),width-200,staty)
 end    
 
 function field:map() return map end

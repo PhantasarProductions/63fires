@@ -41,7 +41,7 @@ end
 function finit.arrive()
      laura.assert(stype,"And what kind of startup did we require, mr?","None has been received, you know!")
      console.writeln("Starting up game",180,255,0)
-     if Var.C('$GAMEJOLT.USER')~="" then
+     if Var.C('$ANNA.ID')~="" then
         iacts[#iacts+1]={CSay,Var.S("Logging into Anna as #$ANNA.ID")}
         iacts[#iacts+1]={function()
              local gdata = mynet
@@ -87,6 +87,8 @@ function finit.arrive()
               until ok=='true'
         end}
      end
+     iacts[#iacts+1]={CSay,"Starting Clock"}
+     iacts[#iacts+1]={addupdatefunc,update_time}
 end
 
 function finit.update()

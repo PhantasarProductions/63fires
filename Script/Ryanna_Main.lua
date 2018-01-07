@@ -40,6 +40,26 @@ print("Let's try to fire this all up, shall we?")
 -- $USE libs/laura
 
 
+function update_time()
+   local t = os.date("%H:%M:%S")
+   oldtime = oldtime or t
+   if t~=oldtime then
+      Inc("%TIME.SEC")
+      if Var.G("%TIME.SEC")>=60 then
+         Dec("%TIME.SEC",60)
+         Inc("%TIME.MIN")
+      end   
+      if Var.G("%TIME.MIN")>=60 then
+         Dec("%TIME.MIN",60)
+         Inc("%TIME.HOUR")
+      end
+   local dtime = Var.G('%TIME.HOUR') .. ":" .. right("00"..Var.C("%TIME.MIN"),2) .. ":" ..right("00"..Var.C('%TIME.SEC'),2)
+   Var.D('$PLAYTIME',dtime)
+   oldtime=t        
+   end
+end
+
+
 function save_gcfg()
    love.filesystem.write("globalconfig.lua",serialize('local ret',globalconfig).."\n\nreturn ret\n\n\n\n\n\n")
 end   
