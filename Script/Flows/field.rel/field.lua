@@ -42,6 +42,7 @@ function field:odraw()
     --print (serialize('map',map))
     kthura.drawmap(map.map,map.layer,self.cam.x,self.cam.y)
     love.graphics.print(Var.S("Time: $PLAYTIME"),width-200,staty)
+    dbgcon()    
 end    
 
 function field:map() return map end

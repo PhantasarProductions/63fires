@@ -34,10 +34,13 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
+
 love.filesystem.setIdentity(RYANNA_TITLE) -- Make sure that no matter how the game is run the savedir is always the title, other wise direct calls I need to do on Mac to read the stdout output will get in the 'love' directory were I don't want it to be!
 
 print("Let's try to fire this all up, shall we?")
 -- $USE libs/laura
+
+local allowdebug = true
 
 
 function update_time()
@@ -58,6 +61,10 @@ function update_time()
    oldtime=t        
    end
 end
+
+function dbgcon()
+   if allowdebug and keydown.rshift and keydown.lshift and keydown['kp-'] then laura.goconsole() end
+end   
 
 
 function save_gcfg()
