@@ -1,6 +1,6 @@
 --[[
   init.lua
-  Version: 18.01.05
+  Version: 18.01.08
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -38,6 +38,8 @@
 -- $USE libs/console
 -- $USE libs/qgfx
 
+
+-- $USE Script/Subs/Error
 
 local function iLoadImage(pic,tag)
     console.writeln("Load Image: "..pic,180,0,255)

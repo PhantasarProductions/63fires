@@ -1,5 +1,5 @@
 --[[
-  field.lua
+  Diginum.lua
   Version: 18.01.08
   Copyright (C) 2018 Jeroen Petrus Broks
   
@@ -34,54 +34,32 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
--- $USE Libs/Lib_kthura
--- $USE Libs/nothing
-local field = {}
+local font = {}
+local mw = 12
 
-
-local map
-
-function field:LoadMap(KthuraMap,layer)
-    if not laura.assert(layer,"No layer requested!",{LoadMap=KthuraMap}) then return end    
-    map= {layer=layer}
-    print("Loading map: ",KthuraMap)
-    CSay("Loading map: "..KthuraMap)
-    CSay("= Map itself")
-    map.map = kthura.load("Script/Maps/Kthura/"..KthuraMap)
-    if not laura.assert(map.map,"Loading the map failed!") then return end
-    CSay("= Map script")
-    local scr = "Script/Maps/Script/"..KthuraMap..".lua"
-    if not(JCR_Exists(scr)) then
-       local src = "-- No script\nreturn {}"
-       console.write("WARNING! ",255,180,0)
-       console.writeln("No script file! Using empty script!")
-       local fun = load(src,"* NOSCRIPT *")
-       map.script = fun() 
-    else
-       map.script = use(scr)
-    end    
-    CSay("= Map Events")
-    -- Will be put in later!
-    CSay("= Changes")
-    -- Will be put in later!
-    CSay("= OnLoad")
-    ;(map.script.onload or nothing)()
-    
+local function truerender(t,x,y)
+     for i=1,#t do
+         local cijfer = tonumber(mid(t,i,1))
+         assert(cijfer,"Non-numberic value: "..t)
+         font[cijfer] = font[cijfer] or LoadImage('GFX/Diginum/'..cijfer..".png")
+         DrawImage(font[cijfer],x+((i-1)*mw),y) 
+     end
 end
 
-field.cam = {x=0,y=0}
 
-function field:odraw()
-    local width, height = love.graphics.getDimensions( )   
-    local staty = height-140
-    --for k,v in spairs(self) do print(type(v),k) end
-    --print (serialize('map',map))
-    kthura.drawmap(map.map,map.layer,self.cam.x,self.cam.y)
-    StatusBar()
-    love.graphics.print(Var.S("Time: $PLAYTIME"),width-200,staty)
-    dbgcon()    
-end    
+local function diginum(num,x,y,align)
+     local startx = x
+     local t = ""..num
+     if (not align) or align=='right'  then startx = x-(mw*#t) 
+     elseif            align=='center' then startx = x-((mw*#2)/2) end
+     local r,g,b,a=love.graphics.getColor( )
+     black()
+     for ax=-1,1 do for ay=-1,1 do
+       truerender(t,startx+ax,y+ay)
+     end end    
+     color(r,g,b,a)
+     truerender(t,startx,y)
+end
 
-function field:map() return map end
 
-return field
+return diginum

@@ -1,6 +1,6 @@
 --[[
   Ryanna_Main.lua
-  Version: 18.01.02
+  Version: 18.01.08
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -34,6 +34,8 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
+
+
 
 love.filesystem.setIdentity(RYANNA_TITLE) -- Make sure that no matter how the game is run the savedir is always the title, other wise direct calls I need to do on Mac to read the stdout output will get in the 'love' directory were I don't want it to be!
 
