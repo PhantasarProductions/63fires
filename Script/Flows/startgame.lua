@@ -33,6 +33,8 @@ local stype
 function finit.starttype(astype)
   stype=astype
   if stype=='newgame' then
+     iacts[#iacts+1]={CSay,"Giving life to Ryanna"}
+     iacts[#iacts+1]={laura.makechar,"Ryanna",1}
      iacts[#iacts+1]={CSay,"Loading the graveyard map"}
      iacts[#iacts+1]={LoadMap,'DUNG_Graveyard',"#001"}
   end
