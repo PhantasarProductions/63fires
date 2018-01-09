@@ -52,7 +52,7 @@ local function tomenu()
     f:gomenu(clickedchar) 
 end
 local function tofield()
-    flow.set(field) 
+    flow.set(Field) 
 end
 
 local function StatusBar(highlight,menuchain)

@@ -47,6 +47,7 @@ end
 
 local function UseField()
    -- $USE Script/Flows/Field
+   field=Field
 end   
 
 local function LoadMap(m,l)
