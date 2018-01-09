@@ -34,7 +34,10 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
-local width, height = love.graphics.getDimensions( )
+
+-- $USE Script/Subs/IconStrip
+
+local width, height = love.graphics.getDimensions(  )
 local quad
 local background background = background or LoadImage(console.background)
 local portraits={}
@@ -42,14 +45,23 @@ local cats = {'HP','AP','VIT'}
 local cols = {HP={0,0,0},AP={0,0,255},VIT={255,180,0}}
 local csuf = {HP='',AP='',VIT=''}
 local hgraph = {}
+local clickedchar
 
-local function StatusBar()
+local function tomenu()
+    local f = flow.get()
+    f:gomenu(clickedchar) 
+end
+local function tofield()
+    flow.set(field) 
+end
+
+local function StatusBar(highlight,menuchain)
    -- $USE script/subs/diginum
    local psize = #RPGParty   if not laura.assert(psize>0,"I tried to draw a party bar with an empty party") then return end
    local charwidth=width/psize
    local gaugestart,gaugeend=math.floor(charwidth*.25),math.ceil(charwidth*.85)
    local gaugewidth=gaugeend-gaugestart
-   quad = quad or love.graphics.newQuad(0,0,width,120,ImageWidth(background),ImageHeight(background))
+   quad = quad or love.graphics.newQuad(0,height-120,width,120,ImageWidth(background),ImageHeight(background))
    white()
    QuadImage(background,quad,0,height-120)
    for i,tag in pairs(RPGParty) do
@@ -57,6 +69,15 @@ local function StatusBar()
        local cy = height-120
        portraits[tag] = portraits[tag] or LoadImage( 'GFX/Portret/'..tag..'/General.png' )
        QHot(portraits[tag],'lb')
+       if menuchain then
+          clickedchar=tag
+          if highlight==tag then
+             click(cx,cy,charwidth,120,flow.get().clicked,"Click here to dismiss the menu\nAnd to resume walking in the field",tofield)
+             color(255,255,255,math.abs(math.sin(love.timer.getTime())*255))
+          else
+             click(cx,cy,charwidth,120,flow.get().clicked,"Click here to open "..tag.."'s status menu",tomenu)
+          end
+       end
        DrawImage(portraits[tag],cx,height)
        cols.HP[2]=math.floor((rpg:Points(tag,'HP').Have/rpg:Points(tag,'HP').Maximum)*255)
        cols.HP[1]=255-cols.HP[2]
@@ -71,8 +92,8 @@ local function StatusBar()
            end   
            diginum(rpg:Points(tag,cat).Have,cx+math.ceil(charwidth*.95),y-25)
            hgraph[cat]=hgraph[cat] or LoadImage('GFX/Diginum/'..cat..".png")
-           DrawImage(hgraph[cat],cx+(charwidth*.10),y-25)
-       end
+           DrawImage(hgraph[cat],cx+(charwidth*.10),y-25)           
+       end   
    end
 end
 

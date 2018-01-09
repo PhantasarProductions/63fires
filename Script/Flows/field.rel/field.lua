@@ -36,10 +36,35 @@
 ]]
 -- $USE Libs/Lib_kthura
 -- $USE Libs/nothing
+-- $USE Script/Subs/IconStrip
 local field = {}
+local full, fstype = love.window.getFullscreen( )
 
+field.iconstrip = {}
+
+
+local is = field.iconstrip
+is.hide=full
+is.back=true
+is.x=60
+
+-- When playing full screen this icon is the quit feature. It won't be visible in Windows mode, since 
+if full then is[1]={ icon='stoppen', tut='Quits the game\nWarning unsaved data will NOT be saved and will thus be lost', cb=love.event.quit } end
+
+-- Tools. By default all empty. Can be set by changing characters providing they have the tool
+for i=1,3 do is[#is+1]={icon='empty', tut='???', cb=nothing, tool_id=i} end
+
+is[#is+1] = {icon='Prestaties', tut='Overview of your earned achievements', cb=function() flow.use('ach','Script/Flows/Achievements.lua') flow.set('ach') end}
+
+-- Help! Must ALWAYS be last!!
+is[#is+1] = {icon='Help', tut="Provides help", cb=iconstriphelp}
 
 local map
+
+function field:gomenu(ch)
+   -- $USE script/flows/menu
+   menu:cometome('field',ch)
+end
 
 function field:LoadMap(KthuraMap,layer)
     if not laura.assert(layer,"No layer requested!",{LoadMap=KthuraMap}) then return end    
@@ -72,16 +97,21 @@ end
 field.cam = {x=0,y=0}
 
 function field:odraw()
+    self.clicked = mousehit(1)
+    --if self.clicked then cancelhelp() end
     local width, height = love.graphics.getDimensions( )   
     local staty = height-140
     --for k,v in spairs(self) do print(type(v),k) end
     --print (serialize('map',map))
     kthura.drawmap(map.map,map.layer,self.cam.x,self.cam.y)
-    StatusBar()
+    StatusBar(false,true)
+    showstrip()
     love.graphics.print(Var.S("Time: $PLAYTIME"),width-200,staty)
     dbgcon()    
 end    
 
 function field:map() return map end
+
+
 
 return field

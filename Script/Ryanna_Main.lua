@@ -78,7 +78,7 @@ function love.load()
     console.csaycolor = {r=0,g=180,b=255}
     if love.filesystem.isFile("globalconfig.lua") then
        globalconfigf = love.filesystem.load("globalconfig.lua") -- Not through JCR. This file is dynamic, and JCR does not account for that (yet).
-       globalconfig = globalconfigf()
+       globalconfig  = globalconfigf()
     else
        globalconfig = {}
     end
