@@ -62,11 +62,18 @@ is[#is+1] = {icon='Help', tut="Provides help", cb=iconstriphelp}
 local map
 
 
-local players = {}
+field.leader=1
+
+local function follow(tagslave,tagmaster)
+end
 
 function field:followdaleader()
-   players.leader = players.leader or 1
-
+  for i=1,#RPGParty do
+      if i~=self.leaader then
+         if i==1 then follow("PLAYER1","PLAYER"..#RPGParty) 
+         else         follow("PLAYER"..i,"PLAYER"..math.floor(i-1)) end
+      end   
+  end  
 end
  
 

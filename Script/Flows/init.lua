@@ -42,7 +42,11 @@
 -- $USE Script/Subs/Error
 
 local function iLoadImage(pic,tag)
-    console.writeln("Load Image: "..pic,180,0,255)
+    if suffixed(pic:upper(),".JPBF") then
+       console.writeln("Load Image Bundle: "..pic,180,0,255)
+    else   
+       console.writeln("Load Single Image: "..pic,180,0,255)
+    end   
     return LoadImage(pic,tag)
 end
 
@@ -79,6 +83,9 @@ local iacts = {
          {iLoadImage,"GFX/Logo/63.png","63logo"},
          {iLoadImage,"GFX/General/Arrow_right.png",'NEXT'},
          {iLoadImage,"GFX/PlayerSprites/Ryanna.South.jpbf","RYANNA.S"}  ,
+         {iLoadImage,"GFX/PlayerSprites/Ryanna.North.jpbf","RYANNA.N"}  ,
+         {iLoadImage,"GFX/PlayerSprites/Ryanna.West.jpbf", "RYANNA.W"}  ,
+         {iLoadImage,"GFX/PlayerSprites/Ryanna.East.jpbf", "RYANNA.E"}  ,
          {CSay,"Loading Fonts/CHANTICL.TTF"},
          {SerifFontLoad}      
       }
