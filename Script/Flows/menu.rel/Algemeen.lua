@@ -72,8 +72,8 @@ function mod:showstatus(cd)
         color(cols[cat][1],cols[cat][2],cols[cat][3])
         DrawImage("Pnt"..cat,x,200+(i*30))
         local p = rpg:Points(self.char,cat)
-        diginum(p.Have,   x+(w*.50),200+(i*30))
-        diginum(p.Maximum,x+(w*.75),200+(i*30))
+        diginum(p.Have,   x+math.floor(w*.50),200+(i*30))
+        diginum(p.Maximum,x+math.ceil (w*.75),200+(i*30))
     end            
 end
 

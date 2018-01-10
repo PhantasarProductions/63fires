@@ -61,6 +61,15 @@ is[#is+1] = {icon='Help', tut="Provides help", cb=iconstriphelp}
 
 local map
 
+
+local players = {}
+
+function field:followdaleader()
+   players.leader = players.leader or 1
+
+end
+ 
+
 function field:gomenu(ch)
    -- $USE script/flows/menu
    menu:cometome('field',ch)
@@ -106,6 +115,7 @@ function field:odraw()
     kthura.drawmap(map.map,map.layer,self.cam.x,self.cam.y)
     StatusBar(false,true)
     showstrip()
+    love.graphics.setFont(console.font)
     love.graphics.print(Var.S("Time: $PLAYTIME"),width-200,staty)
     dbgcon()    
 end    

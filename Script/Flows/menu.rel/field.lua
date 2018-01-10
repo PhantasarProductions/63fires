@@ -57,9 +57,9 @@ fld.modes = {
       love.graphics.setFont(fontMiddel)      
       for i,stat in ipairs(stats) do
          white() 
-         love.graphics.print(stat..":",x+(w*.05),i*30)
+         love.graphics.print(stat..":",x+math.floor(w*.05),i*30)
          color(0,180,255)
-         diginum(rpg:Stat(ch,"END_"..stat),x+(w*.95),i*30)
+         diginum(rpg:Stat(ch,"END_"..stat),x+math.ceil(w*.95),i*30)
       end      
     end,
     
