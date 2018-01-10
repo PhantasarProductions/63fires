@@ -1,6 +1,6 @@
 --[[
   init.lua
-  Version: 18.01.08
+  Version: 18.01.10
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -57,6 +57,11 @@ local function netconfig()
      
 end
 
+local function SerifFontLoad()
+    fontGroot = love.graphics.newFont(JCR_D('Fonts/CHANTICL.TTF'),40)
+    fontMiddel = love.graphics.newFont(JCR_D('Fonts/CHANTICL.TTF'),20)
+end    
+
 local finit = {}
 
 local iacts = {
@@ -73,7 +78,9 @@ local iacts = {
          { function() omusic.swap = 'swap/jswap' CSay("Configured music library swap") end},  
          {iLoadImage,"GFX/Logo/63.png","63logo"},
          {iLoadImage,"GFX/General/Arrow_right.png",'NEXT'},
-         {iLoadImage,"GFX/PlayerSprites/Ryanna.South.jpbf","RYANNA.S"}        
+         {iLoadImage,"GFX/PlayerSprites/Ryanna.South.jpbf","RYANNA.S"}  ,
+         {CSay,"Loading Fonts/CHANTICL.TTF"},
+         {SerifFontLoad}      
       }
 
       

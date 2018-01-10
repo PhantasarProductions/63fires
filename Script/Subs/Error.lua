@@ -139,12 +139,12 @@ end
 --<TRICKY>
 function TrickAssert(condition,errmsg,xtra)
     if not condition then
-       xtra_data=xtra
+       xtra_info=xtra
        error(errmsg)
     end
 end 
 function TrickCrash(errmsg,xtra)
-   xtra_data=xtra
+   xtra_info=xtra
    error(errmsg)
 end
           

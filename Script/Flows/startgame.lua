@@ -1,6 +1,6 @@
 --[[
   startgame.lua
-  Version: 18.01.08
+  Version: 18.01.10
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================

@@ -1,6 +1,6 @@
 --[[
   StatusBar.lua
-  Version: 18.01.08
+  Version: 18.01.10
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -42,7 +42,7 @@ local quad
 local background background = background or LoadImage(console.background)
 local portraits={}
 local cats = {'HP','AP','VIT'}
-local cols = {HP={0,0,0},AP={0,0,255},VIT={255,180,0}}
+local cols = {HP={0,0,0},AP={0,180,255},VIT={255,180,0}}
 local csuf = {HP='',AP='',VIT=''}
 local hgraph = {}
 local clickedchar
@@ -53,6 +53,13 @@ local function tomenu()
 end
 local function tofield()
     flow.set(Field) 
+end
+
+function DrawPortrait(tag,x,y)
+       TrickAssert(tag,"Hey dork! Why are you giving me a nil, eh?",{"NIL NIL NIL","There's nothing here to fill!","FORK FORK FORK!","This code is written by a dork!"})
+       portraits[tag] = portraits[tag] or LoadImage( 'GFX/Portret/'..tag..'/General.png' )
+       QHot(portraits[tag],'lb')
+       DrawImage(portraits[tag],x,y)
 end
 
 local function StatusBar(highlight,menuchain)
@@ -91,7 +98,7 @@ local function StatusBar(highlight,menuchain)
               Rect(cx+gaugestart,y-5,(p.Have/p.Maximum)*gaugewidth,4)
            end   
            diginum(rpg:Points(tag,cat).Have,cx+math.ceil(charwidth*.95),y-25)
-           hgraph[cat]=hgraph[cat] or LoadImage('GFX/Diginum/'..cat..".png")
+           hgraph[cat]=hgraph[cat] or LoadImage('GFX/Diginum/'..cat..".png","Pnt"..cat)
            DrawImage(hgraph[cat],cx+(charwidth*.10),y-25)           
        end   
    end

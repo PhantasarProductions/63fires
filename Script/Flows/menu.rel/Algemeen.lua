@@ -1,3 +1,39 @@
+--[[
+  Algemeen.lua
+  Version: 18.01.10
+  Copyright (C) 2018 Jeroen Petrus Broks
+  
+  ===========================
+  This file is part of a project related to the Phantasar Chronicles or another
+  series or saga which is property of Jeroen P. Broks.
+  This means that it may contain references to a story-line plus characters
+  which are property of Jeroen Broks. These references may only be distributed
+  along with an unmodified version of the game. 
+  
+  As soon as you remove or replace ALL references to the storyline or character
+  references, or any termology specifically set up for the Phantasar universe,
+  or any other univers a story of Jeroen P. Broks is set up for,
+  the restrictions of this file are removed and will automatically become
+  zLib licensed (see below).
+  
+  Please note that doing so counts as a modification and must be marked as such
+  in accordance to the zLib license.
+  ===========================
+  zLib license terms:
+  This software is provided 'as-is', without any express or implied
+  warranty.  In no event will the authors be held liable for any damages
+  arising from the use of this software.
+  Permission is granted to anyone to use this software for any purpose,
+  including commercial applications, and to alter it and redistribute it
+  freely, subject to the following restrictions:
+  1. The origin of this software must not be misrepresented; you must not
+     claim that you wrote the original software. If you use this software
+     in a product, an acknowledgment in the product documentation would be
+     appreciated but is not required.
+  2. Altered source versions must be plainly marked as such, and must not be
+     misrepresented as being the original software.
+  3. This notice may not be removed or altered from any source distribution.
+]]
 -- $USE Script/Subs/IconStrip
 
 local width, height = love.graphics.getDimensions(  )
@@ -19,11 +55,34 @@ function mod:cometome(mentype,character)
      flow.set(self)
 end
 
+function mod:showstatus(cd)
+    local x=cd.x
+    local w=cd.w
+    local y=0
+    local h=height-120
+    --print ( serialize('self',self)) -- debugline
+    DrawPortrait(self.char,x,200)
+    love.graphics.setFont(fontGroot)
+    love.graphics.print(self.char,x+200,180)
+    local cats = {'HP','AP','VIT'}
+    local cols = {HP={0,0,0},AP={0,180,255},VIT={255,180,0}}
+    cols.HP[2]=math.floor((rpg:Points(self.char,'HP').Have/rpg:Points(self.char,'HP').Maximum)*255)
+    cols.HP[1]=255-cols.HP[2]
+    for i,cat in ipairs(cats) do
+        color(cols[cat][1],cols[cat][2],cols[cat][3])
+        DrawImage("Pnt"..cat,x,200+(i*30))
+        local p = rpg:Points(self.char,cat)
+        diginum(p.Have,   x+(w*.50),200+(i*30))
+        diginum(p.Maximum,x+(w*.75),200+(i*30))
+    end            
+end
+
 function mod:odraw()
     self.clicked = mousehit(1)
     white()
     console.sback()
-    self.active.modes[self.active.mode]()    
+    self:showstatus(cols[1])
+    self.active.modes[self.active.mode](cols[2].x,cols[2].w,self.char)    
     StatusBar(self.char,true)
     showstrip()
 end
