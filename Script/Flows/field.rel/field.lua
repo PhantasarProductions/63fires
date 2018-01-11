@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.01.10
+  Version: 18.01.11
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -75,6 +75,24 @@ function field:followdaleader()
       end   
   end  
 end
+
+function field:SpawnPlayer(exitpoint)
+    local xd = {}
+    local exitspot = map.map.TagMap[map.layer][exitpoint]
+    TrickAssert(exitspot,"Can't spawn on an unknown spot",{F='SpawnPlayer',Exit=exitpoint,Map=map.file,Layer=map.layer})
+    xd.FRAME=1
+    xd.WIND='South'
+    if     exitspot.DATA.Wind=="S" then xd.WIND="South"
+    elseif exitspot.DATA.Wind=="N" then xd.WIND="North"
+    elseif exitspot.DATA.Wind=="E" then xd.WIND="East"
+    elseif exitspot.DATA.Wind=="W" then xd.WIND="West" end 
+    TrickAssert(#RPGParty>0,"Empty party! Can't spawn!",serialize('Chars',RPGParty))           
+    for i=1,#RPGParty do
+         CSay("Spawning "..RPGParty[i].." as character #"..i)
+         xd.TEXTURE="GFX/PlayerSprites/"..RPGParty[i].."."..xd.WIND..".jpbf"
+         kthura.Spawn(map.map,map.layer,exitpoint,'PLAYER'..i,xd)
+    end     
+end
  
 
 function field:gomenu(ch)
@@ -84,7 +102,7 @@ end
 
 function field:LoadMap(KthuraMap,layer)
     if not laura.assert(layer,"No layer requested!",{LoadMap=KthuraMap}) then return end    
-    map= {layer=layer}
+    map= {layer=layer,file=KthuraMap}
     print("Loading map: ",KthuraMap)
     CSay("Loading map: "..KthuraMap)
     CSay("= Map itself")
@@ -99,9 +117,9 @@ function field:LoadMap(KthuraMap,layer)
        local fun = load(src,"* NOSCRIPT *")
        map.script = fun() 
     else
-       map.script = use(scr)
+       map.script = Use(scr)
     end    
-    CSay("= Map Events")
+    -- CSay("= Map Events") -- dropped
     -- Will be put in later!
     CSay("= Changes")
     -- Will be put in later!
@@ -113,6 +131,7 @@ end
 field.cam = {x=0,y=0}
 
 function field:odraw()
+    local mx,my=love.mouse.getPosition()
     self.clicked = mousehit(1)
     --if self.clicked then cancelhelp() end
     local width, height = love.graphics.getDimensions( )   
@@ -124,11 +143,31 @@ function field:odraw()
     showstrip()
     love.graphics.setFont(console.font)
     love.graphics.print(Var.S("Time: $PLAYTIME"),width-200,staty)
+    if self.clicked and mx>40 and my<height-120 then
+           local player=map.map:obj(map.layer,"PLAYER"..self.leader)
+           if player then 
+              local gx = math.floor((mx+self.cam.x)/32)
+              local gy = math.floor((my+self.cam.y)/32)
+              CSay("Player requested object 'PLAYER"..self.leader.."' to walk to ("..gx..","..gy..")")
+              player:WalkTo(gx,gy)               
+           end
+       end 
     dbgcon()    
 end    
 
 function field:map() return map end
 
+PF_Block = function(x,y) -- needed for the pathfinder to function correctly
+   return map.map:block(map.layer,x,y)
+end   
 
+field.consolecommands = {}
+function field.consolecommands.BLOCKMAP(self,para)
+     local bm,w,h = kthura.serialblock(map.map)
+     for bl in each(bm) do 
+         console.writeln(bl,0,255,0)
+     end
+     CSay("Map size in gridblocks: "..w.."x"..h)
+end         
 
 return field

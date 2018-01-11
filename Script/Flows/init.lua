@@ -1,6 +1,6 @@
 --[[
   init.lua
-  Version: 18.01.10
+  Version: 18.01.11
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -82,10 +82,12 @@ local iacts = {
          { function() omusic.swap = 'swap/jswap' CSay("Configured music library swap") end},  
          {iLoadImage,"GFX/Logo/63.png","63logo"},
          {iLoadImage,"GFX/General/Arrow_right.png",'NEXT'},
+         --[[
          {iLoadImage,"GFX/PlayerSprites/Ryanna.South.jpbf","RYANNA.S"}  ,
          {iLoadImage,"GFX/PlayerSprites/Ryanna.North.jpbf","RYANNA.N"}  ,
          {iLoadImage,"GFX/PlayerSprites/Ryanna.West.jpbf", "RYANNA.W"}  ,
          {iLoadImage,"GFX/PlayerSprites/Ryanna.East.jpbf", "RYANNA.E"}  ,
+         ]]
          {CSay,"Loading Fonts/CHANTICL.TTF"},
          {SerifFontLoad}      
       }

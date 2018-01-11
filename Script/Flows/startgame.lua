@@ -1,6 +1,6 @@
 --[[
   startgame.lua
-  Version: 18.01.10
+  Version: 18.01.11
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -83,6 +83,8 @@ function finit.starttype(astype)
      iacts[#iacts+1]={rpg.SetParty,rpg,1,"Ryanna"}     
      iacts[#iacts+1]={CSay,"Loading the graveyard map"}
      iacts[#iacts+1]={LoadMap,'DUNG_Graveyard',"#001"}
+     iacts[#iacts+1]={CSay,"Positioning Ryanna"}
+     iacts[#iacts+1]={function() field:SpawnPlayer('StartGame') CSay("Positioning done") end}
   end
 end
 
