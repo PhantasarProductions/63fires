@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.01.11
+  Version: 18.01.12
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -39,6 +39,7 @@
 -- $USE Script/Subs/IconStrip
 local field = {}
 local full, fstype = love.window.getFullscreen( )
+local scw,sch = love.graphics.getDimensions( )
 
 field.iconstrip = {}
 
@@ -139,6 +140,22 @@ function field:odraw()
     --for k,v in spairs(self) do print(type(v),k) end
     --print (serialize('map',map))
     kthura.drawmap(map.map,map.layer,self.cam.x,self.cam.y)
+    -- debug mark
+    -- --[[
+       color(255,0,0,80)
+       for x=16,scw,32 do for y=16,sch-120,32 do
+           if map.map:block(map.layer,x,y) then Rect(x-16,y-16,32,32) end
+       end end    
+       local marko=map.map:obj(map.layer,'PLAYER1')
+       white()
+       Mark(marko.COORD.x-self.cam.x,marko.COORD.y-self.cam.y)       
+       if mx>40 and my<height-120 then
+          color(0,0,255,100)
+          local gx = math.floor((mx+self.cam.x)/32)
+          local gy = math.floor((my+self.cam.y)/32)
+          Rect(gx*32,gy*32,32,32)
+       end   
+    --]]
     StatusBar(false,true)
     showstrip()
     love.graphics.setFont(console.font)
@@ -169,5 +186,40 @@ function field.consolecommands.BLOCKMAP(self,para)
      end
      CSay("Map size in gridblocks: "..w.."x"..h)
 end         
+function field.consolecommands.MYPOS(self,para)
+     for i=1,#RPGParty do
+         local c = map.map.TagMap[map.layer]['PLAYER'..i]
+         CSay("Char #"..i..": "..c.COORD.x..","..c.COORD.y.." Dom:"..sval(c.DOMINANCE))
+     end     
+end
+function field.consolecommands.REMAP(self,para)
+     map.map:remapall()
+end     
+function field.consolecommands.MOVETO(self,para)
+     local player=map.map:obj(map.layer,"PLAYER"..self.leader)
+     local x,y
+     local sp = mysplit(para)
+     x=tonumber(sp[1]) or 0
+     y=tonumber(sp[2]) or 0
+     player:MoveTo(x,y)
+end
+function field.consolecommands.OBJPIC(self,para)
+     local o = map.map:obj(map.layer,para)
+     if not o then console.writeln("? That object does not exist!") return end
+     local k=mysplit(serialize(para..".PICS",o.LoadedTexture),"\n")
+     for i,l in ipairs(k) do
+         local g = math.floor((i/#k)*255)
+         local r = 255-g
+         console.writeln(l,r,g,0)
+         console.show()
+         love.graphics.present()
+     end
+end
+--field.consolecommands.__cam=field.cam
+function field.consolecommands.CAM(self,para)
+    CSay("Camera: ("..sval(self.cam.x)..","..sval(self.cam.y)..")")
+end         
+     
+
 
 return field
