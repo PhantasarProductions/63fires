@@ -70,6 +70,8 @@ end
 
 function field:followdaleader()
   for i=1,#RPGParty do
+      local a=map.map:obj(map.layer,"PLAYER"..i)
+      a.TEXTURE = "GFX/PlayerSprites/"..RPGParty[i].."."..a.WIND..".jpbf"
       if i~=self.leaader then
          if i==1 then follow("PLAYER1","PLAYER"..#RPGParty) 
          else         follow("PLAYER"..i,"PLAYER"..math.floor(i-1)) end
@@ -139,9 +141,10 @@ function field:odraw()
     local staty = height-140
     --for k,v in spairs(self) do print(type(v),k) end
     --print (serialize('map',map))
+    self:followdaleader()
     kthura.drawmap(map.map,map.layer,self.cam.x,self.cam.y)
     -- debug mark
-    -- --[[
+     --[[
        color(255,0,0,80)
        for x=16,scw,32 do for y=16,sch-120,32 do
            if map.map:block(map.layer,x,y) then Rect(x-16,y-16,32,32) end
