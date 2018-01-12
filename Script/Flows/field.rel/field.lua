@@ -120,12 +120,25 @@ function field:LoadMap(KthuraMap,layer)
        local fun = load(src,"* NOSCRIPT *")
        map.script = fun() 
     else
+       console.write("  Compiling: ",255,255,0)
+       console.writeln(scr,0,255,255)
        map.script = Use(scr)
-    end    
+       TrickAssert(type(map.script)=='table','MapScripts must return tables, but this is not a table.',{['Loaded Script']=scr,['Returned type']=type(map.script)})
+    end
+    self:ZA_Clear()    
     -- CSay("= Map Events") -- dropped
     -- Will be put in later!
     CSay("= Changes")
     -- Will be put in later!
+    CSay("= Music function")
+    if map.script.music then
+       CSay("= running mapscript music routine") 
+       map.script:music() 
+    elseif map.map.Meta.Music~="" then 
+       console.write  ('  Loading: ',255,255,0)
+       console.writeln(map.map.Meta.Music,0,255,255)
+       omusic.play(map.map.Meta.Music) 
+    end
     CSay("= OnLoad")
     ;(map.script.onload or nothing)()
     
