@@ -37,6 +37,7 @@
 local za = {}
 
 local zoneactions = {}
+local inzone = {}
 
 local function Next()
 end
@@ -44,10 +45,18 @@ end
 local function Prev()
 end
 
-function za:ZA_Enter(zone,action) 
+function za:ZA_Add(list,zone,action)
+     zoneactions[list]=zoneactions[list] or {}
+     zoneactions[list][zone] = zoneactions[list][zone] or {}
+     zoneactions[list][zone][#zoneactions[list][zone]+1]=action
+end
+
+function za:ZA_Enter(zone,action)
+    self:ZA_Add('ENTER',zone,action) 
 end
 
 function za:ZA_Leave(zone,action)
+    self:ZA_Add('LEAVE',zone,action) 
 end
 
 function za:ZA_Check()
@@ -61,6 +70,9 @@ function za:ZA_Clear(nonextprev)
      za:ZA_Enter('Next',Next)
      za:ZA_Enter('Prev',Prev)
   end
+  cl={}
+  for k,_ in pairs(inzone) do cl[#cl+1]=k end
+  for clr in each(cl)  do inzone[clr]=nil end  
 end  
 
 
