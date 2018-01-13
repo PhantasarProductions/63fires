@@ -34,8 +34,10 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
+
 -- $USE Libs/Lib_kthura
 -- $USE Libs/nothing
+-- $USE Script/Subs/Headers.h AS Headers_h
 -- $USE Script/Subs/IconStrip
 local field = {}
 local full, fstype = love.window.getFullscreen( )
@@ -128,6 +130,15 @@ function field:LoadMap(KthuraMap,layer)
     end
     -- CSay("= Map Events") -- dropped
     -- Will be put in later!
+    CSay("= MapText")
+    local lfile = 'Scenario/'..Var.C('$LANG')..'/Maps/'..KthuraMap
+    CSay("  "..lfile)
+    if JCR_Exists(lfile) then
+       LoadScenario('MAP','Maps/'..KthuraMap)
+    else
+       console.write("WARNING! ",180,100,0)
+       console.writeln("MapText has not been found for this map!",255,255,0)
+    end      
     CSay("= Changes")
     -- Will be put in later!
     CSay("= Music function")
