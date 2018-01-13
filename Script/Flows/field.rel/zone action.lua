@@ -1,6 +1,6 @@
 --[[
   zone action.lua
-  Version: 18.01.12
+  Version: 18.01.13
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -45,21 +45,54 @@ end
 local function Prev()
 end
 
-function za:ZA_Add(list,zone,action)
+function za:ZA_Add(list,zone,action,para)
      zoneactions[list]=zoneactions[list] or {}
      zoneactions[list][zone] = zoneactions[list][zone] or {}
-     zoneactions[list][zone][#zoneactions[list][zone]+1]=action
+     zoneactions[list][zone][#zoneactions[list][zone]+1]={action,para}
+     console.write  (zone,0,255,255)
+     console.write  (' has been registered in action list ',255,255,0)
+     console.writeln(list,0,255,255)
 end
 
-function za:ZA_Enter(zone,action)
-    self:ZA_Add('ENTER',zone,action) 
+function za:ZA_Enter(zone,action,para)
+    self:ZA_Add('ENTER',zone,action,para) 
 end
 
-function za:ZA_Leave(zone,action)
-    self:ZA_Add('LEAVE',zone,action) 
+function za:ZA_Leave(zone,action,para)
+    self:ZA_Add('LEAVE',zone,action,para) 
 end
 
+function za:ActorInZone(Actor,Zone)
+    local me="ActorInZone(\""..Actor.."\",\""..Zone.."\"): "
+    local map=self.map.map
+    local lay=self.map.layer
+    local act=map.TagMap[lay][Actor]
+    assert(act,me.."Actor not found!")
+    local zon=map.TagMap[lay][Zone]
+    if not zon then return nil end
+    assert(zon.KIND=='TiledArea' or zon.KIND=='Zone',me.."Object of kind '"..zon.KIND.."' cannot be used as zone for 'InZone' checks")
+    assert(act.KIND=='Actor' or act.KIND=='Obstacle',"Object of kind "..act.KIND.."' cannot be used as actor for 'InZone' checks")
+    if act.COORD.x>=zon.COORD.x and act.COORD.y>=zon.COORD.y and act.COORD.x<=zon.COORD.x+zon.SIZE.width and act.COORD.y<=zon.COORD.y+zon.SIZE.height then return true end
+    return nil
+end
+
+local checkup = { ENTER={was=nil, wordt=true, zone=true}, LEAVE={was=true,wordt=nil,zone=true}}
 function za:ZA_Check()
+    local map=self.map.map
+    --local lay=self.map.layer
+    local act='PLAYER'..self.leader
+    for check,condition in pairs(checkup) do
+        zoneactions[check] = zoneactions[check] or {}
+        --zoneactions[check][lay] = zoneactions[check][lay] or {}
+        for tag,funcs in pairs(zoneactions[check]) do
+           local now = self:ActorInZone(act,tag)
+           if inzone[tag]==condition.was and now==condition.zone then
+              --inzone[tag] =condition.wordt
+              for actions in each(funcs) do actions[1](actions[2]) end              
+           end
+           inzone[tag]=now
+        end
+    end    
 end
 
 function za:ZA_Clear(nonextprev)
@@ -75,5 +108,13 @@ function za:ZA_Clear(nonextprev)
   for clr in each(cl)  do inzone[clr]=nil end  
 end  
 
+function za:ZA_Dump() -- ONLY FOR DEBUGGING PURPOSES
+   local d=mysplit(serialize('local zoneactions',zoneactions),'\n')
+   for i,l in ipairs(d) do
+       local g=math.floor((i/#d)*255)
+       local r=255-g
+       console.writeln(l,r,g,0)
+   end
+end       
 
 return za

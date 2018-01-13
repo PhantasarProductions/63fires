@@ -32,12 +32,18 @@
   
  **********************************************
  
-version: 18.01.12
+version: 18.01.13
 ]]
 local graveyard = {}
 
 
+console.write("  Welcome to:",255,255,0); console.writeln("The Forgotten Graveyard",0,255,255)
 
+local function Opening()
+   console.writeln("Let the game begin!",255,0,255)
+end
+
+field:ZA_Enter('OpeningZone',Opening)
 
 
 return graveyard

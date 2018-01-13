@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.01.12
+  Version: 18.01.13
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -106,6 +106,7 @@ end
 function field:LoadMap(KthuraMap,layer)
     if not laura.assert(layer,"No layer requested!",{LoadMap=KthuraMap}) then return end    
     map= {layer=layer,file=KthuraMap}
+    self:ZA_Clear()    
     print("Loading map: ",KthuraMap)
     CSay("Loading map: "..KthuraMap)
     CSay("= Map itself")
@@ -125,7 +126,6 @@ function field:LoadMap(KthuraMap,layer)
        map.script = Use(scr)
        TrickAssert(type(map.script)=='table','MapScripts must return tables, but this is not a table.',{['Loaded Script']=scr,['Returned type']=type(map.script)})
     end
-    self:ZA_Clear()    
     -- CSay("= Map Events") -- dropped
     -- Will be put in later!
     CSay("= Changes")
@@ -141,7 +141,7 @@ function field:LoadMap(KthuraMap,layer)
     end
     CSay("= OnLoad")
     ;(map.script.onload or nothing)()
-    
+    self.map=map    
 end
 
 field.cam = {x=0,y=0}
@@ -184,7 +184,8 @@ function field:odraw()
               CSay("Player requested object 'PLAYER"..self.leader.."' to walk to ("..gx..","..gy..")")
               player:WalkTo(gx,gy)               
            end
-       end 
+       end
+    self:ZA_Check()    
     dbgcon()    
 end    
 
@@ -235,7 +236,10 @@ end
 function field.consolecommands.CAM(self,para)
     CSay("Camera: ("..sval(self.cam.x)..","..sval(self.cam.y)..")")
 end         
-     
+
+function field.consolecommands.ZADUMP(self,para)
+    self:ZA_Dump()
+end         
 
 
 return field

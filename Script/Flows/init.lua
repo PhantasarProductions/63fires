@@ -1,6 +1,6 @@
 --[[
   init.lua
-  Version: 18.01.11
+  Version: 18.01.13
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -34,6 +34,8 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
+
+
 -- $USE libs/omusic
 -- $USE libs/console
 -- $USE libs/qgfx
@@ -104,6 +106,7 @@ function finit.draw()
 end
 
 function finit.arrive()
+   PreNote(function(one,two) console.write(one,255,255,0) console.writeln(two,0,255,255) end)
    laura.starttext()
    console.csaycolor = {r=0,g=180,b=255}
    CSay("Loading: "..RYANNA_TITLE)
