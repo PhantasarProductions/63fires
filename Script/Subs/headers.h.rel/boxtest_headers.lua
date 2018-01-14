@@ -1,7 +1,7 @@
 --[[
   boxtest_headers.lua
   
-  version: 18.01.13
+  version: 18.01.14
   Copyright (C) 2018 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -24,5 +24,14 @@ function LoadScenario(tag,file)
    return scenario.LoadData(file,tag)
 end   
 
+function SerialBoxText(file,ptag,boxback)
+   -- $USE Script/Subs/boxtext
+   boxtext.SerialBoxText(file,ptag,boxback)
+end
+
+function MapText(ptag,boxback)
+   SerialBoxText("MAP",ptag,boxback)
+end   
+  
 
 return true

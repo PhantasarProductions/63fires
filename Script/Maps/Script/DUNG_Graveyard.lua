@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.01.13
+version: 18.01.14
 ]]
 local graveyard = {}
 
@@ -41,6 +41,16 @@ console.write("  Welcome to:",255,255,0); console.writeln("The Forgotten Graveya
 
 local function Opening()
    console.writeln("Let the game begin!",255,0,255)
+   -- $IF $MAC
+   Var.D("$PCTYPE","Mac")
+   -- $FI
+   -- $IF $WINDOWS
+   Var.D("$PCTYPE","Windows PC")
+   -- $FI
+   -- $IF $LINUX
+   Var.D("$PCTYPE","Linux PC")
+   -- $FI
+   MapText("INTRO")
 end
 
 field:ZA_Enter('OpeningZone',Opening)

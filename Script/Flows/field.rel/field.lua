@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.01.13
+  Version: 18.01.14
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -68,6 +68,10 @@ local map
 field.leader=1
 
 local function follow(tagslave,tagmaster)
+end
+
+function field:GetActive()
+   return RPGParty[self.leader]
 end
 
 function field:followdaleader()
@@ -156,6 +160,11 @@ function field:LoadMap(KthuraMap,layer)
 end
 
 field.cam = {x=0,y=0}
+
+function field:BoxTextBack()
+    cls()
+    kthura.drawmap(map.map,map.layer,self.cam.x,self.cam.y)
+end
 
 function field:odraw()
     local mx,my=love.mouse.getPosition()
@@ -252,5 +261,10 @@ function field.consolecommands.ZADUMP(self,para)
     self:ZA_Dump()
 end         
 
+function field.consolecommands.ASSETS(self)
+    for k,_ in spairs(assets) do
+        CSay("Loaded: "..k)
+    end
+end            
 
 return field
