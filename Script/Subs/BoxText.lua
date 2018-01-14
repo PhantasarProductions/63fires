@@ -1,6 +1,6 @@
 --[[
   BoxText.lua
-  Version: 18.01.14
+  Version: 18.01.15
   Copyright (C) 2016, 2018 Jeroen Petrus Broks
   
   ===========================
@@ -254,9 +254,9 @@ function me.RunBoxText(file,tag,idx,boxback)
   -- if tonumber(LC('screen.margin.left') )~=0 then sb_data.width=sb_data.width-25 end
   -- Voice acting, if available
   if sb_data.Voice and JCR_Exists(sb_data.Voice)~=0 then
-   if BOXTEXTAUDIO and BOXTEXTAUDIO:playing() then love.audio.stop(BOXTEXTAUDI) end -- if Audio.Playing('BOXTEXTCHANNEL')~=0 then Audio.Stop('BOXTEXTCHANNEL') end
+   if BOXTEXTAUDIO and BOXTEXTAUDIO:isPlaying() then love.audio.stop(BOXTEXTAUDIO) end -- if Audio.Playing('BOXTEXTCHANNEL')~=0 then Audio.Stop('BOXTEXTCHANNEL') end
    BOXTEXTAUDIO = love.audio.newSource(JCR_D(sb_data.Voice)) -- Audio.Load(sb_data.Voice,'BOXTEXTVOICE')
-   love.audio.player(BOXTEXTAUDIO) -- Audio.Play("BOXTEXTVOICE","BOXTEXTCHANNEL")
+   love.audio.play(BOXTEXTAUDIO) -- Audio.Play("BOXTEXTVOICE","BOXTEXTCHANNEL")
   else
    sb_data.Voice=nil
   end
@@ -268,7 +268,7 @@ function me.RunBoxText(file,tag,idx,boxback)
   ShowBox(sb_data,boxback)
   Flip()
   if sb_data.Voice then
-     continue = not( BOXTEXTAUDIO and BOXTEXTAUDIO:playing()) --Audio.Playing('BOXTEXTCHANNEL')==0
+     continue = not( BOXTEXTAUDIO and BOXTEXTAUDIO:isPlaying()) --Audio.Playing('BOXTEXTCHANNEL')==0
   end   
   if mousehit(1) then --or INP.KeyH(KEY_SPACE)==1 or INP.KeyH(KEY_RETURN)==1 or INP.KeyH(KEY_ENTER)==1 or joyhit('CONFIRM') then
      if sb_data.SL>#sb_data.Lines then 
