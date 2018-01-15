@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.01.14
+version: 18.01.15
 ]]
 local graveyard = {}
 
@@ -40,6 +40,10 @@ local graveyard = {}
 console.write("  Welcome to:",255,255,0); console.writeln("The Forgotten Graveyard",0,255,255)
 
 local function Opening()
+   if Done("&DONE.GAMEHASBEGUN") then
+      console.writeln("Already begun so no need to do this again!",180,0,255)
+      return
+   end
    console.writeln("Let the game begin!",255,0,255)
    -- $IF $MAC
    Var.D("$PCTYPE","Mac")
