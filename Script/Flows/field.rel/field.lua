@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.01.14
+  Version: 18.01.16
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -87,7 +87,8 @@ end
 
 function field:SpawnPlayer(exitpoint)
     local xd = {}
-    local exitspot = map.map.TagMap[map.layer][exitpoint]
+    local exitspot = exitpoint
+    if type(exitspot)=='string' then exitspot = map.map.TagMap[map.layer][exitpoint] end
     TrickAssert(exitspot,"Can't spawn on an unknown spot",{F='SpawnPlayer',Exit=exitpoint,Map=map.file,Layer=map.layer})
     xd.FRAME=1
     xd.WIND='South'
@@ -102,6 +103,8 @@ function field:SpawnPlayer(exitpoint)
          kthura.Spawn(map.map,map.layer,exitpoint,'PLAYER'..i,xd)
     end     
 end
+
+
  
 
 function field:gomenu(ch)
@@ -266,5 +269,11 @@ function field.consolecommands.ASSETS(self)
         CSay("Loaded: "..k)
     end
 end            
+
+function field.consolecommands.SAVE(self,apara)
+    local para=apara or "DEBUG"
+    if para=="" then para="DEBUG" end
+    Save("debug."..para)
+end    
 
 return field

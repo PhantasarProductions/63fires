@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.01.15
+version: 18.01.16
 ]]
 local graveyard = {}
 
@@ -40,7 +40,7 @@ local graveyard = {}
 console.write("  Welcome to:",255,255,0); console.writeln("The Forgotten Graveyard",0,255,255)
 
 local function Opening()
-   if Done("&DONE.GAMEHASBEGUN") then
+   if true or Done("&DONE.GAMEHASBEGUN") then
       console.writeln("Already begun so no need to do this again!",180,0,255)
       return
    end
