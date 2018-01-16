@@ -34,6 +34,7 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
+
 local function Doing(a,b)
    print(a,b)
    console.write(a,255,255,0) console.writeln(b,0,255,255)
@@ -77,6 +78,11 @@ local function SaveVars(file)
     local s,m=love.filesystem.write(file.."/gamevars.lua",ret.."\n\n")
     assert(s,m)            
 end
+
+local function SaveGameData(file)
+    Doing("= Gathering: ","Game Data")
+    qwrite(serialize('gamedata',gamedata),file.."/gamedata.lua")
+end    
 
 local function SavePlayerActors(file)
     local M=field.map
@@ -135,6 +141,7 @@ return function(afile,meta)
  Doing("Saving: ",file)
  love.filesystem.createDirectory(file)
  SaveVars(file)
+ SaveGameData(file)
  SavePlayerActors(file)
  SaveRPGData(file)
  SaveSwap(file)

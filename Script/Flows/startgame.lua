@@ -61,7 +61,23 @@ end
 
 local finit = {}
 
+local function recursivelyDelete( item , notself )
+        if love.filesystem.isDirectory( item ) then
+            for _, child in pairs( love.filesystem.getDirectoryItems( item )) do
+                recursivelyDelete( item .. '/' .. child )
+                love.filesystem.remove( item .. '/' .. child )
+            end
+        elseif love.filesystem.isFile( item ) then
+            love.filesystem.remove( item )
+        end
+        if not notself then love.filesystem.remove( item ) end
+    end
+--    recursivelyDelete( 'a' )
+
+
 local iacts = {
+            {CSay,"Cleaning up temp"},
+            {recursivelyDelete,'swap/gameswap',true},
             {CSay,"Compiling Field Flow"},
             {UseField},
 --            {CSay,"Chaining background"},
@@ -77,6 +93,7 @@ local stype
 function finit.starttype(astype)
   stype=astype
   if stype=='newgame' then
+     gamedata = {}
      iacts[#iacts+1]={CSay,"Giving life to Ryanna"}
      iacts[#iacts+1]={laura.makechar,"Ryanna",1}
      iacts[#iacts+1]={CSay,"Initiating party"}
