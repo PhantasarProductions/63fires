@@ -1,6 +1,6 @@
 --[[
   mainmenu.lua
-  Version: 18.01.03
+  Version: 18.01.17
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -140,11 +140,22 @@ function mm.draw()
   end  
   white()
   love.graphics.print("(c) Jeroen P. Broks",(w/2)-150,h-20)
+  dbgcon()
 end
 
 function mm.arrive()
   flushkeys()
 end
 
+mm.consolecommands={}
+function mm.consolecommands.LOAD(self,apara)
+    --flow.use("loadgame","script/subs/loadgame")
+    local Load = Use("script/subs/loadgame")
+    --local Load=flow.get("loadgame") -- this allows me to get rid of this lib more easily, as this is indeed not a flow
+    local para=apara or "DEBUG"
+    if para=="" then para="DEBUG" end    
+    if Load("debug."..para,true) then flow.undef("mainmenu") end
+end
+mm.consolecommands.LOADGAME=mm.consolecommands.LOAD
 
 return mm

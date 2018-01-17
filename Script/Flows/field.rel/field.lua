@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.01.16
+  Version: 18.01.17
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -92,6 +92,7 @@ function field:SpawnPlayer(exitpoint)
     TrickAssert(exitspot,"Can't spawn on an unknown spot",{F='SpawnPlayer',Exit=exitpoint,Map=map.file,Layer=map.layer})
     xd.FRAME=1
     xd.WIND='South'
+    if not exitspot.DATA then exitspot.DATA = {WIND=exitspot.WIND} end
     if     exitspot.DATA.Wind=="S" then xd.WIND="South"
     elseif exitspot.DATA.Wind=="N" then xd.WIND="North"
     elseif exitspot.DATA.Wind=="E" then xd.WIND="East"

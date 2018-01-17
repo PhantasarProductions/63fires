@@ -1,6 +1,6 @@
 --[[
   startgame.lua
-  Version: 18.01.11
+  Version: 18.01.17
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -103,7 +103,13 @@ function finit.starttype(astype)
      iacts[#iacts+1]={CSay,"Positioning Ryanna"}
      iacts[#iacts+1]={function() field:SpawnPlayer('StartGame') CSay("Positioning done") end}
   end
+  if stype=='loadgame' then
+  end
 end
+
+function finit.add(act)
+    iacts[#iacts+1]=act
+end    
 
 function finit.arrive()         
      laura.assert(stype,"And what kind of startup did we require, mr?","None has been received, you know!")

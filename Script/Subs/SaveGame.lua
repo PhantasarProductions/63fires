@@ -1,6 +1,6 @@
 --[[
   SaveGame.lua
-  Version: 18.01.16
+  Version: 18.01.17
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -90,8 +90,8 @@ local function SavePlayerActors(file)
     local ret
     Doing("= Gathering: ","player sprites data")
     ret = "-- Player dump\n"
-    ret = ret .. "field:LoadMap('"..M.file.."','"..M.layer..")\n"
-    ret = ret .."field:SpawnPlayer({ COORDS= {x="..A.COORD.x..", y="..A.COORD.y.."}, WIND='"..A.WIND.."'}\n"        
+    ret = ret .. "field:LoadMap('"..M.file.."','"..M.layer.."')\n"
+    ret = ret .."field:SpawnPlayer({ COORDS= {x="..A.COORD.x..", y="..A.COORD.y.."}, WIND='"..A.WIND.."'})\n"        
     qwrite(ret,file.."/playersprites.lua")
 end
 
