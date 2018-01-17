@@ -100,7 +100,7 @@ function me.ShowBox(data,boxback,highlight)
  -- $USE libs/itext
  boxtextitextfont = boxtextitextfont or GetBoxTextFont()
  -- setfont("BoxText")
- local fh = itext.height("TEST") -- Image.TextHeight("TEST")
+ local fh = itext.height("TEST")+12 -- Image.TextHeight("TEST")
  local bh = (fh * #data.Lines) + (fh)
  local startx = SW-data.width
  local starty = SH-bh
@@ -147,7 +147,7 @@ function me.ShowBox(data,boxback,highlight)
  ]]
  --DarkText('Box('..bstartx..','..math.ceil(bstarty-25)..','..bwidth..','..bheight..')',0,0)
  -- not used in this game Box(bstartx,bstarty-25,bwidth,bheight+25)
- love.graphics.draw(console.background,console.backquad,0,bstarty)
+ love.graphics.draw(console.background,console.backquad,0,bstarty-fh)
  -- Portrait
  white()
  if data.PicRef and ImageLoaded(data.PicRef) then
@@ -160,7 +160,7 @@ function me.ShowBox(data,boxback,highlight)
  -- Ember() -- Red()
  itext.setfont(boxtextitextfont)
  --DarkText (Var.S(data.Header),startx,starty-20,0,0,255,180,0)-- Image.DText(Var.S(data.Header),startx,starty-20)
- color(0,180,255) itext.write(Var.S(data.Header),startx,starty-20)
+ color(0,180,255) itext.write(Var.S(data.Header),startx,starty-fh)
  --print(serialize("boxtext",data))
  -- Text itself
  local ax,ay,y
