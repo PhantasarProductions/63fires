@@ -1,6 +1,6 @@
 --[[
   BoxText.lua
-  Version: 18.01.15
+  Version: 18.01.17
   Copyright (C) 2016, 2018 Jeroen Petrus Broks
   
   ===========================
@@ -98,7 +98,7 @@ function me.ShowBox(data,boxback,highlight)
  local cflow = flow.get()
  ;(cflow.BoxTextBack or function() error("There is no BoxTextBack set for the current flow") end)(cflow)
  -- $USE libs/itext
- boxtextitextfont = boxtextitextfont or itext.loadfont('GFX/StoryFont')
+ boxtextitextfont = boxtextitextfont or GetBoxTextFont()
  -- setfont("BoxText")
  local fh = itext.height("TEST") -- Image.TextHeight("TEST")
  local bh = (fh * #data.Lines) + (fh)

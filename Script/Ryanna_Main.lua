@@ -1,6 +1,6 @@
 --[[
   Ryanna_Main.lua
-  Version: 18.01.10
+  Version: 18.01.17
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -44,6 +44,11 @@ print("Let's try to fire this all up, shall we?")
 
 local allowdebug = true
 
+
+if allowdebug then
+   -- $USE libs/console
+   console.setlogfile("DebugLog.html")
+end   
 
 function update_time()
    local t = os.date("%H:%M:%S")

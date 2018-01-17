@@ -1,6 +1,6 @@
 --[[
   Algemeen.lua
-  Version: 18.01.10
+  Version: 18.01.17
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -62,8 +62,14 @@ function mod:showstatus(cd)
     local h=height-120
     --print ( serialize('self',self)) -- debugline
     DrawPortrait(self.char,x,200)
+    local namefont = GetBoxTextFont()
+    --[[
     love.graphics.setFont(fontGroot)
     love.graphics.print(self.char,x+200,180)
+    ]]
+    color(0,180,255)
+    itext.setfont(namefont)
+    itext.write(self.char,x+180,180,0,1)
     local cats = {'HP','AP','VIT'}
     local cols = {HP={0,0,0},AP={0,180,255},VIT={255,180,0}}
     cols.HP[2]=math.floor((rpg:Points(self.char,'HP').Have/rpg:Points(self.char,'HP').Maximum)*255)

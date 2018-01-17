@@ -1,7 +1,7 @@
 --[[
   boxtest_headers.lua
   
-  version: 18.01.14
+  version: 18.01.17
   Copyright (C) 2018 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -32,6 +32,11 @@ end
 function MapText(ptag,boxback)
    SerialBoxText("MAP",ptag,boxback)
 end   
-  
+
+function GetBoxTextFont()
+   -- $USE libs/itext
+   BOXTEXTFONT_FONT_GLOBAL_VARIABLE = BOXTEXTFONT_FONT_GLOBAL_VARIABLE or itext.loadfont('GFX/StoryFont')
+   return BOXTEXTFONT_FONT_GLOBAL_VARIABLE
+end  
 
 return true
