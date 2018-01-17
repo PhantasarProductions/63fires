@@ -38,3 +38,9 @@ function Save(file,meta)
    -- $USE Script/Subs/SaveGame
    SaveGame(file,meta)
 end
+
+function GoSaveGame(todo)
+   -- $USE Script/Flows/SaveLoadScreen
+   SaveLoadScreen.todo(todo)
+   flow.set(SaveLoadScreen)
+end

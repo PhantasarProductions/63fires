@@ -248,6 +248,7 @@ function field:odraw()
 end    
 
 function field:map() return map end
+function field:getmap() return map end
 
 PF_Block = function(x,y) -- needed for the pathfinder to function correctly
    return map.map:block(map.layer,x,y)

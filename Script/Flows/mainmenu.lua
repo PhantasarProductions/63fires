@@ -63,9 +63,13 @@ mm.items[1].act = function()
 end      
 
 mm.items[2].act = function()
+      --[[
       flow.use("continue","script/flows/continue")
       flow.set("continue")
-      flow.undef("mainmenu")
+      ]]
+      -- $USE Script/Subs/Headers.h AS Headers_h
+      GoSaveGame('CONTINUE')
+      --flow.undef("mainmenu")
 end      
    
 
