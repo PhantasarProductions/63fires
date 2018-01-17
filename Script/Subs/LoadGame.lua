@@ -51,14 +51,14 @@ local function LoadGameData()
     Doing("= Retrieving: ","Game Data")
     local gd = JCR_B(ljcr,lpref.."gamedata.lua")
     local f = load(gd,"Game Data")
-    return f 
+    return f()
 end
 
 local function LoadGameVars()
     Doing("= Retrieving: ","Game vars")
     local gd = JCR_B(ljcr,lpref.."gamevars.lua")
     local f = load(gd,"Game Vars")
-    return f 
+    return f() 
 end
 
 local function LoadPlayerSprites()
