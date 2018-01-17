@@ -45,7 +45,7 @@ local scw,sch = love.graphics.getDimensions( )
 
 field.iconstrip = {}
 
-
+local arrival
 local is = field.iconstrip
 is.hide=full
 is.back=true
@@ -105,7 +105,11 @@ function field:SpawnPlayer(exitpoint)
     end     
 end
 
-
+function field:MTclick(tag)
+     local act=map.map.TagMap[map.layer]['PLAYER'..self.leader]
+     act.Wind='North'
+     MapText(tag:upper())
+end
  
 
 function field:gomenu(ch)
@@ -170,6 +174,32 @@ function field:BoxTextBack()
     kthura.drawmap(map.map,map.layer,self.cam.x,self.cam.y)
 end
 
+function field:objectclicked()
+    local mx,my=love.mouse.getPosition()
+    local tm = map.map.TagMap[map.layer]
+    local act = map.map.TagMap[map.layer]['PLAYER'..self.leader]
+    local ret = true
+    for tag,obj in spairs(tm) do
+        local touched = obj:touch(mx+self.cam.x,my+self.cam.y)
+        CSay("Touching "..tag.." returned "..sval(touched))
+        if touched then 
+           local utag=tag:upper()
+           local tstx=obj.COORD.x
+           local tsty=obj.COORD.y+32
+           local stx = math.floor(tstx/32)
+           local sty = math.floor(tsty/32)
+           if     prefixed(utag,"NPC_MT_") and act:WalkTo(stx,sty) then arrival={self.MTclick,self,utag,tag=tag} return true
+           elseif prefixed(utag,"NPC_")    and act:WalkTo(stx,sty) then arrival={map.script[utag],tag=tag} return true
+           elseif prefixed(utag,"SAVE_")   and act:WalkTo(stx,sty) then arrival={GoSaveGame,"SAVE",tag=tag} return true
+           else   ret=false
+           end
+        else
+           ret=false   
+        end      
+    end
+    return ret
+end
+
 function field:odraw()
     local mx,my=love.mouse.getPosition()
     self.clicked = mousehit(1)
@@ -200,15 +230,19 @@ function field:odraw()
     showstrip()
     love.graphics.setFont(console.font)
     love.graphics.print(Var.S("Time: $PLAYTIME"),width-200,staty)
+    local player=map.map:obj(map.layer,"PLAYER"..self.leader)
     if self.clicked and mx>40 and my<height-120 then
-           local player=map.map:obj(map.layer,"PLAYER"..self.leader)
-           if player then 
+           if player and self:objectclicked() then
+              CSay("Player clicked an object which has been marked as special ("..((arrival or {tag="BULLSHIT!"}).tag or "?")..")")
+           elseif player then 
               local gx = math.floor((mx+self.cam.x)/32)
               local gy = math.floor((my+self.cam.y)/32)
               CSay("Player requested object 'PLAYER"..self.leader.."' to walk to ("..gx..","..gy..")")
-              player:WalkTo(gx,gy)               
+              player:WalkTo(gx,gy)
+              arrival=nil               
            end
        end
+    if arrival and (not player.walking) and (not player.moving) then arrival[1](arrival[2],arrival[3],arrival[4],arrival[5]); arrival=nil end       
     self:ZA_Check()    
     dbgcon()    
 end    
