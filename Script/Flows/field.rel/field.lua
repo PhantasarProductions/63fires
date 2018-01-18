@@ -200,6 +200,30 @@ function field:objectclicked()
     return ret
 end
 
+function field:laykill(layer,objtag,perm)
+    local killi
+    for i,obj in ipairs(map.map.MapObjects[layer]) do
+        if obj.TAG==objtag then killi=i end
+    end
+    if killi then map.map.MapObjects[layer][killi] = nil else console.write("NOTE! ",255,0,255) console.writeln("There is no object tagged "..objtag..", so I can't remove it!") end
+    map.map:remapall()
+    if perm then
+       local swap = "swap/gameswap/perma."..map.file..".lua"
+       if not love.filesystem.isFile(swap) then love.filesystem.write(swap,"-- Permanent changes to "..map.file.."\n\n") end
+       love.filesystem.append(swap,"field:laykill('"..layer.."','"..objtag.."')\n")
+    end   
+end
+
+function field:kill(objtag,perm)
+   self:laykill(map.layer,objtag,perm)
+end   
+
+function field:GoToLayer(lay,spot)
+    for i=1,4 do self:kill("PLAYER"..i) end
+    map.layer=lay
+    self:SpawnPlayer(spot)
+end
+
 function field:odraw()
     local mx,my=love.mouse.getPosition()
     self.clicked = mousehit(1)
@@ -256,7 +280,7 @@ end
 
 field.consolecommands = {}
 function field.consolecommands.BLOCKMAP(self,para)
-     local bm,w,h = kthura.serialblock(map.map)
+     local bm,w,h = kthura.serialblock(map.map,map.layer)
      for bl in each(bm) do 
          console.writeln(bl,0,255,0)
      end

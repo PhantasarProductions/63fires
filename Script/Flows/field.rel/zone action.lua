@@ -40,9 +40,27 @@ local zoneactions = {}
 local inzone = {}
 
 local function Next()
+    local m = field:getmap()
+    local pl = m.layer
+    assert(left(pl,1)=="#","Next may only be used in # based layers.")
+    local n = tonumber(right(pl,#pl-1))
+    assert(n,"Layer number "..sval(pl).." could not be converted into a calculatable number")
+    assert(n<999,"I can't go past layer number #999")
+    local gl = n+1
+    local nl = "#"..right("00"..gl,3)
+    field:GoToLayer(nl,'Start')
 end
 
 local function Prev()
+    local m = field:getmap()
+    local pl = m.layer
+    assert(left(pl,1)=="#","Next may only be used in # based layers.")
+    local n = tonumber(right(pl,#pl-1))
+    assert(n,"Layer number "..sval(pl).." could not be converted into a calculatable number")
+    assert(n>0,"I can't go below layer number #000")
+    local gl = n-1
+    local nl = "#"..right("00"..gl,3)
+    field:GoToLayer(nl,'Einde')
 end
 
 function za:ZA_Add(list,zone,action,para)
