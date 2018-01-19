@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.01.18
+  Version: 18.01.19
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
