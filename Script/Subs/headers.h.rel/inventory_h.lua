@@ -1,6 +1,6 @@
 --[[
-  field.lua
-  Version: 18.01.10
+  inventory_h.lua
+  Version: 18.01.19
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -34,52 +34,14 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
-
--- Menu.field -- Not the actual field lib
-
-local width, height = love.graphics.getDimensions(  )
-local fld = { nomerge=true }
-local stats = {"Power","Defense","Intelligence","Resistance","Speed","Accuracy","Evasion"} --,"HP","AP","Awareness"}
-
-fld.mode = 'status'
-
-local function go_status() fld.mode='status' end
-local function go_inventaris() fld.mode='inventaris' end
-local function go_ability() fld.mode='ability' end
-
-fld.iconstrip = {
-     {icon="status",tut="Statistics, data\nJust the general data about your character can be found here",cb=go_status},
-     {icon="inventaris", tut="What items are you carrying with you?", cb=go_inventaris},
-     {icon='vaardigheden', tut='Skills, special moves, spells?\nWhatever a character can do is listed here!',cb=go_ability},
-     {icon='help',tut="Help me, Ryanna! You're my only hope!",cb=iconstriphelp}
-}
+function InitIAA()
+    local skill = Var.G("%SKILL")
+    gamedata.inventory = gamedata.inventory or { ITM_HERB=12/skill, ITM_ANTIDOTE=6/skill}
+    -- $USE Script/Subs/IAA
+end
 
 
-local iaawin = {y=0,h=height-140}
-
-
-fld.modes = {
-
-    status = function ( x,w,ch,click )
-      love.graphics.setFont(fontMiddel)      
-      for i,stat in ipairs(stats) do
-         white() 
-         love.graphics.print(stat..":",x+math.floor(w*.05),i*30)
-         color(0,180,255)
-         diginum(rpg:Stat(ch,"END_"..stat),x+math.ceil(w*.95),i*30)
-      end      
-    end,
-    
-    inventaris = function (x,w,ch,click)
-       iaawin.x=x
-       iaawin.w=w
-       local i = ItemSelector('field',x,0,click,iaawin)
-    end,
-    
-    ability = function( x,w,ch )
-    end
-
-}
-
-
-return fld
+function ItemSelector(env,x,y,click,win)
+    InitIAA()
+    return IAA:selectitems(env,x,y,click,win)
+end    

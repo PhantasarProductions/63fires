@@ -88,7 +88,7 @@ function mod:odraw()
     white()
     console.sback()
     self:showstatus(cols[1])
-    self.active.modes[self.active.mode](cols[2].x,cols[2].w,self.char)    
+    self.active.modes[self.active.mode](cols[2].x,cols[2].w,self.char,self.clicked)    
     StatusBar(self.char,true)
     showstrip()
 end
