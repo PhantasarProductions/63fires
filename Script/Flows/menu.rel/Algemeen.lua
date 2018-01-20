@@ -1,6 +1,6 @@
 --[[
   Algemeen.lua
-  Version: 18.01.17
+  Version: 18.01.20
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================

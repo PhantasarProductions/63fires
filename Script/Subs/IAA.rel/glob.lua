@@ -1,6 +1,6 @@
 --[[
   glob.lua
-  Version: 18.01.19
+  Version: 18.01.20
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
