@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.01.19
+  Version: 18.01.20
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -191,6 +191,7 @@ function field:objectclicked()
            if     prefixed(utag,"NPC_MT_") and act:WalkTo(stx,sty) then arrival={self.MTclick,self,utag,tag=tag} return true
            elseif prefixed(utag,"NPC_")    and act:WalkTo(stx,sty) then arrival={map.script[utag],tag=tag} return true
            elseif prefixed(utag,"SAVE_")   and act:WalkTo(stx,sty) then arrival={GoSaveGame,"SAVE",tag=tag} return true
+           elseif prefixed(utag,"CHEST_")  and act:WalkTo(stx,sty) then arrival={TreasureChest,tag,tag=tag} return true
            else   ret=false
            end
         else
@@ -212,6 +213,12 @@ function field:laykill(layer,objtag,perm)
        if not love.filesystem.isFile(swap) then love.filesystem.write(swap,"-- Permanent changes to "..map.file.."\n\n") end
        love.filesystem.append(swap,"field:laykill('"..layer.."','"..objtag.."')\n")
     end   
+end
+
+function field:permawrite(codeline)
+       local swap = "swap/gameswap/perma."..map.file..".lua"
+       if not love.filesystem.isFile(swap) then love.filesystem.write(swap,"-- Permanent changes to "..map.file.."\n\n") end
+       love.filesystem.append(swap,codeline)
 end
 
 function field:kill(objtag,perm)
@@ -269,10 +276,12 @@ function field:odraw()
     if arrival and (not player.walking) and (not player.moving) then arrival[1](arrival[2],arrival[3],arrival[4],arrival[5]); arrival=nil end       
     self:ZA_Check()    
     dbgcon()    
+    ShowMiniMSG()
 end    
 
 function field:map() return map end
 function field:getmap() return map end
+field.GetMap = field.getmap
 
 PF_Block = function(x,y) -- needed for the pathfinder to function correctly
    return map.map:block(map.layer,x,y)

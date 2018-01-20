@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.01.17
+version: 18.01.20
 ]]
 local graveyard = {}
 
@@ -40,7 +40,7 @@ local graveyard = {}
 console.write("  Welcome to:",255,255,0); console.writeln("The Forgotten Graveyard",0,255,255)
 
 local function Opening()
-   if Done("&DONE.GAMEHASBEGUN") or true then
+   if Done("&DONE.GAMEHASBEGUN") then
       console.writeln("Already begun so no need to do this again!",180,0,255)
       return
    end
@@ -57,7 +57,15 @@ local function Opening()
    MapText("INTRO")
 end
 
+local function Tut_Chest()
+    if not Done("&DONE.TUTORIAL.TREASURE_CHESTS") then
+       MapText("TUT_CHEST")
+       MapText("TUT_CHEST"..Var.C("$SKILLNAME"))
+    end   
+end
+
 field:ZA_Enter('OpeningZone',Opening)
+field:ZA_Enter('Tutor_Chest',Tut_Chest)
 
 
 return graveyard

@@ -1,5 +1,5 @@
 --[[
-  inventory_h.lua
+  minimsg.lua
   Version: 18.01.20
   Copyright (C) 2018 Jeroen Petrus Broks
   
@@ -34,53 +34,37 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
-function InitIAA()
-    local skill = Var.G("%SKILL")
-    gamedata.inventory = gamedata.inventory or { ITM_HERB=12/skill, ITM_ANTIDOTE=6/skill}
-    -- $USE Script/Subs/IAA
+local mm = {}
+
+local dminimsg = {}
+local wit = {255,255,255}
+local basecoord = {500,500}
+
+function mm:MMsg(text,col,coord)
+    --love.graphics.setFont(console.font)
+    local i = love.graphics.newText(console.font,text)
+    dminimsg[#dminimsg+1] = {text=text,itext=i,w=i:getWidth(),h=i:getHeight(),color=col or wit,coord=coord or basecoord,time=250,speed=.25}
+    --[[
+    local dmdbg = mysplit(serialize("minimessage queue",dminimsg),"\n")
+    for l in each(dmdbg) do
+        CSay(l)
+    end
+    --]]    
+end
+
+function mm:Show()
+    if #dminimsg<=0 then return end
+    for imm in each(dminimsg) do
+        imm.ox = imm.ox or math.floor(imm.w/2)
+        imm.oy = imm.oy or math.floor(imm.h/2)
+        color(imm.color[1],imm.color[2],imm.color[3])
+        love.graphics.draw(imm.itext,math.floor(imm.coord[1]),math.floor(imm.coord[2]),0,1,1,imm.ox,imm.oy)
+        imm.coord[2]=imm.coord[2]-imm.speed
+        imm.time = imm.time - 1   
+    end
+    if dminimsg[1].time<=0 then table.remove(dminimsg,1) end
 end
 
 
-function ItemSelector(env,x,y,click,win)
-    InitIAA()
-    return IAA:selectitems(env,x,y,click,win)
-end
 
-function ItemGet(icode)
-    InitIAA()
-    return IAA:ItemGet(icode)
-end    
-
-function ItemGive(icode,amount)
-    InitIAA()
-    return IAA:ItemGive(icode,amount)
-end
-
-function TreasureChest(tag)
-    InitIAA()
-    return IAA:TreasureChest(tag)
-end        
-
-
-local lastcash,lastoutcome
-
-function DumpCash(cash)
-   local c = cash or Var.G("%CASH")
-   local oc,hd,bt=c,0,0
-   if c==lastcash then return lastoutcome end
-   while oc>=8 do
-         oc = oc - 8
-         hd = hd + 1
-   end
-   while hd>=16 do
-         hd = hd - 16
-         bt = bt + 1
-   end
-   local ret = ""
-   if oc>0 then ret = oc.."oc" end
-   if hd>0 then ret = hd.."hd "..ret end
-   if bt>0 then ret = bt.."bt "..ret end
-   lastcash=c
-   lastoutcome=ret
-   return ret
-end   
+return mm

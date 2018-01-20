@@ -36,6 +36,7 @@
 ]]
 local itemsm = {}
 
+itemsm.itemmax = {50,25,5}
 
 local mayshow = {
                       -- 1 = Healing / Defensive
@@ -96,7 +97,50 @@ function itemsm:selectitems(env,x,y,aclick,win)
      end
 end
 
+function itemsm:ItemGive(itemcode,amount)
+       local ic=itemcode:upper()
+       local skill=Var.G("%SKILL")
+       if not prefixed(ic,"ITM_") then ic="ITM_"..ic end
+       local item=self:ItemGet(ic)
+       if gamedata.inventory[ic] and gamedata.inventory[ic]>=self.itemmax[skill] then return false,item.Title end -- Max reached
+       gamedata.inventory[ic] = (gamedata.inventory[ic] or 0) + (amount or 1)
+       if gamedata.inventory[ic]>=self.itemmax[skill] then gamedata.inventory[ic] = self.itemmax[skill] end
+       return true,item.Title
+end
 
+function itemsm:TreasureChest(tag)
+       local map = field:GetMap()
+       local obj = map.map.TagMap[map.layer][tag]
+       assert(obj,"Trying to open non-existent treasure chest: "..tag)
+       local icode = obj.DATA.ITEM
+       local msg,msgcol
+       local coord = {obj.COORD.x-field.cam.x,obj.COORD.y-field.cam.y}
+       if obj.FRAME==2 then return end
+       obj.FRAME=2
+       if not prefixed(icode:upper(),"CASH:") then
+          local success,name = self:ItemGive(icode)
+          if success then
+             MiniMSG(name.." obtained",{180,255,0},coord)
+             field:permawrite("field:laykill('"..map.layer.."','"..tag.."')")
+          else
+             MiniMSG(name.." overloaded",{255,0,0},coord)
+             obj.FRAME=1       
+          end
+       else
+          local getcash=tonumber(right(icode,#icode-5)) or 1
+          local cash=Var.G("%CASH")
+          if cash>=128000000 then 
+             MiniMSG("Sorry, you're getting too rich!",{255,0,0},coord)
+             field:permawrite("field:laykill('"..map.layer.."','"..tag.."')")
+             obj.FRAME=1
+          else
+             MiniMSG(DumpCash(getcash).." obtained!",{180,255,0},coord)
+             cash=cash+getcash
+             if cash>128000000 then cash=128000000 end
+             Var.D('$CASH',cash) -- This is a safer route than just an Inc routine. This did lead to bugs in past games.
+          end               
+       end
+end
 
 
 return itemsm

@@ -1,5 +1,5 @@
 --[[
-  inventory_h.lua
+  minimsg.h.lua
   Version: 18.01.20
   Copyright (C) 2018 Jeroen Petrus Broks
   
@@ -34,53 +34,11 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
-function InitIAA()
-    local skill = Var.G("%SKILL")
-    gamedata.inventory = gamedata.inventory or { ITM_HERB=12/skill, ITM_ANTIDOTE=6/skill}
-    -- $USE Script/Subs/IAA
+function MiniMSG(text,color,coord)
+    -- $USE script/subs/minimsg
+    return minimsg:MMsg(text,color,coord)
 end
 
-
-function ItemSelector(env,x,y,click,win)
-    InitIAA()
-    return IAA:selectitems(env,x,y,click,win)
-end
-
-function ItemGet(icode)
-    InitIAA()
-    return IAA:ItemGet(icode)
-end    
-
-function ItemGive(icode,amount)
-    InitIAA()
-    return IAA:ItemGive(icode,amount)
-end
-
-function TreasureChest(tag)
-    InitIAA()
-    return IAA:TreasureChest(tag)
+function ShowMiniMSG()
+    if minimsg then minimsg:Show() end
 end        
-
-
-local lastcash,lastoutcome
-
-function DumpCash(cash)
-   local c = cash or Var.G("%CASH")
-   local oc,hd,bt=c,0,0
-   if c==lastcash then return lastoutcome end
-   while oc>=8 do
-         oc = oc - 8
-         hd = hd + 1
-   end
-   while hd>=16 do
-         hd = hd - 16
-         bt = bt + 1
-   end
-   local ret = ""
-   if oc>0 then ret = oc.."oc" end
-   if hd>0 then ret = hd.."hd "..ret end
-   if bt>0 then ret = bt.."bt "..ret end
-   lastcash=c
-   lastoutcome=ret
-   return ret
-end   
