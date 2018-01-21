@@ -74,6 +74,21 @@ local function LoadRPGCharData()
    RPGLoad('jcr',ljcr,lpref.."PARTY") 
 end
 
+local function ExtractSwapFiles(jcrfile)
+    for k,e in spairs(ljcr.entries) do
+        if prefixed(k:upper(),"SWAP/") then
+           local ss = mysplit(e.entry,"/")
+           local sf = ss[#ss]
+           console.write("= Extracting Swap File: ",255,255,0)
+           console.writeln(sf,0,255,255)
+           console.show()
+           love.graphics.present()
+           JCR_Extract(love.filesystem.getSaveDirectory( ).."/savegames/"..jcrfile..".jcr",k,"swap/gameswap/"..sf)
+        end
+    end
+    field:ReadMapChanges()
+end
+
 local function lg(file,nocrash)
       RPGJCRDIR=""
       flow.use('startgame','script/Flows/startgame')
@@ -98,7 +113,9 @@ local function lg(file,nocrash)
       LoadGameData() 
       LoadGameVars() 
       LoadRPGCharData()
-      LoadPlayerSprites()    
+      LoadPlayerSprites()   
+      startgame.add({CSay,"Extracting swap files"})
+      startgame.add({ExtractSwapFiles,file}) 
       flow.set('startgame')
       --flow.undef('loadgame')
       return true      

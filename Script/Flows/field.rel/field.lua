@@ -117,6 +117,18 @@ function field:gomenu(ch)
    menu:cometome('field',ch)
 end
 
+function field:ReadMapChanges()
+    local cfile = "swap/gameswap/perma."..map.file..".lua"
+    if not love.filesystem.isFile(cfile) then
+       CSay("= No changes for this map found")
+       return
+    end
+    CSay("= Applying changes")
+    local f = love.filesystem.load(cfile)
+    TrickAssert(f,"Error in changes file","File in question: "..cfile)
+    f()
+end
+
 function field:LoadMap(KthuraMap,layer)
     if not laura.assert(layer,"No layer requested!",{LoadMap=KthuraMap}) then return end    
     map= {layer=layer,file=KthuraMap}
@@ -140,8 +152,6 @@ function field:LoadMap(KthuraMap,layer)
        map.script = Use(scr)
        TrickAssert(type(map.script)=='table','MapScripts must return tables, but this is not a table.',{['Loaded Script']=scr,['Returned type']=type(map.script)})
     end
-    -- CSay("= Map Events") -- dropped
-    -- Will be put in later!
     CSay("= MapText")
     local lfile = 'Scenario/'..Var.C('$LANG')..'/Maps/'..KthuraMap
     CSay("  "..lfile)
@@ -152,7 +162,7 @@ function field:LoadMap(KthuraMap,layer)
        console.writeln("MapText has not been found for this map!",255,255,0)
     end      
     CSay("= Changes")
-    -- Will be put in later!
+    field:ReadMapChanges()
     CSay("= Music function")
     if map.script.music then
        CSay("= running mapscript music routine") 
@@ -181,7 +191,7 @@ function field:objectclicked()
     local ret = true
     for tag,obj in spairs(tm) do
         local touched = obj:touch(mx+self.cam.x,my+self.cam.y)
-        CSay("Touching "..tag.." returned "..sval(touched))
+        -- CSay("Touching "..tag.." returned "..sval(touched))
         if touched then 
            local utag=tag:upper()
            local tstx=obj.COORD.x
@@ -206,7 +216,7 @@ function field:laykill(layer,objtag,perm)
     for i,obj in ipairs(map.map.MapObjects[layer]) do
         if obj.TAG==objtag then killi=i end
     end
-    if killi then map.map.MapObjects[layer][killi] = nil else console.write("NOTE! ",255,0,255) console.writeln("There is no object tagged "..objtag..", so I can't remove it!") end
+    if killi then map.map.MapObjects[layer][killi] = nil TablePack(map.map.MapObjects[layer]) else console.write("NOTE! ",255,0,255) console.writeln("There is no object tagged "..objtag..", so I can't remove it!") end
     map.map:remapall()
     if perm then
        local swap = "swap/gameswap/perma."..map.file..".lua"
@@ -337,7 +347,28 @@ function field.consolecommands.ASSETS(self)
     for k,_ in spairs(assets) do
         CSay("Loaded: "..k)
     end
-end            
+end
+function field.consolecommands.TAGMAP(self)
+   CSay("Tagmap for layer: "..map.layer)
+   for k,obj in spairs(map.map.TagMap[map.layer]) do
+       CSay("- "..k)
+       CSay("  = Kind:        "..obj.KIND)
+       CSay("  = Dominance:   "..obj.DOMINANCE)
+       CSay("  = Coordinates: ("..obj.COORD.x..","..obj.COORD.y..")")
+       CSay("  = Visible:     "..sval(obj.VISIBLE))
+   end
+end
+function field.consolecommands.MAPOBJ(self)
+   CSay("Tagmap for layer: "..map.layer)
+   for k,obj in pairs(map.map.MapObjects[map.layer]) do
+       CSay("- Object #"..k)
+       CSay("  = Kind:        "..obj.KIND)
+       CSay("  = Dominance:   "..obj.DOMINANCE)
+       CSay("  = Coordinates: ("..obj.COORD.x..","..obj.COORD.y..")")
+       CSay("  = Visible:     "..sval(obj.VISIBLE))
+   end
+end
+            
 
 function field.consolecommands.SAVE(self,apara)
     local para=apara or "DEBUG"
