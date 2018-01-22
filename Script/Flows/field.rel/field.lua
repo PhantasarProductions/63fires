@@ -374,6 +374,7 @@ end
 
 function field.consolecommands.SAVE(self,apara)
     local para=apara or "DEBUG"
+    if para:upper()=="SPOT" then return GoSaveGame("SAVE") end
     if para=="" then para="DEBUG" end
     Save("debug."..para)
 end    
