@@ -65,7 +65,8 @@ end
 local lastcash,lastoutcome
 
 function DumpCash(cash)
-   local c = cash or Var.G("%CASH")
+   local c = cash or (tonumber(Var.C("%CASH")) or 0 )
+   if c==0 then return "0oc" end
    local oc,hd,bt=c,0,0
    if c==lastcash then return lastoutcome end
    while oc>=8 do

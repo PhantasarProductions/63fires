@@ -137,7 +137,7 @@ function itemsm:TreasureChest(tag)
              MiniMSG(DumpCash(getcash).." obtained!",{180,255,0},coord)
              cash=cash+getcash
              if cash>128000000 then cash=128000000 end
-             Var.D('$CASH',cash) -- This is a safer route than just an Inc routine. This did lead to bugs in past games.
+             Var.D('%CASH',cash) -- This is a safer route than just an Inc routine. This did lead to bugs in past games.
           end               
        end
 end

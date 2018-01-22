@@ -271,6 +271,8 @@ function field:odraw()
     showstrip()
     love.graphics.setFont(console.font)
     love.graphics.print(Var.S("Time: $PLAYTIME"),width-200,staty)
+    local pry=staty-25
+    love.graphics.print("Cash: "..DumpCash(Var.G("%CASH")),width-200,pry)
     local player=map.map:obj(map.layer,"PLAYER"..self.leader)
     if self.clicked and mx>40 and my<height-120 then
            if player and self:objectclicked() then
