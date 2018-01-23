@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.01.20
+  Version: 18.01.23
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -228,7 +228,7 @@ end
 function field:permawrite(codeline)
        local swap = "swap/gameswap/perma."..map.file..".lua"
        if not love.filesystem.isFile(swap) then love.filesystem.write(swap,"-- Permanent changes to "..map.file.."\n\n") end
-       love.filesystem.append(swap,codeline)
+       love.filesystem.append(swap,codeline.."\n")
 end
 
 function field:kill(objtag,perm)
@@ -241,6 +241,19 @@ function field:GoToLayer(lay,spot)
     self:SpawnPlayer(spot)
 end
 
+function field:autoscroll()
+    local midposx,midposy = scw/2,(sch-120)/2
+    local cp = map.map.TagMap[map.layer]['PLAYER'..self.leader]
+    local px = cp.COORD.x
+    local py = cp.COORD.y
+    self.cam.x=px-midposx
+    self.cam.y=py-midposy
+    if self.cam.y+(sch-120) > (map.map.bmsizes[map.layer].height*32) then self.cam.y = (map.map.bmsizes[map.layer].height * 32) - (sch-120) end
+    if self.cam.x+scw       > (map.map.bmsizes[map.layer].width *32) then self.cam.x = (map.map.bmsizes[map.layer].width  * 32) -  scw      end
+    if self.cam.y           < 0                                      then self.cam.y = 0                                                    end
+    if self.cam.x           < 0                                      then self.cam.x = 0                                                    end
+end
+
 function field:odraw()
     local mx,my=love.mouse.getPosition()
     self.clicked = mousehit(1)
@@ -249,6 +262,7 @@ function field:odraw()
     local staty = height-140
     --for k,v in spairs(self) do print(type(v),k) end
     --print (serialize('map',map))
+    self:autoscroll()
     self:followdaleader()
     kthura.drawmap(map.map,map.layer,self.cam.x,self.cam.y)
     -- debug mark
@@ -289,6 +303,7 @@ function field:odraw()
     self:ZA_Check()    
     dbgcon()    
     ShowMiniMSG()
+    -- love.graphics.print("Camera: ("..self.cam.x..","..self.cam.y..") -- Mapsize: "..map.map.bmsizes[map.layer].width.."x"..map.map.bmsizes[map.layer].height,200,25)
 end    
 
 function field:map() return map end
