@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.01.20
+version: 18.01.23
 ]]
 local graveyard = {}
 
@@ -64,8 +64,15 @@ local function Tut_Chest()
     end   
 end
 
+local function Tut_Goblin()
+    if not Done("&DONE.TUTORIAL.GOBLIN.COMBAT") then
+       MapText("TUT_GOB")
+    end   
+end
+
 field:ZA_Enter('OpeningZone',Opening)
 field:ZA_Enter('Tutor_Chest',Tut_Chest)
+field:ZA_Enter("Tutor_Gob",  Tut_Goblin)
 
 
 return graveyard
