@@ -1,6 +1,6 @@
 --[[
   items.lua
-  Version: 18.01.20
+  Version: 18.01.23
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -131,13 +131,14 @@ function itemsm:TreasureChest(tag)
           local cash=Var.G("%CASH")
           if cash>=128000000 then 
              MiniMSG("Sorry, you're getting too rich!",{255,0,0},coord)
-             field:permawrite("field:laykill('"..map.layer.."','"..tag.."')")
+             --field:permawrite("field:laykill('"..map.layer.."','"..tag.."')")
              obj.FRAME=1
           else
              MiniMSG(DumpCash(getcash).." obtained!",{180,255,0},coord)
              cash=cash+getcash
              if cash>128000000 then cash=128000000 end
              Var.D('%CASH',cash) -- This is a safer route than just an Inc routine. This did lead to bugs in past games.
+             field:permawrite("field:laykill('"..map.layer.."','"..tag.."')")
           end               
        end
 end
