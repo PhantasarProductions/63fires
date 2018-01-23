@@ -1,6 +1,6 @@
 --[[
   minimsg.h.lua
-  Version: 18.01.20
+  Version: 18.01.23
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
