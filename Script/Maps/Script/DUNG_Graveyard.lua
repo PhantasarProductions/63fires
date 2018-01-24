@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.01.23
+version: 18.01.24
 ]]
 local graveyard = {}
 
@@ -66,6 +66,9 @@ end
 
 local function Tut_Goblin()
     if not Done("&DONE.TUTORIAL.GOBLIN.COMBAT") then
+       local ryanna=field:getmap().map.TagMap['#005'].PLAYER1
+       ryanna.walking=false
+       ryanna.moving=false
        MapText("TUT_GOB")
     end   
 end
