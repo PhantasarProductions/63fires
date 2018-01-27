@@ -73,9 +73,18 @@ local function Tut_Goblin()
     end   
 end
 
+local function FightGob()
+    field:kill('Gob',true)
+    StartCombat({
+           foes={'reg/goblin'},
+           arena="forest_spar"
+    })
+end
+
 field:ZA_Enter('OpeningZone',Opening)
 field:ZA_Enter('Tutor_Chest',Tut_Chest)
 field:ZA_Enter("Tutor_Gob",  Tut_Goblin)
+field:ZA_Enter("FightGob"  ,FightGob)
 
 
 return graveyard

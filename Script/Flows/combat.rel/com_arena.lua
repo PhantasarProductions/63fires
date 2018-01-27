@@ -1,6 +1,6 @@
 --[[
   com_arena.lua
-  Version: 18.01.26
+  Version: 18.01.27
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -41,13 +41,14 @@ local defaultarena = {
         -- $USE Subs/screen
         local w,h
         arena.image = LoadImage('gfx/combat/arena/'..file..".png") w,h = ImageSize(arena.image)
-        arena.quad  = love.graphics.newQuad(w/2,(h-120)/2,w,h,screen.w,screen.h-120)
-        arena.image:setWrap("mirroredrepeat","clamp")
+        arena.quad  = love.graphics.newQuad(-((screen.w/2)-(w/2)),-(((screen.h-120)/2)-((h-120)/2)),screen.w,screen.h-120,w,h)
+        WrapImage(arena.image,"mirroredrepeat","clamp") --:setWrap("mirroredrepeat","clamp")
         HotCenter(arena.image)
     end,
     
     draw = function(arena)
         -- $USE Subs/screen
+        white()
         QuadImage(arena.image,arena.quad,0,0)
     end    
     
@@ -55,9 +56,15 @@ local defaultarena = {
            
 }
 
+function Arena:DrawArena()
+    
+    self.arenamod.draw(self.arenadata)
+end
+
 
 function Arena:SetUpArena(arenafile)
      local af = "script/data/arena/"..arenafile..".lua"
+     self.arenadata = { file=arenafile }
      if JCR_Exists(af) then self.arenamod = Use(af) else self.arenamod=defaultarena end
      self.arenamod.load(self.arenadata,arenafile)
 end

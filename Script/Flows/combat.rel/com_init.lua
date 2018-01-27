@@ -47,7 +47,7 @@ end
 
 function cinit:HaveTags()
    self.ftags = {}
-   local ftags
+   local ftags = self.ftags
    for _,party in ipairs(RPGParty) do ftags[#ftags+1]=party end
    for k,_ in pairs(RPGChars) do
        if prefixed(k,"FOE_") then ftags[#ftags+1]=k end
@@ -56,21 +56,25 @@ end
 
 function cinit:CombatMusic(data)
     omusic.push()
-    if JCR_HaveDir(data.music) then o.random(data.music) else o.play(data.music) end
+    data.music = data.music or "Music/Combat"
+    if JCR_HasDir(data.music) then omusic.random(data.music) else omusic.play(data.music) end
 end    
 
 function cinit:CombatStartEvent(data)
     -- $USE libs/nothing
-    (data.startevent or nothing)(data.startparameter)
+    -- $IF IGNORE
+    nothing()
+    -- $FI
+    ;(data.startevent or nothing)(data.startparameter)
 end    
 
 function cinit:Init(data)
    ResetMiniMsg()   
    Var.Clear("$SELECTEDABILITY") -- Prevent conflicts with looking to the abilities in the field
-   cinit.combatdata = data -- Var2Table("COMBAT.",true)
+   self.combatdata = data -- Var2Table("COMBAT.",true)
    self:SetUpCards()
    self:YCards()
-   self:SetupArena(data.area)
+   self:SetUpArena(data.arena)
    self:LoadHeros()
    self:LoadFoes()
    self:HaveTags()

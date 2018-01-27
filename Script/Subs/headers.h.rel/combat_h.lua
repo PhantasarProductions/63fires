@@ -36,7 +36,7 @@
 ]]
 function StartCombat(data)
     -- $USE Script/Flows/combat
-    combat:init(data)
+    combat:Init(data)
     flow.set(combat)
 end
 

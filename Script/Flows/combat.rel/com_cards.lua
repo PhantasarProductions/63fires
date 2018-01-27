@@ -1,6 +1,6 @@
 --[[
   com_cards.lua
-  Version: 18.01.26
+  Version: 18.01.27
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -37,6 +37,7 @@
 local ccards = {}
 
 local Cards
+local CardImg = {}
 
 function ccards:SetUpCards()
     self.Cards = {}
@@ -45,7 +46,9 @@ function ccards:SetUpCards()
 end    
 
 function ccards:YCards()
-    for i=1,25 do
+    -- $USE script/subs/screen
+    local SH = screen.h
+    for i=1,50 do
         Cards[i] = Cards[i] or {}
         Cards[i].x=-25
         Cards[i].y=SH+((25-i)*100)        
@@ -56,17 +59,19 @@ function ccards:CreateOrder()
      self.order = { speedtable = {}, tagorder = {}, iorder = {} }
      local order=self.order
      local sid,strid,group
+     local RPG = rpg
      -- first set up a table easily usable by spairs.
      -- for group,groupdata in pairs(Fighters) do -- No longer needed
-         for tag,data in pairs(groupdata) do
+         --for tag,data in pairs(groupdata) do
+         for tag,_ in pairs(RPGChars) do
              if prefixed(tag,"FOE_") then group="Foe" else group="Hero" end
-             sid = 10000 - RPG.Stat(data.tag,"END_Speed")
+             sid = 10000 - RPG:Stat(tag,"END_Speed")
              strid = right("00000"..sid,5)
              while order.speedtable[strid] do
                 sid = sid + 1 
                 strid = right("00000"..sid,5)
              end
-             order.speedtable[strid] = {group=group,tag=data.tag}
+             order.speedtable[strid] = {group=group,tag=tag}
          end
      --end
      -- And let us now set up the actual work order
@@ -100,12 +105,45 @@ function ccards:SetupInitialCards(adata,empty)
           CSay(serialize("card["..cidx.."]",card))
         end
    end
-   CSay(serialize('Cards',Cards))
+   --CSay(serialize('Cards',Cards))
 end
 
 function ccards:ResetCards() ccards:SetupInitialCards({},true) end
 
+function ccards:DrawCard(tag,x,y)
+      -- Initial
+      local ctg = 'BACK'
+      -- If a foe
+      -- If Ryanna while transformed
+      -- If a hero in general
+      
+      -- Loading
+      CardImg[ctg] = CardImg[ctg] or LoadImage("GFX/Combat/Cards/"..ctg..".png")
+      -- Drawing
+      DrawImage(CardImg[ctg],x,y)       
+end
 
+function ccards:ShowCard(card)
+       self:DrawCard(card.data,card.x,card.y)
+end
+
+function ccards:DrawCards()
+    -- $USE script/subs/screen
+    local waitx = screen.w-180
+    local actx  = screen.w-64
+    local acty  = 32
+    local maxshow = 25
+    if screen.w>1000 then maxshow=50 end
+    for i=maxshow,1,-1 do
+        Cards[i] = Cards[i] or {x=-(screen.w+i*40),y=200}
+        self:ShowCard(Cards[i])
+        local wantx=waitx-(i*16)
+        if i==1 then wantx=actx end
+        if Cards[i].x<wantx     then Cards[i].x = Cards[i].x + 2 end
+        if Cards[i].x<wantx*.75 then Cards[i].x = Cards[i].x + 2 end
+        if Cards[i].y>acty      then Cards[i].y = Cards[i].y - 4 end
+    end    
+end
 
 
 return ccards
