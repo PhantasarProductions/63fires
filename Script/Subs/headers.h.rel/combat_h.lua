@@ -1,6 +1,6 @@
 --[[
   combat_h.lua
-  Version: 18.01.26
+  Version: 18.01.27
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================

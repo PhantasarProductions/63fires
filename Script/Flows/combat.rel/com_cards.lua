@@ -110,12 +110,25 @@ end
 
 function ccards:ResetCards() ccards:SetupInitialCards({},true) end
 
-function ccards:DrawCard(tag,x,y)
-      -- Initial
-      local ctg = 'BACK'
+function ccard:CardTag(data)
+      local ret = "BACK"
+      -- If card's really empty!
+      if not data then return "BACK" end
+      if not data.tag then return "BACK" end
       -- If a foe
+      if prefixed(data.tag,"FOE_") then
+         local myfoe=self.foes[data.tag]
+         if myfoe.Boss then return "BOSS_"..(myfoe.letterfiletag or "Unknown") else return "FOE_"..(myfoe.letterfiletag or "Unknown") end
+      end   
       -- If Ryanna while transformed
       -- If a hero in general
+      -- If not anything else
+      return "BACK"
+end
+
+function ccards:DrawCard(data,x,y)
+      -- Initial
+      local ctg = ccards:CardTag(data) 
       
       -- Loading
       CardImg[ctg] = CardImg[ctg] or LoadImage("GFX/Combat/Cards/"..ctg..".png")
