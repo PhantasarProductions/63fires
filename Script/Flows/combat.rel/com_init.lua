@@ -1,6 +1,6 @@
 --[[
-  minimsg.lua
-  Version: 18.01.26
+  com_init.lua
+  Version: 18.01.27
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -34,44 +34,53 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
-local mm = {}
+local cinit = {}
 
-local dminimsg = {}
-local wit = {255,255,255}
-local basecoord = {500,500}
-
-function mm:MMsg(text,col,coord)
-    --love.graphics.setFont(console.font)
-    local i = love.graphics.newText(console.font,text)
-    dminimsg[#dminimsg+1] = {text=text,itext=i,w=i:getWidth(),h=i:getHeight(),color=col or wit,coord=coord or basecoord,time=250,speed=.25}
-    --[[
-    local dmdbg = mysplit(serialize("minimessage queue",dminimsg),"\n")
-    for l in each(dmdbg) do
-        CSay(l)
-    end
-    --]]    
+function cinit:LoadHeros()
+   self.hero={}
+   for ch in each(RPGParty) do
+       self.hero[ch] = self.hero[ch] or {}
+       local myhero = self.hero[ch]       
+       myhero.images = {}
+   end
 end
 
-function mm:Show()
-    if #dminimsg<=0 then return end
-    for imm in each(dminimsg) do
-        imm.ox = imm.ox or math.floor(imm.w/2)
-        imm.oy = imm.oy or math.floor(imm.h/2)
-        color(imm.color[1],imm.color[2],imm.color[3])
-        love.graphics.draw(imm.itext,math.floor(imm.coord[1]),math.floor(imm.coord[2]),0,1,1,imm.ox,imm.oy)
-        imm.coord[2]=imm.coord[2]-imm.speed
-        imm.time = imm.time - 1   
-    end
-    if dminimsg[1].time<=0 then table.remove(dminimsg,1) end
+function cinit:HaveTags()
+   self.ftags = {}
+   local ftags
+   for _,party in ipairs(RPGParty) do ftags[#ftags+1]=party end
+   for k,_ in pairs(RPGChars) do
+       if prefixed(k,"FOE_") then ftags[#ftags+1]=k end
+   end 
 end
 
-function mm:Reset()
-    local siz = #dminimsg 
-    if siz<=0 then return end
-    for i=1,siz do
-        dminimsg[i]=nil
-    end
+function cinit:CombatMusic(data)
+    omusic.push()
+    if JCR_HaveDir(data.music) then o.random(data.music) else o.play(data.music) end
+end    
+
+function cinit:CombatStartEvent(data)
+    -- $USE libs/nothing
+    (data.startevent or nothing)(data.startparameter)
+end    
+
+function cinit:Init(data)
+   ResetMiniMsg()   
+   Var.Clear("$SELECTEDABILITY") -- Prevent conflicts with looking to the abilities in the field
+   cinit.combatdata = data -- Var2Table("COMBAT.",true)
+   self:SetUpCards()
+   self:YCards()
+   self:SetupArena(data.area)
+   self:LoadHeros()
+   self:LoadFoes()
+   self:HaveTags()
+   self:SetupInitialCards(data)
+   self:CombatMusic(data)
+   self:CombatStartEvent(data)
 end
 
 
-return mm
+
+
+
+return cinit

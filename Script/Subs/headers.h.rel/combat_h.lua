@@ -1,5 +1,5 @@
 --[[
-  minimsg.lua
+  combat_h.lua
   Version: 18.01.26
   Copyright (C) 2018 Jeroen Petrus Broks
   
@@ -34,44 +34,16 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
-local mm = {}
-
-local dminimsg = {}
-local wit = {255,255,255}
-local basecoord = {500,500}
-
-function mm:MMsg(text,col,coord)
-    --love.graphics.setFont(console.font)
-    local i = love.graphics.newText(console.font,text)
-    dminimsg[#dminimsg+1] = {text=text,itext=i,w=i:getWidth(),h=i:getHeight(),color=col or wit,coord=coord or basecoord,time=250,speed=.25}
-    --[[
-    local dmdbg = mysplit(serialize("minimessage queue",dminimsg),"\n")
-    for l in each(dmdbg) do
-        CSay(l)
-    end
-    --]]    
+function StartCombat(data)
+    -- $USE Script/Flows/combat
+    combat:init(data)
+    flow.set(combat)
 end
 
-function mm:Show()
-    if #dminimsg<=0 then return end
-    for imm in each(dminimsg) do
-        imm.ox = imm.ox or math.floor(imm.w/2)
-        imm.oy = imm.oy or math.floor(imm.h/2)
-        color(imm.color[1],imm.color[2],imm.color[3])
-        love.graphics.draw(imm.itext,math.floor(imm.coord[1]),math.floor(imm.coord[2]),0,1,1,imm.ox,imm.oy)
-        imm.coord[2]=imm.coord[2]-imm.speed
-        imm.time = imm.time - 1   
-    end
-    if dminimsg[1].time<=0 then table.remove(dminimsg,1) end
-end
+LoadedFoeImages = LoadedFoeImages or {} -- Should remain in the memory even after the combat routine itself has been flushed!
 
-function mm:Reset()
-    local siz = #dminimsg 
-    if siz<=0 then return end
-    for i=1,siz do
-        dminimsg[i]=nil
-    end
-end
-
-
-return mm
+function FoeImage(imgfile)
+   local ifile = imgfile:upper()
+   LoadedFoeImages[ifile] = LoadedFoeImages[ifile] or LoadImage(imgfile)
+   return LoadedFoeImages[ifile]
+end   

@@ -1,6 +1,6 @@
 --[[
   minimsg.h.lua
-  Version: 18.01.23
+  Version: 18.01.26
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -42,3 +42,7 @@ end
 function ShowMiniMSG()
     if minimsg then minimsg:Show() end
 end        
+
+function ResetMiniMsg()
+    if minimsg then minimsg:Reset() end
+end    

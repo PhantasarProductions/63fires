@@ -1,5 +1,5 @@
 --[[
-  minimsg.lua
+  com_arena.lua
   Version: 18.01.26
   Copyright (C) 2018 Jeroen Petrus Broks
   
@@ -34,44 +34,36 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
-local mm = {}
+local Arena = {}
 
-local dminimsg = {}
-local wit = {255,255,255}
-local basecoord = {500,500}
+local defaultarena = {
+    load = function (arena,file)
+        -- $USE Subs/screen
+        local w,h
+        arena.image = LoadImage('gfx/combat/arena/'..file..".png") w,h = ImageSize(arena.image)
+        arena.quad  = love.graphics.newQuad(w/2,(h-120)/2,w,h,screen.w,screen.h-120)
+        arena.image:setWrap("mirroredrepeat","clamp")
+        HotCenter(arena.image)
+    end,
+    
+    draw = function(arena)
+        -- $USE Subs/screen
+        QuadImage(arena.image,arena.quad,0,0)
+    end    
+    
+    
+           
+}
 
-function mm:MMsg(text,col,coord)
-    --love.graphics.setFont(console.font)
-    local i = love.graphics.newText(console.font,text)
-    dminimsg[#dminimsg+1] = {text=text,itext=i,w=i:getWidth(),h=i:getHeight(),color=col or wit,coord=coord or basecoord,time=250,speed=.25}
-    --[[
-    local dmdbg = mysplit(serialize("minimessage queue",dminimsg),"\n")
-    for l in each(dmdbg) do
-        CSay(l)
-    end
-    --]]    
+
+function Arena:SetUpArena(arenafile)
+     local af = "script/data/arena/"..arenafile..".lua"
+     if JCR_Exists(af) then self.arenamod = Use(af) else self.arenamod=defaultarena end
+     self.arenamod.load(self.arenadata,arenafile)
 end
 
-function mm:Show()
-    if #dminimsg<=0 then return end
-    for imm in each(dminimsg) do
-        imm.ox = imm.ox or math.floor(imm.w/2)
-        imm.oy = imm.oy or math.floor(imm.h/2)
-        color(imm.color[1],imm.color[2],imm.color[3])
-        love.graphics.draw(imm.itext,math.floor(imm.coord[1]),math.floor(imm.coord[2]),0,1,1,imm.ox,imm.oy)
-        imm.coord[2]=imm.coord[2]-imm.speed
-        imm.time = imm.time - 1   
-    end
-    if dminimsg[1].time<=0 then table.remove(dminimsg,1) end
-end
+function Arena:Draw()
+    self.arenamod.draw(self.arenadata)
+end    
 
-function mm:Reset()
-    local siz = #dminimsg 
-    if siz<=0 then return end
-    for i=1,siz do
-        dminimsg[i]=nil
-    end
-end
-
-
-return mm
+return Arena
