@@ -1,5 +1,5 @@
 --[[
-  com_main.lua
+  com_heroes.lua
   Version: 18.01.28
   Copyright (C) 2018 Jeroen Petrus Broks
   
@@ -34,33 +34,47 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
-local cmain = {}
+local hero = {}
 
-
-
-function cmain:odraw()
-      self:DrawArena()
-      self:DrawCards()
-      self:DrawFoes(self.targeted,self.acting)
-      self:DrawHeroes(self.targeted,self.inaction,self.acting)
-      StatusBar(false,true)
-      dbgcon()    
-      ShowMiniMSG()
+function hero:LoadHeros()
+   self.hero={}
+   -- $USE script/subs/screen
+   local midx = screen.w/2
+   local midy = (screen.h-120)/2
+   for i,ch in ipairs(RPGParty) do
+       self.hero[ch] = self.hero[ch] or {}
+       local myhero = self.hero[ch]
+       myhero.tag=ch       
+       myhero.images = {}
+       myhero.x=math.floor(midx + ((midx/(#RPGParty+1))*i) )
+       myhero.y=math.floor(midy + ((midy/(#RPGParty+1))*i) )
+   end
 end
 
+function hero:LoadHeroImage(tag,act)
+    local basefile = 'GFX/Combat/Fighters/Hero/'..tag.."_"..act
+    for try in each({'.png',".jpbf"}) do
+        CSay("Trying to load: "..basefile..try)
+        if JCR_Exists(basefile..try) or JCR_HasDir(basefile..try) then return LoadImage(basefile..try) end
+    end
+    error("No image data found for: "..basefile)    
+end
 
+function hero:DrawHero(myhero,targeted,action,actionframe)
+     myhero.images[action] = myhero.images[action] or self:LoadHeroImage(myhero.tag,action)
+     local f = actionframe
+     if f>#myhero.images[action].images then f=1 end
+     DrawImage(myhero.images[action],myhero.x,myhero.y,f)     
+end
 
+function hero:DrawHeroes(targeted,inaction,action,actionframe)
+     for k,v in pairs(self.hero) do
+         local paction='IDLE'
+         local f = 1
+         if inaction==k or inaction=='ALL' or inaction=='ALLHEROES' then paction=action f=actionframe end
+         --CSay(serialize(k..', my hero',v))
+         self:DrawHero(v,targeted,paction,f)
+     end
+end     
 
-
-
-
-
-
-
-
-
-
-
-
-return cmain
-
+return hero

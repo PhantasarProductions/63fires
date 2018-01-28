@@ -1,6 +1,6 @@
 --[[
   com_cards.lua
-  Version: 18.01.27
+  Version: 18.01.28
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -39,11 +39,26 @@ local ccards = {}
 local Cards
 local CardImg = {}
 
+
+
 function ccards:SetUpCards()
     self.Cards = {}
-    self.cards = Cards
+    self.cards = self.Cards
     Cards = self.Cards
 end    
+
+
+function ccards:RemoveFirstCard()
+    local max = 0
+    local cards=self.Cards
+    for i,_ in pairs(cards) do if i>max then max=i end end
+    for i=1,max do cards[i] = cards[i] or {} end
+    table.remove(cards,1)
+    --BuffCountDown() -- This comes later!
+    -- $USE Libs/audio
+    QuickPlay('Audio/Combat/CardSlide.ogg')
+end
+
 
 function ccards:YCards()
     -- $USE script/subs/screen
@@ -51,7 +66,7 @@ function ccards:YCards()
     for i=1,50 do
         Cards[i] = Cards[i] or {}
         Cards[i].x=-25
-        Cards[i].y=SH+((25-i)*100)        
+        Cards[i].y=SH+((50-i)*100)        
     end
 end
 
@@ -90,11 +105,11 @@ function ccards:SetupInitialCards(adata,empty)
    Cards = Cards or {}
    if empty then ClearTable(Cards) end
    local card,cidx,pi
+   pi   = 0
    for i,data in pairs(self.order.iorder) do
        local goed = true
        goed = goed and not(cdata.initiative and data.group=='Foe')
        goed = goed and not(cdata.ambush     and data.group=='Hero')
-       pi   = 0
        if goed then
           pi = pi + 1
           cidx=pi*3
@@ -110,25 +125,29 @@ end
 
 function ccards:ResetCards() ccards:SetupInitialCards({},true) end
 
-function ccard:CardTag(data)
+function ccards:CardTag(data)
       local ret = "BACK"
       -- If card's really empty!
       if not data then return "BACK" end
       if not data.tag then return "BACK" end
       -- If a foe
       if prefixed(data.tag,"FOE_") then
+         if not self.foes then for k,v in spairs(self) do CSay("COMBAT MODULE:  "..type(v).." "..k) end end
          local myfoe=self.foes[data.tag]
          if myfoe.Boss then return "BOSS_"..(myfoe.letterfiletag or "Unknown") else return "FOE_"..(myfoe.letterfiletag or "Unknown") end
       end   
       -- If Ryanna while transformed
       -- If a hero in general
+      if data.tag and rpg:Points(data.tag,"HP").Have>0 then
+         return "HERO_"..data.tag
+      end
       -- If not anything else
       return "BACK"
 end
 
 function ccards:DrawCard(data,x,y)
       -- Initial
-      local ctg = ccards:CardTag(data) 
+      local ctg = self:CardTag(data) 
       
       -- Loading
       CardImg[ctg] = CardImg[ctg] or LoadImage("GFX/Combat/Cards/"..ctg..".png")
@@ -148,13 +167,14 @@ function ccards:DrawCards()
     local maxshow = 25
     if screen.w>1000 then maxshow=50 end
     for i=maxshow,1,-1 do
-        Cards[i] = Cards[i] or {x=-(screen.w+i*40),y=200}
+        Cards[i] = Cards[i] or {x=-(screen.w+i*40),y=acty}
         self:ShowCard(Cards[i])
         local wantx=waitx-(i*16)
         if i==1 then wantx=actx end
         if Cards[i].x<wantx     then Cards[i].x = Cards[i].x + 2 end
         if Cards[i].x<wantx*.75 then Cards[i].x = Cards[i].x + 2 end
         if Cards[i].y>acty      then Cards[i].y = Cards[i].y - 4 end
+        if Cards[i].y<acty      then Cards[i].y = Cards[i].y + 1 end        
     end    
 end
 

@@ -1,6 +1,6 @@
 --[[
   com_init.lua
-  Version: 18.01.27
+  Version: 18.01.28
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -36,14 +36,6 @@
 ]]
 local cinit = {}
 
-function cinit:LoadHeros()
-   self.hero={}
-   for ch in each(RPGParty) do
-       self.hero[ch] = self.hero[ch] or {}
-       local myhero = self.hero[ch]       
-       myhero.images = {}
-   end
-end
 
 function cinit:HaveTags()
    self.ftags = {}

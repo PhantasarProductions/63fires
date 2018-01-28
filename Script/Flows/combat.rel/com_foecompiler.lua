@@ -1,6 +1,6 @@
 --[[
   com_foecompiler.lua
-  Version: 18.01.27
+  Version: 18.01.28
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -120,12 +120,32 @@ function foecom:LoadFoes()
       local midx = screen.w/2
       local midy = (screen.h-120)/2
       myfoe.x = math.floor(rows*xpos)
-      myfoe.y = math.floor((midy/4)*ypos)
+      myfoe.y = math.floor((midy/4)*ypos) + midy
       myfoe.dominance = 20
+      myfoe.tag = tag
       self.foedrawordertag [ right("00000"..myfoe.dominance,5).."."..right("00000"..myfoe.y,5).."."..right("00000"..myfoe.x,5) ] = myfoe      
   end
   for k,myfoe in spairs(self.foedrawordertag) do self.foedraworder[#self.foedraworder+1]=myfoe end
 end
+
+function foecom:DrawFoe(myfoe,targeted,acting)
+    -- targeted shit
+    
+    -- acting shit
+    
+    -- Drawing
+    DrawImage(myfoe.image,myfoe.x,myfoe.y,myfoe.frame)
+end
+
+
+function foecom:DrawFoes(targeted,acting)
+     for myfoe in each(self.foedraworder) do
+         foecom:DrawFoe(myfoe,targeted==myfoe.tag or targeted=="ALLFOES" or targeted=="ALL",acting==myfoe.tag)         
+     end
+end
+
+
+
 
 
 return foecom
