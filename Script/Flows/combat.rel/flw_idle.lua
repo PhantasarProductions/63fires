@@ -1,5 +1,5 @@
 --[[
-  com_main.lua
+  flw_idle.lua
   Version: 18.01.29
   Copyright (C) 2018 Jeroen Petrus Broks
   
@@ -34,36 +34,20 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
-local cmain = {}
+local zooi = {  }
 
 
-
-function cmain:odraw()
-      self:DrawArena()
-      self:DrawCards()
-      self:DrawFoes(self.targeted,self.acting)
-      self:DrawHeroes(self.targeted,self.inaction,self.acting)
-      self.flow = self.flow or "idle"
-      assert(self["flow_"..self.flow],"No combat flow function for "..self.flow)
-      self['flow_'..self.flow](self)
-      StatusBar(false,true)
-      dbgcon()    
-      ShowMiniMSG()
+function zooi:flow_idle()
+      local firstcard=self.Cards[1]
+      local tag=self:CardTag(firstcard.data)
+      if tag=="BACK" then
+         return self:RemoveFirstCard()
+      end     
+      if prefixed(tag,"HERO") then
+         self.flow = firstcard.altplayinput or "playerinput"
+      end
 end
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-return cmain
-
+return zooi
