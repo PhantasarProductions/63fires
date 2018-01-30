@@ -41,10 +41,13 @@ function hero:LoadHeros()
    -- $USE script/subs/screen
    local midx = screen.w/2
    local midy = (screen.h-120)/2
+   self.fighters = self.fighters or {}
    for i,ch in ipairs(RPGParty) do
        self.hero[ch] = self.hero[ch] or {}
        local myhero = self.hero[ch]
-       myhero.tag=ch       
+       self.fighters[ch]=myhero
+       myhero.tag=ch
+       myhero.group='Hero'       
        myhero.images = {}
        myhero.x=math.floor(midx + ((midx/(#RPGParty+1))*i) )
        myhero.y=math.floor(midy + ((midy/(#RPGParty+1))*i) )

@@ -106,6 +106,7 @@ function foecom:CompileFoe(i,foefile)
 end
 
 function foecom:LoadFoes()
+  self.fighters = self.fighters or {}
   self.foes={}
   self.foedrawordertag = {}
   self.foedraworder = {}
@@ -114,6 +115,7 @@ function foecom:LoadFoes()
   for i,foefile in ipairs(self.combatdata.foes) do
       local tag = self:CompileFoe(i,foefile)
       local myfoe = self.foes[tag]
+      self.fighters[tag] = myfoe
       local xpos = math.floor((i-1)/3)
       local ypos = i - (xpos*3)
       -- $USE script/subs/screen
@@ -123,6 +125,7 @@ function foecom:LoadFoes()
       myfoe.y = math.floor((midy/4)*ypos) + midy
       myfoe.dominance = 20
       myfoe.tag = tag
+      myfoe.group="Foe"
       self.foedrawordertag [ right("00000"..myfoe.dominance,5).."."..right("00000"..myfoe.y,5).."."..right("00000"..myfoe.x,5) ] = myfoe      
   end
   for k,myfoe in spairs(self.foedrawordertag) do self.foedraworder[#self.foedraworder+1]=myfoe end

@@ -50,7 +50,7 @@ end
 --function cancelhelp() helpmode=false end
 
 
-function click(x,y,w,h,hit,help,callback)
+function click(x,y,w,h,hit,help,callback,callbackparam)
      local mx,my=love.mouse.getPosition()
      --love.graphics.print(x..","..y.."   "..mx..","..my.."  "..sval(hit).." "..sval(helpmode),x,y) -- debug line
      --if hit and helpmode and callback==iconstriphelp then helpmode=false return end     
@@ -67,7 +67,7 @@ function click(x,y,w,h,hit,help,callback)
         end
         if hit then
            if not callback then CSay("WARNING! No callback set for this action") end
-           (callback or nothing)()   
+           (callback or nothing)(callbackparam)   
            return true
         end
      end 

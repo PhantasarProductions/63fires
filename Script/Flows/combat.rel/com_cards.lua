@@ -173,7 +173,9 @@ function ccards:DrawCards()
         if i==1 then wantx=actx end
         if Cards[i].x<wantx     then Cards[i].x = Cards[i].x + 2 end
         if Cards[i].x<wantx*.75 then Cards[i].x = Cards[i].x + 2 end
-        if Cards[i].y>acty      then Cards[i].y = Cards[i].y - 4 end
+        if Cards[i].x<wantx*.50 then Cards[i].x = Cards[i].x + 2 end
+        if Cards[i].x<wantx*.25 then Cards[i].x = Cards[i].x + 2 end
+        if Cards[i].y>acty      then Cards[i].y = Cards[i].y - 6 end
         if Cards[i].y<acty      then Cards[i].y = Cards[i].y + 1 end        
     end    
 end
