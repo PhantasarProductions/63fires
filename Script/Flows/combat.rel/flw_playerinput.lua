@@ -63,6 +63,11 @@ function invoer:flow_heroselecttarget()
      for tag,fdata in pairs(self.fighters) do
          local w,h = fdata.w or 32 , fdata.h or 64
          if mx>fdata.x-(w/2) and mx<fdata.x+(w/2) and my<fdata.y and my>fdata.y-h then seltag,seldata=tag,fdata end
+         -- --[[ debug
+         color(0,0,255,80)
+         Rect(fdata.x-(w/2),fdata.y-h,w,h)
+         itext.write(sval(fdata.x-(w/2))..","..sval(my>fdata.y-h).."> "..w.."x"..h.." m:"..mx..","..my,fdata.x,fdata.y)
+         -- ]] -- end debug
      end 
      if not seltag then return end -- Alright, move along! There's nothing to see here!
      wrong = ( right(self.selecttype,1)=='A' and seldata.group=='Foe') or ( right(self.selecttype,1)=='F' and seldata.group=='Hero')
@@ -71,17 +76,17 @@ function invoer:flow_heroselecttarget()
      if wrong and self.selectdiscriminate then return end
      if wrong then
         red()    itext.write("WARNING!",20,20)
-        yellow() itext.write("This action is not meant for this target!")
+        yellow() itext.write("This action is not meant for this target!",20,70)
      end
      local infotags = {seltag}
-     if self.selectype=="EV" or left(selft.selectype,1)=="A" then 
+     if self.selecttype=="EV" or left(self.selecttype,1)=="A" then 
         infotags={} 
         for tag,fdata in pairs(self.fighters) do 
-            if self.selectype=="EV" or (self.selectype=="AF" and fdata.group=="Foe") or (self.selectype=="AA" and fdata.group=="Hero") then infotags[#infotags]=tag end 
+            if self.selecttype=="EV" or (self.selecttype=="AF" and fdata.group=="Foe") or (self.selectype=="AA" and fdata.group=="Hero") then infotags[#infotags]=tag end 
         end 
      end
      for tag in each(infotags) do
-         local d = fighter[tag]
+         local d = self.fighters[tag]
          local sn = rpg:GetName(tag)
          if d.group=="foe" then sn = d.letter .. ". "..sn end
          color(tcol[d.group][1],tcol[d.group][2],tcol[d.group][3])

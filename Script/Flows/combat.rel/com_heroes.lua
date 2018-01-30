@@ -58,7 +58,10 @@ function hero:LoadHeroImage(tag,act)
     local basefile = 'GFX/Combat/Fighters/Hero/'..tag.."_"..act
     for try in each({'.png',".jpbf"}) do
         CSay("Trying to load: "..basefile..try)
-        if JCR_Exists(basefile..try) or JCR_HasDir(basefile..try) then return LoadImage(basefile..try) end
+        if JCR_Exists(basefile..try) or JCR_HasDir(basefile..try) then 
+           local ret= LoadImage(basefile..try)
+           QHot(ret,"bc") 
+        end           
     end
     error("No image data found for: "..basefile)    
 end

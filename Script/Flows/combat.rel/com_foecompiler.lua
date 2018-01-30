@@ -72,9 +72,10 @@ function foecom:CompileFoe(i,foefile)
         elseif vr=='STAT.LEVEL' then rpg:DefStat(tag,"Level",tonumber(gfoe:C(vr)) or 0)
         elseif vr=="DATA.NAME"  then rpg:SetName(tag,gfoe:C(vr))
         elseif vr=="DATA.DESC"  then -- we just need to ignore this field
-        elseif vr=="DATA.IMAGE" then myfoe.image = FoeImage(gfoe:C(vr)) myfoe.frame=love.math.random(1,#myfoe.image.images)
+        elseif vr=="DATA.IMAGE" then myfoe.image = FoeImage(gfoe:C(vr)) myfoe.frame=love.math.random(1,#myfoe.image.images) QHot(myfoe.image,"bc")
         elseif prefixed(vr,"STAT.") then
             local stat = fUl(right(vr,#vr-5))
+            if stat=="Hp" then stat='HP' end
             rpg:DefStat(tag,"BASE_"..stat,gfoe:C(vr) or 0)
             rpg:DefStat(tag,"BUFF_"..stat,0)
             rpg:DefStat(tag,"END_"..stat,0)
@@ -121,7 +122,7 @@ function foecom:LoadFoes()
       -- $USE script/subs/screen
       local midx = screen.w/2
       local midy = (screen.h-120)/2
-      myfoe.x = math.floor(rows*xpos)
+      myfoe.x = math.floor(rows*xpos)+100
       myfoe.y = math.floor((midy/4)*ypos) + midy
       myfoe.dominance = 20
       myfoe.tag = tag
