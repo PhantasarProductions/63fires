@@ -1,6 +1,6 @@
 --[[
   com_cards.lua
-  Version: 18.01.28
+  Version: 18.01.30
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
