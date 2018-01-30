@@ -38,7 +38,7 @@ local invoer = {}
 
 
 invoer.items = {
-          { tit = "Attack",x=100,y=5, tut="Physically attack on enemy", fun=function(self) self.flow='heroselecttarget' self.selecttype="1F" end},
+          { tit = "Attack",x=100,y=5, tut="Physically attack on enemy", fun=function(self) self.flow='heroselecttarget' self.selecttype="1F" flushkeys() end},
           { tit = "Ability", x=300,y=5, tut="Use special skills, spells or other abilities"},
           { tit = "Item",x=100,y=50, tut="Use an item from your inventory"},
           { tit = "Guard",x=300,y=50, tut="Take a defensive stand\nThis will half damage received and recover a few AP"}
@@ -55,6 +55,7 @@ end
 local tcol = {Foe={255,180,180},Hero={180,255,180}}
 function invoer:flow_heroselecttarget()
      local mx,my=love.mouse.getPosition()
+     if mousehit(2) then self.flow='playerinput' self.selecttype=nil flushkeys() self.invoeren=nil return end
      white()
      love.graphics.setFont(console.font)
      love.graphics.print("Click your desired target",5,5)
@@ -65,10 +66,12 @@ function invoer:flow_heroselecttarget()
          if mx>fdata.x-(w/2) and mx<fdata.x+(w/2) and my<fdata.y and my>fdata.y-h then seltag,seldata=tag,fdata end
          -- --[[ debug
          color(0,0,255,80)
+         if seltag==tag then color(255,0,0,90) end
          Rect(fdata.x-(w/2),fdata.y-h,w,h)
-         itext.write(sval(fdata.x-(w/2))..","..sval(my>fdata.y-h).."> "..w.."x"..h.." m:"..mx..","..my,fdata.x,fdata.y)
+         itext.write(sval(fdata.x-(w/2))..","..sval(fdata.y-h).."> "..w.."x"..h.." m:"..mx..","..my,fdata.x,fdata.y)
          -- ]] -- end debug
      end 
+     --itext.write(seltag or "NO TARGET",0,300) -- debug
      if not seltag then return end -- Alright, move along! There's nothing to see here!
      wrong = ( right(self.selecttype,1)=='A' and seldata.group=='Foe') or ( right(self.selecttype,1)=='F' and seldata.group=='Hero')
      if rpg:Points(seltag,'HP').Have==0 and (not self.selectallowdead) then return end
@@ -88,9 +91,33 @@ function invoer:flow_heroselecttarget()
      for tag in each(infotags) do
          local d = self.fighters[tag]
          local sn = rpg:GetName(tag)
-         if d.group=="foe" then sn = d.letter .. ". "..sn end
+         if d.group=="Foe" then sn = d.letter .. ". "..sn end
          color(tcol[d.group][1],tcol[d.group][2],tcol[d.group][3])
          love.graphics.print(sn,d.x,d.y-32)
+         --itext.write(tag,d.x,d.y-100) -- debug
+         local hpbar
+         local skill = Var.G("%SKILL")
+         if skill==1 or d.group=="Hero" then
+            hpbar='show'
+         elseif skill==3 then
+            hpbar='none'
+         else
+            gamedata.bestiary = gamedata.bestiary or {}
+            if not gamedata.bestiary[d.ufil] then hpbar='vraagteken' else hpbar='show' end
+         end
+         if hpbar~='none' then
+            black()
+            Rect(d.x,d.y-12,100,12)
+            if hpbar=='vraagteken' then
+               color(math.random(0,255),math.random(0,255),math.random(0,255))
+               itext.write("?",d.x+50,d.y-6,2,2)
+            else
+               color(180,255,0)
+               local deel = rpg:Points(seltag,'HP').Have / rpg:Points(seltag,'HP').Maximum
+               local bar  = math.floor(deel*98)
+               Rect(d.x+1,d.y-11,98,10)
+            end   
+         end    
      end
 end
 
@@ -115,6 +142,7 @@ function invoer:flow_playerinput()
        if ihover then Color(0,180,255) else Color(255,255,255) end
        itext.write(item.tit,(midx-250)+item.x,(midy-50)+item.y)
    end    
+  
 end
 
 

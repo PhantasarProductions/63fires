@@ -60,7 +60,8 @@ function hero:LoadHeroImage(tag,act)
         CSay("Trying to load: "..basefile..try)
         if JCR_Exists(basefile..try) or JCR_HasDir(basefile..try) then 
            local ret= LoadImage(basefile..try)
-           QHot(ret,"bc") 
+           QHot(ret,"cb")
+           return ret 
         end           
     end
     error("No image data found for: "..basefile)    

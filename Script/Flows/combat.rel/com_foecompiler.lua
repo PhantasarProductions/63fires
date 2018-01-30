@@ -61,6 +61,7 @@ function foecom:CompileFoe(i,foefile)
     self.foes[tag] = { drops = {}, steals={} }
     local myfoe=self.foes[tag]
     myfoe.letter,myfoe.letterfiletag=self:FreeLetter()
+    myfoe.ufil = foefile:upper()
     console.write("Reading: ",255,255,0) console.writeln('Data/Foes/'..foefile..".gini",0,255,255)
     local gfoe = ReadIni('Data/Foes/'..foefile..".gini")
     console.write("= Compiling for to: ",255,255,0) console.writeln(tag,0,255,255)
@@ -72,7 +73,7 @@ function foecom:CompileFoe(i,foefile)
         elseif vr=='STAT.LEVEL' then rpg:DefStat(tag,"Level",tonumber(gfoe:C(vr)) or 0)
         elseif vr=="DATA.NAME"  then rpg:SetName(tag,gfoe:C(vr))
         elseif vr=="DATA.DESC"  then -- we just need to ignore this field
-        elseif vr=="DATA.IMAGE" then myfoe.image = FoeImage(gfoe:C(vr)) myfoe.frame=love.math.random(1,#myfoe.image.images) QHot(myfoe.image,"bc")
+        elseif vr=="DATA.IMAGE" then myfoe.image = FoeImage(gfoe:C(vr)) myfoe.frame=love.math.random(1,#myfoe.image.images) QHot(myfoe.image,"cb")
         elseif prefixed(vr,"STAT.") then
             local stat = fUl(right(vr,#vr-5))
             if stat=="Hp" then stat='HP' end
@@ -102,6 +103,7 @@ function foecom:CompileFoe(i,foefile)
         end
     end
     rpg:Points(tag,"HP",1).MaxCopy="END_HP"
+    rpg:Points(tag,"HP").Have=rpg:Points(tag,"HP").Maximum
     myfoe.Boss = gfoe:C("BOOL.BOSS")=="TRUE"
     return tag
 end
