@@ -91,7 +91,7 @@ local poses = {
                      pose.ty = (screen.h-120)/2
                   end                  
                end
-               pose.frame = pose.frame or 0
+               pose.frame = pose.frame or 1
                pose.dx = pose.dx or (myhero.rx - pose.tx)
                pose.dy = pose.dy or (myhero.ry - pose.ty)
                pose.sx = pose.sx or (pose.dx/steps)
@@ -105,6 +105,19 @@ local poses = {
                   pose.stage=2
                end
                return                           
+            end
+            if pose.stage==2 then
+               pose.posetick = (pose.posetick or 0) + 1
+               if pose.posetick<5 then return end
+               pose.posetick=0
+               self.inaction,self.acting,self.heroframe = myhero.tag,"Attack",pose.frame
+               pose.frame = pose.frame + 1
+               myhero.images.Attack = myhero.images.Attack or self:LoadHeroImage(myhero.tag,'Attack')
+               if pose.frame>#myhero.images.Attack.images then 
+                  pose.frame=#myhero.images.Attack.images
+                  self.esf="perform"
+               end
+            return      
             end 
      end,
      Foe  = function(self) end
