@@ -1,6 +1,6 @@
 --[[
   flw_playerinput.lua
-  Version: 18.01.30
+  Version: 18.02.02
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -38,13 +38,13 @@ local invoer = {}
 
 
 invoer.items = {
-          { tit = "Attack",x=100,y=5, tut="Physically attack on enemy", fun=function(self) self.flow='heroselecttarget' self.selecttype="1F" flushkeys() end},
+          { tit = "Attack",x=100,y=5, tut="Physically attack on enemy", fun=function(self) self.flow='heroselecttarget' self.selecttype="1F" flushkeys() self.nextmove.act='ACT_Attack' end},
           { tit = "Ability", x=300,y=5, tut="Use special skills, spells or other abilities"},
           { tit = "Item",x=100,y=50, tut="Use an item from your inventory"},
           { tit = "Guard",x=300,y=50, tut="Take a defensive stand\nThis will half damage received and recover a few AP"}
 }
 
-
+-- Hover click
 function invoer:hc(x,y,w,h,clicked,item)
      -- $USE libs/nothing
      local mx,my=love.mouse.getPosition()
@@ -52,6 +52,9 @@ function invoer:hc(x,y,w,h,clicked,item)
      return hover,click(x,y,w,h,clicked,item.tut,item.fun or nothing,self)
 end
 
+
+-- Target selector 
+-- Set up to work with both multi-target as single target
 local tcol = {Foe={255,180,180},Hero={180,255,180}}
 function invoer:flow_heroselecttarget()
      local mx,my=love.mouse.getPosition()
@@ -119,12 +122,20 @@ function invoer:flow_heroselecttarget()
             end   
          end    
      end
+     if mousehit(1) then -- No need for other checks. If they are false, this code isn't executed anyway! :P
+        self.nextmove.targets=infotags
+        self.nextmove.pose=true
+        self.flow='execution'
+        self.invoeren=nil
+     end   
 end
 
+-- Combat main menu
 function invoer:flow_playerinput()   
    if not self.invoeren then
       QuickPlay("Audio/Combat/Ready.ogg")
       self.invoeren = self.Cards[1].data.tag
+      self.nextmove={executor=self.invoeren}
    end
    -- $USE script/subs/screen
    local midx =  screen.w     /2

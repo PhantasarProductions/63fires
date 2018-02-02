@@ -1,6 +1,6 @@
 --[[
   com_cards.lua
-  Version: 18.01.30
+  Version: 18.02.02
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -144,6 +144,8 @@ function ccards:CardTag(data)
       -- If not anything else
       return "BACK"
 end
+
+
 
 function ccards:DrawCard(data,x,y)
       -- Initial

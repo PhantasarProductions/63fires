@@ -1,6 +1,6 @@
 --[[
   com_main.lua
-  Version: 18.01.30
+  Version: 18.02.02
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -34,12 +34,25 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
+-- $USE Script/Subs/Headers.h AS Headers_h
 local cmain = {}
 
 
 cmain.consolecommands = {}
 function cmain.consolecommands.FIGHTERS(self,para)
       CSay(serialize("combat.fighters",self.fighters))
+end      
+function cmain.consolecommands.ESF(self)
+      CSay(serialize('esf',self.esf))
+end      
+function cmain.consolecommands.BATTLEFLOW(self)
+      for k,v in spairs(self) do
+          if v==self then
+             CSay("self "..k)
+          else
+             CSay(serialize(type(v).." "..k,v))
+          end
+      end      
 end      
 
 
