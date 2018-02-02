@@ -56,6 +56,13 @@ function cmain.consolecommands.BATTLEFLOW(self)
 end      
 
 
+function cmain:TagMessage(tag,message,r,g,b,ymod)
+    local x,y = 0,0
+    x = self.fighters[tag].x
+    y = self.fighters[tag].y + (ymod or 0)
+    MiniMSG(message,{r or 255,g or 255, b or 255},{x,y})
+end
+
 function cmain:odraw()
       self:DrawArena()
       self:DrawCards()

@@ -115,7 +115,7 @@ local poses = {
                myhero.images.Attack = myhero.images.Attack or self:LoadHeroImage(myhero.tag,'Attack')
                if pose.frame>#myhero.images.Attack.images then 
                   pose.frame=#myhero.images.Attack.images
-                  self.esf="perform"
+                  self.esf="spellani"
                end
             return      
             end 
@@ -130,6 +130,54 @@ function beul:esf_pose()
    poses[myexe.group](self)
 end
 
+function beul:esf_spellani()
+   local item = ItemGet(self.nextmove.act)
+   if item.SpellAni == "" then self.esf="perform" end
+end
+
+function beul:true_perform(tag)
+   -- Pre-Performance configuration
+   local item = ItemGet(self.nextmove.act)
+   local warrior = fighters[tag]
+   warrior.statuschanges = warrior.statuschanges or {} 
+   -- Revive   
+   if item.Revive then
+      for st,stdat in pairs(warrior.statuschanges) do
+          if heal.Reverse then self:KillFighter(tag) return end
+      end
+      if rpg:Points(tag,'HP').Have==0 then
+         rpg:Points(tag,'HP').Have=1
+         ClearTable(warrior.statuschanges)
+         self:TagMessage(tag,"Revive",180,255,0)
+      end   
+   end
+   -- Cure Status Changes
+   local cure = {}
+   for k,v in pairs(warrior.statuschanges) do
+       if item['Cure'..k] then cure[#cure+1]=k end
+   end
+   for i,cs in ipairs(cure) do TagMessage(tag,"Cure: "..cs,180,255,0,-(i*20)) end
+   -- Heal
+   -- Attack
+   -- Script
+   -- Cause Status Changes
+end
+
+function beul:esf_perform()
+   local item = ItemGet(self.nextmove.act)
+   local warrior = self.fighters[self.nextmove.executor]
+   for tag in each(self.nextmove.targets) do self:true_perform(tag) end
+   if warrior.posestage then
+      warrior.posestage=10
+      self.esf='pose'
+   else
+      self.esf='backtoidle'   
+   end
+   
+end
+
+
+
 -- Let's display the name of the move and the card of the executor
 function beul:movename()
    self.menufont = self.menufont or GetBoxTextFont()
@@ -142,6 +190,7 @@ function beul:movename()
    color(0,180,255)
    itext.write("> "..item.Title.." <",screen.w/2,100,2,2)
 end
+
 
 
 -- And the main execution manager
