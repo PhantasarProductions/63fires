@@ -124,11 +124,11 @@ local poses = {
                myhero.x = myhero.rx - (pose.sx*pose.step)                              
                myhero.y = myhero.ry - (pose.sy*pose.step)
                pose.step = pose.step - 1
-               if pose.step<steps then
+               if pose.step<0 then
                   myhero.x = myhero.rx
-                  myhero.y = myhero.ty
-                  myhero.posestage = nil
-                  self.inaction = nil
+                  myhero.y = myhero.ry
+                  --myhero.posestage = nil
+                  --self.inaction = nil
                   self.esf = "backtoidle"
                end
                
@@ -203,7 +203,7 @@ function beul:esf_perform()
    local warrior = self.fighters[self.nextmove.executor]
    for tag in each(self.nextmove.targets) do self:true_perform(self.nextmove.executor,tag) end
    if warrior.posestage then
-      warrior.posestage=10
+      warrior.posestage.stage=10
       self.esf='pose'
    else
       self.esf='backtoidle'   

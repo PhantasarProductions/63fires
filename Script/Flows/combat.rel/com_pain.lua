@@ -43,7 +43,7 @@ function pijn:Hurt(targettag,damage,element)
    local ret = damage
    local effect = 3
    local function p() return math.floor(ret+.5) end
-   if rpg:StatExist(targettag,"END_ER_"..element) then
+   if rpg:StatExists(targettag,"END_ER_"..element) then
       effect = rpg:Stat(targettag,"END_ER_"..element)
    end
    if effect==0 then
@@ -69,7 +69,7 @@ function pijn:Hurt(targettag,damage,element)
    else
        error("Unknown elemental resistance effect: "..sval(effect))
    end 
-   rpg:Points(targettag,"HP").Dec(p())
+   rpg:Points(targettag,"HP"):Dec(p())
    return p()          
 end
 
@@ -84,14 +84,14 @@ function pijn:Strike(data)
    -- elem = element (optional)                     --
    -- allowcrit = allow critical (optional)         --
    ---------------------------------------------------
-   CSay(serialize('strike.data',data))
+   --CSay(serialize('strike.data',data))
    local skill  = Var.G("%SKILL")
    local defmod  = { Foe = { .25,.50,.75},Hero={.50,.30,.15}}
    local critmod = { Foe = {1.25,2.1,2.9},Hero={4.1,2.1,1.3}}
    local f = {exe=self.fighters[data.exe],tar=self.fighters[data.tar]}
    local atk = data.atk * data.amd --rep:Stat(exe.tag,"END_"..act.Attack_AttackStat) * ((act.Attack or 100)/100)
    local def = data.def
-   CSay(sval(def)) CSay(serialize("defmod",defmod)) CSay(sval(skill))
+   --CSay(sval(def)) CSay(serialize("defmod",defmod)) CSay(sval(skill))
    def = def * defmod[f.tar.group][skill]
    local rate = atk-def
    local damage = rate + love.math.random(0,math.ceil(rate/4))
