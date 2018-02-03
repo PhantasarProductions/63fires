@@ -62,7 +62,7 @@ end
 
 function cinit:Init(data)
    ResetMiniMsg()   
-   Var.Clear("$SELECTEDABILITY") -- Prevent conflicts with looking to the abilities in the field
+   Var.Kill("$SELECTEDABILITY") -- Prevent conflicts with looking to the abilities in the field
    self.combatdata = data -- Var2Table("COMBAT.",true)
    self:SetUpCards()
    self:YCards()
