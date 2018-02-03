@@ -1,6 +1,6 @@
 --[[
   com_cards.lua
-  Version: 18.02.02
+  Version: 18.02.04
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -145,6 +145,33 @@ function ccards:CardTag(data)
       return "BACK"
 end
 
+function ccards:AddCard(data,aspot)
+    local order = self.order
+    local cards = self.cards
+    local rand = love.math.random
+    local hadtomove 
+    local card = { data=data }
+    local ch   = data.tag    
+    local spot = aspot or ( 25 + (order.tagorder[ch] * 2)+ (math.floor(rand(1,order.tagorder[ch])/2)) )
+    while cards[spot] and cards[spot].data do spot=spot+1 hadtomove=true end -- If the spot is taken, move to the next one, and keep doing this until an empty spot has been found.
+    if cards[spot] then card.x,card.y=cards[spot].x,cards[spot].y end
+    cards[spot] = card
+    if card.data.nextact and card.data.nextact.executor then card.data.tag = card.data.nextact.executor.tag end
+end
+
+function ccards:AutoAddFighterCard()
+    local k    
+--    for group,grouparray in pairs(Fighters) do
+        for tag,data in pairs(self.fighters) do
+            k = nil
+            for _,crd in pairs(self.cards) do -- Looking for the card
+                k = k or (crd.data and crd.data.tag==tag and (not crd.data.nextact)) 
+            end 
+            if not k then self:AddCard({group=data.group,tag=data.tag, letter=data.letter}) end
+        end
+--    end
+end
+
 
 
 function ccards:DrawCard(data,x,y)
@@ -173,6 +200,8 @@ function ccards:DrawCards()
         self:ShowCard(Cards[i])
         local wantx=waitx-(i*16)
         if i==1 then wantx=actx end
+        Cards[i].x = Cards[i].x or (i*-100)
+        Cards[i].y = Cards[i].y or acty
         if Cards[i].x<wantx     then Cards[i].x = Cards[i].x + 2 end
         if Cards[i].x<wantx*.75 then Cards[i].x = Cards[i].x + 2 end
         if Cards[i].x<wantx*.50 then Cards[i].x = Cards[i].x + 2 end
@@ -180,6 +209,7 @@ function ccards:DrawCards()
         if Cards[i].y>acty      then Cards[i].y = Cards[i].y - 6 end
         if Cards[i].y<acty      then Cards[i].y = Cards[i].y + 1 end        
     end    
+    self:AutoAddFighterCard()
 end
 
 
