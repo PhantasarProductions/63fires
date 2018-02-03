@@ -1,6 +1,6 @@
 --[[
   flw_execution.lua
-  Version: 18.02.02
+  Version: 18.02.03
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -119,6 +119,20 @@ local poses = {
                end
             return      
             end 
+            if pose.stage==10 then
+               self.inaction,self.acting,self.heroframe = myhero.tag,"IDLE",1
+               myhero.x = myhero.rx - (pose.sx*pose.step)                              
+               myhero.y = myhero.ry - (pose.sy*pose.step)
+               pose.step = pose.step - 1
+               if pose.step<steps then
+                  myhero.x = myhero.rx
+                  myhero.y = myhero.ty
+                  myhero.posestage = nil
+                  self.inaction = nil
+                  self.esf = "backtoidle"
+               end
+               
+            end
      end,
      Foe  = function(self) end
 }        
@@ -135,10 +149,12 @@ function beul:esf_spellani()
    if item.SpellAni == "" then self.esf="perform" end
 end
 
-function beul:true_perform(tag)
+function beul:true_perform(tag,targettag)
    -- Pre-Performance configuration
    local item = ItemGet(self.nextmove.act)
-   local warrior = fighters[tag]
+   local warrior = self.fighters[tag]
+   local target = self.fighters[targettag]
+   local hit
    warrior.statuschanges = warrior.statuschanges or {} 
    -- Revive   
    if item.Revive then
@@ -149,6 +165,8 @@ function beul:true_perform(tag)
          rpg:Points(tag,'HP').Have=1
          ClearTable(warrior.statuschanges)
          self:TagMessage(tag,"Revive",180,255,0)
+         TagMessage(tag,"DEATH",255,0,0)
+         hit=true
       end   
    end
    -- Cure Status Changes
@@ -156,17 +174,34 @@ function beul:true_perform(tag)
    for k,v in pairs(warrior.statuschanges) do
        if item['Cure'..k] then cure[#cure+1]=k end
    end
-   for i,cs in ipairs(cure) do TagMessage(tag,"Cure: "..cs,180,255,0,-(i*20)) end
+   for i,cs in ipairs(cure) do TagMessage(tag,"Cure: "..cs,180,255,0,-(i*20)) hit=true end
    -- Heal
    -- Attack
-   -- Script
+   local attackhit = item.Attack>0
+   if item.Attack_AllowAccuracy then attackhit=attackhit and math.random(0,99)<rpg:Stat(tag      ,"END_Accuracy") end
+   if item.Attack_Dodge         then attackhit=attackhit and math.random(0,99)>rpg:Stat(targettag,"END_Evasion")  end
+   if attackhit then
+      hit=true
+      self:Strike({exe=tag,tar=targettag,atk=rpg:Stat(tag,"END_"..item.Attack_AttackStat),def=rpg:SafeStat(tag,"END_"..item.Attack_DefenseStat),elem=item.Attack_Element,amd=item.Attack/100,allowcrit=item.Attack_AllowCritical})
+   end   
+   -- Add Fighter Cards
+   -- Script   
    -- Cause Status Changes
+   -- Allowing counter attack
+   -- Not miss?
+   if not hit then self:TagMessage(tag,"Miss") end
+end
+
+function beul:esf_backtoidle()
+   for _,v in pairs(self.fighters) do v.posestage=nil end
+   self:RemoveFirstCard()
+   self.flow='idle'
 end
 
 function beul:esf_perform()
    local item = ItemGet(self.nextmove.act)
    local warrior = self.fighters[self.nextmove.executor]
-   for tag in each(self.nextmove.targets) do self:true_perform(tag) end
+   for tag in each(self.nextmove.targets) do self:true_perform(self.nextmove.executor,tag) end
    if warrior.posestage then
       warrior.posestage=10
       self.esf='pose'
