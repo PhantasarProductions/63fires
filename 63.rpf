@@ -76,9 +76,12 @@ NAF
 
 [List:SOURCES.DARWIN]
 /Volumes/Scyndi/Projects/Applications/Ryanna/63/prj/Demo/Data
-/Volumes/Scyndi/Projects/Applications/Ryanna/63/prj/Demo/Music
 /Volumes/Scyndi/Projects/Applications/Ryanna/63/prj/Full/Data
+
+[list:INGORE.SOURCES.DARWIN]
+/Volumes/Scyndi/Projects/Applications/Ryanna/63/prj/Demo/Music
 /Volumes/Scyndi/Projects/Applications/Ryanna/63/prj/Full/Music
+
 
 [List:LIBS]
 /Volumes/Scyndi/Projects/Applications/Ryanna/RyannaLibs
@@ -92,3 +95,5 @@ Music/Ori/Jet Fueled Vixen.mp3 => Music/Dungeon/Final Dungeon.mp3
 Music/Ori/Dewdrop Fantasy.mp3 => Music/Dungeon/Forest1.mp3
 GFX/PlayerSprites/Ryanna.West.jpbf/000000000.png => GFX/Combat/Fighters/Hero/Ryanna_IDLE.png
 
+[List:DYNAMICJCR.DARWIN]
+/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/buildmusic/63FOLD.Music.jcr
