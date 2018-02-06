@@ -109,6 +109,7 @@ function itemsm:ItemGive(itemcode,amount)
 end
 
 function itemsm:TreasureChest(tag)
+       -- $USE libs/audio
        local map = field:GetMap()
        local obj = map.map.TagMap[map.layer][tag]
        assert(obj,"Trying to open non-existent treasure chest: "..tag)
@@ -120,20 +121,24 @@ function itemsm:TreasureChest(tag)
        if not prefixed(icode:upper(),"CASH:") then
           local success,name = self:ItemGive(icode)
           if success then
+             QuickPlay("Audio/Gen/Pickup.Wav")
              MiniMSG(name.." obtained",{180,255,0},coord)
              field:permawrite("field:laykill('"..map.layer.."','"..tag.."')")
           else
              MiniMSG(name.." overloaded",{255,0,0},coord)
+             QuickPlay("Audio/Gen/NoWay.mp3")
              obj.FRAME=1       
           end
        else
           local getcash=tonumber(right(icode,#icode-5)) or 1
           local cash=Var.G("%CASH")
           if cash>=128000000 then 
+             QuickPlay("Audio/Gen/NoWay.mp3")
              MiniMSG("Sorry, you're getting too rich!",{255,0,0},coord)
              --field:permawrite("field:laykill('"..map.layer.."','"..tag.."')")
              obj.FRAME=1
           else
+             QuickPlay("Audio/Gen/ChaChing.ogg")
              MiniMSG(DumpCash(getcash).." obtained!",{180,255,0},coord)
              cash=cash+getcash
              if cash>128000000 then cash=128000000 end
