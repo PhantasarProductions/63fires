@@ -1,6 +1,6 @@
 --[[
-  flw_idle.lua
-  Version: 18.01.29
+  default.lua
+  Version: 18.02.07
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -34,24 +34,20 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
-local zooi = {  }
-
-
-function zooi:flow_idle()
-      local firstcard=self.Cards[1]
-      local tag=self:CardTag(firstcard.data)
-      if tag=="BACK" then
-         return self:RemoveFirstCard()
-      end     
-      if prefixed(tag,"HERO") then
-         self.flow = firstcard.altplayinput or "playerinput"
-      end
-      if prefixed(tag,"FOE") or prefixed(tag,"BOSS") then
-         self.flow = firstcard.altplayinput or "foeinput"
-      end
-
+local function default(self,myfoe)
+    if #myfoe.actions==0 then error("No actions on foe "..myfoe.tag) end
+    CSay(serialize('foeactions',myfoe.actions))
+    local itemtag = myfoe.actions[love.math.random(1,#myfoe.actions)]
+    local item = ItemGet(itemtag)
+    local targets = self:randomtarget(myfoe,item)
+    local gelukt = targets and #targets>0
+    self.nextmove = {
+        act     = itemtag,
+        targets = targets,
+        pose    = true
+    }
+    self.flow='execution'
+    return gelukt
 end
 
-
-
-return zooi
+return default

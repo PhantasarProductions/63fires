@@ -1,6 +1,6 @@
 --[[
-  flw_idle.lua
-  Version: 18.01.29
+  flw_foeinput.lua
+  Version: 18.02.07
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -34,24 +34,57 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
-local zooi = {  }
+local foei = {}
 
 
-function zooi:flow_idle()
-      local firstcard=self.Cards[1]
-      local tag=self:CardTag(firstcard.data)
-      if tag=="BACK" then
-         return self:RemoveFirstCard()
-      end     
-      if prefixed(tag,"HERO") then
-         self.flow = firstcard.altplayinput or "playerinput"
-      end
-      if prefixed(tag,"FOE") or prefixed(tag,"BOSS") then
-         self.flow = firstcard.altplayinput or "foeinput"
-      end
+function foei:alltargets(tabelletje,deadallowed)
+    local subtabel = {}
+    for k,_ in spairs(tabelletje) do
+        if deadallowed or rpg:Points(k,'HP').Have>0 then 
+           subtabel[#subtabel+1]=k
+        end    
+    end
+    if #subtabel==0 then return nil end
+    return subtabel
+end
 
+function foei:randomsingletarget(tabelletje,deadallowed)
+    local subtabel = self:alltargets(tabelletje,deadallowed)
+    if not subtabel then return nil end
+    if #subtabel==0 then return nil end
+    return {subtabel[love.math.random(1,#subtabel)]}
+end
+
+function foei:randomtarget(myfoe,item)
+       local ret
+       if     item.Target=='1F' then ret=self:randomsingletarget(self.hero)
+       elseif item.Target=='1A' then ret=self:randomsingletarget(self.foe)
+       elseif item.Target=='AF' then ret=self:alltargets(self.hero)
+       elseif item.Target=='AA' then ret=self:alltargets(self.foe)
+       elseif item.Target=='AB' then ret=self:randomsingletarget(self.fighters) -- AB = anybody
+       elseif item.Target=='EV' then ret=self:alltargets(self.fighter)
+       elseif item.Target=='OS' then ret={myfoe.self} 
+       else   error('Unknown target type: '..item.Target) end
+       return ret
+end
+
+
+function foei:flow_foeinput()
+    local gelukt
+    local timeout=20000
+    local mytag = self.cards[1].data.tag
+    local myfoe = self.fighters[mytag]
+    local ai    = rpg:GetData(mytag,"Ai")
+    local ailua = "script/data/combat/ai/"..ai..".lua"
+    local aifun = Use(ailua)
+    repeat
+        timeout = timeout - 1
+        assert(timeout>0,"Foe input time-out!")
+        gelukt = aifun(self,myfoe)
+    until gelukt    
+    self.nextmove.executor = myfoe.tag
 end
 
 
 
-return zooi
+return foei

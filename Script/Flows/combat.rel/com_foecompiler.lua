@@ -1,6 +1,6 @@
 --[[
   com_foecompiler.lua
-  Version: 18.01.30
+  Version: 18.02.07
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -58,11 +58,13 @@ function foecom:CompileFoe(i,foefile)
     -- $USE Libs/gini
     local skill = Var.G("%SKILL")
     local tag = "FOE_"..i   
-    self.foes[tag] = { drops = {}, steals={} }
+    self.foes[tag] = { drops = {}, steals={}, actions={} }    
+    local acttag = ({'EASY','CASL','HARD'})[skill]
     local myfoe=self.foes[tag]
     myfoe.letter,myfoe.letterfiletag=self:FreeLetter()
     myfoe.ufil = foefile:upper()
     console.write("Reading: ",255,255,0) console.writeln('Data/Foes/'..foefile..".gini",0,255,255)
+    local actions=myfoe.actions
     local gfoe = ReadIni('Data/Foes/'..foefile..".gini")
     console.write("= Compiling for to: ",255,255,0) console.writeln(tag,0,255,255)
     if rpg:CharExists(tag) then CSay("WARNING! Overwriting existing character: "..tag) end
@@ -89,7 +91,14 @@ function foecom:CompileFoe(i,foefile)
             rpg:ScriptStat(tag,"END_"..stat,"libs/laura.rel/chars__ignore.lua","Enemy")            
         elseif prefixed(vr,"DATA.") then
             local dta = fUl(right(vr,#vr-5))
-            rpg:DefData(tag,dta,gfoe:C(vr))            
+            rpg:DefData(tag,dta,gfoe:C(vr))   
+        elseif prefixed(vr,"ACTION_"..acttag) then
+            local val = tonumber(gfoe:C(vr))
+            if val and val>0 then
+               for i=1,val do
+                   actions[#actions+1]=right(vr,#vr-#("ACTION_"..acttag.."."))
+               end
+            end               
         end
     end
     for k,tabel in pairs({DROP=myfoe.drops,STEAL=myfoe.steals}) do
@@ -111,6 +120,7 @@ end
 function foecom:LoadFoes()
   self.fighters = self.fighters or {}
   self.foes={}
+  self.foe=self.foes
   self.foedrawordertag = {}
   self.foedraworder = {}
   local rows = math.floor((#self.combatdata.foes-1)/3)
@@ -138,15 +148,21 @@ function foecom:DrawFoe(myfoe,targeted,acting)
     -- targeted shit
     
     -- acting shit
-    
+    local scale=1
+    if acting then
+       local gt = math.floor(love.timer.getTime()*17)
+       local gtt = right(gt,1)
+       local gtv = tonumber(gtt) or 0
+       if gtv<5 then scale=-1 end
+    end    
     -- Drawing
-    DrawImage(myfoe.image,myfoe.x,myfoe.y,myfoe.frame)
+    DrawImage(myfoe.image,myfoe.x,myfoe.y,myfoe.frame,0,scale,1)
 end
 
 
 function foecom:DrawFoes(targeted,acting)
      for myfoe in each(self.foedraworder) do
-         foecom:DrawFoe(myfoe,targeted==myfoe.tag or targeted=="ALLFOES" or targeted=="ALL",acting==myfoe.tag)         
+         self:DrawFoe(myfoe,targeted==myfoe.tag or targeted=="ALLFOES" or targeted=="ALL",acting==myfoe.tag)         
      end
 end
 

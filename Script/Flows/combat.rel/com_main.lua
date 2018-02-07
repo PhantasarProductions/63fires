@@ -66,7 +66,7 @@ end
 function cmain:odraw()
       self:DrawArena()
       self:DrawCards()
-      self:DrawFoes(self.targeted,self.acting)
+      self:DrawFoes(self.targeted,self.inaction)
       self:DrawHeroes(self.targeted,self.inaction,self.acting,self.heroframe)
       self.flow = self.flow or "idle"
       assert(self["flow_"..self.flow],"No combat flow function for "..self.flow)

@@ -1,6 +1,6 @@
 --[[
   flw_execution.lua
-  Version: 18.02.03
+  Version: 18.02.07
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -134,7 +134,84 @@ local poses = {
                
             end
      end,
-     Foe  = function(self) end
+     Foe  = function(self) 
+            local steps = 10
+            local item = ItemGet(self.nextmove.act)
+            local myfoe = self.fighters[self.nextmove.executor]
+            myfoe.posestage = myfoe.posestage or {stage=1, targets=self.nextmove.targets}
+            local pose = myfoe.posestage
+            pose.oldtime = pose.oldtime or love.timer.getTime()
+            local newtime = love.timer.getTime()
+            if math.abs(newtime-pose.oldtime)<0.05 then return end
+            pose.oldtime=newtime
+            -- Stage one: Determine if we may jump and if so, jump to the enemy.
+            if pose.stage==1 then
+               myfoe.rx = myfoe.rx or myfoe.x
+               myfoe.ry = myfoe.ry or myfoe.y
+               if pose.allowjump == nil then
+                  if not item.Stance_JumpToEnemy then
+                     pose.allowjump = false
+                     pose.stage = 2
+                     return
+                  end
+               pose.allowjump=true    
+               end
+               if not pose.tx then
+                  if #pose.targets==1 then
+                     pose.tx = self.fighters[pose.targets[1]].x - 70
+                     pose.ty = self.fighters[pose.targets[1]].y
+                  else
+                     -- $USE script/subs/screen                     
+                     pose.tx =  screen.w     /2
+                     pose.ty = (screen.h-120)/2
+                  end                  
+               end
+               pose.frame = pose.frame or 1
+               pose.dx = pose.dx or (myfoe.rx - pose.tx)
+               pose.dy = pose.dy or (myfoe.ry - pose.ty)
+               pose.sx = pose.sx or (pose.dx/steps)
+               pose.sy = pose.sy or (pose.dy/steps) 
+               pose.step = pose.step or 0
+               myfoe.x = myfoe.rx - (pose.sx*pose.step)                              
+               myfoe.y = myfoe.ry - (pose.sy*pose.step)
+               pose.step = pose.step + 1
+               if pose.step>steps then
+                  pose.step = steps
+                  pose.stage=2
+               end
+               return                           
+            end
+            if pose.stage==2 then
+               local time = love.timer.getTime()
+               pose.stage2timer = pose.stage2timer or time
+               self.inaction = myfoe.tag
+               if math.abs(pose.stage2timer-time)>1.5 then
+                   self.esf="spellani"
+                   self.inaction=nil
+               end 
+            return      
+            end 
+            if pose.stage==10 then
+               --self.inaction,self.acting,self.foeframe = myfoe.tag,"IDLE",1
+               self.inaction = nil
+               if pose.sx then
+                  myfoe.x = myfoe.rx - (pose.sx*pose.step)                              
+                  myfoe.y = myfoe.ry - (pose.sy*pose.step)
+               else
+                  pose.step=0
+               end   
+               pose.step = pose.step - 1
+               if pose.step<0 then
+                  myfoe.x = myfoe.rx
+                  myfoe.y = myfoe.ry
+                  --myfoe.posestage = nil
+                  --self.inaction = nil
+                  self.esf = "backtoidle"
+               end
+               
+            end
+      
+     end
 }        
         
 function beul:esf_pose()
@@ -196,6 +273,7 @@ function beul:esf_backtoidle()
    for _,v in pairs(self.fighters) do v.posestage=nil end
    self:RemoveFirstCard()
    self.flow='idle'
+   self.esf = nil
 end
 
 function beul:esf_perform()
