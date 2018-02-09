@@ -1,5 +1,5 @@
 --[[
-  com_main.lua
+  com_statuschanges.lua
   Version: 18.02.09
   Copyright (C) 2018 Jeroen Petrus Broks
   
@@ -34,67 +34,48 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
--- $USE Script/Subs/Headers.h AS Headers_h
-local cmain = {}
+local csc = {}
 
+csc.statusdata = { Death = Use('script/data/combat/statuschanges/death.lua') }
 
-cmain.consolecommands = {}
-function cmain.consolecommands.FIGHTERS(self,para)
-      CSay(serialize("combat.fighters",self.fighters))
-end      
-function cmain.consolecommands.ESF(self)
-      CSay(serialize('esf',self.esf))
-end      
-function cmain.consolecommands.BATTLEFLOW(self)
-      for k,v in spairs(self) do
-          if v==self then
-             CSay("self "..k)
-          else
-             CSay(serialize(type(v).." "..k,v))
-          end
-      end      
-end
-function cmain.consolecommands.KILL(self,para)
-    if not(self.fighters[para]) then return console.writeln("Fighter list does not contain a record named: "..para) end
-    CSay("Assasinating character: "..para)
-    rpg:Points(para,"HP").Have=0
-end          
-
-
-function cmain:TagMessage(tag,message,r,g,b,ymod)
-    local x,y = 0,0
-    x = self.fighters[tag].x
-    y = self.fighters[tag].y + (ymod or 0)
-    MiniMSG(message,{r or 255,g or 255, b or 255},{x,y})
-end
-
-function cmain:odraw()
-      self:DrawArena()
-      self:DrawCards()
-      self:StatusPreDraw()
-      self:DrawFoes(self.targeted,self.inaction)
-      self:DrawHeroes(self.targeted,self.inaction,self.acting,self.heroframe)      
-      self.flow = self.flow or "idle"
-      assert(self["flow_"..self.flow],"No combat flow function for "..self.flow)
-      self['flow_'..self.flow](self)
-      StatusBar(false,true)
-      dbgcon()    
-      ShowMiniMSG()
+function csc:statuses(chtag)
+     local frame = 0
+     local keys = {}
+     local values = {}
+     local si = 0
+     TrickAssert(self.fighters[chtag],"character error",{tag=chtag,fighters=self.fighters})
+     self.fighters[chtag].statuschanges = self.fighters[chtag].statuschanges or {} 
+     for k,v in spairs(self.fighters[chtag].statuschanges) do
+         si = si + 1
+         keys[si]=k
+         values[si]=values
+     end
+     return function()
+         frame = frame + 1
+         if rpg:Points(chtag,"HP").Have==0 then
+            if frame<2 then return "Death",csc.statusdata.Death end    
+            return nil
+         end
+         return keys[frame],values[frame]
+     end
 end
 
 
+function csc:StatusTDRAW(stage)
+    for k,_ in pairs(self.fighters) do
+        for _,std in self:statuses(k) do
+            if std[stage..'draw'] then std[stage..'draw'](self,k) end
+        end
+    end
+end
+
+function csc:StatusPreDraw()
+    self:StatusTDRAW('pre')
+end         
+
+function csc:StatusPostDraw()
+    self:StatusTDRAW('post')
+end         
 
 
-
-
-
-
-
-
-
-
-
-
-
-return cmain
-
+return csc

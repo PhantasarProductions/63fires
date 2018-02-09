@@ -1,6 +1,6 @@
 --[[
   com_cards.lua
-  Version: 18.02.04
+  Version: 18.02.09
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -134,6 +134,7 @@ function ccards:CardTag(data)
       if prefixed(data.tag,"FOE_") then
          if not self.foes then for k,v in spairs(self) do CSay("COMBAT MODULE:  "..type(v).." "..k) end end
          local myfoe=self.foes[data.tag]
+         if not myfoe then return "BACK" end
          if myfoe.Boss then return "BOSS_"..(myfoe.letterfiletag or "Unknown") else return "FOE_"..(myfoe.letterfiletag or "Unknown") end
       end   
       -- If Ryanna while transformed

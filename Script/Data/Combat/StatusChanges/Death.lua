@@ -1,5 +1,5 @@
 --[[
-  com_main.lua
+  Death.lua
   Version: 18.02.09
   Copyright (C) 2018 Jeroen Petrus Broks
   
@@ -34,67 +34,56 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
--- $USE Script/Subs/Headers.h AS Headers_h
-local cmain = {}
+
+local  fd = { Hero = function(self,chtag)
+         end,
+         
+         Foe = function(self,chtag)
+             local warrior = self.fighters[chtag] 
+             warrior.deathscale = warrior.deathscale - .01
+             if warrior.deathscale<=0 then
+                -- experience
+                -- item drops
+                -- money if no items
+                -- cleanup
+                self.fighters[chtag]=nil
+                self.foe[chtag]=nil                
+             end
+         end
+       }
+
+local DEATH = {
 
 
-cmain.consolecommands = {}
-function cmain.consolecommands.FIGHTERS(self,para)
-      CSay(serialize("combat.fighters",self.fighters))
-end      
-function cmain.consolecommands.ESF(self)
-      CSay(serialize('esf',self.esf))
-end      
-function cmain.consolecommands.BATTLEFLOW(self)
-      for k,v in spairs(self) do
-          if v==self then
-             CSay("self "..k)
-          else
-             CSay(serialize(type(v).." "..k,v))
-          end
-      end      
+  predraw = function(self,chtag)
+    local warrior = self.fighters[chtag] 
+    cleartable(warrior.statuschanges)
+    fd[warrior.group](self,chtag)   
+  end,
+
+  blockhealing = true,
+  blockexperience = true,
+  noturn = true,
+  defeated = true, -- If set to "true" this status will count as 'defeated' when checking the victory conditions in the default setting.
+  
+  cause = function(self,chtag)
+      local zombie
+      for statkey,statdata in self:statuses(chtag) do
+          zombie = zombie or statdata.zombie
+      end
+      local HP = rpg:Points(chtag,"HP")
+      if zombie then
+         HP.Have = HP.Maximum
+         self:TagMessage(chtag,"Max!",180,255,0,20)
+         return
+      end
+      HP.Have=0
+  end
+
+}
+
+if Var.G("%SKILL")==1 then
+   DEATH.blockexperience=false
 end
-function cmain.consolecommands.KILL(self,para)
-    if not(self.fighters[para]) then return console.writeln("Fighter list does not contain a record named: "..para) end
-    CSay("Assasinating character: "..para)
-    rpg:Points(para,"HP").Have=0
-end          
 
-
-function cmain:TagMessage(tag,message,r,g,b,ymod)
-    local x,y = 0,0
-    x = self.fighters[tag].x
-    y = self.fighters[tag].y + (ymod or 0)
-    MiniMSG(message,{r or 255,g or 255, b or 255},{x,y})
-end
-
-function cmain:odraw()
-      self:DrawArena()
-      self:DrawCards()
-      self:StatusPreDraw()
-      self:DrawFoes(self.targeted,self.inaction)
-      self:DrawHeroes(self.targeted,self.inaction,self.acting,self.heroframe)      
-      self.flow = self.flow or "idle"
-      assert(self["flow_"..self.flow],"No combat flow function for "..self.flow)
-      self['flow_'..self.flow](self)
-      StatusBar(false,true)
-      dbgcon()    
-      ShowMiniMSG()
-end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-return cmain
-
+return DEATH

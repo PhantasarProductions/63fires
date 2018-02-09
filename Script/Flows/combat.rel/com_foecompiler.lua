@@ -1,6 +1,6 @@
 --[[
   com_foecompiler.lua
-  Version: 18.02.07
+  Version: 18.02.09
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -61,6 +61,7 @@ function foecom:CompileFoe(i,foefile)
     self.foes[tag] = { drops = {}, steals={}, actions={} }    
     local acttag = ({'EASY','CASL','HARD'})[skill]
     local myfoe=self.foes[tag]
+    myfoe.deathscale = 1
     myfoe.letter,myfoe.letterfiletag=self:FreeLetter()
     myfoe.ufil = foefile:upper()
     console.write("Reading: ",255,255,0) console.writeln('Data/Foes/'..foefile..".gini",0,255,255)
@@ -156,7 +157,7 @@ function foecom:DrawFoe(myfoe,targeted,acting)
        if gtv<5 then scale=-1 end
     end    
     -- Drawing
-    DrawImage(myfoe.image,myfoe.x,myfoe.y,myfoe.frame,0,scale,1)
+    DrawImage(myfoe.image,myfoe.x,myfoe.y,myfoe.frame,0,scale,myfoe.deathscale or 1)
 end
 
 

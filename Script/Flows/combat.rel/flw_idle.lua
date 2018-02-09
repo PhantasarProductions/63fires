@@ -1,6 +1,6 @@
 --[[
   flw_idle.lua
-  Version: 18.01.29
+  Version: 18.02.09
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -40,6 +40,7 @@ local zooi = {  }
 function zooi:flow_idle()
       local firstcard=self.Cards[1]
       local tag=self:CardTag(firstcard.data)
+      self:DidAnyoneWin()
       if tag=="BACK" then
          return self:RemoveFirstCard()
       end     
@@ -49,7 +50,6 @@ function zooi:flow_idle()
       if prefixed(tag,"FOE") or prefixed(tag,"BOSS") then
          self.flow = firstcard.altplayinput or "foeinput"
       end
-
 end
 
 
