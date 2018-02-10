@@ -1,6 +1,6 @@
 --[[
   flw_end.lua
-  Version: 18.02.09
+  Version: 18.02.10
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -35,6 +35,19 @@
   3. This notice may not be removed or altered from any source distribution.
 ]]
 local einde = {}
+
+local skill = Var.G('%SKILL')
+local VITCOUNT = ({.05,.01,.002})[skill]
+function einde:VIT_work()
+   for ch in each(RPGParty) do
+       local VIT = rpg:Points(ch,'VIT')
+       local HP  = rpg:Points(ch,"HP")
+       if HP.Have<HP.Maximum and VIT.Have>0 then 
+          HP :Inc(math.ceil(HP.Maximum*VITCOUNT))
+          VIT:Dec(1)
+       end   
+   end
+end
 
 function einde:chk_victory_default()
    local checkup = {Foe=true,Hero=true}
@@ -73,11 +86,23 @@ function einde:victory_default()
        itext.write('Scale:   '..self.vic_sc,5,65)
        itext.write('EndTime: '..self.vic_tm,4,95)
     --]]
+    self:VIT_work()
 end
 
 
 function einde:flow_victory()
     self["victory_"..(self.combatdata.victory or 'default')](self)
+end
+
+function einde:flow_terminate_combat()
+    local ClearTable=cleartable
+    omusic.pop()
+    self.me=nil
+    console.write  ('Unloading: ',255,255,0)
+    console.writeln('Combat'     ,0,180,255)
+    ClearTable(self)
+    combat=nil
+    flow.set(field)
 end
 
 function einde:DidAnyoneWin()
