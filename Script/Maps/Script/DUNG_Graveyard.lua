@@ -73,6 +73,17 @@ local function Tut_Goblin()
     end   
 end
 
+local function Tut_Medal()
+    if not Done("&DONE.TUTORIAL.TRAVELMEDAL") then
+       local ryanna=field:getmap().map.TagMap['#005'].PLAYER1
+       ryanna.walking=false
+       ryanna.moving=false
+       MapText("TUT_MEDAL")
+       MapText("TUT_MEDAL"..Var.C("$SKILLNAME"))
+    end   
+
+end
+
 local function FightGob()
     if Done("&DONE.THEVERYFIRSTENEMYOFTHEGAME") then return end
     field:kill('Gob',true)
@@ -86,6 +97,7 @@ field:ZA_Enter('OpeningZone',Opening)
 field:ZA_Enter('Tutor_Chest',Tut_Chest)
 field:ZA_Enter("Tutor_Gob",  Tut_Goblin)
 field:ZA_Enter("FightGob"  ,FightGob)
+field:ZA_Enter("TUT_Medal",Tut_Medal)
 
 
 return graveyard

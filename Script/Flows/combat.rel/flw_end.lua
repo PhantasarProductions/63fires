@@ -96,6 +96,11 @@ end
 
 function einde:flow_terminate_combat()
     local ClearTable=cleartable
+    local kill = {}
+    for ch in each(rpg:CharList()) do
+        if prefixed(ch,"FOE_") then kill[#kill+1]=ch end
+    end
+    for ch in each(kill) do rpg:DelCharacter(ch) CSay("CHAR."..ch.." removed from memory") end 
     omusic.pop()
     self.me=nil
     console.write  ('Unloading: ',255,255,0)
