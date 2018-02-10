@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.01.27
+version: 18.02.10
 ]]
 local graveyard = {}
 
@@ -74,6 +74,7 @@ local function Tut_Goblin()
 end
 
 local function FightGob()
+    if Done("&DONE.THEVERYFIRSTENEMYOFTHEGAME") then return end
     field:kill('Gob',true)
     StartCombat({
            foes={'reg/goblin'},
