@@ -1,6 +1,6 @@
 --[[
   flw_playerinput.lua
-  Version: 18.02.02
+  Version: 18.02.10
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -67,7 +67,7 @@ function invoer:flow_heroselecttarget()
      for tag,fdata in pairs(self.fighters) do
          local w,h = fdata.w or 32 , fdata.h or 64
          if mx>fdata.x-(w/2) and mx<fdata.x+(w/2) and my<fdata.y and my>fdata.y-h then seltag,seldata=tag,fdata end
-         -- --[[ debug
+         --[[ debug
          color(0,0,255,80)
          if seltag==tag then color(255,0,0,90) end
          Rect(fdata.x-(w/2),fdata.y-h,w,h)
