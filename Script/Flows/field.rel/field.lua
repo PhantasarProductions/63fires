@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.01.23
+  Version: 18.02.11
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -184,6 +184,14 @@ function field:BoxTextBack()
     kthura.drawmap(map.map,map.layer,self.cam.x,self.cam.y)
 end
 
+local function TravelMedal(f,tag)
+    local skill = Var.G('%SKILL')
+    Var.D('%LEVELCAP',Var.G('%LEVELCAP')+(6-skill))
+    LoadScenario('TRAVEL','TRAVEL')
+    SerialBoxText('TRAVEL','TRAVEL')
+    f:kill(tag,true)
+end
+
 function field:objectclicked()
     local mx,my=love.mouse.getPosition()
     local tm = map.map.TagMap[map.layer]
@@ -202,6 +210,7 @@ function field:objectclicked()
            elseif prefixed(utag,"NPC_")    and act:WalkTo(stx,sty) then arrival={map.script[utag],tag=tag} return true
            elseif prefixed(utag,"SAVE_")   and act:WalkTo(stx,sty) then arrival={GoSaveGame,"SAVE",tag=tag} return true
            elseif prefixed(utag,"CHEST_")  and act:WalkTo(stx,sty) then arrival={TreasureChest,tag,tag=tag} return true
+           elseif prefixed(utag,"TRAVEL_") and act:WalkTo(stx,sty) then arrival={TravelMedal,self,tag,tag=tag} return true
            else   ret=false
            end
         else

@@ -1,7 +1,7 @@
 --[[
-  boxtest_headers.lua
+  boxtext_headers.lua
   
-  version: 18.01.17
+  version: 18.02.11
   Copyright (C) 2018 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages

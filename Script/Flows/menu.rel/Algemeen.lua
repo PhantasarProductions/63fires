@@ -1,6 +1,6 @@
 --[[
   Algemeen.lua
-  Version: 18.01.20
+  Version: 18.02.11
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -80,7 +80,22 @@ function mod:showstatus(cd)
         local p = rpg:Points(self.char,cat)
         diginum(p.Have,   x+math.floor(w*.50),200+(i*30))
         diginum(p.Maximum,x+math.ceil (w*.75),200+(i*30))
-    end            
+    end 
+    
+    local level=rpg:Stat(self.char,"Level")
+    local cap=Var.G("%LEVELCAP")
+    if level<=cap then
+       white()
+       itext.write("Level:",x,350)
+       color(0,180,255)
+       diginum(level,x+math.ceil (w*.75),350)
+    end              
+    if level<cap then
+       white()
+       itext.write("Experience:",x,380)
+       color(0,180,255)
+       diginum(rpg:Stat(self.char,"Experience"),x+math.ceil (w*.75),380)
+    end              
 end
 
 function mod:odraw()

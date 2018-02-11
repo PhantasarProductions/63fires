@@ -1,6 +1,6 @@
 --[[
   StatusBar.lua
-  Version: 18.01.10
+  Version: 18.02.11
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -46,6 +46,7 @@ local cols = {HP={0,0,0},AP={0,180,255},VIT={255,180,0}}
 local csuf = {HP='',AP='',VIT=''}
 local hgraph = {}
 local clickedchar
+local lv = LoadImage('GFX/General/Lv.png') QHot(lv,"lb")
 
 local function tomenu()
     local f = flow.get()
@@ -68,6 +69,11 @@ local function StatusBar(highlight,menuchain)
    local charwidth=width/psize
    local gaugestart,gaugeend=math.floor(charwidth*.25),math.ceil(charwidth*.85)
    local gaugewidth=gaugeend-gaugestart
+   local time=love.timer.getTime()
+   local lr = math.floor(math.sin(time)    *255)
+   local lg = math.floor(math.cos(time)    *255)
+   local lb = math.floor(math.sin(time/500)*255)
+   local lf = GetBoxTextFont()
    quad = quad or love.graphics.newQuad(0,height-120,width,120,ImageWidth(background),ImageHeight(background))
    white()
    QuadImage(background,quad,0,height-120)
@@ -100,6 +106,13 @@ local function StatusBar(highlight,menuchain)
            diginum(rpg:Points(tag,cat).Have,cx+math.ceil(charwidth*.95),y-25)
            hgraph[cat]=hgraph[cat] or LoadImage('GFX/Diginum/'..cat..".png","Pnt"..cat)
            DrawImage(hgraph[cat],cx+(charwidth*.10),y-25)           
+       end   
+       local level = rpg:Stat(tag,'Level')
+       if level<=Var.G('%LEVELCAP') then
+          color(lr,lg,lb)
+          DrawImage(lv,cx,height)
+          white()
+          itext.write(level,cx+150,height,1,1)
        end   
    end
 end
