@@ -1,6 +1,6 @@
 --[[
   SaveLoadScreen.lua
-  Version: 18.01.18
+  Version: 18.02.11
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -84,10 +84,23 @@ function SLS.mousepressed(b,x,y)
     end   
 end
 
+function SLS.keypressed(kc)
+   if kc=='pageup' and pages.page>1 then pages.page=pages.page-1 end
+   if kc=='pagedown' then
+      if pages.page==#pages then
+         local cl = love.window.showMessageBox(RYANNA_TITLE, "Do you want to add an extra page to the page list?", {"Yes","No",escapebutton=2})
+         if cl==2 then return end
+      end
+      pages.page=pages.page+1
+   end
+end
+
 function SLS.draw()
     local mx,my=love.mouse.getPosition()
     white()
     console.sback()
+    love.graphics.setFont(console.font)
+    love.graphics.print("Page: "..pages.page.."/"..#pages,3,3)
     color(0,180,255)
     itext.write(todo.." GAME",scw/2,50,2,2)
     pages[pages.page] = pages[pages.page] or {}
