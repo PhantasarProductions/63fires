@@ -95,9 +95,11 @@ NAF
 /Volumes/Scyndi/Projects/Applications/Ryanna/RyannaLibs
 /Volumes/Scyndi/Projects/Applications/Ryanna/LauraInLove
 
-[List:ALIASES]
+[List:ALIASES.IGNORE]
 Music/Ori/Jet Fueled Vixen.mp3 => Music/Dungeon/Final Dungeon.mp3
 Music/Ori/Dewdrop Fantasy.mp3 => Music/Dungeon/Forest1.mp3
+
+[List:ALIASES]
 GFX/PlayerSprites/Ryanna.West.jpbf/000000000.png => GFX/Combat/Fighters/Hero/Ryanna_IDLE.png
 
 [List:DYNAMICJCR.DARWIN]
