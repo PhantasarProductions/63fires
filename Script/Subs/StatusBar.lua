@@ -1,6 +1,6 @@
 --[[
   StatusBar.lua
-  Version: 18.02.11
+  Version: 18.02.16
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -63,7 +63,7 @@ function DrawPortrait(tag,x,y)
        DrawImage(portraits[tag],x,y)
 end
 
-local function StatusBar(highlight,menuchain)
+local function StatusBar(highlight,menuchain,chat)
    -- $USE script/subs/diginum
    local psize = #RPGParty   if not laura.assert(psize>0,"I tried to draw a party bar with an empty party") then return end
    local charwidth=width/psize
@@ -90,6 +90,14 @@ local function StatusBar(highlight,menuchain)
           else
              click(cx,cy,charwidth,120,flow.get().clicked,"Click here to open "..tag.."'s status menu",tomenu)
           end
+       elseif chat then   
+           -- $USE script/data/general/sex
+           --[[
+           CSay(serialize('sex',sex))
+           CSay(serialize('tag',tag))
+           CSay(serialize('tagsex',sex[tag]))
+           ]]
+           click(cx,cy,charwidth,120,flow.get().clicked,"Click here to ask "..tag.." about "..sex.bznw[sex.sex[tag]].." view on the current situation",chat)   
        end
        DrawImage(portraits[tag],cx,height)
        cols.HP[2]=math.floor((rpg:Points(tag,'HP').Have/rpg:Points(tag,'HP').Maximum)*255)

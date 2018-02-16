@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.02.11
+  Version: 18.02.16
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -133,6 +133,7 @@ function field:LoadMap(KthuraMap,layer)
     if not laura.assert(layer,"No layer requested!",{LoadMap=KthuraMap}) then return end    
     map= {layer=layer,file=KthuraMap}
     self:ZA_Clear()    
+    MapWorldLinks()
     print("Loading map: ",KthuraMap)
     CSay("Loading map: "..KthuraMap)
     CSay("= Map itself")
@@ -147,8 +148,8 @@ function field:LoadMap(KthuraMap,layer)
        local fun = load(src,"* NOSCRIPT *")
        map.script = fun() 
     else
-       console.write("  Compiling: ",255,255,0)
-       console.writeln(scr,0,255,255)
+       -- console.write("  Compiling: ",255,255,0)
+       -- console.writeln(scr,0,255,255)
        map.script = Use(scr)
        TrickAssert(type(map.script)=='table','MapScripts must return tables, but this is not a table.',{['Loaded Script']=scr,['Returned type']=type(map.script)})
     end
