@@ -1,6 +1,6 @@
 --[[
   StatusBar.lua
-  Version: 18.02.16
+  Version: 18.02.17
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -97,7 +97,7 @@ local function StatusBar(highlight,menuchain,chat)
            CSay(serialize('tag',tag))
            CSay(serialize('tagsex',sex[tag]))
            ]]
-           click(cx,cy,charwidth,120,flow.get().clicked,"Click here to ask "..tag.." about "..sex.bznw[sex.sex[tag]].." view on the current situation",chat)   
+           click(cx,cy,charwidth,120,flow.get().clicked,"Click here to ask "..tag.." about "..sex.bznw[sex.sex[tag]].." view on the current situation",chat,tag)   
        end
        DrawImage(portraits[tag],cx,height)
        cols.HP[2]=math.floor((rpg:Points(tag,'HP').Have/rpg:Points(tag,'HP').Maximum)*255)
