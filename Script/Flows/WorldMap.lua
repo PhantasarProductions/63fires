@@ -1,6 +1,6 @@
 --[[
   WorldMap.lua
-  Version: 18.02.16
+  Version: 18.02.17
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -149,6 +149,7 @@ function LoadWorld(worldfolder)
           end
        end
    end
+   omusic.play('Music/Worldmap/'..worldfolder..".mp3")
 end   
 
 --[[
@@ -226,7 +227,7 @@ function wmm:odraw()
      if (INP.KeyH(KEY_LEFT )==1 or joyhit(joyleft))  and pcol>           0 then  pcol = pcol - 1 end
      if (INP.KeyH(KEY_ENTER)==1 or INP.KeyH(KEY_RETURN)==1 or INP.KeyH(KEY_SPACE)==1 or joyhit('CONFIRM') or (mousehit(1) and my<SH-100)) and cspot then
      ]]
-     if (self.clicked and my<SH-100) then
+     if (self.clicked and my<SH-100 and cspot) then
         field:LoadMap(cspot.Kthura,cspot.Layer)
         field:SpawnPlayer(cspot.Start) --GoToLayer(cspot.Layer,cspot.Start)
         flow.set(field) --LAURA.Flow('FIELD')
@@ -245,6 +246,10 @@ function wmm:odraw()
 
 end
 
+function wmm:BoxTextBack()
+    cls()
+end    
+
 function wmm:WorldMap_Unlock(tag)
     wm_unlocked[tag] = true
     CSay(tag.." unlocked")
@@ -261,6 +266,7 @@ local function GALE_OnLoad()
    --fonts.WorldItem[2] = fsiz
    --dotscale = math.ceil((fsiz/20)*100)
    if Var.C('$WMCHAT')=='' then Var.D('$WMCHAT','JUSTBEGUN') end
+   LoadScenario("WMCHAT")
 end   
 GALE_OnLoad()
 

@@ -1,7 +1,7 @@
 --[[
   boxtext_headers.lua
   
-  version: 18.02.11
+  version: 18.02.17
   Copyright (C) 2018 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -17,10 +17,11 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
-function LoadScenario(tag,file)
+function LoadScenario(tag,afile)
    -- $USE Libs/scenario
    assert(tag,"No tag for LoadScenario")
-   assert(file,"No file for LoadScenario")
+   --assert(file,"No file for LoadScenario")
+   local file = afile or tag
    return scenario.LoadData(file,tag)
 end   
 
