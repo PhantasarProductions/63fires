@@ -134,6 +134,7 @@ local wmfont = GetBoxTextFont()
 -- $USE script/subs/screen
 local Center_X,Center_Y = screen.w/2,(screen.h-120)/2
 function wmm:odraw()
+     local skill=Var.G('%SKILL')
      local mx,my = love.mouse.getPosition() -- MouseCoords()
      local moved = mx~=oldmx or my~=oldmy
      local SH=screen.h
@@ -202,11 +203,12 @@ function wmm:odraw()
      --ShowMouse()
      --Flip()
      -- World Map Chat
-     for i,ch in iParty() do
+     for ch in iParty() do
          --if (mousehit(1) and ClickedChar(i)) or (INP.KeyH(i+49)==1) then WorldMapChat(ch) end
-         
+         if love.math.random(1,skill*skill*skill)==1 then rpg:Points(ch,'HP' ):Inc(1) end
+         if love.math.random(1,skill*skill*skill)==1 then rpg:Points(ch,'AP' ):Inc(1) end
+         if love.math.random(1,skill*skill*skill)==1 then rpg:Points(ch,'VIT'):Inc(1) end
      end    
-
 end
 
 function wmm:BoxTextBack()
