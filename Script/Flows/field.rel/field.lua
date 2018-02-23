@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.02.16
+  Version: 18.02.23
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -74,6 +74,10 @@ function field:GetActive()
    return RPGParty[self.leader]
 end
 
+function field:GetActiveActor()
+   return self.map.map.TagMap[self.map.layer]['PLAYER'..self.leader]
+end   
+
 function field:followdaleader()
   for i=1,#RPGParty do
       local a=map.map:obj(map.layer,"PLAYER"..i)
@@ -138,6 +142,12 @@ function field:LoadMap(KthuraMap,layer)
     CSay("Loading map: "..KthuraMap)
     CSay("= Map itself")
     map.map = kthura.load("Script/Maps/Kthura/"..KthuraMap)
+    CSay("= Crystals")
+    self:CrystalInit()
+    CSay("= Random encounters")
+    self:SetUpRencTable(map.map.Meta.MaxEnc)
+    CSay("= Random encounter monster tables")
+    self:SetUpRandomEncounters()
     if not laura.assert(map.map,"Loading the map failed!") then return end
     CSay("= Map script")
     local scr = "Script/Maps/Script/"..KthuraMap..".lua"
@@ -264,6 +274,22 @@ function field:autoscroll()
     if self.cam.x           < 0                                      then self.cam.x = 0                                                    end
 end
 
+function field:DestroyArrival()
+   arrival = nil
+end   
+
+field.KillArrival=field.DestroyArrival
+
+function field:StopPlayer(dontkill)
+  for i=1,#RPGParty do
+      local p = map.map:obj(map.layer,"PLAYER"..i)
+      p.walking=false
+      p.moving=false
+  end
+  if dontkill then self:DestroyArrival() end
+end
+
+
 function field:odraw()
     local mx,my=love.mouse.getPosition()
     self.clicked = mousehit(1)
@@ -274,6 +300,7 @@ function field:odraw()
     --print (serialize('map',map))
     self:autoscroll()
     self:followdaleader()
+    self:CrystalGrab()    
     kthura.drawmap(map.map,map.layer,self.cam.x,self.cam.y)
     -- debug mark
      --[[
@@ -313,6 +340,7 @@ function field:odraw()
     self:ZA_Check()    
     dbgcon()    
     ShowMiniMSG()
+    self:MustRenc()
     -- love.graphics.print("Camera: ("..self.cam.x..","..self.cam.y..") -- Mapsize: "..map.map.bmsizes[map.layer].width.."x"..map.map.bmsizes[map.layer].height,200,25)
 end    
 

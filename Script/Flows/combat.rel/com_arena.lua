@@ -1,6 +1,6 @@
 --[[
   com_arena.lua
-  Version: 18.01.27
+  Version: 18.02.23
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -37,10 +37,12 @@
 local Arena = {}
 
 local defaultarena = {
-    load = function (arena,file)
+    load = function (arena,afile)
         -- $USE Subs/screen
         local w,h
-        arena.image = LoadImage('gfx/combat/arena/'..file..".png") w,h = ImageSize(arena.image)
+        local file=afile
+        if not suffixed(file:lower(),".png") then file=file..".png" end
+        arena.image = LoadImage('gfx/combat/arena/'..file) w,h = ImageSize(arena.image)
         arena.quad  = love.graphics.newQuad(-((screen.w/2)-(w/2)),-(((screen.h-120)/2)-((h-120)/2)),screen.w,screen.h-120,w,h)
         WrapImage(arena.image,"mirroredrepeat","clamp") --:setWrap("mirroredrepeat","clamp")
         HotCenter(arena.image)

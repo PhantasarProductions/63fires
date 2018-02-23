@@ -1,6 +1,6 @@
 --[[
   combat_h.lua
-  Version: 18.01.27
+  Version: 18.02.23
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -34,7 +34,25 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
-function StartCombat(data)
+
+local function SC_ANIM() 
+   -- $USE Script/Subs/screen
+   local screenshot = LoadImage(love.graphics.newImage(love.graphics.newScreenshot( ))); HotCenter(screenshot)
+   local cx,cy=screen.w/2,screen.h/2     
+   local r=0
+   for i=1,0,-.02 do
+       love.graphics.clear( )
+       DrawImage(screenshot,cx,cy,1,r,i,i)
+       r=r+.05
+       love.graphics.present()
+       love.timer.sleep(.03)
+   end
+   love.graphics.clear( )
+   love.graphics.present()
+end
+
+function StartCombat(data,noanim)
+    if not noanim then SC_ANIM() end
     -- $USE Script/Flows/combat
     combat:Init(data)
     flow.set(combat)
