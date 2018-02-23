@@ -182,7 +182,7 @@ function renc:MustRenc()
     else color(50,50,50) end
     DrawImage(self.gauge,self.rencgaugex-16,rencgaugey+2)--Image.Show('RENCGAUGE',rencgaugex,SH-200)
     
-    ---[[
+    --[[
     
     --Image.NoFont()
     love.graphics.print('rencon = '..sval(self.rencon),5,20)
