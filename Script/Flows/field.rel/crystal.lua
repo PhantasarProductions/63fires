@@ -1,6 +1,6 @@
 --[[
   crystal.lua
-  Version: 18.02.23
+  Version: 18.02.24
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -78,15 +78,18 @@ function crystal:CrystalGrab()
            if obj.COORD.x==gx and obj.COORD.y == gy then
               -- $USE libs/audio
               QuickPlay("Audio/Gen/Crystal.Wav")
+              CSay("Grabbed Crystal: "..obj.TAG)
               kill[#kill+1]=i
               if prefixed(obj.TAG,"CRYSTALH") then
-                 for ch in each(RPGChars) do 
-                    rpg:Points(ch,"VIT").Inc(1)
-                    if skill==1 then rpg:Points(ch,"HP") .Inc(math.ceil(rpg:Points(ch,"HP").Maximum/100)) end
+                 CSay("= Health Crystal")
+                 for ch in each(RPGParty) do 
+                    CSay("= "..ch)
+                    rpg:Points(ch,"VIT"):Inc(1)
+                    if skill==1 then rpg:Points(ch,"HP") :Inc(math.ceil(rpg:Points(ch,"HP").Maximum/100)) end
                  end   
               elseif prefixed(obj.TAG,"CRYSTALM") then
-                 for ch in each(RPGChars) do                  
-                     rpg:Points(ch,"AP") .Inc(math.ceil(rpg:Points(ch,"AP").Maximum/100))                    
+                 for ch in each(RPGParty) do                  
+                     rpg:Points(ch,"AP") :Inc(math.ceil(rpg:Points(ch,"AP").Maximum/100))                    
                  end   
               end
            end
