@@ -1,6 +1,6 @@
 --[[
   com_foecompiler.lua
-  Version: 18.02.09
+  Version: 18.02.25
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -74,6 +74,7 @@ function foecom:CompileFoe(i,foefile)
         CSay(vr.."="..gfoe:C(vr))
         if     vr=='STAT.CASH'  then rpg:DefStat(tag,"Cash" ,tonumber(gfoe:C(vr)) or 0)
         elseif vr=='STAT.LEVEL' then rpg:DefStat(tag,"Level",tonumber(gfoe:C(vr)) or 0)
+        elseif vr=='STAT.EXPERIENCE' then rpg:DefStat(tag,"EXP",tonumber(gfoe:C(vr)) or 0)
         elseif vr=="DATA.NAME"  then rpg:SetName(tag,gfoe:C(vr))
         elseif vr=="DATA.DESC"  then -- we just need to ignore this field
         elseif vr=="DATA.IMAGE" then myfoe.image = FoeImage(gfoe:C(vr)) myfoe.frame=love.math.random(1,#myfoe.image.images) QHot(myfoe.image,"cb")

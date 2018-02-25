@@ -1,6 +1,6 @@
 --[[
   Death.lua
-  Version: 18.02.09
+  Version: 18.02.25
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -35,14 +35,27 @@
   3. This notice may not be removed or altered from any source distribution.
 ]]
 
+local exprandomrates = {{125,200},{1,150},{0,1}}
+
 local  fd = { Hero = function(self,chtag)
          end,
          
          Foe = function(self,chtag)
+             local skill = Var.G("%SKILL")
              local warrior = self.fighters[chtag] 
              warrior.deathscale = warrior.deathscale - .01
              if warrior.deathscale<=0 then
                 -- experience
+                local exp = rpg:Stat(chtag,"EXP")
+                local rate
+                for pch in each(RPGParty) do 
+                    rate = love.math.random(exprandomrates[skill][1],exprandomrates[skill][2])/100
+                    local get = math.ceil(exp/rate)
+                    if get>0 and rpg:Stat(pch,"Level")<Var.G("%LEVELCAP") then
+                       rpg:DecStat(pch,"Experience",get)
+                       self:TagMessage(pch,get.." experience points",100,180,0)
+                    end
+                end
                 -- item drops
                 -- money if no items
                 -- cleanup

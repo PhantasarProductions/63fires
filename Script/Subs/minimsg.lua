@@ -1,6 +1,6 @@
 --[[
   minimsg.lua
-  Version: 18.01.26
+  Version: 18.02.25
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -57,6 +57,10 @@ function mm:Show()
     for imm in each(dminimsg) do
         imm.ox = imm.ox or math.floor(imm.w/2)
         imm.oy = imm.oy or math.floor(imm.h/2)
+        black()
+        for i=-1 , 1 do
+            love.graphics.draw(imm.itext,math.floor(imm.coord[1])+i,math.floor(imm.coord[2])+1,0,1,1,imm.ox,imm.oy)
+        end    
         color(imm.color[1],imm.color[2],imm.color[3])
         love.graphics.draw(imm.itext,math.floor(imm.coord[1]),math.floor(imm.coord[2]),0,1,1,imm.ox,imm.oy)
         imm.coord[2]=imm.coord[2]-imm.speed

@@ -1,6 +1,6 @@
 --[[
   StatusBar.lua
-  Version: 18.02.17
+  Version: 18.02.25
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -47,6 +47,8 @@ local csuf = {HP='',AP='',VIT=''}
 local hgraph = {}
 local clickedchar
 local lv = LoadImage('GFX/General/Lv.png') QHot(lv,"lb")
+local ilvup = LoadImage('GFX/General/Level_Up.png') HotCenter(ilvup)
+local levelup = {}
 
 local function tomenu()
     local f = flow.get()
@@ -121,6 +123,19 @@ local function StatusBar(highlight,menuchain,chat)
           DrawImage(lv,cx,height)
           white()
           itext.write(level,cx+150,height,1,1)
+       end
+       if levelup[tag] then
+          local l=levelup[tag]
+          DrawImage(ilvup,cx+(charwidth/2),height-60,1,l.rad,l.scale,l.scale)
+          if l.rad<-.26 then l.rad=l.rad+.01 end
+          if l.scale<.7 then l.scale=l.scale+.005 end
+          l.tm = l.tm - 1
+          if l.tm<=0 then levelup[tag]=nil end
+       elseif rpg:Stat(tag,'Experience')<=0 and (not prefixed(tag,'DEMON_RYANNA_')) and rpg:Stat(tag,"Level")<Var.G('%LEVELCAP') then
+          levelup[tag]={rad=-2,scale=0,tm=250}
+          rpg:IncStat(tag,"Level",1)
+          rpg:IncStat(tag,'Experience',laura.nextlevel(level+1))
+          laura.setlevel(tag,level+1,true)          
        end   
    end
 end

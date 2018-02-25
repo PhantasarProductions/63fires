@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.02.24
+  Version: 18.02.25
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -324,6 +324,9 @@ function field:odraw()
     love.graphics.print(Var.S("Time: $PLAYTIME"),width-200,staty)
     local pry=staty-25
     love.graphics.print("Cash: "..DumpCash(Var.G("%CASH")),width-200,pry); pry=pry-25
+    if Var.G('%LEVELCAP')>0 then
+       love.graphics.print('LCap: '..Var.G('%LEVELCAP'),width-200,pry); pry=pry-25
+    end   
     if prefixed(map.layer,'#') then
        love.graphics.print("Area: "..map.layer,width-200,pry); pry=pry-25
     end
