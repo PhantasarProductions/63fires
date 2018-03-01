@@ -1,7 +1,7 @@
 --[[
 **********************************************
   
-  DUNG_BeaufortForest.lua
+  ToolPics.lua
   (c) Jeroen Broks, 2018, All Rights Reserved.
   
   This file contains material that is related 
@@ -34,23 +34,23 @@
  
 version: 18.03.01
 ]]
-local bos = {}
-
-local function tut_Crystal()
-    if Done("&DONE.TUTORIAL.CRYSTALS") or Var.G("%SKILL")>2 then return end
-    MapText("TUT_CRYSTAL")
-end     
-
-
-field:ZA_Enter("Tut_Crystal",tut_Crystal)
-
-
-function bos:NPC_FishingPole()
-   CSay("Hoera! We hebben een hengel gevonden!")
-   MapText("HENGEL")
-   field:GiveTool('Ryanna',1)
-   field:kill('NPC_FishingPole',true) 
-end
-
-
-return bos
+return {
+   ToolPics={
+       Ryanna={'Hengel','Grijphhaak','Scanner'},  -- Double h typo required or CRASH!
+       Nino={'Gauntlet','Springschoen','Gitaar'},
+       Shirley={'Dolly','Mistmantel','Onzichtbaarheidsmantel'},
+       Lirmen={'Vlamstaff','Vriesstaf','Donderstaf'}  
+   },
+   ToolFuncs={
+       Ryanna={},
+       Nino={},
+       Shirley={},
+       Lirmen={}
+   },
+   ToolTut={
+       Ryanna={'Send Ryanna out fishing if there\'s a fishing spot nearby','Throw out your grappling hook to find places\nyou cannot reach otherwise','Scan the area for secret passages'},
+       Nino={'Destroy weak walls','Kris Kros will make you ...','Summon monsters'},
+       Shirley={'Maybe Dolly can reach stuff you otherwise can\'t reach','Pass through certain obstacles','Turn off random encounters'},
+       Lirmen={'Burn baby burn','Ice ice baby','State of shock!'}
+   }
+}

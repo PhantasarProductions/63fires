@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.02.25
+  Version: 18.03.01
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -67,12 +67,44 @@ local map
 
 field.leader=1
 
+
 local function follow(tagslave,tagmaster)
 end
 
 function field:GetActive()
    return RPGParty[self.leader]
 end
+
+function field:SetTools()
+    local ch=self:GetActive()
+    for isit in each(is) do
+        if isit.toolid then
+           for i=1,3 do
+               if isit.toolid==i then
+                  if CVV("&TOOL."..ch:upper().."["..i.."].HAVE") then
+                     isit.icon=self.ToolPics[ch][i]
+                     isit.tut=self.ToolTut[ch][i]
+                     isit.cb=self.ToolFuncs[ch][i] or nothing
+                  else
+                     isit.icon='empty'
+                     isit.tut='???'
+                     isit.cb=nothing
+                  end
+               end             
+            end
+        end
+    end
+end
+
+function field:init()
+   CSay("Init field main routines: Tool Icon Strip")
+   self:SetTools()
+end
+
+function field:GiveTool(ch,i)
+   Done("&TOOL."..ch:upper().."["..i.."].HAVE")
+   self:SetTools()
+end      
 
 function field:GetActiveActor()
    return self.map.map.TagMap[self.map.layer]['PLAYER'..self.leader]
@@ -218,7 +250,7 @@ function field:objectclicked()
            local stx = math.floor(tstx/32)
            local sty = math.floor(tsty/32)
            if     prefixed(utag,"NPC_MT_") and act:WalkTo(stx,sty) then arrival={self.MTclick,self,utag,tag=tag} return true
-           elseif prefixed(utag,"NPC_")    and act:WalkTo(stx,sty) then arrival={map.script[utag],tag=tag} return true
+           elseif prefixed(utag,"NPC_")    and act:WalkTo(stx,sty) then arrival={map.script[tag],tag=tag} return true
            elseif prefixed(utag,"SAVE_")   and act:WalkTo(stx,sty) then arrival={GoSaveGame,"SAVE",tag=tag} return true
            elseif prefixed(utag,"CHEST_")  and act:WalkTo(stx,sty) then arrival={TreasureChest,tag,tag=tag} return true
            elseif prefixed(utag,"TRAVEL_") and act:WalkTo(stx,sty) then arrival={TravelMedal,self,tag,tag=tag} return true
