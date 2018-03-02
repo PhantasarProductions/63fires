@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.03.01
+  Version: 18.03.02
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -77,11 +77,12 @@ end
 
 function field:SetTools()
     local ch=self:GetActive()
+    CSay("Setting sidebar tools for: "..ch)
     for isit in each(is) do
-        if isit.toolid then
+        if isit.tool_id then
            for i=1,3 do
-               if isit.toolid==i then
-                  if CVV("&TOOL."..ch:upper().."["..i.."].HAVE") then
+               if isit.tool_id==i then
+                  if Var.TV("&TOOL."..ch:upper().."["..i.."].HAVE") then
                      isit.icon=self.ToolPics[ch][i]
                      isit.tut=self.ToolTut[ch][i]
                      isit.cb=self.ToolFuncs[ch][i] or nothing
