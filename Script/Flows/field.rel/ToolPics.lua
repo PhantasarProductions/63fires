@@ -34,6 +34,14 @@
  
 version: 18.03.01
 ]]
+
+local function fish()
+   -- $USE Script/Flows/Fishing.lua
+   CSay("Ryanna arrived at the fishing spot, so let's throw out a line, shall we?")
+   flow.set(fishing)
+end   
+   
+
 return {
    ToolPics={
        Ryanna={'Hengel','Grijphhaak','Scanner'},  -- Double h typo required or CRASH!
@@ -42,7 +50,18 @@ return {
        Lirmen={'Vlamstaff','Vriesstaf','Donderstaf'}  
    },
    ToolFuncs={
-       Ryanna={},
+       Ryanna={       
+            function() -- fish
+                CSay("User requested Ryanna to fish")
+                -- Is there a fishing spot? If not, let's ignore the request!
+                local map = field:GetMap()
+                if not map.map.TagMap[map.layer].Fish then return end
+                local act = field:GetActiveActor()
+                local fisha = map.map.TagMap[map.layer].Fish
+                local Fishx,Fishy=math.floor(fisha.COORD.x/32),math.floor(fisha.COORD.y/32)
+                if act:WalkTo(Fishx,Fishy) then field:SetArrival({fish}) end
+            end
+       },
        Nino={},
        Shirley={},
        Lirmen={}

@@ -35,8 +35,8 @@
   3. This notice may not be removed or altered from any source distribution.
 ]]
 local Fish,FishSpot -- It's done this way and not through $LOCALUSE in order to set my syntax highlight settings right ;)
--- $USE Script/Data/General/Fish
--- $USE Script/Data/General/FishSpot
+-- $USE Script/Data/General/Fish.lua
+-- $USE Script/Data/General/FishSpot.lua
 
 local fishinglevels = {
                           "Noob",
@@ -62,7 +62,9 @@ local fishscore = gamedata.fishscore
 local vis = {}
 
 
-
+function vis:odraw()
+   error("Sorry, can't fish yet!")
+end
 
 
 

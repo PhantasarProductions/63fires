@@ -264,6 +264,10 @@ function field:objectclicked()
     return ret
 end
 
+function field:SetArrival(a)
+    arrival=a
+end    
+
 function field:laykill(layer,objtag,perm)
     local killi
     for i,obj in ipairs(map.map.MapObjects[layer]) do
