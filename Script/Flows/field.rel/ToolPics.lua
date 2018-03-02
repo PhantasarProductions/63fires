@@ -32,13 +32,13 @@
   
  **********************************************
  
-version: 18.03.01
+version: 18.03.02
 ]]
 
 local function fish()
    -- $USE Script/Flows/Fishing.lua
    CSay("Ryanna arrived at the fishing spot, so let's throw out a line, shall we?")
-   flow.set(fishing)
+   flow.set(Fishing)
 end   
    
 
