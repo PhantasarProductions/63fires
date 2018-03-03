@@ -1,6 +1,6 @@
 --[[
   Fishing.lua
-  Version: 18.03.02
+  Version: 18.03.03
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -58,12 +58,78 @@ local fishinglevels = {
                           
 gamedata.fishscore = gamedata.fishscore or {}
 local fishscore = gamedata.fishscore
+gamedata.fishlevel = gamedata.fishlevel or 1
 
+local debug = false
+
+local stage
+local bed
+local countdown
 local vis = {}
+local chk={'Fish','Monster'}
+local shot
+local timer
 
+local function bite() 
+   
+end
+
+local stages = {
+      wacht = function()
+                local map = field:GetMap()
+                local Ryanna = map.map.TagMap[map.layer].PLAYER1
+                assert(Ryanna,"Where's Ryanna?")
+                Ryanna.TEXTURE="GFX/PlayerSprites/Ryanna.Fish.png"
+                countdown=countdown-1
+                if countdown<=0 then
+                   if bite() then stage='vecht' else stage='fail' end
+                   countdown=5
+                end
+                kthura.drawmap(map.map,map.layer,field.cam.x,field.cam.y)
+                if debug then love.graphics.print("CD: "..countdown,0,0) end
+                StatusBar(false,false)  
+                timer:wait(1)
+              end,
+      vecht = function()
+              end,
+      fail  = function()
+                 local map = field:GetMap()
+                 local Ryanna = map.map.TagMap[map.layer].PLAYER1
+                 assert(Ryanna,"Where's Ryanna?")
+                 Ryanna.TEXTURE="GFX/PlayerSprites/Ryanna.Miss.png"
+                 kthura.drawmap(map.map,map.layer,field.cam.x,field.cam.y)
+                 StatusBar(false,false)
+                 countdown=countdown-1
+                 if countdown<=0 then
+                    flow.set(field)
+                 end
+                 timer:wait(1)   
+              end,
+      catch = function()
+              end,
+      mster = function() 
+              end        
+              
+}
+function vis:LoadSpot(spot)
+   -- $USE libs/klok
+   bed = {}
+   assert(FishSpot[spot],"There is no fishing spot named: "..sval(spot))
+   for ft in each(chk) do
+       for i=1,10 do
+           local s = FishSpot[spot][i]
+           if s~="-" then bed[#bed+1]={catch=s,ctype=ft} end
+       end
+   end
+   stage='wacht'
+   countdown=5 --2500
+   timer=klok:CreateTimer()
+   shot=nil
+end
 
 function vis:odraw()
-   error("Sorry, can't fish yet!")
+   -- error("Sorry, can't fish yet!")
+   stages[stage]()
 end
 
 

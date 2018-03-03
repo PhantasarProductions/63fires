@@ -32,12 +32,13 @@
   
  **********************************************
  
-version: 18.03.02
+version: 18.03.03
 ]]
 
-local function fish()
+local function fish(spot)
    -- $USE Script/Flows/Fishing.lua
    CSay("Ryanna arrived at the fishing spot, so let's throw out a line, shall we?")
+   Fishing:LoadSpot(spot)
    flow.set(Fishing)
 end   
    
@@ -59,7 +60,7 @@ return {
                 local act = field:GetActiveActor()
                 local fisha = map.map.TagMap[map.layer].Fish
                 local Fishx,Fishy=math.floor(fisha.COORD.x/32),math.floor(fisha.COORD.y/32)
-                if act:WalkTo(Fishx,Fishy) then field:SetArrival({fish}) end
+                if act:WalkTo(Fishx,Fishy) then field:SetArrival({fish,fisha.DATA.SPOT}) end
             end
        },
        Nino={},
