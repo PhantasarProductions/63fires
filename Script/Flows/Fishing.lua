@@ -1,6 +1,6 @@
 --[[
   Fishing.lua
-  Version: 18.03.03
+  Version: 18.03.07
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -71,7 +71,22 @@ local shot
 local timer
 
 local function bite() 
-   
+   local rand = love.math.random
+   local skill = Var.G('%SKILL')
+   local fi = rand(1,math.floor(#bed*(skill*.75))+1)
+   if fi>#bed then return end
+   local fishid=bed[fi].catch
+   local fish=Fish[fishid]
+   local rate ; 
+   --CSay(serialize('bed',bed)) -- debug
+   if bed[fi].ctype=='Monster' then 
+      rate=0 
+   else 
+      assert(fish,"No fish for record: "..sval(fishid))
+      rate=math.floor(fish.Rate*(1+(skill/10)))      
+   end
+   local rnd = love.math.random(1,gamedata.fishlevel)
+   return rnd>rate or rnd==15
 end
 
 local stages = {
@@ -91,6 +106,7 @@ local stages = {
                 timer:wait(1)
               end,
       vecht = function()
+                error("No fight routine yet!")
               end,
       fail  = function()
                  local map = field:GetMap()
@@ -117,7 +133,7 @@ function vis:LoadSpot(spot)
    assert(FishSpot[spot],"There is no fishing spot named: "..sval(spot))
    for ft in each(chk) do
        for i=1,10 do
-           local s = FishSpot[spot][i]
+           local s = FishSpot[spot][ft..i]
            if s~="-" then bed[#bed+1]={catch=s,ctype=ft} end
        end
    end

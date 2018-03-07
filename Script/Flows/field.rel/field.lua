@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.03.02
+  Version: 18.03.07
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -77,6 +77,7 @@ end
 
 function field:SetTools()
     local ch=self:GetActive()
+    if not ch then return end
     CSay("Setting sidebar tools for: "..ch)
     for isit in each(is) do
         if isit.tool_id then
