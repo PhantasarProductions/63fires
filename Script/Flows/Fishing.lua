@@ -64,11 +64,16 @@ local debug = false
 
 local stage
 local bed
+local caught
 local countdown
 local vis = {}
 local chk={'Fish','Monster'}
 local shot
 local timer
+local range
+local fightcount
+local pointer = LoadImage('GFX/General/FishPointer.png'); QHot(pointer,'cb')
+local pointx,pointd
 
 local function bite() 
    local rand = love.math.random
@@ -81,16 +86,25 @@ local function bite()
    --CSay(serialize('bed',bed)) -- debug
    if bed[fi].ctype=='Monster' then 
       rate=0 
+      range=80+(skill*5)
    else 
       assert(fish,"No fish for record: "..sval(fishid))
-      rate=math.floor(fish.Rate*(1+(skill/10)))      
+      rate=math.floor(fish.Rate*(1+(skill/10)))
+      range=(10-skill)+(gamedata.fishlevel-rate)      
    end
    local rnd = love.math.random(1,gamedata.fishlevel)
+   caught=bed[fi]
    return rnd>rate or rnd==15
 end
 
+local fightchain = {
+     Fish =    {[true]='catch',[false]='fail'},
+     Monster = {[true]='mster',[false]='fail'}
+}
+
 local stages = {
       wacht = function()
+                local skill = Var.G('%SKILL')
                 local map = field:GetMap()
                 local Ryanna = map.map.TagMap[map.layer].PLAYER1
                 assert(Ryanna,"Where's Ryanna?")
@@ -99,6 +113,8 @@ local stages = {
                 if countdown<=0 then
                    if bite() then stage='vecht' else stage='fail' end
                    countdown=5
+                   fightcount=280/skill
+                   flushkeys()                   
                 end
                 kthura.drawmap(map.map,map.layer,field.cam.x,field.cam.y)
                 if debug then love.graphics.print("CD: "..countdown,0,0) end
@@ -106,7 +122,36 @@ local stages = {
                 timer:wait(1)
               end,
       vecht = function()
-                error("No fight routine yet!")
+                -- $USE Script/Subs/screen
+                --error("No fight routine yet!")
+                local map = field:GetMap()
+                kthura.drawmap(map.map,map.layer,field.cam.x,field.cam.y)
+                StatusBar(false,false)
+                local tr = {50-(range/2),50+(range/2)}
+                local bx = math.floor(screen.w/2)-50
+                local by = math.floor(screen.h/2)
+                local font=GetBoxTextFont()
+                color(0,0,140,180)
+                Rect(0,0,screen.w,screen.h)
+                color(100,100,100)
+                Rect(bx,by,100,25)
+                color(180,100,0)
+                Rect(bx+tr[1],by,range,25)
+                color(0,180,255)
+                itext.setfont(font)
+                itext.write("PLAYER vs FISH",bx,by-20,2,1)
+                white()
+                pointd = pointd or 4
+                pointx = (pointx or 0) + pointd
+                if pointx<=0   then pointd= 4 end
+                if pointx>=100 then pointd=-4 end
+                DrawImage(pointer,bx+pointx,by)
+                itext.write("Time: "..fightcount,bx,by+100,2,2)
+                fightcount = fightcount - 1
+                if mouseclick(1) or fightcount<=0 then
+                   stage = fightchain[caught.ctype][pointx>tr[1] and pointx<tr[2]]                   
+                end
+                timer:wait(.002)
               end,
       fail  = function()
                  local map = field:GetMap()
@@ -122,8 +167,10 @@ local stages = {
                  timer:wait(1)   
               end,
       catch = function()
+                error("You caught a "..caught.catch..", but catching itself is not yet scripted")
               end,
       mster = function() 
+                error("Monster catch not scripted yet")
               end        
               
 }
