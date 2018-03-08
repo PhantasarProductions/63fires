@@ -73,6 +73,15 @@ For keeping this very repository up-to-date ;)
 ## MPlayer
 For having some music when I don't need to test the game and to quickly test audio files.
 
+## Lua development tools (in Eclipse)
+
+For editing the Lua code
+
+## Geany
+
+For editing the Go code and other kinds of text files!
+
+
 # Software I wrote myself
 
 ## Ryanna
