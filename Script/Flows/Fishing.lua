@@ -1,6 +1,6 @@
 --[[
   Fishing.lua
-  Version: 18.03.07
+  Version: 18.03.08
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -58,7 +58,8 @@ local fishinglevels = {
                           
 gamedata.fishscore = gamedata.fishscore or {}
 local fishscore = gamedata.fishscore
-gamedata.fishlevel = gamedata.fishlevel or 1
+gamedata.fishlevel  = gamedata.fishlevel or 1
+gamedata.fishcaught = gamedata.fishcaught or 0
 
 local debug = false
 
@@ -96,6 +97,29 @@ local function bite()
    caught=bed[fi]
    return rnd>rate or rnd==15
 end
+
+local function extracatchdata()
+   local rand = love.math.random
+   local xcd = {}
+   xcd.fish = Fish[caught.catch]
+   xcd.fishcode = left(Fish[caught.catch].Fish,#Fish[caught.catch].Fish-4) -- .lua removal, ya know...
+   local got,fishname = ItemGive(xcd.fishcode)
+   xcd.overloaded = not got
+   xcd.name=fishname
+   xcd.length=rand(xcd.fish.MinLen,xcd.fish.MaxLen)
+   xcd.score=math.ceil(xcd.length/10)*xcd.fish.ScoreByDm
+   xcd.new=not gamedata.fishscore[caught.catch]
+   if (gamedata.fishscore[caught.catch] or 0)<xcd.score then
+      xcd.record = not xcd.new
+      gamedata.fishscore[caught.catch] = xcd.score
+   end
+   local total=0
+   for _,t in pairs(gamedata.fishscore) do total = total + t end
+   while gamedata.fishlevel<15 and total>2^(gamedata.fishlevel+1) do gamedata.fishlevel=gamedata.fishlevel+1 end
+   gamedata.fishcaught = gamedata.fishcaught + 1
+   xcd.total=total   
+   return xcd
+end   
 
 local fightchain = {
      Fish =    {[true]='catch',[false]='fail'},
@@ -149,7 +173,8 @@ local stages = {
                 itext.write("Time: "..fightcount,bx,by+100,2,2)
                 fightcount = fightcount - 1
                 if mouseclick(1) or fightcount<=0 then
-                   stage = fightchain[caught.ctype][pointx>tr[1] and pointx<tr[2]]                   
+                   stage = fightchain[caught.ctype][pointx>tr[1] and pointx<tr[2]]    
+                   flushkeys()               
                 end
                 timer:wait(.002)
               end,
@@ -167,7 +192,40 @@ local stages = {
                  timer:wait(1)   
               end,
       catch = function()
-                error("You caught a "..caught.catch..", but catching itself is not yet scripted")
+                local cfish=Fish[caught.caught]
+                -- $USE Script/Subs/screen
+                --error("No fight routine yet!")
+                local map = field:GetMap()
+                local Ryanna = map.map.TagMap[map.layer].PLAYER1
+                Ryanna.TEXTURE="GFX/PlayerSprites/Rynna.Catch.png"
+                kthura.drawmap(map.map,map.layer,field.cam.x,field.cam.y)
+                StatusBar(false,false)
+                local font=GetBoxTextFont()
+                color(35,70,140,180)
+                Rect(0,0,screen.w,screen.h)
+                caught.xdata = caught.xdata or extracatchdata()
+                color(180,255,0,255) itext.write('CATCH',5,5)
+                local sdy=35
+                local function sd(f,d) 
+                    color(255,255,255) itext.write(f,5,sdy)
+                    color(  0,180,255) itext.write(d,screen.w/2,sdy)
+                    sdy=sdy+30
+                end
+                if caught.xdata.new then color(255,180,0) itext.write("NEW!",screen.w-5,sdy,1,0) end
+                sd('Fish:'  ,caught.xdata.name)                
+                sd('Length:',caught.xdata.length.."cm")
+                sd('Average:',caught.xdata.fish.MinLen.."cm - "..caught.xdata.fish.MaxLen.. "cm")
+                if caught.xdata.record then color(255,180,0) itext.write("NEW RECORD!",screen.w-5,sdy,1,0) end
+                sd("Score:", caught.xdata.score)
+                sd("Total:", caught.xdata.total)
+                sd("Caught:",gamedata.fishcaught)
+                sd("Rank:",fishinglevels[gamedata.fishlevel])
+                --error("You caught a "..caught.catch..", but catching itself is not yet scripted")
+                if caught.xdata.overloaded then
+                   sd("Note:","The fish is calculated in your fish statistics, but")
+                   sd("","as you've reached the max amount for this item it's NOT added to your inventory.")
+                end
+                if mousehit(1) then flow.set(field) end
               end,
       mster = function() 
                 error("Monster catch not scripted yet")
