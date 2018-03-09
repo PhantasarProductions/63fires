@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.01.20
+  Version: 18.03.09
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -77,6 +77,9 @@ fld.modes = {
     end,
     
     ability = function( x,w,ch )
+       iaawin.x=x
+       iaawin.w=w
+       local a = SelectAbility( 'field',ch,nil,iaawin )
     end
 
 }
