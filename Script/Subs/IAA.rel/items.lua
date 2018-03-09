@@ -1,6 +1,6 @@
 --[[
   items.lua
-  Version: 18.03.08
+  Version: 18.03.09
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -45,7 +45,7 @@ local mayshow = {
                       end,    
                       -- 2 = Offensive
                       function (item)
-                          return item["ITM_Type"] == "Consumable" and  item.Targe~='1A' and item.Target~='AA'
+                          return item["ITM_Type"] == "Consumable" and  item.Target~='1A' and item.Target~='AA'
                       end,    
                       -- 3 = Accesoiry
                       function (item)
@@ -72,13 +72,22 @@ function itemsm:selectitems(env,x,y,aclick,win)
      self.tab[env]=self.tab[env] or 1
      local ot=self.tab[env]
      local owt=allowtabs[ot]
-     invheaders[ot] = invheaders[ot] or LoadImage("GFX/Inventory_Head/"..ot..".png")
+     invheaders[ot] = invheaders[ot] or LoadImage("GFX/Inventory_Head/"..ot..".png"); QHot(invheaders[ot],"ct")
      pm[ot]=pm[ot] or 0
      p [ot]=p [ot] or 1
      local ip = 0
      local pmx = math.floor((win.h-60)/30)
      local py=35
      local helptext
+     white()
+     DrawImage(invheaders[ot],win.x+(win.w/2),win.y+3)
+     if click(win.x,win.y,win.h,35,aclick,"Click here to see other pages") then
+        self.tab[env] = self.tab[env] + 1
+        if self.tab[env]>#mayshow then self.tab[env]=1 end
+        ot = self.tab[env]
+        pm[ot]=pm[ot] or 0
+        p [ot]=p [ot] or 1
+     end
      for icode,num in spairs(gamedata.inventory) do
          local item = self:ItemGet(icode)
          if mayshow[ot](item) then
