@@ -1,6 +1,6 @@
 --[[
   items.lua
-  Version: 18.03.09
+  Version: 18.03.10
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -83,7 +83,7 @@ function itemsm:selectitems(env,x,y,aclick,win)
      DrawImage(invheaders[ot],win.x+(win.w/2),win.y+3)
      if click(win.x,win.y,win.h,35,aclick,"Click here to see other pages") then
         self.tab[env] = self.tab[env] + 1
-        if self.tab[env]>#mayshow then self.tab[env]=1 end
+        if self.tab[env]>#allowtabs[env] then self.tab[env]=1 end
         ot = self.tab[env]
         pm[ot]=pm[ot] or 0
         p [ot]=p [ot] or 1
@@ -97,9 +97,9 @@ function itemsm:selectitems(env,x,y,aclick,win)
             end
             white()
             love.graphics.setFont(fontMiddel)
-            love.graphics.print(item.Title,win.x+10,py)
+            love.graphics.print(item.Title,win.x+10,win.y+py)
             color(0,180,255)
-            diginum(num,win.x+win.w-20,py)
+            diginum(num,win.x+win.w-20,win.y+py)
             if click(win.x,win.y+py,win.w,30,aclick,helptext,nothing) then return icode end
             py = py + 35 -- Must be last before the "end" of the 'mayshow' if!!!
          end
@@ -115,6 +115,15 @@ function itemsm:ItemGive(itemcode,amount)
        gamedata.inventory[ic] = (gamedata.inventory[ic] or 0) + (amount or 1)
        if gamedata.inventory[ic]>=self.itemmax[skill] then gamedata.inventory[ic] = self.itemmax[skill] end
        return true,item.Title
+end
+
+function itemsm:ItemRemove(itemcode,amount,crashcheck)
+  local ic=itemcode:upper()
+  local am=amount or 1
+  assert(not( crashcheck and (gamedata.inventory[ic] or 0) < am ),'Trying to remove items that are not there') 
+  if not gamedata.inventory[ic] then return end
+  gamedata.inventory[ic] = gamedata.inventory[ic] - am
+  if gamedata.inventory[ic]<=0 then gamedata.inventory[ic]=nil end  
 end
 
 function itemsm:TreasureChest(tag)

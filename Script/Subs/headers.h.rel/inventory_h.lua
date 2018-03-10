@@ -1,6 +1,6 @@
 --[[
   inventory_h.lua
-  Version: 18.01.23
+  Version: 18.03.10
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -55,6 +55,11 @@ function ItemGive(icode,amount)
     InitIAA()
     return IAA:ItemGive(icode,amount)
 end
+
+function ItemRemove(icode,amount)
+    InitIAA()
+    IAA:ItemRemove(icode,amount)
+end RemoveItem=ItemRemove
 
 function TreasureChest(tag)
     InitIAA()

@@ -1,6 +1,6 @@
 --[[
   flw_execution.lua
-  Version: 18.02.07
+  Version: 18.03.10
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -56,6 +56,7 @@ function beul:esf_prewait()
      end
      oldprewait=nil
      self.esf='pose'
+     if self.nextmove.removeitem then RemoveItem(self.nextmove.removeitem) end
 end
 
 local poses = {
@@ -107,10 +108,11 @@ local poses = {
                return                           
             end
             if pose.stage==2 then
+               pose.frame = pose.frame or 1
                pose.posetick = (pose.posetick or 0) + 1
                if pose.posetick<5 then return end
                pose.posetick=0
-               self.inaction,self.acting,self.heroframe = myhero.tag,"Attack",pose.frame
+               self.inaction,self.acting,self.heroframe = myhero.tag,"Attack",pose.frame 
                pose.frame = pose.frame + 1
                myhero.images.Attack = myhero.images.Attack or self:LoadHeroImage(myhero.tag,'Attack')
                if pose.frame>#myhero.images.Attack.images then 
@@ -121,6 +123,10 @@ local poses = {
             end 
             if pose.stage==10 then
                self.inaction,self.acting,self.heroframe = myhero.tag,"IDLE",1
+               if not pose.allowjump then
+                  self.esf = "backtoidle"
+                  return
+               end
                myhero.x = myhero.rx - (pose.sx*pose.step)                              
                myhero.y = myhero.ry - (pose.sy*pose.step)
                pose.step = pose.step - 1
