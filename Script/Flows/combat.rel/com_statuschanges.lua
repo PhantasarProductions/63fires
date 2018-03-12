@@ -1,6 +1,6 @@
 --[[
   com_statuschanges.lua
-  Version: 18.02.09
+  Version: 18.03.12
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -77,5 +77,11 @@ function csc:StatusPostDraw()
     self:StatusTDRAW('post')
 end         
 
+function csc:StatusProperty(ch,prop)
+    for _,std in self:statuses(ch) do
+        if std[prop] then return true end
+    end
+    return false
+end
 
 return csc

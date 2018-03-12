@@ -1,6 +1,6 @@
 --[[
   flw_execution.lua
-  Version: 18.03.10
+  Version: 18.03.12
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -112,11 +112,11 @@ local poses = {
                pose.posetick = (pose.posetick or 0) + 1
                if pose.posetick<5 then return end
                pose.posetick=0
-               self.inaction,self.acting,self.heroframe = myhero.tag,"Attack",pose.frame 
+               self.inaction,self.acting,self.heroframe = myhero.tag,item.Stance,pose.frame 
                pose.frame = pose.frame + 1
-               myhero.images.Attack = myhero.images.Attack or self:LoadHeroImage(myhero.tag,'Attack')
-               if pose.frame>#myhero.images.Attack.images then 
-                  pose.frame=#myhero.images.Attack.images
+               myhero.images[item.Stance] = myhero.images[item.Stance] or self:LoadHeroImage(myhero.tag,item.Stance)
+               if pose.frame>#myhero.images[item.Stance].images then 
+                  pose.frame=#myhero.images[item.Stance].images
                   self.esf="spellani"
                end
             return      
@@ -223,6 +223,7 @@ local poses = {
 function beul:esf_pose()
    local myexe = self.fighters[self.nextmove.executor]
    --itext.write("posing: "..sval(myexe.group),5,5) --- Debug line
+   TrickAssert(myexe,"myexe is nil",{executor=self.nextmove.executor})
    TrickAssert(poses[myexe.group],"I cannot pose non-existent group:"..sval(myexe.group),myexe)
    poses[myexe.group](self)
 end
@@ -242,7 +243,7 @@ function beul:true_perform(tag,targettag)
    -- Revive   
    if item.Revive then
       for st,stdat in pairs(warrior.statuschanges) do
-          if heal.Reverse then self:KillFighter(tag) return end
+          if stdat.undead then self:KillFighter(tag) return end
       end
       if rpg:Points(tag,'HP').Have==0 then
          rpg:Points(tag,'HP').Have=1
@@ -259,6 +260,18 @@ function beul:true_perform(tag,targettag)
    end
    for i,cs in ipairs(cure) do TagMessage(tag,"Cure: "..cs,180,255,0,-(i*20)) hit=true end
    -- Heal
+   -- $USE Script/Subs/HealCalc
+   local heal = HealCalc(item,tag,targettag)
+   if heal>0 and (not self:StatusProperty(targettag,'blockheaing')) then
+      if self:StatusProperty(targettag,'undead') then
+         self:Hurt(targettag,heal)
+         hit=true
+      else
+         self:TagMessage(targettag,heal,0,200,0)
+         rpg:Points(targettag,"HP"):Inc(heal)
+         hit=true
+      end    
+   end 
    -- Attack
    local attackhit = item.Attack>0
    if item.Attack_AllowAccuracy then attackhit=attackhit and math.random(0,99)<rpg:Stat(tag      ,"END_Accuracy") end
