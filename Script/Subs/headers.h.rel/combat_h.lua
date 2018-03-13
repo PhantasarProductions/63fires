@@ -1,6 +1,6 @@
 --[[
   combat_h.lua
-  Version: 18.02.23
+  Version: 18.03.13
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -47,6 +47,8 @@ local function SC_ANIM()
        love.graphics.present()
        love.timer.sleep(.03)
    end
+   love.graphics.clear( )
+   love.graphics.present()
    love.graphics.clear( )
    love.graphics.present()
 end
