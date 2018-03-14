@@ -126,7 +126,7 @@ function foecom:LoadFoes()
   self.foedrawordertag = {}
   self.foedraworder = {}
   local rows = math.floor((#self.combatdata.foes-1)/3)
-  -- Compilethe foe data into game usable data
+  -- Compile the foe data into game usable data
   for i,foefile in ipairs(self.combatdata.foes) do
       local tag = self:CompileFoe(i,foefile)
       local myfoe = self.foes[tag]
