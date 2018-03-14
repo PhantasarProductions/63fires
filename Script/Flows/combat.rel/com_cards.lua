@@ -204,6 +204,7 @@ function ccards:DrawCards()
         Cards[i].x = Cards[i].x or (i*-100)
         Cards[i].y = Cards[i].y or acty
         if Cards[i].x<wantx     then Cards[i].x = Cards[i].x + 2 end
+        if Cards[i].x<wantx*.85 then Cards[i].x = Cards[i].x + 4 end
         if Cards[i].x<wantx*.75 then Cards[i].x = Cards[i].x + 2 end
         if Cards[i].x<wantx*.50 then Cards[i].x = Cards[i].x + 2 end
         if Cards[i].x<wantx*.25 then Cards[i].x = Cards[i].x + 2 end
