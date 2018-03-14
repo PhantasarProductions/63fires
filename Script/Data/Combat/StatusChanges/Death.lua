@@ -51,7 +51,7 @@ local  fd = { Hero = function(self,chtag)
                 for pch in each(RPGParty) do 
                     rate = love.math.random(exprandomrates[skill][1],exprandomrates[skill][2])/100
                     local get = math.ceil(exp/rate)
-                    if get>0 and rpg:Stat(pch,"Level")<Var.G("%LEVELCAP") then
+                    if get>0 and rpg:Stat(chtag,"Level")<Var.G("%LEVELCAP") then
                        rpg:DecStat(pch,"Experience",get)
                        self:TagMessage(pch,get.." experience points",100,180,0)
                     end
