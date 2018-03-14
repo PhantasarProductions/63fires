@@ -1,6 +1,6 @@
 --[[
   flw_idle.lua
-  Version: 18.02.09
+  Version: 18.03.14
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -40,10 +40,15 @@ local zooi = {  }
 function zooi:flow_idle()
       local firstcard=self.Cards[1]
       local tag=self:CardTag(firstcard.data)
+      local ctag
+      if self.Cards[1].data then ctag=self.Cards[1].data.tag else ctag="" end
       self:DidAnyoneWin()
       if tag=="BACK" then
          return self:RemoveFirstCard()
       end     
+      if (prefixed(tag,"HERO") or prefixed(tag,"FOE")) and (rpg:Points(ctag,'HP').Have==0 or self:StatusProperty(ctag,'skipturn')) then
+         return self:RemoveFirstCard()
+      end 
       if prefixed(tag,"HERO") then
          self.flow = firstcard.altplayinput or "playerinput"
       end
