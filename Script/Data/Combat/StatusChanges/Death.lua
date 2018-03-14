@@ -1,6 +1,6 @@
 --[[
   Death.lua
-  Version: 18.02.25
+  Version: 18.03.14
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -58,6 +58,9 @@ local  fd = { Hero = function(self,chtag)
                 end
                 -- item drops
                 -- money if no items
+                -- update bestiary
+                gamedata.bestiary = gamedata.bestiary or {}
+                gamedata.bestiary[chtag] = (gamedata.bestiary[chtag] or 0) + 1
                 -- cleanup
                 self.fighters[chtag]=nil
                 self.foe[chtag]=nil                
