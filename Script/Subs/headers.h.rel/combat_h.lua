@@ -1,6 +1,6 @@
 --[[
   combat_h.lua
-  Version: 18.03.13
+  Version: 18.03.15
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -35,6 +35,13 @@
   3. This notice may not be removed or altered from any source distribution.
 ]]
 
+-- $USE libs/qgfx
+
+local bossfont = {
+     head = love.graphics.newFont(JCR_D('fonts/oldlondon.ttf'),20),
+     boss = love.graphics.newFont(JCR_D('fonts/oldlondon.ttf'),40)
+}
+
 local function SC_ANIM() 
    -- $USE Script/Subs/screen
    local screenshot = LoadImage(love.graphics.newImage(love.graphics.newScreenshot( ))); HotCenter(screenshot)
@@ -50,7 +57,7 @@ local function SC_ANIM()
    love.graphics.clear( )
    love.graphics.present()
    love.graphics.clear( )
-   love.graphics.present()
+   love.graphics.present()   
 end
 
 function StartCombat(data,noanim)
@@ -67,3 +74,25 @@ function FoeImage(imgfile)
    LoadedFoeImages[ifile] = LoadedFoeImages[ifile] or LoadImage(imgfile)
    return LoadedFoeImages[ifile]
 end   
+
+function BossFight(head,boss,data,noanim)
+   -- $USE Script/Subs/screen
+   local screenshot = LoadImage(love.graphics.newImage(love.graphics.newScreenshot( ))); --HotCenter(screenshot)
+   local red=255
+   local ihead = Text2Img(head,bossfont.head,'cb')
+   local iboss = Text2Img(boss,bossfont.boss,'ct')
+   for i=255,0,-1 do
+       love.graphics.clear( )
+       local alpha=255-i
+       red = red - .5
+       color(math.ceil(red),i,i,255)
+       DrawImage(screenshot,0,0)
+       color(255,0,0,alpha)
+       DrawImage(ihead,screen.w/2,(screen.h/2)-20)
+       DrawImage(iboss,screen.w/2,(screen.h/2)+20)
+       love.graphics.present()
+       love.timer.sleep(.06)       
+   end
+   love.timer.sleep(2)
+   StartCombat(data,noanim)    
+end
