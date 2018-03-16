@@ -94,5 +94,6 @@ function BossFight(head,boss,data,noanim)
        love.timer.sleep(.03)       
    end
    love.timer.sleep(4)
+   data.music = data.music or 'Music/Boss'
    StartCombat(data,noanim)    
 end
