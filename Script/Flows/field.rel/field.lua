@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.03.07
+  Version: 18.03.16
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -217,6 +217,10 @@ function field:LoadMap(KthuraMap,layer)
        console.writeln(map.map.Meta.Music,0,255,255)
        omusic.play(map.map.Meta.Music) 
     end
+    if map.script.Boss then
+       CSay("= Boss event link")
+       self:ZA_Enter('Boss',map.script.Boss)
+    end       
     CSay("= OnLoad")
     ;(map.script.onload or nothing)()
     self.map=map    

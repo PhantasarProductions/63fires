@@ -1,6 +1,6 @@
 --[[
   combat_h.lua
-  Version: 18.03.15
+  Version: 18.03.16
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -39,7 +39,7 @@
 
 local bossfont = {
      head = love.graphics.newFont(JCR_D('fonts/oldlondon.ttf'),20),
-     boss = love.graphics.newFont(JCR_D('fonts/oldlondon.ttf'),40)
+     boss = love.graphics.newFont(JCR_D('fonts/oldlondon.ttf'),50)
 }
 
 local function SC_ANIM() 
@@ -91,8 +91,8 @@ function BossFight(head,boss,data,noanim)
        DrawImage(ihead,screen.w/2,(screen.h/2)-20)
        DrawImage(iboss,screen.w/2,(screen.h/2)+20)
        love.graphics.present()
-       love.timer.sleep(.06)       
+       love.timer.sleep(.03)       
    end
-   love.timer.sleep(2)
+   love.timer.sleep(4)
    StartCombat(data,noanim)    
 end

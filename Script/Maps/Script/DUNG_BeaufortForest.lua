@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.03.01
+version: 18.03.16
 ]]
 local bos = {}
 
@@ -52,5 +52,16 @@ function bos:NPC_FishingPole()
    field:kill('NPC_FishingPole',true) 
 end
 
+function bos:Boss()
+    if Done("&DONE.BOSS.ULTRABLOB") then return end
+    MapText('PRE_BOSS')
+    field:kill('BossActor',true)
+    BossFight("Very big slime","Ultra-Blob",
+         {
+           foes={'boss/ultraslime'},
+           arena="forest_spar"
+    })
+
+end
 
 return bos
