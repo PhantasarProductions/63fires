@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.03.16
+version: 18.03.29
 ]]
 local bos = {}
 
@@ -59,9 +59,9 @@ function bos:Boss()
     BossFight("Very big slime","Ultra-Blob",
          {
            foes={'boss/ultraslime'},
-           arena="forest_spar"
+           arena="forest_spar",
+           postfoecompiler = function() rpg:Points('FOE_1','HP').Minimum=rpg:Points('FOE_1','HP').Maximum CSay('Invicibility turned on') end
     })
-
 end
 
 return bos

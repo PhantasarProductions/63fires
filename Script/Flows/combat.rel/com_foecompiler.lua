@@ -1,6 +1,6 @@
 --[[
   com_foecompiler.lua
-  Version: 18.03.14
+  Version: 18.03.29
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -120,6 +120,7 @@ function foecom:CompileFoe(i,foefile)
 end
 
 function foecom:LoadFoes()
+  -- $USE libs/nothing
   self.fighters = self.fighters or {}
   self.foes={}
   self.foe=self.foes
@@ -144,6 +145,7 @@ function foecom:LoadFoes()
       self.foedrawordertag [ right("00000"..myfoe.dominance,5).."."..right("00000"..myfoe.y,5).."."..right("00000"..myfoe.x,5) ] = myfoe      
   end
   for k,myfoe in spairs(self.foedrawordertag) do self.foedraworder[#self.foedraworder+1]=myfoe end
+  (self.combatdata.postfoecompiler or nothing)()
 end
 
 function foecom:DrawFoe(myfoe,targeted,acting)

@@ -105,6 +105,7 @@ Music/Ori/Dewdrop Fantasy.mp3 => Music/Dungeon/Forest1.mp3
 [List:ALIASES]
 GFX/PlayerSprites/Ryanna.West.jpbf/000000000.png => GFX/Combat/Fighters/Hero/Ryanna_IDLE.png
 GFX/Combat/Fighters/Hero/Demon_Ryanna_Attack.png => GFX/Combat/Fighters/Hero/Demon_Ryanna_Cast.png
+GFX/Skills/3.png => GFX/Portret/Ryanna/TotalFury.png
 
 [List:DYNAMICJCR.DARWIN]
 /VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/buildmusic/63FOLD.Music.jcr
