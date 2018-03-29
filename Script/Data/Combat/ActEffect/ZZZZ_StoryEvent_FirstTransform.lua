@@ -34,3 +34,7 @@
  
 version: 18.03.29
 ]]
+
+rpg:Points('Ryanna','HP').Have=1
+MapText('WRATH')
+Award('TRANSFORM')
