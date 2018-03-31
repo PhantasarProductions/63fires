@@ -1,6 +1,6 @@
 --[[
   flw_execution.lua
-  Version: 18.03.12
+  Version: 18.03.31
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -281,7 +281,14 @@ function beul:true_perform(tag,targettag)
       self:Strike({exe=tag,tar=targettag,atk=rpg:Stat(tag,"END_"..item.Attack_AttackStat),def=rpg:SafeStat(tag,"END_"..item.Attack_DefenseStat),elem=item.Attack_Element,amd=item.Attack/100,allowcrit=item.Attack_AllowCritical})
    end   
    -- Add Fighter Cards
-   -- Script   
+   -- Script 
+   local effectscript
+   if item.EffectScript and item.EffectScript~="" then
+      effectscript = Use('Script/Data/Combat/ActEffect/'..item.EffectScript..".lua")
+      assert(effectscript,"Error on loading "..item.EffectScript.." effect")
+      assert(type(effectscript)=='function',"Effect "..item.EffectScript.." is not a function but a "..type(effectscript))
+      hit = hit or effectscript(item.EffectScript_Arg)
+   end     
    -- Cause Status Changes
    -- Allowing counter attack
    -- Not miss?
