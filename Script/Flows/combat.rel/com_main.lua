@@ -1,6 +1,6 @@
 --[[
   com_main.lua
-  Version: 18.02.09
+  Version: 18.03.31
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -68,12 +68,18 @@ function cmain:TagMessage(tag,message,r,g,b,ymod)
     MiniMSG(message,{r or 255,g or 255, b or 255},{x,y})
 end
 
-function cmain:odraw()
+function cmain:basedraw()
       self:DrawArena()
       self:DrawCards()
       self:StatusPreDraw()
       self:DrawFoes(self.targeted,self.inaction)
       self:DrawHeroes(self.targeted,self.inaction,self.acting,self.heroframe)      
+end
+
+cmain.BoxTextBack = cmain.basedraw
+
+function cmain:odraw()
+      self:basedraw()
       self.flow = self.flow or "idle"
       assert(self["flow_"..self.flow],"No combat flow function for "..self.flow)
       self['flow_'..self.flow](self)
