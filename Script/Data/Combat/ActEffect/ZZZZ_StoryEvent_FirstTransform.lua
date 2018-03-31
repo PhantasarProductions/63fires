@@ -32,9 +32,12 @@
   
  **********************************************
  
-version: 18.03.29
+version: 18.03.31
 ]]
 
-rpg:Points('Ryanna','HP').Have=1
-MapText('WRATH')
-Award('TRANSFORM')
+return function(a)
+  rpg:Points('Ryanna','HP').Have=1
+  MapText('WRATH')
+  Award('TRANSFORM')
+  return true
+end  
