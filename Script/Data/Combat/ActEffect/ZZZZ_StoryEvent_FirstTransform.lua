@@ -32,12 +32,14 @@
   
  **********************************************
  
-version: 18.03.31
+version: 18.04.06
 ]]
 
-return function(a)
+return function(s,a)
   rpg:Points('Ryanna','HP').Have=1
   MapText('WRATH')
   Award('TRANSFORM')
+  gamedata.transform = {'Lucifer'}
+  s:RyannaTransform('Lucifer')
   return true
 end  
