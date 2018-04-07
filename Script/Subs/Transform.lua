@@ -34,7 +34,7 @@
  
 version: 18.04.06
 ]]
-local megatron
+local megatron={}
 
 local function makehp(tag,data,skill)
     data.HPMod = data.HPMod or 6
