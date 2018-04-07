@@ -43,7 +43,7 @@ function csc:statuses(chtag)
      local keys = {}
      local values = {}
      local si = 0
-     TrickAssert(self.fighters[chtag],"character error",{tag=chtag,fighters=self.fighters})
+     TrickAssert(self.fighters[chtag],"character error",{tag=chtag}) --,fighters=self.fighters})
      self.fighters[chtag].statuschanges = self.fighters[chtag].statuschanges or {} 
      for k,v in spairs(self.fighters[chtag].statuschanges) do
          si = si + 1

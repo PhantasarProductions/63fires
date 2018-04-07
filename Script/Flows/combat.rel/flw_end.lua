@@ -1,6 +1,6 @@
 --[[
   flw_end.lua
-  Version: 18.02.10
+  Version: 18.04.07
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -103,6 +103,11 @@ function einde:flow_terminate_combat()
     for ch in each(kill) do rpg:DelCharacter(ch) CSay("CHAR."..ch.." removed from memory") end 
     omusic.pop()
     self.me=nil
+    for i,ch in pairs(RPGParty) do
+        for st in self.statuses(ch) do
+            CSay("Status end battle sequence in status "..st.." for character "..ch)
+        end
+    end        
     console.write  ('Unloading: ',255,255,0)
     console.writeln('Combat'     ,0,180,255)
     ClearTable(self)

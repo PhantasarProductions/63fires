@@ -1,6 +1,6 @@
 --[[
   com_transform.lua
-  Version: 18.04.06
+  Version: 18.04.07
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -42,8 +42,26 @@
 local trans = {}
 
 
-local function trans_do(form)
-    TransMake(form)    
+local function trans_do(self,form)
+       TransMake(form)    
+       local tag = 'DEMON_RYANNA_'..form
+       local mytrans = {}
+       local myhero = self.fighters.Ryanna
+       self.fighters[tag]=mytrans
+       self.RyannaHuman=myhero
+       self.fighters.Ryanna=nil
+       mytrans.tag=tag
+       mytrans.group='Hero'       
+       mytrans.images = {}
+       mytrans.x=myhero.x -- math.floor(midx + ((midx/(#RPGParty+1))*i) )
+       mytrans.y=myhero.y -- math.floor(midy + ((midy/(#RPGParty+1))*i) )
+       mytrans.statuschanges = {Transformed=Use('Script/Data/Combat/StatusChanges/Transformed.lua')}
+       self.hero.Ryanna=nil
+       self.hero[tag]=mytrans
+       rpg:SetParty(1,tag)
+       CSay("Cards redo!")
+       self:RemoveCharCards('Ryanna')
+       self:CreateOrder()
 end
 
 local function trans_ani(self,form)
@@ -92,7 +110,8 @@ local function trans_ani(self,form)
          animate(4,true)
          DrawImage(TransImg[straal],myhero.x,myhero.y)
          FLIP()
-     until t3:enough()      
+     until t3:enough()     
+     trans_do(self,form) 
 end
 
 
@@ -100,8 +119,16 @@ function trans:RyannaTransform(form)
   trans_ani(self,form)
 end
 
-function trans:RyannaRestore()
-   rpg:SetParty(1,'Ryanna')
+function trans:RyannaRestore()       
+       self.hero.Ryanna=self.RyannaHuman
+       local nilit
+       for ch,_ in pairs(self.hero) do
+           if preixed(ch,"DEMON_RYANNA_") then nilit=ch end
+       end
+       self.hero[nilit]=nil       
+       rpg:SetParty(1,'Ryanna')
+       self:RemoveCharCards('DEMON_RYANNA',true)
+       self:CreateOrder()
 end
 
 

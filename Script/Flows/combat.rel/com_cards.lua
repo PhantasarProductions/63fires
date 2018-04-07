@@ -1,6 +1,6 @@
 --[[
   com_cards.lua
-  Version: 18.03.14
+  Version: 18.04.07
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -59,6 +59,21 @@ function ccards:RemoveFirstCard()
     QuickPlay('Audio/Combat/CardSlide.ogg')
 end
 
+function ccards:RemoveCharCards(ch,pref)
+   local remove = {}
+   for i,card in pairs(self.Cards) do
+       if card.data and (card.data.tag==ch or (pref and prefixed(card.data.tag,ch))) then remove[#remove+1]=i end 
+       --[[
+       CSay(serialize('Card #'..i,card))
+       CSay(serialize('remove',remove))
+       -- ]]
+   end
+   CSay("All cards for character "..ch.." will be removed")
+   for ci in each(remove) do
+       CSay("= Removing card #"..ci)
+       self.Cards[ci]={}
+   end
+end
 
 function ccards:YCards()
     -- $USE script/subs/screen
@@ -78,7 +93,7 @@ function ccards:CreateOrder()
      -- first set up a table easily usable by spairs.
      -- for group,groupdata in pairs(Fighters) do -- No longer needed
          --for tag,data in pairs(groupdata) do
-         for tag,_ in pairs(RPGChars) do
+         for tag,_ in pairs(self.fighters) do--pairs(RPGChars) do
              if prefixed(tag,"FOE_") then group="Foe" else group="Hero" end
              sid = 10000 - RPG:Stat(tag,"END_Speed")
              strid = right("00000"..sid,5)
@@ -137,10 +152,11 @@ function ccards:CardTag(data)
          if not myfoe then return "BACK" end
          if myfoe.Boss then return "BOSS_"..(myfoe.letterfiletag or "Unknown") else return "FOE_"..(myfoe.letterfiletag or "Unknown") end
       end   
-      -- If Ryanna while transformed
       -- If a hero in general
       if data.tag and rpg:Points(data.tag,"HP").Have>0 then
-         return "HERO_"..data.tag
+          -- If Ryanna while transformed
+          if prefixed(data.tag,"DEMON_RYANNA_") then return "HERO_Ryanna" end 
+          return "HERO_"..data.tag
       end
       -- If not anything else
       return "BACK"

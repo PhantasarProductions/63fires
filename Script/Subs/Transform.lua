@@ -38,14 +38,15 @@ local megatron={}
 
 local function makehp(tag,data,skill)
     data.HPMod = data.HPMod or 6
-    rpg:Points(tag,"HP",1).Maximum = rpg.Points('Ryanna','HP').Maximum * (data.HPMod / skill)  
+    rpg:Points(tag,"HP",1).Maximum = rpg:Points('Ryanna','HP').Maximum * (data.HPMod / skill)  
+    rpg:Points(tag,'HP').Have = rpg:Points(tag,"HP").Maximum
     rpg:DefStat(tag,"BASE_HP",rpg:Points(tag,"HP").Maximum)  
     rpg:DefStat(tag,"END_HP",rpg:Points(tag,"HP").Maximum)  
 end
 
 function megatron.make(form)
     local skill = Var.G('%SKILL')
-    local data = Use("/script/data/transform_make/"..form..".lua")
+    local data = Use("script/data/transform_make/"..form..".lua")
     local tag = 'DEMON_RYANNA_'..form
     local already = rpg:CharExists(tag) 
     if not aleady then
@@ -62,16 +63,20 @@ function megatron.make(form)
     -- HP
     makehp(tag,data,skill)
     
+    -- VIT (not needed)
+    rpg:Points(tag,'VIT',1).Maximum=100
+    rpg:Points(tag,'VIT'  ).Have=100
+    
     -- Stat altering
     for s,v in pairs(data.StatMod or {}) do
-        rpg:DefStat(tag,'BASE_'..s,data.StatMod*rpg:Stat('Ryanna','BASE_'..s))
-        rpg:DefStat(tag, 'END_'..s,data.StatMod*rpg:Stat('Ryanna', 'END_'..s))
+        rpg:DefStat(tag,'BASE_'..s,math.ceil(v*rpg:Stat('Ryanna','BASE_'..s)))
+        rpg:DefStat(tag, 'END_'..s,math.ceil(v*rpg:Stat('Ryanna', 'END_'..s)))
         CSay("Defined:  "..s.." = "..v.." (TransMod)")
     end
 
     for s,v in pairs(data.StatRep or {}) do
-        rpg:DefStat(tag,'BASE_'..s,data.StatRep)
-        rpg:DefStat(tag, 'END_'..s,data.StatRep)
+        rpg:DefStat(tag,'BASE_'..s,v)
+        rpg:DefStat(tag, 'END_'..s,v)
         CSay("Defined:  "..s.." = "..v.." (TransRep)")
     end
     

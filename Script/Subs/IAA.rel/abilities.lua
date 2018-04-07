@@ -1,6 +1,6 @@
 --[[
   abilities.lua
-  Version: 18.03.09
+  Version: 18.04.07
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -55,7 +55,9 @@ function abl:selectabilities(env,ch,aclick,win)
          hover = mx>win.x and mx<win.x+win.h and my>win.y+ly and my<win.y+ly+30
          local sname,sdesc,sap 
          if has[key] then
-               
+               if key:upper()=='REVERT' then
+                  abldata.item = abldata.item or ItemGet("ZPECIAL_REVERT")
+               end   
                abldata.item = abldata.item or ItemGet('ABL_HERO_'..ch.."_"..key)
                sname=abldata.item.Title
                sap=abldata.item.ABL_APCost or 0

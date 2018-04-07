@@ -1,7 +1,7 @@
 --[[
 **********************************************
   
-  Transformed.lua
+  Demon_Ryanna_Lucifer.lua
   (c) Jeroen Broks, 2018, All Rights Reserved.
   
   This file contains material that is related 
@@ -34,11 +34,21 @@
  
 version: 18.04.07
 ]]
-local optimusprime = {
-    blockhealing = true,
-    endbattle = combat.RyannaRestore,
-    transapdrain = true 
+-- $USE libs/nothing
+
+-- $IF IGNORE
+local nothing
+-- $FI
+
+local a = { start=true }
+
+local doosje = {
+   TutTeach = nothing,
+   Teach = nothing,
+   abl = {
+        F1=a,
+        F2=a,
+        F3=a,
+        Revert=a,
+   }
 }
-
-
-return optimusprime
