@@ -50,6 +50,7 @@ function abl:selectabilities(env,ch,aclick,win)
      local ly = 25
      local hover
      data[ch] = data[ch] or Use("Script/Data/CharAbility/"..ch..".lua")
+     assert(data[ch],"Script/Data/CharAbility/"..ch..".lua not properly loaded")
      for key,abldata in spairs(data[ch].abl) do
          has[key] = has[key] or abldata.start
          hover = mx>win.x and mx<win.x+win.h and my>win.y+ly and my<win.y+ly+30
