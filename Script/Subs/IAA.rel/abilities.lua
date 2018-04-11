@@ -1,6 +1,6 @@
 --[[
   abilities.lua
-  Version: 18.04.07
+  Version: 18.04.11
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -70,11 +70,14 @@ function abl:selectabilities(env,ch,aclick,win)
          white()
          if hover then color(0,180,255) end
          love.graphics.setFont(fontMiddel)
-         love.graphics.print(sname,win.x+10,ly)
+         love.graphics.print(sname,win.x+10,win.y+ly)
          color(0,128,255)
          if hover then color(0,180,255) end
-         if sap and sap>0 then diginum(sap,win.x+win.w-20,ly) end
-         if click(win.x,win.y+ly,win.w,30,aclick,sdesc,nothing) then return key end
+         if sap and sap>0 then diginum(sap,win.x+win.w-20,win.y+ly) end
+         if click(win.x,win.y+ly,win.w,30,aclick,sdesc,nothing) then
+            if key:upper()=='REVERT' then return "ZPECIAL_REVERT" end 
+            return 'ABL_HERO_'..ch..'_'..key 
+         end
          ly = ly + 35
      end
 end

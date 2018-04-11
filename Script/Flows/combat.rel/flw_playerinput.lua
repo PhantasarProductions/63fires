@@ -1,6 +1,6 @@
 --[[
   flw_playerinput.lua
-  Version: 18.03.10
+  Version: 18.04.11
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -39,7 +39,7 @@ local invoer = {}
 
 invoer.items = {
           { tit = "Attack",x=100,y=5, tut="Physically attack on enemy", fun=function(self) self.flow='heroselecttarget' self.selecttype="1F" flushkeys() self.nextmove.act='ACT_Attack' end},
-          { tit = "Ability", x=300,y=5, tut="Use special skills, spells or other abilities"},
+          { tit = "Ability", x=300,y=5, tut="Use special skills, spells or other abilities", fun=function(self) self.flow='selectability' end},
           { tit = "Item",x=100,y=50, tut="Use an item from your inventory", fun=function(self) self.flow='selectitem' end},
           { tit = "Guard",x=300,y=50, tut="Take a defensive stand\nThis will half damage received and recover a few AP"}
 }
@@ -149,6 +149,31 @@ function invoer:flow_selectitem()
        flushkeys() 
     end
 end
+
+
+function invoer:flow_selectability()
+    -- $USE script/subs/screen
+    local ch=self.invoeren
+    local i,c,item
+    local win = {x=math.floor(screen.w*.05), y=math.floor(screen.h*0.05),w=math.floor(screen.w*.90),h=math.floor(screen.h*70)}     
+    Color(0,0,180,180)
+    Rect(win.x,win.y,win.w,win.h)
+    c = mousehit(1)
+    i = SelectAbility('combat',ch,c,win)
+    if mousehit(2) then self.flow='playerinput' end
+    -- Item selected, let's work it out!
+    if i then
+       item = ItemGet(i)
+       self.flow='heroselecttarget' 
+       self.selecttype=item.Target
+       self.nextmove.act=i 
+       self.nextmove.takeap=item.ABL_APCost
+       self.nextmove.checksilence=item.ABL_silenceblock
+       flushkeys() 
+    end
+end
+
+
 
 -- Combat main menu
 function invoer:flow_playerinput()   

@@ -1,6 +1,6 @@
 --[[
   com_statuschanges.lua
-  Version: 18.03.12
+  Version: 18.04.11
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
