@@ -40,16 +40,16 @@ version: 18.04.11
 local nothing
 -- $FI
 
-local a = { start=true }
+local a = function() return  { start=true } end
 
 local doosje = {
    TutTeach = nothing,
    Teach = nothing,
    abl = {
-        F1=a,
-        F2=a,
-        F3=a,
-        Revert=a,
+        F1=a(),
+        F2=a(),
+        F3=a(),
+        Revert=a(),
    }
 }
 
