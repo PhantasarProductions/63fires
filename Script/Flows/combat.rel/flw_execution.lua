@@ -1,6 +1,6 @@
 --[[
   flw_execution.lua
-  Version: 18.04.06
+  Version: 18.04.11
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -287,7 +287,7 @@ function beul:true_perform(tag,targettag)
       effectscript = Use('Script/Data/Combat/ActEffect/'..item.EffectScript..".lua")
       assert(effectscript,"Error on loading "..item.EffectScript.." effect")
       assert(type(effectscript)=='function',"Effect "..item.EffectScript.." is not a function but a "..type(effectscript))
-      hit = hit or effectscript(self,item.EffectScript_Arg)
+      hit = hit or effectscript(self,targettag,tag,item.EffectScript_Arg)
    end     
    -- Cause Status Changes
    -- Allowing counter attack

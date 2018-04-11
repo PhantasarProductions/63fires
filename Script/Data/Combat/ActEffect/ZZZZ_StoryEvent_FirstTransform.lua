@@ -32,12 +32,12 @@
   
  **********************************************
  
-version: 18.04.07
+version: 18.04.11
 ]]
 
-return function(s,a)
+return function(s,tar,exe,a)
   rpg:Points('Ryanna','HP').Have=1
-  if Done('&DONE.FIRSTBOSS.RYANNA.LUCIFER.FORCE.FIRST.DISCOVERY.OF.POWER') then return end
+  if Done('&DONE.FIRSTBOSS.RYANNA.LUCIFER.FORCE.FIRST.DISCOVERY.OF.POWER') then return true end
   MapText('WRATH')
   Award('TRANSFORM')
   gamedata.transform = {'Lucifer'}
