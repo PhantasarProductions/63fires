@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.04.11
+version: 18.04.12
 ]]
 -- $USE libs/nothing
 
@@ -49,7 +49,7 @@ local doosje = {
         F1=a(),
         F2=a(),
         F3=a(),
-        Revert=a(),
+        Revert=a(d),
    }
 }
 

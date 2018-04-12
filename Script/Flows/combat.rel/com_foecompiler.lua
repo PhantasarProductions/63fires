@@ -1,6 +1,6 @@
 --[[
   com_foecompiler.lua
-  Version: 18.03.29
+  Version: 18.04.12
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -87,10 +87,10 @@ function foecom:CompileFoe(i,foefile)
             rpg:ScriptStat(tag,"END_"..stat,"libs/laura.rel/chars__ignore.lua","Enemy")
         elseif prefixed(vr,"ER.") then
             local stat = fUl(right(vr,#vr-3))
-            rpg:DefStat(tag,"BASE_"..stat,gfoe:C(vr) or 0)
-            rpg:DefStat(tag,"BUFF_"..stat,0)
-            rpg:DefStat(tag,"END_"..stat,0)
-            rpg:ScriptStat(tag,"END_"..stat,"libs/laura.rel/chars__ignore.lua","Enemy")            
+            rpg:DefStat(tag,"BASE_ER_"..stat,gfoe:C(vr) or 0)
+            rpg:DefStat(tag,"BUFF_ER_"..stat,0)
+            rpg:DefStat(tag,"END_ER_"..stat,0)
+            rpg:ScriptStat(tag,"END_ER_"..stat,"libs/laura.rel/chars__ignore.lua","Enemy")            
         elseif prefixed(vr,"DATA.") then
             local dta = fUl(right(vr,#vr-5))
             rpg:DefData(tag,dta,gfoe:C(vr))   
