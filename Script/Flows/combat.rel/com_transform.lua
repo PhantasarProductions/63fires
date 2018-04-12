@@ -1,6 +1,6 @@
 --[[
   com_transform.lua
-  Version: 18.04.11
+  Version: 18.04.12
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -119,11 +119,11 @@ function trans:RyannaTransform(form)
   trans_ani(self,form)
 end
 
-function trans:RyannaRestore()       
+function trans:RyannaRestore(ch)       
        self.hero.Ryanna=self.RyannaHuman
        local nilit
        for ch,_ in pairs(self.hero) do
-           if preixed(ch,"DEMON_RYANNA_") then nilit=ch end
+           if prefixed(ch,"DEMON_RYANNA_") then nilit=ch end
        end
        self.hero[nilit]=nil       
        rpg:SetParty(1,'Ryanna')

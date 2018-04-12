@@ -1,6 +1,6 @@
 --[[
   com_statuschanges.lua
-  Version: 18.04.11
+  Version: 18.04.12
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -48,7 +48,7 @@ function csc:statuses(chtag)
      for k,v in spairs(self.fighters[chtag].statuschanges) do
          si = si + 1
          keys[si]=k
-         values[si]=values
+         values[si]=v -- values
      end
      return function()
          frame = frame + 1

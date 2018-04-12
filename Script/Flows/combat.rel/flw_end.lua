@@ -1,6 +1,6 @@
 --[[
   flw_end.lua
-  Version: 18.04.07
+  Version: 18.04.12
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -102,14 +102,23 @@ function einde:flow_terminate_combat()
     end
     for ch in each(kill) do rpg:DelCharacter(ch) CSay("CHAR."..ch.." removed from memory") end 
     omusic.pop()
-    self.me=nil
     for i,ch in pairs(RPGParty) do
-        for st in self.statuses(ch) do
+        for st,status in self:statuses(ch) do
+            -- $USE libs/nothing
             CSay("Status end battle sequence in status "..st.." for character "..ch)
+            --CSay(serialize("Fuck you",status))
+            --for k,_ in spairs(status) do CSay("Status fuck: "..k) end -- debug line
+            if status.endbattle then 
+               status.endbattle(self,ch) 
+               CSay("= end status executed") 
+            else
+               CSay("= no end status function found")
+            end            
         end
     end        
     console.write  ('Unloading: ',255,255,0)
     console.writeln('Combat'     ,0,180,255)
+    self.me=nil
     ClearTable(self)
     combat=nil
     flow.set(field)

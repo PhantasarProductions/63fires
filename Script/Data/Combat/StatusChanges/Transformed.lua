@@ -32,11 +32,11 @@
   
  **********************************************
  
-version: 18.04.07
+version: 18.04.12
 ]]
 local optimusprime = {
     blockhealing = true,
-    endbattle = combat.RyannaRestore,
+    endbattle = function(self,ch) self:RyannaRestore(ch) end,
     transapdrain = true 
 }
 
