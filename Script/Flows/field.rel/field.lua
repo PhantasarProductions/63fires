@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.03.16
+  Version: 18.04.13
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -39,6 +39,9 @@
 -- $USE Libs/nothing
 -- $USE Script/Subs/Headers.h AS Headers_h
 -- $USE Script/Subs/IconStrip
+
+local scheduled = {}
+
 local field = {}
 local full, fstype = love.window.getFullscreen( )
 local scw,sch = love.graphics.getDimensions( )
@@ -64,6 +67,23 @@ is[#is+1] = {icon='Help', tut="Provides help", cb=iconstriphelp}
 
 local map
 
+
+function field:Schedule(sched)
+    assert(type(sched)=='function' or type(sched)=='table',"Invalid schedule type ("..type(sched)..")")
+    scheduled[#scheduled+1]=sched
+    CSay("Scheduled "..type(sched))
+ end
+
+local function runSchedule(self)
+    local s = scheduled[1]
+    if not s then return end
+    if type(s)=='function' then 
+       s()
+    else
+       s.fun(s.args)
+    end
+    table.remove(scheduled,1)
+end        
 
 field.leader=1
 
@@ -361,6 +381,7 @@ function field:odraw()
        end   
     --]]
     StatusBar(false,true)
+    runSchedule(self)
     showstrip()
     love.graphics.setFont(console.font)
     love.graphics.print(Var.S("Time: $PLAYTIME"),width-200,staty)
