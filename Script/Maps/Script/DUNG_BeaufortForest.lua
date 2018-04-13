@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.03.29
+version: 18.04.13
 ]]
 local bos = {}
 
@@ -52,10 +52,28 @@ function bos:NPC_FishingPole()
    field:kill('NPC_FishingPole',true) 
 end
 
+local function PostBoss()
+   field:GoToLayer('MEANWHILE','Start') -- Ryanna will spam, but things have been set up in a way that makes sure the player won't see her.
+   field:autoscroll()
+   -- $USE libs/klok
+   local t = klok:CreateTimer(2.5)
+   local map = field:getmap()
+   repeat
+     love.graphics.clear( )
+     kthura.drawmap(map.map,map.layer,field.cam.x,field.cam.y)
+     StatusBar(false,true)
+     update_time()
+     love.graphics.present()
+   until t:enough()
+   error("Nothing next yet! Don't worry folks, it'll be there soon!")
+end
+
+
 function bos:Boss()
     if Done("&DONE.BOSS.ULTRABLOB") then return end
     MapText('PRE_BOSS')
     field:kill('BossActor',true)
+    field:Schedule(PostBoss)
     BossFight("Very big slime","Ultra-Blob",
          {
            foes={'boss/ultraslime'},
@@ -63,5 +81,6 @@ function bos:Boss()
            postfoecompiler = function() rpg:Points('FOE_1','HP').Minimum=rpg:Points('FOE_1','HP').Maximum CSay('Invicibility turned on') end
     })
 end
+
 
 return bos
