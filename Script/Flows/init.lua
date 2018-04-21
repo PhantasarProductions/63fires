@@ -59,6 +59,8 @@ end
 
 local function netconfig()
      mynet = GAHD_get('DATA/GJ_ANNA/GJ_ANNA.ghd')
+     mynet[    "ANNA.AWARDS"] = GAHD_get("DATA/GJ_ANNA/Awards_Anna.GHD").data
+     mynet["GAMEJOLT.AWARDS"] = GAHD_get("DATA/GJ_ANNA/Awards_GameJolt.GHD").data
      -- print ( serialize('mynet',mynet))
      
 end

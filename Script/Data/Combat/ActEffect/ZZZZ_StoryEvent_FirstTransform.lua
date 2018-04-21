@@ -39,7 +39,7 @@ return function(s,tar,exe,a)
   rpg:Points('Ryanna','HP').Have=1
   if Done('&DONE.FIRSTBOSS.RYANNA.LUCIFER.FORCE.FIRST.DISCOVERY.OF.POWER') then return true end
   MapText('WRATH')
-  Award('TRANSFORM')
+  Award('SCEN_TRANSFORM1')
   gamedata.transform = {'Lucifer'}
   s:RyannaTransform('Lucifer')
   MapText("TUT_TRANS")

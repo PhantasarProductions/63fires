@@ -126,7 +126,9 @@ function finit.arrive()
                local reason = "OK"
                local ok
                if not s then reason = r 
-                   local p = love.window.showMessageBox("Anna Error", "Logging in to Anna failed!\n- Is your internet connection up?\n- Is the game not blocked by firewalls?\n- Any issues with Game Jolt itself?\n- Login data correct?\n- You did enter your TOKEN and not your password, right?\n- Login data changed?\n - "..reason,{"Ignore","Retry","Quit",escapebutton=3})
+                   CSay("Anna says: "..reason)
+                   print("Anna says: "..reason)
+                   local p = love.window.showMessageBox("Anna Error", "Logging in to Anna failed!\n- Is your internet connection up?\n- Is the game not blocked by firewalls?\n- Any issues with Anna itself?\n- Login data correct?\n- Login data changed?\n\nAnna says: "..reason,{"Ignore","Retry","Quit",escapebutton=3})
                    if p==1 then ok = 'true' end
                    if p==2 then retries=retries+1 laura.assert(retries<20,"Sorry, with this many retries I am not gonna continue anymore.") CSay("Retry attempt #"..retries) if retries>=20 then ok='true' end end 
                    if p==3 then ok = 'true' quitdontask=true love.event.quit() end

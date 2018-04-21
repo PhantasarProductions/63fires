@@ -38,12 +38,43 @@ local prijs = {}
 
 -- "prijs" means both 'price' and 'prize' in Dutch.
 
+-- $USE Script/Data/General/Achievements.lua AS prijs.awards
+-- That line is a clear "abuse" of pre-processors :P
 
 function prijs:Award(id)
+    -- Internal
     CSay("Awarding: "..id)
+    TrickAssert(prijs.awards[id],"Award "..id.." doesn't exist!",prijs.awards)
     gamedata.achievements = gamedata.achievements or {}
     gamedata.achievements.achieved = gamedata.achievements.achieved or {}
     gamedata.achievements.achieved[id] = true
+    -- CSay(serialize('mynet',mynet)) -- debug. Must be deactivated in true release
+    -- Game Jolt
+    if mynet.loggedin_gj then
+       CSay("= Writing to Game Jolt")
+       local trophy_id = mynet["GAMEJOLT.AWARDS"][id]
+       gjapi:trophies_addAchieved(trophy_id)
+    end
+    -- Anna
+    if mynet.loggedin_anna then
+      CSay("= Writing to Anna")
+      --local udata = gdata.annalogin
+      --local login = udata --[nan.tab]
+      local login = {id=Var.C('$ANNA.ID'),secu=Var.C("$ANNA.SECU")}
+      local query = {HC='Game',A='Auth',Game=mynet.data['ANNA.ID'],GameSecu=mynet.data['ANNA.KEY'],id=login.id,secu=login.secu} -- ,Version=mkl.newestversion(), (no mkl yet, and it's not needed anyway)
+      local awc   = mynet["ANNA.AWARDS"][id] --gdata.data['AWARD.ANNA.'..upper(ach)]
+      if not awc then console.writeln("WARNING! No Anna code for award: "..id,255,180,0) end --return false,'No Anna code for award: '..ach end
+      query.AwardNo = awc
+      local s,r = Anna_Request(query)
+      local reason = "OK"
+      CSay("  = Anna responded with: "..sval(s)..","..sval(r))
+      if not s then reason = r end
+      if not s then print("WARNING! Anna achievement failed: "..reason) love.window.showMessageBox( RYANNA_TITLE, "WARNING! Anna achievement failed: "..reason, 'error', false ) end
+    --return s,reason    
+    end
+    -- Creating scrollthrough message
+    st_Txt("- Achievement earned -",255,180,0)
+    st_Txt(prijs.awards[id].Title,0,180,255)
 end
 
 
