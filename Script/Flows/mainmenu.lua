@@ -1,6 +1,6 @@
 --[[
   mainmenu.lua
-  Version: 18.01.18
+  Version: 18.04.27
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -63,6 +63,7 @@ mm.items[1].act = function()
 end      
 
 mm.items[2].act = function()
+      NowLoading()
       --[[
       flow.use("continue","script/flows/continue")
       flow.set("continue")
