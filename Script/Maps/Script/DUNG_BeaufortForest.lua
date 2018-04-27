@@ -71,6 +71,14 @@ local function PostBoss()
    --error("Nothing next yet! Don't worry folks, it'll be there soon!")
 end
 
+field:ZA_Enter("Complete",function() 
+    local skill=Var.G('%SKILL')
+    if not(Done('&COMPLETE.DUNG.BEAUFORTFOREST')) then
+           WorldMap_Unlock("C_WINDVILLE")
+           rpg:DecStat('Ryanna','Experience',120/skill)
+    end
+    WorldMap("Beaufort")
+end) -- The ) is needed... This function is directly tied to a ZA_Enter after all
 
 function bos:Boss()
     if Done("&DONE.BOSS.ULTRABLOB") then return end

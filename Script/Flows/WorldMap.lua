@@ -1,6 +1,6 @@
 --[[
   WorldMap.lua
-  Version: 18.02.18
+  Version: 18.04.27
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -105,7 +105,7 @@ function LoadWorld(worldfolder)
              end
              ]]
              v.ico='DUNG'
-          elseif prefixed(v.Kthura,"CITY") then
+          elseif prefixed(v.Kthura,"TOWN") or prefixed(v.Kthura,"CITY") then
              v.ico='CITY'   
           --else
              --v.Dot = dotcol.nodung

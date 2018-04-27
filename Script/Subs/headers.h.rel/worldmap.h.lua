@@ -1,6 +1,6 @@
 --[[
   worldmap.h.lua
-  Version: 18.02.16
+  Version: 18.04.27
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -40,6 +40,12 @@ function WorldMap(map)
    flow.set(worldmap)
 end
 
+function WorldMap_Unlock(tag)
+     gamedata.worldmap.unlocked[tag]=true
+end
+
 function MapWorldLinks()
    field:ZA_Enter('Beaufort',WorldMap,'Beaufort')
 end   
+
+return true
