@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.04.13
+  Version: 18.04.27
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -187,7 +187,7 @@ function field:ReadMapChanges()
     f()
 end
 
-function field:LoadMap(KthuraMap,layer)
+function field:LoadMap(KthuraMap,layer,spawn)
     if not laura.assert(layer,"No layer requested!",{LoadMap=KthuraMap}) then return end    
     map= {layer=layer,file=KthuraMap}
     self:ZA_Clear()    
@@ -231,7 +231,7 @@ function field:LoadMap(KthuraMap,layer)
     CSay("= Music function")
     if map.script.music then
        CSay("= running mapscript music routine") 
-       map.script:music() 
+       map.script:music({layer=layer,spawn=spawn,map=map}) 
     elseif map.map.Meta.Music~="" then 
        console.write  ('  Loading: ',255,255,0)
        console.writeln(map.map.Meta.Music,0,255,255)
@@ -244,6 +244,7 @@ function field:LoadMap(KthuraMap,layer)
     CSay("= OnLoad")
     ;(map.script.onload or nothing)()
     self.map=map    
+    if spawn then CSay("= Spawn") self:SpawnPlayer(spawn) end
 end
 
 field.cam = {x=0,y=0}

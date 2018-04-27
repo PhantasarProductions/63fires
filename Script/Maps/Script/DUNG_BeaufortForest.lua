@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.04.13
+version: 18.04.27
 ]]
 local bos = {}
 
@@ -54,18 +54,21 @@ end
 
 local function PostBoss()
    field:GoToLayer('MEANWHILE','Start') -- Ryanna will spam, but things have been set up in a way that makes sure the player won't see her.
-   field:autoscroll()
    -- $USE libs/klok
    local t = klok:CreateTimer(2.5)
    local map = field:getmap()
    repeat
+     field:autoscroll()
      love.graphics.clear( )
      kthura.drawmap(map.map,map.layer,field.cam.x,field.cam.y)
      StatusBar(false,true)
      update_time()
      love.graphics.present()
    until t:enough()
-   error("Nothing next yet! Don't worry folks, it'll be there soon!")
+   field:LoadMap('DUNG_BluePalace','Audience','HideRyanna')
+   MapText('POSTBOSSFOREST')
+   field:LoadMap('DUNG_BeaufortForest','#004','Resume')
+   --error("Nothing next yet! Don't worry folks, it'll be there soon!")
 end
 
 
