@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.04.27
+  Version: 18.05.01
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -196,6 +196,8 @@ function field:LoadMap(KthuraMap,layer,spawn)
     CSay("Loading map: "..KthuraMap)
     CSay("= Map itself")
     map.map = kthura.load("Script/Maps/Kthura/"..KthuraMap)
+    CSay("= Layer existial check")
+    assert(map.map.MapObjects[layer],"Layer "..sval(layer).." does not exist")
     CSay("= Crystals")
     self:CrystalInit()
     CSay("= Random encounters")
