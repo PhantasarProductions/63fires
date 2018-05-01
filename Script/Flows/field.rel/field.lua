@@ -363,6 +363,7 @@ function field:odraw()
     local staty = height-140
     --for k,v in spairs(self) do print(type(v),k) end
     --print (serialize('map',map))
+    ;(map.script.oncycle or nothing)(map.script)
     self:autoscroll()
     self:followdaleader()
     self:CrystalGrab()    
