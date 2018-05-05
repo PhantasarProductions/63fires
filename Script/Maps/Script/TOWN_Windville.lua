@@ -57,6 +57,8 @@ end
 
 
 local function startmills()
+   CSay("= Award achievement if you didn't already have it")
+   Award("ARRIVE_WINDVILLE")
    CSay("= Starting all the windmills")
    for o,l in map:allobjects() do
        if o.TEXTURE=="GFX/TEXTURES/WINDVILLE/MOLEN/WIEKEN.JPBF" then
