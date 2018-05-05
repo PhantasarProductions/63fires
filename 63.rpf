@@ -1,7 +1,7 @@
 [rem]
 Generated file!
 
-Generated: 3/15/2018
+Generated: 5/5/2018
 
 [vars]
 AUTHOR=Jeroen P. Broks
@@ -109,4 +109,7 @@ GFX/Skills/3.png => GFX/Portret/Ryanna/TotalFury.png
 
 [List:DYNAMICJCR.DARWIN]
 /VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/buildmusic/63FOLD.Music.jcr
+
+[List:CONFIG]
+modules.joystick=false
 
