@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.05.06
+version: 18.05.21
 ]]
 
 -- $USE libs/klok
@@ -75,8 +75,14 @@ local function startmills()
    return windville
 end
 
-
-
+local function IntroNino()
+      local RYANNA = map.TagMap.Outside.PLAYER1
+      MapText("ENTER1")
+      RYANNA:WalkTo('NinoSpot')
+      MapText("ENTER2")
+      field:kill('IntroNino',true)      
+end
+field:ZA_Enter("IntroNino",IntroNino)
 
 
 return startmills() -- will return the entire module in the process and start the mills. Yup, this is what we call dirty code.
