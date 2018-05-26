@@ -114,18 +114,6 @@ local function follow(tagslave,tagmaster)
     slave:WalkTo(gx+fw[master.WIND][2],gy+fw[master.WIND][1])
 end
 
-function field:SetLeader(l)
-    if type(l)=='number' then
-       self.leader=l
-    elseif type(l)=='string' then
-       for i=1,#RPGParty do
-           if RPGParty[i]==l then self:SetLeader(i) end
-       end
-    else
-       error("field:SetLeader("..type(l).."): Invalid parameter type")
-    end   
-end
-field.setleader=field.SetLeader
 
 function field:GetActive()
    return RPGParty[self.leader]
@@ -153,6 +141,21 @@ function field:SetTools()
         end
     end
 end
+
+function field:SetLeader(l)
+    if type(l)=='number' then
+       self.leader=l
+       self:SetTools()
+    elseif type(l)=='string' then
+       for i=1,#RPGParty do
+           if RPGParty[i]==l then self:SetLeader(i) end
+       end
+    else
+       error("field:SetLeader("..type(l).."): Invalid parameter type")
+    end   
+end
+field.setleader=field.SetLeader
+
 
 function field:init()
    CSay("Init field main routines: Tool Icon Strip")
