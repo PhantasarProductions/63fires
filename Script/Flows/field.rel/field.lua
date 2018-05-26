@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.05.01
+  Version: 18.05.26
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -87,8 +87,31 @@ end
 
 field.leader=1
 
+local fw = {
+--[[
+        North  = { 32,  0},
+        South  = {-32,  0},
+        East   = {  0,-32},
+        West   = {  0, 33}
+        ]]
+        North  = { 2, 0},
+        South  = {-2, 0},
+        East   = { 0,-2},
+        West   = { 0, 2}
+
+}
 
 local function follow(tagslave,tagmaster)
+    if tagslave==tagmaster then return end
+    -- $USE libs/qmath
+    local slave  = map.map:obj(map.layer,tagslave)
+    local master = map.map:obj(map.layer,tagmaster)
+    local sx,sy  = slave :pos()
+    local mx,my  = master:pos()
+    local gx,gy  = math.floor(mx/32),math.floor(my/32)
+    local distance = qmath.Distance(sx,sy,mx,my)
+    if distance<40 then return end
+    slave:WalkTo(gx+fw[master.WIND][2],gy+fw[master.WIND][1])
 end
 
 function field:GetActive()
@@ -136,7 +159,7 @@ function field:followdaleader()
   for i=1,#RPGParty do
       local a=map.map:obj(map.layer,"PLAYER"..i)
       a.TEXTURE = "GFX/PlayerSprites/"..RPGParty[i].."."..a.WIND..".jpbf"
-      if i~=self.leaader then
+      if i~=self.leader then
          if i==1 then follow("PLAYER1","PLAYER"..#RPGParty) 
          else         follow("PLAYER"..i,"PLAYER"..math.floor(i-1)) end
       end   
