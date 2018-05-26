@@ -1,6 +1,6 @@
 --[[
   StatusBar.lua
-  Version: 18.02.25
+  Version: 18.05.27
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -57,6 +57,9 @@ end
 local function tofield()
     flow.set(Field) 
 end
+local function toleader()
+   field:setleader(clickedchar)
+end   
 
 function DrawPortrait(tag,x,y)
        TrickAssert(tag,"Hey dork! Why are you giving me a nil, eh?",{"NIL NIL NIL","There's nothing here to fill!","FORK FORK FORK!","This code is written by a dork!"})
@@ -90,7 +93,8 @@ local function StatusBar(highlight,menuchain,chat)
              click(cx,cy,charwidth,120,flow.get().clicked,"Click here to dismiss the menu\nAnd to resume walking in the field",tofield)
              color(255,255,255,math.abs(math.sin(love.timer.getTime())*255))
           else
-             click(cx,cy,charwidth,120,flow.get().clicked,"Click here to open "..tag.."'s status menu",tomenu)
+             click(cx,cy,charwidth,120,flow.get(). clicked,"Click here to open "..tag.."'s status menu or right click to make this character the leader",tomenu)
+             click(cx,cy,charwidth,120,flow.get().rclicked,"",toleader)
           end
        elseif chat then   
            -- $USE script/data/general/sex

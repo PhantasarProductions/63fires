@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.05.26
+  Version: 18.05.27
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -113,6 +113,19 @@ local function follow(tagslave,tagmaster)
     if distance<40 then return end
     slave:WalkTo(gx+fw[master.WIND][2],gy+fw[master.WIND][1])
 end
+
+function field:SetLeader(l)
+    if type(l)=='number' then
+       self.leader=l
+    elseif type(l)=='string' then
+       for i=1,#RPGParty do
+           if RPGParty[i]==l then self:SetLeader(i) end
+       end
+    else
+       error("field:SetLeader("..type(l).."): Invalid parameter type")
+    end   
+end
+field.setleader=field.SetLeader
 
 function field:GetActive()
    return RPGParty[self.leader]
@@ -380,7 +393,8 @@ end
 
 function field:odraw()
     local mx,my=love.mouse.getPosition()
-    self.clicked = mousehit(1)
+    self. clicked = mousehit(1)
+    self.rclicked = mousehit(2)
     --if self.clicked then cancelhelp() end
     local width, height = love.graphics.getDimensions( )   
     local staty = height-140

@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.05.26
+version: 18.05.27
 ]]
 
 -- $USE libs/klok
@@ -94,6 +94,11 @@ local function StatueNino()
     -- Nino joins the party
     laura.makechar("Nino",5)
     rpg:SetParty(2,"Nino")
+    -- Remove Nino from downtown area
+    field:GoToLayer('Outside','StartN')
+    field:kill('NPC_MT_NINO',true)
+    field:kill('NINOGIRL1',true)
+    field:kill('NINOGIRL2',true)
     -- Reset actors
     field:GoToLayer('Square','StatueSpot') 
 end
