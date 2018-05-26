@@ -47,6 +47,7 @@ function prijs:Award(id)
     TrickAssert(prijs.awards[id],"Award "..id.." doesn't exist!",prijs.awards)
     gamedata.achievements = gamedata.achievements or {}
     gamedata.achievements.achieved = gamedata.achievements.achieved or {}
+    if gamedata.achievements.achieved[id] then return end
     gamedata.achievements.achieved[id] = true
     -- CSay(serialize('mynet',mynet)) -- debug. Must be deactivated in true release
     -- Game Jolt

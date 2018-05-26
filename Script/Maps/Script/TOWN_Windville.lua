@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.05.21
+version: 18.05.06
 ]]
 
 -- $USE libs/klok
@@ -83,6 +83,22 @@ local function IntroNino()
       field:kill('IntroNino',true)      
 end
 field:ZA_Enter("IntroNino",IntroNino)
+
+
+field:ZA_Enter("ToStatue",function() field:GoToLayer('Square','StartS') end)
+field:ZA_Enter("ToOutside",function() field:GoToLayer('Outside','StartN') end)
+
+local function StatueNino()
+    if Done("&DONE.WINDVILLE.NINOJOIN") then return end
+    -- Pre-Join
+    -- Nino joins the party
+    laura.makechar("Nino",5)
+    rpg:SetParty(2,"Nino")
+    -- Reset actors
+    field:GoToLayer('Square','StatueSpot') 
+end
+field:ZA_Enter("LookStatue",StatueNino)    
+
 
 
 return startmills() -- will return the entire module in the process and start the mills. Yup, this is what we call dirty code.

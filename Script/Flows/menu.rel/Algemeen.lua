@@ -55,6 +55,10 @@ function mod:cometome(mentype,character)
      flow.set(self)
 end
 
+function mod:gomenu(character)
+     self.char=character
+end
+
 function mod:showstatus(cd)
     local x=cd.x
     local w=cd.w
