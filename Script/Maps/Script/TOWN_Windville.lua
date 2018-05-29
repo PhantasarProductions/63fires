@@ -32,10 +32,15 @@
   
  **********************************************
  
-version: 18.05.27
+version: 18.05.29
 ]]
 
+local ANNAMONK
 -- $USE libs/klok
+
+
+-- CSay("Anna scanup result:"..sval(ANNAMONK.status))
+
 
 local windville = {}
 local map=field:GetMap().map
@@ -44,7 +49,10 @@ local rand=love.math.random
 local millclock = klok:CreateTimer(.005)
 
 
+
+
 function windville:oncycle()
+    -- $USE script/subs/ANNAMONK
     if millclock:enough() then
        for mill in each (mills) do
            mill.deg = mill.deg + mill.spd
@@ -85,12 +93,21 @@ end
 field:ZA_Enter("IntroNino",IntroNino)
 
 
-field:ZA_Enter("ToStatue",function() field:GoToLayer('Square','StartS') end)
+field:ZA_Enter("ToStatue",function() field:GoToLayer('Square','StartS') map.TagMap.Square.BackNino.VISIBLE=false end)
 field:ZA_Enter("ToOutside",function() field:GoToLayer('Outside','StartN') end)
 
 local function StatueNino()
     if Done("&DONE.WINDVILLE.NINOJOIN") then return end
     -- Pre-Join
+    local RYANNA = map.TagMap.Square.PLAYER1
+    local BNINO  = map.TagMap.Square.BackNino
+    RYANNA:WalkTo('StatueSpot')
+    RYANNA.WIND='North'
+    MapText("STATUE1")
+    BNINO.VISIBLE=true
+    RYANNA.WIND='South'
+    MapText("STATUE2")
+    BNINO.VISIBLE=false
     -- Nino joins the party
     laura.makechar("Nino",5)
     rpg:SetParty(2,"Nino")
@@ -103,6 +120,7 @@ local function StatueNino()
     field:GoToLayer('Square','StatueSpot') 
 end
 field:ZA_Enter("LookStatue",StatueNino)    
+field:ZA_Enter("HideNino",function()  map.TagMap.Square.BackNino.VISIBLE=false end)
 
 
 
