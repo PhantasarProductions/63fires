@@ -1,6 +1,6 @@
 --[[
   BoxText.lua
-  Version: 18.01.17
+  Version: 18.05.29
   Copyright (C) 2016, 2018 Jeroen Petrus Broks
   
   ===========================
@@ -299,11 +299,12 @@ end
 local SerialBoxText = me.SerialBoxText
 
 function me.RunQuestion(file,tag,pidx,boxback)
+  -- $USE subs/script/screen
   boxtextitextfont = boxtextitextfont or itext.loadfont('GFX/StoryFont')
   local chosen=nil
   local idx=tonumber(pidx or 1)
   local f = btdata[file]
-  local width = 700
+  local width = math.ceil(screen.w*.8) --700
   if not f then error("Boxtext file "..file.." has not yet been loaded!") end
   local t = f[tag]
   if not t then error("Boxtext file "..file.." has no tag called "..tag) end
