@@ -1,7 +1,7 @@
 --[[
   boxtext_headers.lua
   
-  version: 18.02.17
+  version: 18.05.29
   Copyright (C) 2018 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -32,6 +32,11 @@ end
 
 function MapText(ptag,boxback)
    SerialBoxText("MAP",ptag,boxback)
+end   
+
+function RunQuestion(fil,ptag,boxback)
+   -- $USE Script/Subs/boxtext
+   return boxtext.RunQuestion(fil,ptag,boxback)
 end   
 
 function GetBoxTextFont()
