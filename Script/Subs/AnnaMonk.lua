@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.05.29
+version: 18.05.30
 ]]
 -- $USE libs/nothing
 
@@ -70,7 +70,7 @@ m.script.NPC_ANNA=m.script.NPC_Anna
 if mynet.loggedin_anna then
    CSay("Use is on Anna, yay!")
    mynet.templequery = { status="Anna",query={HC='Game',A='Anna63',DB="Anna",Game=gdata.data['ANNA.ID'],GameSecu=gdata.data['ANNA.KEY'],Version='0.0.0',id=Var.C('$ANNA.ID'),secu=Var.C('$ANNA.SECU'),Request='Temple'},NPC=NPC,returnmap=m.file,returnlayer=m.layer}
-   CSay(serialize('mynet',mynet))
+   -- CSay(serialize('mynet',mynet))
    return mynet.templequery
 end
 CSay("User not logged in on Anna")
