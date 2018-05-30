@@ -51,6 +51,7 @@ end
 local qopt = {
      function() -- let's go to Anna's temple
         CSay("Let's enter the temple!")
+        field:LoadMap("NET_Anna","Anna","Start")
      end,
      nothing, -- 
      function() -- let's go the internet to explain what Anna's temple does
@@ -65,16 +66,17 @@ function m.script:NPC_Anna()
 end
 m.script.NPC_ANNA=m.script.NPC_Anna
 
-CSay(serialize("mynet",mynet))
+--CSay(serialize("mynet",mynet))
 if mynet.loggedin_anna then
    CSay("Use is on Anna, yay!")
-   mynet.templequery = { status="Anna",query={HC='Game',A='Anna63',DB="Anna",Game=gdata.data['ANNA.ID'],GameSecu=gdata.data['ANNA.KEY'],Version='0.0.0',id=Var.C('$ANNA.ID'),secu=Var.C('$ANNA.SECU')},NPC=NPC,returnmap=m.file}
+   mynet.templequery = { status="Anna",query={HC='Game',A='Anna63',DB="Anna",Game=gdata.data['ANNA.ID'],GameSecu=gdata.data['ANNA.KEY'],Version='0.0.0',id=Var.C('$ANNA.ID'),secu=Var.C('$ANNA.SECU'),Request='Temple'},NPC=NPC,returnmap=m.file,returnlayer=m.layer}
+   CSay(serialize('mynet',mynet))
    return mynet.templequery
 end
 CSay("User not logged in on Anna")
 if mynet.loggedin_gj then
    CSay("Not on Anna, but we do have Game Jolt!")
-   mynet.templequery = { status="GameJolt",query={HC='Game',A='Anna63',DB="GameJolt",user=Var.C('$GAMEJOLT.USER'),token=Var.C('$GAMEJOLT.TOKEN'),Game=gdata.data['ANNA.ID'],GameSecu=gdata.data['ANNA.KEY']},NPC=NPC,returnmap=m.file}
+   mynet.templequery = { status="GameJolt",query={HC='Game',A='Anna63',DB="GameJolt",user=Var.C('$GAMEJOLT.USER'),token=Var.C('$GAMEJOLT.TOKEN'),Game=gdata.data['ANNA.ID'],GameSecu=gdata.data['ANNA.KEY'],Request='Temple'},NPC=NPC,returnmap=m.file,returnlayer=m.layer}
    return mynet.templequery
 end
 CSay("User also not logged in on Game Jolt")
