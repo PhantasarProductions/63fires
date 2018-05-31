@@ -26,6 +26,11 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Font: Fonts/OldLondonAlternate.ttf
 
 
+## Eric Matyas
+### You can see all the license stuff on http://soundimage.org/sample-page/
+- Music: Music/Town/Tower Defense.ogg
+
+
 ## Game Jolt
 ### This logo belongs to Game Jolt
 - Graphic image: GFX/Network/GJ.png
@@ -55,9 +60,6 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Actors/Village/Indiaan.png
 - Graphic image: GFX/Actors/Village/Motorrijder.png
 - Graphic image: GFX/Actors/Village/Soldaat.png
-- Graphic image: GFX/Actors/WindVille/Nino.png
-- PikoPixel source file: GFX/Actors/WindVille/NinoN.piko
-- Graphic image: GFX/Actors/WindVille/NinoN.png
 - Graphic image: GFX/Combat/Cards/Ability.png
 - Graphic image: GFX/Combat/Cards/Back.png
 - Graphic image: GFX/Combat/Cards/Boss_A.png
@@ -162,7 +164,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/WorldMap/Dungeon.png
 - PikoPixel source file: GFX/WorldMap/Hub.piko
 - Graphic image: GFX/WorldMap/Hub.png
-### This is stuff related to the story line of "63 fires of lung" or other productions of Jeroen P. Broks and are therefore copyrighted and property of Jeroen P. Broks, all rights reserved. They may only be freely distributed in an unmodified version of a production of Jeroen P. Broks. Extraction, modifications and any work based on these assets may only be distributed with prior written permission from the copyright holder!
+### This is stuff related to the story line of "63 fires of lung" or other productions of Jeroen P. Broks and are therefore copyrighted and property of Jeroen P. Broks, all rights reserved. They may only be freely distributed in an unmodified version of a production of Jeroen P. Broks. Extraction, modifications and any work based on these assets may only be distributed with prior written permission from the copyright holder! Exception for .lua files on which the license text in the .lua file explicitly says otherwise, then the license text inside the .lua file counts!
 - Ryanna Project File: 63.rpf
 - Markdown document: credits.md
 - Markdown document: license.md
