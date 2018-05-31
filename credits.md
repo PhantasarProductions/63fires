@@ -1,14 +1,14 @@
 
-    # Credits 63 files of Lung
+# Credits 63 files of Lung
 
-    This is a list of all files contributed by people for this project including my own.
-    Please note, being listed here does not mean they were ACTIVELY involved in this project. They could also have contributed by giving out files free for everybody to use, allowing me to use them in this project.
+This is a list of all files contributed by people for this project including my own.
+Please note, being listed here does not mean they were ACTIVELY involved in this project. They could also have contributed by giving out files free for everybody to use, allowing me to use them in this project.
     
-    All contributed files remain copyrighted by the respective creators, and the license they put onto those files count, UNLESS the files were specifically created for this game under "my command".
+All contributed files remain copyrighted by the respective creators, and the license they put onto those files count, UNLESS the files were specifically created for this game under "my command".
     
-    Also note that some files have "alias" files attached to them. This credits.md file is generated from analysing the data in the JCR file built for this project, and JCR allows with the alias feature to have multiple files with the same reference data causing them to load the same data blocks. This caused me a lot of efficiency on the longer run. Music files in particular can have feature be used a lot.
+Also note that some files have "alias" files attached to them. This credits.md file is generated from analysing the data in the JCR file built for this project, and JCR allows with the alias feature to have multiple files with the same reference data causing them to load the same data blocks. This caused me a lot of efficiency on the longer run. Music files in particular can have feature be used a lot.
     
-    
+
 
 ## Alexander
 ### Creative Commons By Attribution License
