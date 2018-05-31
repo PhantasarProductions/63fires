@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.05.29
+version: 18.05.31
 ]]
 
 local ANNAMONK
@@ -95,6 +95,14 @@ field:ZA_Enter("IntroNino",IntroNino)
 
 field:ZA_Enter("ToStatue",function() field:GoToLayer('Square','StartS') map.TagMap.Square.BackNino.VISIBLE=false end)
 field:ZA_Enter("ToOutside",function() field:GoToLayer('Outside','StartN') end)
+field:ZA_Enter("ToPalace",function()
+    field:GoToLayer('Palace Entrance','StartS')
+    omusic.play("Music/Town/Tower Defense.ogg")
+end)
+field:ZA_Enter("ToSquareFromPalace",function()
+    field:GoToLayer("Square","StartN")
+    omusic.play("Music/Town/Vivacity.mp3") 
+end)
 
 local function StatueNino()
     if Done("&DONE.WINDVILLE.NINOJOIN") then return end
