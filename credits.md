@@ -177,12 +177,12 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - PikoPixel source file: GFX/WorldMap/Hub.piko
 - Graphic image: GFX/WorldMap/Hub.png
 ### These are files specifically set up for this game and other personal projects and remain my property and may NOT be extracted from this game nor any other production of Jeroen P. Broks, without prior WRITTEN permission from Jeroen P. Broks
-- File: Data/Foes/Boss/UltraSlime.gini
-- File: Data/Foes/Reg/EyeBlob.gini
-- File: Data/Foes/Reg/goblin.gini
-- File: Data/GJ_ANNA/Awards_Anna.GHD
-- File: Data/GJ_ANNA/Awards_GameJolt.GHD
-- File: Data/GJ_ANNA/GJ_ANNA.ghd
+- GINI Is Not Ini: Data/Foes/Boss/UltraSlime.gini
+- GINI Is Not Ini: Data/Foes/Reg/EyeBlob.gini
+- GINI Is Not Ini: Data/Foes/Reg/goblin.gini
+- Data: Data/GJ_ANNA/Awards_Anna.GHD
+- Data: Data/GJ_ANNA/Awards_GameJolt.GHD
+- Data: Data/GJ_ANNA/GJ_ANNA.ghd
 - File: Data/Levels/Lirmen
 - File: Data/Levels/Nino
 - File: Data/Levels/Ryanna
@@ -216,7 +216,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
    1. Alias: GFX/Skills/3.png
 - File: GFX/Portret/Saratefobo/General
 - Graphic image: GFX/Portret/Saratefobo/General.png
-- File: GFX/Portret/Saratefobo/General.xcf
+- GIMP source file: GFX/Portret/Saratefobo/General.xcf
 - Graphic image: GFX/Portret/Shirley/General.png
 - Graphic image: GFX/Skills/1.png
 - Graphic image: GFX/Skills/2.png
