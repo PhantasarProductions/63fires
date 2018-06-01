@@ -176,6 +176,62 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/WorldMap/Dungeon.png
 - PikoPixel source file: GFX/WorldMap/Hub.piko
 - Graphic image: GFX/WorldMap/Hub.png
+### These are files specifically set up for this game and other personal projects and remain my property and may NOT be extracted from this game nor any other production of Jeroen P. Broks, without prior WRITTEN permission from Jeroen P. Broks
+- File: Data/Foes/Boss/UltraSlime.gini
+- File: Data/Foes/Reg/EyeBlob.gini
+- File: Data/Foes/Reg/goblin.gini
+- File: Data/GJ_ANNA/Awards_Anna.GHD
+- File: Data/GJ_ANNA/Awards_GameJolt.GHD
+- File: Data/GJ_ANNA/GJ_ANNA.ghd
+- File: Data/Levels/Lirmen
+- File: Data/Levels/Nino
+- File: Data/Levels/Ryanna
+- File: Data/Levels/Shirley
+- Graphic image: GFX/Actors/Windville/Nino.png
+- PikoPixel source file: GFX/Actors/Windville/NinoN.piko
+- Graphic image: GFX/Actors/Windville/NinoN.png
+- Graphic image: GFX/Combat/Arena/Forest_Spar.png
+- PikoPixel source file: GFX/Combat/Cards/Heroes.piko
+- Graphic image: GFX/Combat/Cards/Hero_Ryanna.png
+- Graphic image: GFX/Combat/Cards/Nino.png
+- Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_Lucifer_Attack.png
+   1. Alias: GFX/Combat/Fighters/Hero/Demon_Ryanna_Lucifer_Cast.png
+- Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_Lucifer_Idle.png
+- Graphic image: GFX/Combat/Fighters/Hero/Ryanna_Cast.png
+- PikoPixel source file: GFX/Combat/Fighters/Hero/Ryanna_Transformed_Source.piko
+- Graphic image: GFX/Combat/Fighters/Hero/Untitled.png
+- Graphic image: GFX/Inventory_Head/1.png
+- Graphic image: GFX/Inventory_Head/2.png
+- Graphic image: GFX/Inventory_Head/3.png
+- Graphic image: GFX/Inventory_Head/4.png
+- Graphic image: GFX/Logo/63.png
+- Graphic image: GFX/PlayerSprites/Ryanna.Fish.png
+- Graphic image: GFX/PlayerSprites/Ryanna.Miss.png
+- Graphic image: GFX/PlayerSprites/Rynna.Catch.png
+- PikoPixel source file: GFX/Portret/Demon_Ryanna_Lucifer/General.piko
+- Graphic image: GFX/Portret/Demon_Ryanna_Lucifer/General.png
+- Graphic image: GFX/Portret/Nino/General.png
+- Graphic image: GFX/Portret/Ryanna/General.png
+- Graphic image: GFX/Portret/Ryanna/TotalFury.png
+   1. Alias: GFX/Skills/3.png
+- File: GFX/Portret/Saratefobo/General
+- Graphic image: GFX/Portret/Saratefobo/General.png
+- File: GFX/Portret/Saratefobo/General.xcf
+- Graphic image: GFX/Portret/Shirley/General.png
+- Graphic image: GFX/Skills/1.png
+- Graphic image: GFX/Skills/2.png
+- PikoPixel source file: GFX/Textures/Windville/Ryanna Statue.piko
+- Graphic image: GFX/Textures/Windville/Ryanna Statue.png
+- File: Scenario/BK
+- Audio: Vocals/Maps/DUNG_Graveyard/INTRO_1.ogg
+- Audio: Vocals/Maps/DUNG_Graveyard/INTRO_11.ogg
+- Audio: Vocals/Maps/DUNG_Graveyard/INTRO_13.ogg
+- Audio: Vocals/Maps/DUNG_Graveyard/INTRO_15.ogg
+- Audio: Vocals/Maps/DUNG_Graveyard/INTRO_2.ogg
+- Audio: Vocals/Maps/DUNG_Graveyard/INTRO_3.ogg
+- Audio: Vocals/Maps/DUNG_Graveyard/INTRO_4.ogg
+- Audio: Vocals/Maps/DUNG_Graveyard/INTRO_7.ogg
+- Audio: Vocals/Maps/DUNG_Graveyard/INTRO_9.ogg
 ### This is stuff related to the story line of "63 fires of lung" or other productions of Jeroen P. Broks and are therefore copyrighted and property of Jeroen P. Broks, all rights reserved. They may only be freely distributed in an unmodified version of a production of Jeroen P. Broks. Extraction, modifications and any work based on these assets may only be distributed with prior written permission from the copyright holder! Exception for .lua files on which the license text in the .lua file explicitly says otherwise, then the license text inside the .lua file counts!
 - Ryanna Project File: 63.rpf
 - Markdown document: credits.md
