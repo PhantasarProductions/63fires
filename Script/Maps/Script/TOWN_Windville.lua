@@ -131,6 +131,13 @@ field:ZA_Enter("LookStatue",StatueNino)
 field:ZA_Enter("HideNino",function()  map.TagMap.Square.BackNino.VISIBLE=false end)
 
 
+--[[
+Notes:
+   == Vault has two objects to kill if the vault door is succesfully opened!
+      = NPC_VAULT
+      = Vault
+   Don't forget!!!
+]]   
 
 return startmills() -- will return the entire module in the process and start the mills. Yup, this is what we call dirty code.
 
