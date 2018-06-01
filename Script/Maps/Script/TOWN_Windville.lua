@@ -103,6 +103,12 @@ field:ZA_Enter("ToSquareFromPalace",function()
     field:GoToLayer("Square","StartN")
     omusic.play("Music/Town/Vivacity.mp3") 
 end)
+field:ZA_Enter("ToHall",function()
+    field:GoToLayer("Palace Interior","StartS")
+end)
+field:ZA_Enter("BackEntrance",function()
+    field:GoToLayer("Place Entrance","StartN")
+end)  
 
 local function StatueNino()
     if Done("&DONE.WINDVILLE.NINOJOIN") then return end
