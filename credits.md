@@ -47,6 +47,14 @@ Also note that some files have "alias" files attached to them. This credits.md f
 
 
 ## Jeroen P. Broks
+### 
+- Graphic image: GFX/Textures/Muur Toorts/Brandend.jbtf/00000000.png
+- Graphic image: GFX/Textures/Muur Toorts/Brandend.jbtf/00000001.png
+- Graphic image: GFX/Textures/Muur Toorts/Brandend.jbtf/00000002.png
+- Graphic image: GFX/Textures/Muur Toorts/Brandend.jbtf/00000003.png
+- Graphic image: GFX/Textures/Muur Toorts/Brandend.jbtf/00000004.png
+- Graphic image: GFX/Textures/Muur Toorts/Brandend.jbtf/00000005.png
+- Graphic image: GFX/Textures/Muur Toorts/Brandend.jbtf/00000006.png
 ### These are assets that were not specifically set up for any project in particular and they may be used under the terms of the Creative Commons - By Attribution - Non-Commercial - Sharae-Alike license. Just credit me as its creator in your production, and we're fine ^_^
 - Audio: Audio/Combat/CardSlide.ogg
 - Audio: Audio/Gen/Crystal.wav
@@ -145,6 +153,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Puzzle/KVault/Controller.png
 - Graphic image: GFX/System/Console.png
 - Graphic image: GFX/Textures/HookSpot.png
+- Graphic image: GFX/Textures/Muur Toorts/Uit.png
 - Graphic image: GFX/Textures/Objects/Closed Grave.png
 - Graphic image: GFX/Textures/Objects/Grave Lid.png
 - Graphic image: GFX/Textures/Objects/Open Grave.png
@@ -316,6 +325,8 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Actors/Windville/Female.png
 - Graphic image: GFX/Actors/Windville/Female2.png
 - Graphic image: GFX/Actors/Windville/Guard.png
+- PikoPixel source file: GFX/Actors/Windville/King.piko
+- Graphic image: GFX/Actors/Windville/King.png
 - Graphic image: GFX/Actors/Windville/Male.png
 - Graphic image: GFX/Combat/Fighters/Foe/Reg/Goblin.png
 - Graphic image: GFX/Textures/Marble/Deur.png
@@ -416,6 +427,8 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Actors/Windville/Female.png
 - Graphic image: GFX/Actors/Windville/Female2.png
 - Graphic image: GFX/Actors/Windville/Guard.png
+- PikoPixel source file: GFX/Actors/Windville/King.piko
+- Graphic image: GFX/Actors/Windville/King.png
 - Graphic image: GFX/Actors/Windville/Male.png
 - Graphic image: GFX/Combat/Fighters/Foe/Reg/Goblin.png
 - Graphic image: GFX/Textures/Marble/Deur.png
