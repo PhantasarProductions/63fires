@@ -47,14 +47,17 @@ Also note that some files have "alias" files attached to them. This credits.md f
 
 
 ## Jeroen P. Broks
-### 
-- Graphic image: GFX/Textures/Muur Toorts/Brandend.jbtf/00000000.png
-- Graphic image: GFX/Textures/Muur Toorts/Brandend.jbtf/00000001.png
-- Graphic image: GFX/Textures/Muur Toorts/Brandend.jbtf/00000002.png
-- Graphic image: GFX/Textures/Muur Toorts/Brandend.jbtf/00000003.png
-- Graphic image: GFX/Textures/Muur Toorts/Brandend.jbtf/00000004.png
-- Graphic image: GFX/Textures/Muur Toorts/Brandend.jbtf/00000005.png
-- Graphic image: GFX/Textures/Muur Toorts/Brandend.jbtf/00000006.png
+### Create Commons BY-NC-SA license
+- Graphic image: GFX/Textures/Muur Toorts/Brandend.jpbf/00000000.png
+- Graphic image: GFX/Textures/Muur Toorts/Brandend.jpbf/00000001.png
+- Graphic image: GFX/Textures/Muur Toorts/Brandend.jpbf/00000002.png
+- Graphic image: GFX/Textures/Muur Toorts/Brandend.jpbf/00000003.png
+- Graphic image: GFX/Textures/Muur Toorts/Brandend.jpbf/00000004.png
+- Graphic image: GFX/Textures/Muur Toorts/Brandend.jpbf/00000005.png
+- Graphic image: GFX/Textures/Muur Toorts/Brandend.jpbf/00000006.png
+- Graphic image: GFX/Textures/Objects/Kaars.jpbf/00000000.png
+- Graphic image: GFX/Textures/Objects/Kaars.jpbf/00000001.png
+- Graphic image: GFX/Textures/Objects/Kaars.jpbf/00000002.png
 ### These are assets that were not specifically set up for any project in particular and they may be used under the terms of the Creative Commons - By Attribution - Non-Commercial - Sharae-Alike license. Just credit me as its creator in your production, and we're fine ^_^
 - Audio: Audio/Combat/CardSlide.ogg
 - Audio: Audio/Gen/Crystal.wav
