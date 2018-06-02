@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.05.29
+  Version: 18.06.02
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -318,7 +318,7 @@ function field:objectclicked()
            local stx = math.floor(tstx/32)
            local sty = math.floor(tsty/32)
            if     prefixed(utag,"NPC_MT_") and act:WalkTo(stx,sty) then arrival={self.MTclick,self,utag,tag=tag} return true
-           elseif prefixed(utag,"NPC_")    and act:WalkTo(stx,sty) then arrival={map.script[tag] or (function(t) CSay("Warning there is no map script function "..t) end)(tag),tag=tag} return true
+           elseif prefixed(utag,"NPC_")    and act:WalkTo(stx,sty) then arrival={map.script[tag] or (function(t) CSay("Warning there is no map script function "..t) end)(tag),self,tag=tag} return true
            elseif prefixed(utag,"SAVE_")   and act:WalkTo(stx,sty) then arrival={GoSaveGame,"SAVE",tag=tag} return true
            elseif prefixed(utag,"CHEST_")  and act:WalkTo(stx,sty) then arrival={TreasureChest,tag,tag=tag} return true
            elseif prefixed(utag,"TRAVEL_") and act:WalkTo(stx,sty) then arrival={TravelMedal,self,tag,tag=tag} return true

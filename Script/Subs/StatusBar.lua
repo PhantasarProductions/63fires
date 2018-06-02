@@ -1,6 +1,6 @@
 --[[
   StatusBar.lua
-  Version: 18.05.27
+  Version: 18.06.02
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -79,6 +79,7 @@ local function StatusBar(highlight,menuchain,chat)
    local lg = math.floor(math.cos(time)    *255)
    local lb = math.floor(math.sin(time/500)*255)
    local lf = GetBoxTextFont()
+   itext.setfont(lf)
    quad = quad or love.graphics.newQuad(0,height-120,width,120,ImageWidth(background),ImageHeight(background))
    white()
    QuadImage(background,quad,0,height-120)

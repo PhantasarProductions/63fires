@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.05.31
+version: 18.06.02
 ]]
 
 local ANNAMONK
@@ -47,7 +47,7 @@ local map=field:GetMap().map
 local mills = {}
 local rand=love.math.random
 local millclock = klok:CreateTimer(.005)
-
+local vault
 
 
 
@@ -136,6 +136,24 @@ end
 field:ZA_Enter("LookStatue",StatueNino)    
 field:ZA_Enter("HideNino",function()  map.TagMap.Square.BackNino.VISIBLE=false end)
 
+--[[
+function windville:OpenVault()
+   error("Opening the vault is not yet implemented!")
+end 
+]]
+
+function windville:NPC_VAULT()
+   -- $USE libs/nothing
+   MapText('VAULT')
+   vault = Use('Script/Flows/PUZ_WindvilleVault.lua')
+   vault.good = function(s)
+       -- self.OpenVault
+       error("No opening sequence yet")
+   end    
+   vault.mapscript = self
+   vault.bad  = nothing
+   flow.set(vault)
+end
 
 --[[
 Notes:

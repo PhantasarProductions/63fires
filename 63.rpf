@@ -110,6 +110,19 @@ Music/Ori/Dewdrop Fantasy.mp3 => Music/Dungeon/Forest1.mp3
 GFX/PlayerSprites/Ryanna.West.jpbf/000000000.png => GFX/Combat/Fighters/Hero/Ryanna_IDLE.png
 GFX/Combat/Fighters/Hero/Demon_Ryanna_Lucifer_Attack.png => GFX/Combat/Fighters/Hero/Demon_Ryanna_Lucifer_Cast.png
 GFX/Skills/3.png => GFX/Portret/Ryanna/TotalFury.png
+GFX/StoryFont/65.68.png => GFX/Puzzle/KVault/Buttons/Down.png
+GFX/StoryFont/65.76.png => GFX/Puzzle/KVault/Buttons/Left.png
+GFX/StoryFont/65.82.png => GFX/Puzzle/KVault/Buttons/Right.png
+GFX/StoryFont/65.85.png => GFX/Puzzle/KVault/Buttons/Up.png
+GFX/StoryFont/83.76.png => GFX/Puzzle/KVault/Buttons/Select.png
+GFX/StoryFont/83.84.png => GFX/Puzzle/KVault/Buttons/Start.png
+GFX/StoryFont/65.png => GFX/Puzzle/KVault/Buttons/A.png
+GFX/StoryFont/66.png => GFX/Puzzle/KVault/Buttons/B.png
+
+
+
+
+
 
 [List:DYNAMICJCR.DARWIN]
 /VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/buildmusic/63FOLD.Music.jcr
