@@ -305,6 +305,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Flows/NewGame.rel/linkup.lua
 - Script: Script/Flows/NewGame.rel/network.lua
 - Script: Script/Flows/NewGame.rel/skill.lua
+- Script: Script/Flows/PUZ_WindvilleVault.lua
 - Script: Script/Flows/SaveLoadScreen.lua
 - Script: Script/Flows/startgame.lua
 - Script: Script/Flows/WorldMap.lua
@@ -491,6 +492,11 @@ Also note that some files have "alias" files attached to them. This credits.md f
 ## Nick's Fonts
 ### Downloaded from DaFont.com -- 100% Free -- Or so it says
 - Font: Fonts/CHANTICL.TTF
+
+
+## qubodup
+### Public Domain
+- Graphic image: gfx/crystal/crystal.png
 
 
 ## s.a.x. Software

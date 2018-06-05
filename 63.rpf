@@ -1,7 +1,7 @@
 [rem]
 Generated file!
 
-Generated: 5/31/2018
+Generated: 6/5/2018
 
 [vars]
 AUTHOR=Jeroen P. Broks
@@ -50,6 +50,9 @@ SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/NICKS FONT
 SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/NICKSFONTS'].AUTHOR=Nick's Fonts
 SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/NICKSFONTS'].LICENSE=Downloaded from DaFont.com -- 100% Free -- Or so it says
 SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/NICKSFONTS'].TYPE.DARWIN=ALL
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/QUBODUP'].AUTHOR=qubodup
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/QUBODUP'].LICENSE=Public Domain
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/QUBODUP'].TYPE.DARWIN=ALL
 SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/S.A.X. SOFTWARE'].AUTHOR=s.a.x. Software
 SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/S.A.X. SOFTWARE'].LICENSE=Downloaded from dafont.com -- All that is said about the license is "100% free".
 SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/S.A.X. SOFTWARE'].TYPE.DARWIN=ALL
@@ -59,7 +62,6 @@ SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/TRICKY_CC'
 SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/TRICKY_PRIVATE'].AUTHOR=Jeroen P. Broks
 SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/TRICKY_PRIVATE'].LICENSE=These are files specifically set up for this game and other personal projects and remain my property and may NOT be extracted from this game nor any other production of Jeroen P. Broks, without prior WRITTEN permission from Jeroen P. Broks
 SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/TRICKY_PRIVATE'].TYPE.DARWIN=ALL
-SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/TRICKY_SCRIPT'].AUTHOR=Jeroen P. Broks
 SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/TRICKY_SCRIPT'].AUTHOR=Jeroen P. Broks
 SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/TRICKY_SCRIPT'].LICENSE=This is stuff related to the story line of "63 fires of lung" or other productions of Jeroen P. Broks and are therefore copyrighted and property of Jeroen P. Broks, all rights reserved. They may only be freely distributed in an unmodified version of a production of Jeroen P. Broks. Extraction, modifications and any work based on these assets may only be distributed with prior written permission from the copyright holder! Exception for .lua files on which the license text in the .lua file explicitly says otherwise, then the license text inside the .lua file counts!
 SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/PRJ/DEMO/DATA/TRICKY_SCRIPT'].TYPE.DARWIN=ALL
@@ -118,11 +120,6 @@ GFX/StoryFont/83.76.png => GFX/Puzzle/KVault/Buttons/Select.png
 GFX/StoryFont/83.84.png => GFX/Puzzle/KVault/Buttons/Start.png
 GFX/StoryFont/65.png => GFX/Puzzle/KVault/Buttons/A.png
 GFX/StoryFont/66.png => GFX/Puzzle/KVault/Buttons/B.png
-
-
-
-
-
 
 [List:DYNAMICJCR.DARWIN]
 /VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/buildmusic/63FOLD.Music.jcr
