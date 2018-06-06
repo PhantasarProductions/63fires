@@ -322,6 +322,7 @@ function field:objectclicked()
            elseif prefixed(utag,"SAVE_")   and act:WalkTo(stx,sty) then arrival={GoSaveGame,"SAVE",tag=tag} return true
            elseif prefixed(utag,"CHEST_")  and act:WalkTo(stx,sty) then arrival={TreasureChest,tag,tag=tag} return true
            elseif prefixed(utag,"TRAVEL_") and act:WalkTo(stx,sty) then arrival={TravelMedal,self,tag,tag=tag} return true
+           elseif tag=="DemonCrystal"      and act:WalkTo(stx,sty) then arrival={AddTransform,obj.DATA['DEMON']} return true
            else   ret=false
            end
         else

@@ -41,3 +41,17 @@ function TransMake(form)
    -- $USE script/subs/transform
    transform.make(form)
 end   
+
+function AddTransform(form)
+   LoadScenario("NEWTRANS",'TRANSCRYSTAL')
+   local ac = field:GetActive()
+   if ac=='Ryanna' then
+      Var.D("$NEWDEMON",form)
+      SerialBoxText("NEWTRANS",'GETRYANNA')
+      TransMake(form)
+      field:kill("DemonCrystal",true)
+      gamedata.transform[#gamedata.transform+1]=form
+   else
+      SerialBoxText("NEWTRANS",'NO.'..(ac:upper()))
+   end
+end         

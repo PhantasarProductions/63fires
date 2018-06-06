@@ -52,6 +52,8 @@ function crystal:CrystalInit()
                   self.crystals[lay][#self.crystals[lay]+1]=obj
                   if skill==1 and prefixed(obj.TAG,"CRYSTALH") then obj.COLOR = {r=180,g=255,b=0} end
                end
+            elseif obj.TAG=='DemonCrystal' then
+               CSay("= Found a demon crystal on layer '"..lay.."'")   
             end
         end
         CSay("= Crystals in layer '"..lay.."': "..#(self.crystals[lay] or {}))

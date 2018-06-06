@@ -148,12 +148,17 @@ function windville:NPC_VAULT()
    vault = Use('Script/Flows/PUZ_WindvilleVault.lua')
    vault.good = function(s)
        -- self.OpenVault
-       error("No opening sequence yet")
+       field:GoToLayer("Palace Vault","Start","North")
+       --error("No opening sequence yet")
    end    
    vault.mapscript = self
    vault.bad  = nothing
    flow.set(vault)
 end
+
+field:ZA_Enter('Leave',function()
+    field:GoToLayer("Palace Interior","FromVault") 
+end)
 
 --[[
 Notes:
