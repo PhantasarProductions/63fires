@@ -160,6 +160,11 @@ field:ZA_Enter('Leave',function()
     field:GoToLayer("Palace Interior","FromVault") 
 end)
 
+
+function windville:NPC_King()
+   ChMapText('KING')
+end   
+
 --[[
 Notes:
    == Vault has two objects to kill if the vault door is succesfully opened!
