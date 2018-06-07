@@ -186,6 +186,7 @@ function field:SpawnPlayer(exitpoint)
     local xd = {}
     local exitspot = exitpoint
     if type(exitspot)=='string' then 
+       assert(map.map.TagMap[map.layer],"Trying to spawn the player on non-existent layer: "..sval(map.layer))
        exitspot = map.map.TagMap[map.layer][exitpoint] 
     else  
         exitpoint.COORD =  
