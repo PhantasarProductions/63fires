@@ -34,6 +34,11 @@ function MapText(ptag,boxback)
    SerialBoxText("MAP",ptag,boxback)
 end   
 
+function ChMapText(ptag,boxback)
+    local ch = field:GetActive()
+    MapText(ptag.."_"..(ch:upper()),boxback)
+end    
+
 function RunQuestion(fil,ptag,boxback)
    -- $USE Script/Subs/boxtext
    return boxtext.RunQuestion(fil,ptag,boxback)
