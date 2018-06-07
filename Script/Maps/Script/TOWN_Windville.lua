@@ -133,8 +133,10 @@ local function StatueNino()
     -- Reset actors
     field:GoToLayer('Square','StatueSpot') 
 end
-field:ZA_Enter("LookStatue",StatueNino)    
-field:ZA_Enter("HideNino",function()  map.TagMap.Square.BackNino.VISIBLE=false end)
+field:ZA_Enter("LookStatue",StatueNino)
+local HideNino = function()  map.TagMap.Square.BackNino.VISIBLE=false end    
+field:ZA_Enter("HideNino"  ,HideNino)
+field:ZA_Enter("BegoneNino",HideNino)
 
 --[[
 function windville:OpenVault()

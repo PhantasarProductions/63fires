@@ -40,7 +40,10 @@ QHot(INowLoading,"rb")
 
 function NowLoading() -- For big loads
      -- $USE script/subs/screen
-     love.graphics.clear()
-     DrawImage(INowLoading,screen.w,screen.h)
-     love.graphics.present()
+     for i=1,3 do
+         -- Placed in loop to make sure no "after-load" pollution can be shown.
+         love.graphics.clear()
+         DrawImage(INowLoading,screen.w,screen.h)
+         love.graphics.present()
+     end
 end     

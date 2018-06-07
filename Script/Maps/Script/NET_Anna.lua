@@ -89,5 +89,14 @@ end
 
 PrayToAnna()
 
+function fuckit:NPC_BYE()
+    -- $USE libs/nothing
+    MapText("BYE")
+    ;({
+        AnnaReturn,
+        nothing
+    })[RunQuestion("MAP","BYEQ")]()
+end
+
 
 return fuckit
