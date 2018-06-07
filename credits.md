@@ -249,6 +249,9 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/General/Sex.lua
 - Script: Script/Data/General/WorldMap.lua
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_F2.lua
+- Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_IJSBLOKJE_F1.lua
+- Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_IJSBLOKJE_F2.lua
+- Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_IJSBLOKJE_F3.lua
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_LUCIFER_F1.lua
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_LUCIFER_F2.lua
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_LUCIFER_F3.lua
@@ -276,6 +279,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/IAA/ZPECIAL_MEGASLAM_ACCESS.lua
 - Script: Script/Data/IAA/ZPECIAL_REVERT.lua
 - Markdown document: Script/Data/readme.md
+- Script: Script/Data/transform_make/IJsblokje.lua
 - Script: Script/Data/transform_make/Lucifer.lua
 - Script: Script/Flows/combat.rel/com_arena.lua
 - Script: Script/Flows/combat.rel/com_cards.lua
