@@ -2,7 +2,7 @@
 -- 07 Jun 2018; 21:21:18
 -- License: If stripped from any reference to the story line and its characters, this file becomes zLib
 	local ret = {
-		["ABL_APCost"] = 0,
+		["ABL_APCost"] = 15,
 		["ABL_HPCost"] = 0,
 		["ABL_allowfield"] = false,
 		["ABL_silenceblock"] = false,
@@ -45,11 +45,11 @@
 		["CureDisease"] = true,
 		["CureParalysis"] = false,
 		["CurePetrification"] = false,
-		["CurePoison"] = false,
+		["CurePoison"] = true,
 		["CureSilence"] = false,
 		["CureSleep"] = false,
 		["CureUndead"] = false,
-		["Desc"] = "Tastes horrible, but it does what it has to",
+		["Desc"] = "The name says it all",
 		["EQP_STAT_AP"] = 0,
 		["EQP_STAT_Accuracy"] = 0,
 		["EQP_STAT_Awareness"] = 0,
@@ -89,18 +89,18 @@
 		["ITM_Combat"] = true,
 		["ITM_Field"] = true,
 		["ITM_Sellable"] = true,
-		["ITM_ShopPrice"] = 50,
+		["ITM_ShopPrice"] = 0,
 		["ITM_Type"] = "Consumable",
 		["InputXtraScript"] = "",
 		["InputXtraScript_Arg"] = "",
 		["Revive"] = false,
-		["SpellAni"] = "",
+		["SpellAni"] = "Sparkle",
 		["SpellAni_Arg"] = "",
 		["Stance"] = "Cast",
 		["Stance_JumpToEnemy"] = false,
 		["Target"] = "1A",
 		["Target_Discriminate"] = false,
-		["Title"] = "Medicine",
-		["Type"] = "Item"}
+		["Title"] = "Cure Poison And Disease",
+		["Type"] = "Ability"}
 
 return ret
