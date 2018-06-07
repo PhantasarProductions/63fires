@@ -107,7 +107,7 @@ field:ZA_Enter("ToHall",function()
     field:GoToLayer("Palace Interior","StartS")
 end)
 field:ZA_Enter("BackEntrance",function()
-    field:GoToLayer("Place Entrance","StartN")
+    field:GoToLayer("Palace Entrance","StartN")
 end)  
 
 local function StatueNino()
