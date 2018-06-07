@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.05.30
+version: 18.06.07
 ]]
 local fuckit={}
 local http = require("socket.http")
