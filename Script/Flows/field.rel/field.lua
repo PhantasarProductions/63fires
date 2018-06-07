@@ -185,7 +185,17 @@ end
 function field:SpawnPlayer(exitpoint)
     local xd = {}
     local exitspot = exitpoint
-    if type(exitspot)=='string' then exitspot = map.map.TagMap[map.layer][exitpoint] else  exitpoint.COORD =  exitpoint.COORD or exitpoint.COORDS or {} exitpoint.x=exitpoint.x or exitpoint.COORD.x exitpoint.y=exitpoint.y or exitpoint.COORD.y end
+    if type(exitspot)=='string' then 
+       exitspot = map.map.TagMap[map.layer][exitpoint] 
+    else  
+        exitpoint.COORD =  
+              exitpoint.COORD 
+           or exitpoint.COORDS 
+           or {} 
+              exitpoint.x=exitpoint.x 
+           or exitpoint.COORD.x exitpoint.y=exitpoint.y 
+           or exitpoint.COORD.y 
+    end
     TrickAssert(exitspot,"Can't spawn on an unknown spot",{F='SpawnPlayer',Exit=exitpoint,Map=map.file,Layer=map.layer})
     xd.FRAME=1
     xd.WIND='South'
