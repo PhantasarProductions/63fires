@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.06.07
+version: 18.06.08
 ]]
 
 local ANNAMONK
@@ -167,6 +167,19 @@ function windville:NPC_King()
    ChMapText('KING')
 end   
 
+function windville:NPC_MARRILONA()
+   MapText("CAMEO_MARRILONA")
+   WorldMap_Unlock("D_FREDDY")
+end   
+
+field:ZA_Enter('UnlockStarrow',function()
+     if not Var.G("&DONE.WINDVILLE.NINOJOIN") then return end
+     if Done("&DONE.WINDVILLE.UNLOCK.STARROW") then return end
+     MapText("UNLOCKSTARROW")
+     WorldMap_Unlock("D_STARROW")
+     WorldMap_Unlock("D_PRIMOSTUNNEL")
+     field:kill("UnlockStarrow",true)
+end)
 --[[
 Notes:
    == Vault has two objects to kill if the vault door is succesfully opened!
