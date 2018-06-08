@@ -188,6 +188,19 @@ Notes:
    Don't forget!!!
 ]]   
 
+field:ZA_Enter('EnterStore',function()
+    field:GoToLayer('Stores','Start')
+end)
+
+field:ZA_Enter('LeaveStore',function()
+    field:GoToLayer('Outside','FromStore')
+end)
+
+
+function windville:NPC_Irravonia()
+    MapText("CAMEO_IRRAVONIA")
+end
+
 return startmills() -- will return the entire module in the process and start the mills. Yup, this is what we call dirty code.
 
 
