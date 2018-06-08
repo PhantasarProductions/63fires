@@ -35,6 +35,18 @@
 version: 18.06.08
 ]]
 
+--[[
+
+   Now this particular script is very poorly organized.
+   City map scripts often tend to be that way, tbh.
+   I've done this the dirty way for starters, 
+   and I apologize for the lack of order.
+   Not gonna change that.
+   It works this way, and THAT is the only thing that matters :P
+   
+]]
+
+
 local ANNAMONK
 -- $USE libs/klok
 
