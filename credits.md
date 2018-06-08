@@ -187,6 +187,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - File: Data/Levels/Nino
 - File: Data/Levels/Ryanna
 - File: Data/Levels/Shirley
+- Graphic image: GFX/Actors/Cameo/Dienstmeid Marrilona.png
 - Graphic image: GFX/Actors/Windville/Nino.png
 - PikoPixel source file: GFX/Actors/Windville/NinoN.piko
 - Graphic image: GFX/Actors/Windville/NinoN.png
@@ -208,6 +209,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/PlayerSprites/Ryanna.Fish.png
 - Graphic image: GFX/PlayerSprites/Ryanna.Miss.png
 - Graphic image: GFX/PlayerSprites/Rynna.Catch.png
+- Graphic image: GFX/Portret/Demon_Ryanna_IJsblokje/General.png
 - PikoPixel source file: GFX/Portret/Demon_Ryanna_Lucifer/General.piko
 - Graphic image: GFX/Portret/Demon_Ryanna_Lucifer/General.png
 - Graphic image: GFX/Portret/Nino/General.png
@@ -238,6 +240,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Markdown document: license.md
 - Markdown document: README.md
 - Script: Script/Data/CharAbility/Demon_Ryanna_Lucifer.lua
+- Script: Script/Data/CharAbility/Nino.lua
 - Script: Script/Data/CharAbility/Ryanna.lua
 - Script: Script/Data/Combat/ActEffect/ZZZZ_StoryEvent_FirstTransform.lua
 - Script: Script/Data/Combat/AI/default.lua
@@ -256,6 +259,15 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_LUCIFER_F2.lua
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_LUCIFER_F3.lua
 - Script: Script/Data/IAA/ABL_HERO_HERO_DEMON_RYANNA_LUCIFER_F1.lua
+- Script: Script/Data/IAA/ABL_HERO_NINO_CUREPD.lua
+- Script: Script/Data/IAA/ABL_HERO_NINO_ESUNA.lua
+- Script: Script/Data/IAA/ABL_HERO_NINO_FEROSLASH.lua
+- Script: Script/Data/IAA/ABL_HERO_NINO_FIRESTORM.lua
+- Script: Script/Data/IAA/ABL_HERO_NINO_HEAL.lua
+- Script: Script/Data/IAA/ABL_HERO_NINO_HOLYSTRIKE.lua
+- Script: Script/Data/IAA/ABL_HERO_NINO_REJUVENATE.lua
+- Script: Script/Data/IAA/ABL_HERO_NINO_SANCTIFY.lua
+- Script: Script/Data/IAA/ABL_HERO_NINO_VITALIZE.lua
 - Script: Script/Data/IAA/ABL_HERO_RYANNA_ACCESS.lua
 - Script: Script/Data/IAA/ABL_HERO_RYANNA_MYSTIC.lua
 - Script: Script/Data/IAA/ABL_HERO_RYANNA_PICKPOCKET.lua
@@ -315,7 +327,10 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Flows/WorldMap.lua
 - Script: Script/Maps/Kthura/DUNG_BeaufortForest.lua
 - Script: Script/Maps/Kthura/DUNG_BluePalace.lua
+- Script: Script/Maps/Kthura/DUNG_Freddy.lua
 - Script: Script/Maps/Kthura/DUNG_Graveyard.lua
+- Script: Script/Maps/Kthura/DUNG_PrimosTunnel.lua
+- Script: Script/Maps/Kthura/DUNG_Starrow.lua
 - Script: Script/Maps/Kthura/NET_Anna.lua
 - Markdown document: Script/Maps/Kthura/ReadMe.md
 - Script: Script/Maps/Kthura/Test Map.lua
@@ -393,6 +408,13 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Actors/Windville/King.png
 - Graphic image: GFX/Actors/Windville/Male.png
 - Graphic image: GFX/Combat/Fighters/Foe/Reg/Goblin.png
+- Graphic image: GFX/Textures/House_Inside/Houten rand - Horizontaal.png
+- Graphic image: GFX/Textures/House_Inside/Houten rand - Veritcaal.png
+- Graphic image: GFX/Textures/House_Inside/Toonbank.png
+- Graphic image: GFX/Textures/House_Inside/Vloer.png
+- Graphic image: GFX/Textures/House_Inside/Wand - Links.png
+- Graphic image: GFX/Textures/House_Inside/Wand - M.png
+- Graphic image: GFX/Textures/House_Inside/Wand - Rechts.png
 - Graphic image: GFX/Textures/Marble/Deur.png
 - Graphic image: GFX/Textures/Marble/Floor.png
 - Graphic image: GFX/Textures/Marble/Pillar.png
