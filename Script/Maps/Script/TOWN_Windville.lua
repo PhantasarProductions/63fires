@@ -201,6 +201,11 @@ function windville:NPC_Irravonia()
     MapText("CAMEO_IRRAVONIA")
 end
 
+function windville:NPC_UPGRADE()
+    MapText("UPGRADER")
+end
+
+
 return startmills() -- will return the entire module in the process and start the mills. Yup, this is what we call dirty code.
 
 
