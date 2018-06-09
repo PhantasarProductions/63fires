@@ -215,6 +215,7 @@ end
 
 function windville:NPC_UPGRADE()
     MapText("UPGRADER")
+    UpgradeShop()
 end
 
 

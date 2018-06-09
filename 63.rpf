@@ -126,4 +126,5 @@ GFX/StoryFont/66.png => GFX/Puzzle/KVault/Buttons/B.png
 
 [List:CONFIG]
 modules.joystick=false
-
+window.width=1000
+window.height=1000

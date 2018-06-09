@@ -108,7 +108,7 @@ function SLS.draw()
     for i=1,15 do
         local y = 100+(eh*i)
         local dispname=entries[i] or "<< EMPTY SLOT >>"
-        while itext.width(dispname)>scw-10 do dispname = left(dispname,#disname-1) end
+        while itext.width(dispname)>scw-10 do dispname = left(dispname,#dispname-1) end
         if my>y-15 and my<y+15 then
            hover=i
         end
