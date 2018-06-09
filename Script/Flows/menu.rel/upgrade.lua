@@ -32,13 +32,14 @@
   
  **********************************************
  
-version: 18.06.09
+version: 18.06.10
 ]]
 local width, height = love.graphics.getDimensions(  )
 local upg = { nomerge=true }
 --local stats = {"Power","Defense","Intelligence","Resistance","Speed","Accuracy","Evasion"} --,"HP","AP","Awareness"}
 
 local upgrades = Use("Script/Data/General/UpgradeData.lua")
+local skill = Var.G("%SKILL")
 
 upg.mode = 'upgrade'
 
@@ -50,9 +51,34 @@ upg.iconstrip = {
      {icon='help',tut="How does it all work!",cb=iconstriphelp}
 }
 
+upg.eq={'Weapon','Armor'}
 
+local function total(s) 
+   local r=0
+   for k,v in pairs(s) do
+       if type(v)=='number' then r=r+v end
+   end
+   return r
+end   
 
 function upg.modes.upgrade( x,w,ch,click )
+  local font = GetBoxTextFont()
+  local maxupdates = Var.G("%LEVELCAP")/skill
+  itext.setfont(font)
+  gamedata.upgrades = gamedata.upgrades or {}
+  gamedata.upgrades[ch] = gamedata.upgrades[ch] or {Weapon=0,Armor=0,total=total}
+  local u = gamedata.upgrades[ch]
+  for i,e in ipairs(upg.eq) do
+      white()
+      itext.write(e..":",x,i*80)
+      color(0,180,255)
+      itext.write(upgrades[ch][e].name,x+20,(i*80)+40)
+      ember()
+      itext.write(u[e],x+(w-20),(i*80)+40,1,0)
+  end
+  white()
+  itext.write("Cash: "..DumpCash(Var.G("%CASH")),x,260)
+  itext.write("Max:  "..maxupdates,x,300)
 end
 
 return upg
