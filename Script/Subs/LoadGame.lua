@@ -1,6 +1,6 @@
 --[[
   LoadGame.lua
-  Version: 18.01.23
+  Version: 18.06.09
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -89,6 +89,32 @@ local function ExtractSwapFiles(jcrfile)
     field:ReadMapChanges()
 end
 
+local function altdirget(dir,ret,sub)
+    local entries = ret.entries
+    local files = love.filesystem.getDirectoryItems(dir)
+    Doing("  = AltGetDir.Retrieving:",dir.."  ..  "..sub)
+    for f in each(files) do
+        local ff = dir.."/"..f
+        local sf = sub.."/"..f
+        if sub=="" then sf=f end
+        if IsFile(ff) then
+           Doing("  = AltGetDir.Adding: ",sf)
+           entries[sf:upper()] = { entry=sf,mainfile =love.filesystem.getSource(),LOVE=ff }
+        elseif IsDir(ff) then
+           altdirget(ff,ret,sf)
+        else
+           error("What the hell is file "..ff.."?")
+        end
+    end              
+end
+
+local function altdir(dir)
+   local ret = {from = love.filesystem.getSource(), kind="LOVE", entries={}}
+   local entries = ret.entries
+   altdirget(dir,ret,"")
+   return ret
+end
+
 local function lg(file,nocrash)
       RPGJCRDIR=""
       flow.use('startgame','script/Flows/startgame')
@@ -100,8 +126,8 @@ local function lg(file,nocrash)
          lpref = ""
          Doing("= Type: ","Packed")
       elseif love.filesystem.isDirectory("savegames/"..file) then
-         ljcr = jcr
-         lpref = "savegames/"..file.."/"
+         ljcr = altdir("savegames/"..file) --jcr
+         lpref = "" -- "savegames/"..file.."/"
          Doing("= Type: ","Crappy")
       elseif nocrash then
          console.write("ERROR! ",255,0,0)
