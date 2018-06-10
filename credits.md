@@ -250,6 +250,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/General/Fish.lua
 - Script: Script/Data/General/FishSpot.lua
 - Script: Script/Data/General/Sex.lua
+- Script: Script/Data/General/upgradedata.lua
 - Script: Script/Data/General/WorldMap.lua
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_F2.lua
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_IJSBLOKJE_F1.lua
@@ -291,6 +292,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/IAA/ZPECIAL_MEGASLAM_ACCESS.lua
 - Script: Script/Data/IAA/ZPECIAL_REVERT.lua
 - Markdown document: Script/Data/readme.md
+- Script: Script/Data/Shops/IRRAVONIA.lua
 - Script: Script/Data/transform_make/IJsblokje.lua
 - Script: Script/Data/transform_make/Lucifer.lua
 - Script: Script/Flows/combat.rel/com_arena.lua
@@ -317,6 +319,8 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Flows/mainmenu.lua
 - Script: Script/Flows/menu.rel/Algemeen.lua
 - Script: Script/Flows/menu.rel/field.lua
+- Script: Script/Flows/menu.rel/shop.lua
+- Script: Script/Flows/menu.rel/upgrade.lua
 - Script: Script/Flows/NewGame.rel/language.lua
 - Script: Script/Flows/NewGame.rel/linkup.lua
 - Script: Script/Flows/NewGame.rel/network.lua
@@ -353,6 +357,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Subs/headers.h.rel/boxtext_headers.lua
 - Script: Script/Subs/headers.h.rel/combat_h.lua
 - Script: Script/Subs/headers.h.rel/inventory_h.lua
+- Script: Script/Subs/headers.h.rel/menu.h.lua
 - Script: Script/Subs/headers.h.rel/minimsg.h.lua
 - Markdown document: Script/Subs/headers.h.rel/readme.md
 - Script: Script/Subs/headers.h.rel/Save_headers.lua
@@ -508,6 +513,8 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Textures/Windville/Put.png
 ### This file has been created by Man of Steel under leadership of Jeroen P. Broks, meaning the latter owns the file AND its copyright, and this file may NOT be extracted from this project without prior license permission of Jeroen P. Broks.
 - Graphic image: GFX/Actors/Cameo/Aziella.png
+- Graphic image: GFX/Actors/Cameo/Irravonia.png
+- Graphic image: GFX/Actors/Cameo/Merya.png
 
 
 ## mondspeer
