@@ -1,6 +1,6 @@
 --[[
   items.lua
-  Version: 18.03.10
+  Version: 18.06.10
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -62,7 +62,7 @@ local allowtabs = { field = {1,2,3,4}, sell={1,2,3}, combat={1,2}}
 local invheaders = {}
 local p,pm={},{}
 
-function itemsm:selectitems(env,x,y,aclick,win)
+function itemsm:selectitems(env,x,y,aclick,win,selling)
      -- $USE libs/nothing
      local mx,my=love.mouse.getPosition()
      assert(win,"No windowdata")
@@ -98,6 +98,18 @@ function itemsm:selectitems(env,x,y,aclick,win)
             white()
             love.graphics.setFont(fontMiddel)
             love.graphics.print(item.Title,win.x+10,win.y+py)
+            if selling then
+               if item.ITM_Sellable and item.ITM_ShopPrice and item.ITM_ShopPrice>0 then
+                  love.graphics.setFont(monofontmiddel)
+                  color(255,180,0)
+                  love.graphics.print(DumpCash(math.ceil(item.ITM_ShopPrice/3)),win.x+10+(win.w/3),win.y+py)
+                  helptext=helptext.."\n \nIf you click now you'll sell this item for: "..DumpCash(math.ceil(item.ITM_ShopPrice/3))
+               else
+                  red()
+                  love.graphics.print("Cannot sell!",win.x+10+(win.w/3),win.y+py)   
+                  helptext=helptext.."\n \nYou cannot sell this item"
+               end   
+            end
             color(0,180,255)
             diginum(num,win.x+win.w-20,win.y+py)
             if click(win.x,win.y+py,win.w,30,aclick,helptext,nothing) then return icode end

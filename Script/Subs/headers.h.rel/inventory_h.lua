@@ -1,6 +1,6 @@
 --[[
   inventory_h.lua
-  Version: 18.03.10
+  Version: 18.06.10
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -41,9 +41,9 @@ function InitIAA()
 end
 
 
-function ItemSelector(env,x,y,click,win)
+function ItemSelector(env,x,y,click,win,sell)
     InitIAA()
-    return IAA:selectitems(env,x,y,click,win)
+    return IAA:selectitems(env,x,y,click,win,sell)
 end
 
 function ItemGet(icode)

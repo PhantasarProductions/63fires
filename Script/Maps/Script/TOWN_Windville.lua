@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.06.09
+version: 18.06.10
 ]]
 
 --[[
@@ -44,6 +44,13 @@ version: 18.06.09
    Not gonna change that.
    It works this way, and THAT is the only thing that matters :P
    
+   This is the city of Windville.
+   This script makes the mills turn
+   Unlocks several new missions
+   And this is where Ryanna meets Nino and where Nino also joins the party.
+   
+   And that covers it up, I guess...
+   
 ]]
 
 
@@ -54,6 +61,7 @@ local ANNAMONK
 -- CSay("Anna scanup result:"..sval(ANNAMONK.status))
 
 
+-- Basic data crap
 local windville = {}
 local map=field:GetMap().map
 local mills = {}
@@ -63,6 +71,7 @@ local vault
 
 
 
+-- Let the mills turn and turn and turn
 function windville:oncycle()
     -- $USE script/subs/ANNAMONK
     if millclock:enough() then
@@ -75,7 +84,7 @@ function windville:oncycle()
     end
 end    
 
-
+-- Scan the map for all maps, so they they turn
 local function startmills()
    CSay("= Award achievement if you didn't already have it")
    Award("ARRIVE_WINDVILLE")
@@ -95,6 +104,7 @@ local function startmills()
    return windville
 end
 
+-- Ryanna meets Nino for the first time
 local function IntroNino()
       local RYANNA = map.TagMap.Outside.PLAYER1
       MapText("ENTER1")
@@ -105,6 +115,8 @@ end
 field:ZA_Enter("IntroNino",IntroNino)
 
 
+-- A few area linkups
+-- Since the areas are not numbered here, this needs to be done manually.
 field:ZA_Enter("ToStatue",function() field:GoToLayer('Square','StartS') map.TagMap.Square.BackNino.VISIBLE=false end)
 field:ZA_Enter("ToOutside",function() field:GoToLayer('Outside','StartN') end)
 field:ZA_Enter("ToPalace",function()
@@ -122,6 +134,8 @@ field:ZA_Enter("BackEntrance",function()
     field:GoToLayer("Palace Entrance","StartN")
 end)  
 
+-- Conversation with Nino when Ryanna sees the statue
+-- This is also where Nino joins the party
 local function StatueNino()
     if Done("&DONE.WINDVILLE.NINOJOIN") then return end
     -- Pre-Join
@@ -146,6 +160,8 @@ local function StatueNino()
     field:GoToLayer('Square','StatueSpot') 
 end
 field:ZA_Enter("LookStatue",StatueNino)
+
+-- Make sure the Nino actors does not appear while Ryanna is not watching the statue
 local HideNino = function()  map.TagMap.Square.BackNino.VISIBLE=false end    
 field:ZA_Enter("HideNino"  ,HideNino)
 field:ZA_Enter("BegoneNino",HideNino)
@@ -156,6 +172,7 @@ function windville:OpenVault()
 end 
 ]]
 
+-- Activate the vault lock
 function windville:NPC_VAULT()
    -- $USE libs/nothing
    MapText('VAULT')
@@ -170,20 +187,25 @@ function windville:NPC_VAULT()
    flow.set(vault)
 end
 
+-- Leaving the vault
 field:ZA_Enter('Leave',function()
     field:GoToLayer("Palace Interior","FromVault") 
 end)
 
 
+-- The king
 function windville:NPC_King()
    ChMapText('KING')
 end   
 
+-- Marrilona cameo
+-- She'll also unlock Freddy's
 function windville:NPC_MARRILONA()
    MapText("CAMEO_MARRILONA")
    WorldMap_Unlock("D_FREDDY")
 end   
 
+-- Unlock the next dungeons once Nino joined the party
 field:ZA_Enter('UnlockStarrow',function()
      if not Var.G("&DONE.WINDVILLE.NINOJOIN") then return end
      if Done("&DONE.WINDVILLE.UNLOCK.STARROW") then return end
@@ -200,19 +222,24 @@ Notes:
    Don't forget!!!
 ]]   
 
+-- Enter the store
 field:ZA_Enter('EnterStore',function()
     field:GoToLayer('Stores','Start')
 end)
 
+-- Leave the store
 field:ZA_Enter('LeaveStore',function()
     field:GoToLayer('Outside','FromStore')
 end)
 
-
+-- Cameo Irravonia
+-- She also offers an item shop
 function windville:NPC_Irravonia()
     MapText("CAMEO_IRRAVONIA")
+    Shop("IRRAVONIA")
 end
 
+-- Salvio's upgrade shop
 function windville:NPC_UPGRADE()
     MapText("UPGRADER")
     UpgradeShop()
@@ -225,3 +252,15 @@ return startmills() -- will return the entire module in the process and start th
 
 
 
+--[[
+
+    I don't need to script Aziella and Merya.
+    Both have their speech text DIRECTLY linked to their personas in the city
+    Yeah yeah, we got need for speed in our coding.
+    Oh man, now I named a game in the source code....
+    
+    
+    Oh wait, this was a parody to gemes.
+    Then let's not worry about it :P
+    
+    ]]

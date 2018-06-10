@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.06.08
+  Version: 18.06.10
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -556,6 +556,18 @@ function field.consolecommands.SAVE(self,apara)
     if para:upper()=="SPOT" then return GoSaveGame("SAVE") end
     if para=="" then para="DEBUG" end
     Save("debug."..para)
-end    
+end  
+
+function field.consolecommands:GAMEDATA()
+    local gd = mysplit(serialize('gamedata',gamedata),"\n")
+    local gc = #gd
+    for i,l in ipairs(gd) do
+        local r,g,b
+        r = math.floor(255 - ((i/gc)*255))
+        g = 180
+        b = 255 - r
+        console.writeln(l,r,g,b)
+    end
+end  
 
 return field
