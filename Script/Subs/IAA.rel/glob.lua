@@ -47,12 +47,22 @@ end
 
 
 function glob:itemhelp(item)
-               local helptext = item.Title .. "\n" .. item.Desc
+               local helptext = item.Title .. "\n" .. item.Desc               
                if item.Heal and item.Heal>0 then
                   if     item.Heal_Type == 'Absolute' then helptext = helptext .. "\nHeals "..item.Heal.." HP"
                   elseif item.Heal_Type == "Percent"  then helptext = helptext .. "\nHeals "..item.Heal.."% of your maximum HP"
                   end
                end    
+               if item.Attack and item.Attack>0 then
+                  helptext = helptext .."\nAttack rate "..item.Attack.."% of user's "..item.Attack_AttackStat..". Target defends with their "..item.Attack_DefenseStat
+                  if item.Attack_AllowAccuracy then 
+                     helptext = helptext .. "\nUser's accuracy is taken into account for this attack, "
+                     if item.Attack_AllowDodge then helptext = helptext .. ", and the target can dodge the attack" else item.Attack_AllowDodge=", but the target cannot dodge the attack" end
+                  else
+                     helptext = helptext .."\nThis item is not affected by the user's accuracy, and has therefore 100% accuracy rate always"
+                     if item.Attack_AllowDodge then helptext = helptext .. ", however the target can still dodge the attack" else item.Attack_AllowDodge=", and the target cannot dodge the attack" end
+                  end      
+               end
                for k,v in spairs(item) do
                       if prefixed(k,"Cure")  and v then helptext = helptext .. "\nCures "..right(k,#k-4) end
                       if prefixed(k,"Cause") and v then helptext = helptext .. "\nCauses "..right(k,#k-5) end
