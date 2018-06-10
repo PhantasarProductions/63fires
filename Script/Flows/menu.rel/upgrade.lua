@@ -59,9 +59,14 @@ local function total(s)
        if type(v)=='number' then r=r+v end
    end
    return r
+end
+
+local function doupgrade(ch,eq)
 end   
 
-function upg.modes.upgrade( x,w,ch,click )
+local tabupgrade = {Weapon=function(ch) doupgrade(ch,'Weapon') end, Armor=function(ch) doupgrade(ch,'Armor') end}
+
+function upg.modes.upgrade( x,w,ch,clicked )
   local font = GetBoxTextFont()
   local maxupdates = Var.G("%LEVELCAP")/skill
   itext.setfont(font)
@@ -75,6 +80,13 @@ function upg.modes.upgrade( x,w,ch,click )
       itext.write(upgrades[ch][e].name,x+20,(i*80)+40)
       ember()
       itext.write(u[e],x+(w-20),(i*80)+40,1,0)
+      local tut = "Upgrade "..ch.."'s "..e:lower().."\n\nEffects:"
+      for k,v in spairs(upgrades[ch][e]['u'..skill]) do
+          tut = tut .. "\n= "..k..": "
+          if v>=0 then tut=tut.."+" end
+          tut = tut .. v
+      end
+      click(x,(i*80),w,80,clicked,tut,tabupgrade[e])    
   end
   white()
   itext.write("Cash: "..DumpCash(Var.G("%CASH")),x,260)
