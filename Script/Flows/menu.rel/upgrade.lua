@@ -61,23 +61,57 @@ local function total(s)
    return r
 end
 
+local function cost(ch,eq)
+   local r=1
+   local max=128000000
+   local u = gamedata.upgrades[ch][eq]
+   if u==0 then return 1 end
+   for i=1,u do
+       r = r + r
+       if r>max then return max end
+   end
+   return r
+end
+
 local function doupgrade(ch,eq)
+    -- $USE libs/audio
+    local u = gamedata.upgrades[ch][eq]
+    local maxupdates = math.floor(Var.G("%LEVELCAP")/skill)
+    if maxupdates<=0 then maxupdates=1 end
+    local price = cost(ch,eq)
+    local cash = Var.G("%CASH")
+    if total(gamedata.upgrades[ch])>=maxupdates or cash<price then
+       QuickPlay("Audio/Gen/NoWay.mp3")
+       return
+    end
+    Var.D("%CASH",cash-price)
+    QuickPlay("Audio/Gen/ChaChing.ogg")
+    gamedata.upgrades[ch][eq] = u + 1
+    for k,v in spairs(upgrades[ch][eq]['u'..skill]) do
+        rpg:IncStat(ch,"EQP_"..k,v)
+    end
 end   
+
 
 local tabupgrade = {Weapon=function(ch) doupgrade(ch,'Weapon') end, Armor=function(ch) doupgrade(ch,'Armor') end}
 
 function upg.modes.upgrade( x,w,ch,clicked )
   local font = GetBoxTextFont()
-  local maxupdates = Var.G("%LEVELCAP")/skill
+  local maxupdates = math.floor(Var.G("%LEVELCAP")/skill)
+  if maxupdates<=0 then maxupdates=1 end -- Should never be needed, but just in case!
   itext.setfont(font)
   gamedata.upgrades = gamedata.upgrades or {}
-  gamedata.upgrades[ch] = gamedata.upgrades[ch] or {Weapon=0,Armor=0,total=total}
+  gamedata.upgrades[ch] = gamedata.upgrades[ch] or {Weapon=0,Armor=0}
   local u = gamedata.upgrades[ch]
   for i,e in ipairs(upg.eq) do
       white()
       itext.write(e..":",x,i*80)
       color(0,180,255)
       itext.write(upgrades[ch][e].name,x+20,(i*80)+40)
+      if total(u)<maxupdates then
+         color(180,255,0)
+         itext.write(DumpCash(cost(ch,e)),(x+w)-20,i*80,1,0)
+      end   
       ember()
       itext.write(u[e],x+(w-20),(i*80)+40,1,0)
       local tut = "Upgrade "..ch.."'s "..e:lower().."\n\nEffects:"
@@ -86,11 +120,12 @@ function upg.modes.upgrade( x,w,ch,clicked )
           if v>=0 then tut=tut.."+" end
           tut = tut .. v
       end
-      click(x,(i*80),w,80,clicked,tut,tabupgrade[e])    
+      click(x,(i*80),w,80,clicked,tut,tabupgrade[e],ch)    
   end
   white()
-  itext.write("Cash: "..DumpCash(Var.G("%CASH")),x,260)
-  itext.write("Max:  "..maxupdates,x,300)
+  itext.write("Cash:  "..DumpCash(Var.G("%CASH")),x,260)
+  itext.write("Total: "..total(u),x,300)
+  itext.write("Max:   "..maxupdates,x,380)
 end
 
 return upg
