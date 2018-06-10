@@ -1,6 +1,6 @@
 --[[
   init.lua
-  Version: 18.04.27
+  Version: 18.06.10
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -66,8 +66,9 @@ local function netconfig()
 end
 
 local function SerifFontLoad()
-    fontGroot = love.graphics.newFont(JCR_D('Fonts/CHANTICL.TTF'),40)
-    fontMiddel = love.graphics.newFont(JCR_D('Fonts/CHANTICL.TTF'),20)
+    fontGroot     = love.graphics.newFont(JCR_D('Fonts/CHANTICL.TTF'),40)
+    fontMiddel     = love.graphics.newFont(JCR_D('Fonts/CHANTICL.TTF'),20)
+    monofontmiddel = love.graphics.newFont(JCR_D('Fonts/saxmono.ttf'),20)
 end    
 
 local finit = {}
