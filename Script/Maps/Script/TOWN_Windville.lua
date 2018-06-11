@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.06.10
+version: 18.06.11
 ]]
 
 --[[
@@ -180,6 +180,7 @@ function windville:NPC_VAULT()
    vault.good = function(s)
        -- self.OpenVault
        field:GoToLayer("Palace Vault","Start","North")
+       Award('BONUS_CHEAT')
        --error("No opening sequence yet")
    end    
    vault.mapscript = self
