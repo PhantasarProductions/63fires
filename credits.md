@@ -413,6 +413,20 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Actors/Windville/King.png
 - Graphic image: GFX/Actors/Windville/Male.png
 - Graphic image: GFX/Combat/Fighters/Foe/Reg/Goblin.png
+- Graphic image: GFX/Textures/Cave/Basic/Hoek - Noord-Oost.png
+- Graphic image: GFX/Textures/Cave/Basic/Hoek - Noord-West.png
+- Graphic image: GFX/Textures/Cave/Basic/Hoek - Zuid-Oost.png
+- Graphic image: GFX/Textures/Cave/Basic/Hoek - Zuid-West.png
+- Graphic image: GFX/Textures/Cave/Basic/Muur - Noord.png
+- Graphic image: GFX/Textures/Cave/Basic/Muur - Oost.png
+- Graphic image: GFX/Textures/Cave/Basic/Muur - West.png
+- Graphic image: GFX/Textures/Cave/Basic/Muur - Zuid.png
+- Graphic image: GFX/Textures/Cave/Basic/Rots.png
+- Graphic image: GFX/Textures/Cave/Basic/Stalagmiet - Donker.png
+- Graphic image: GFX/Textures/Cave/Basic/Stalagmiet - Licht.png
+- Graphic image: GFX/Textures/Cave/Basic/Vloer + Oever.png
+- Graphic image: GFX/Textures/Cave/Basic/Vloer + Water.png
+- Graphic image: GFX/Textures/Cave/Basic/Vloer.png
 - Graphic image: GFX/Textures/House_Inside/Houten rand - Horizontaal.png
 - Graphic image: GFX/Textures/House_Inside/Houten rand - Veritcaal.png
 - Graphic image: GFX/Textures/House_Inside/Toonbank.png
