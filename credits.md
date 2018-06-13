@@ -58,6 +58,12 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Textures/Objects/Kaars.jpbf/00000000.png
 - Graphic image: GFX/Textures/Objects/Kaars.jpbf/00000001.png
 - Graphic image: GFX/Textures/Objects/Kaars.jpbf/00000002.png
+### Nino is property of Jeroen P. Broks, and may NOT be extracted from this game without PRIOR written permission of the owner!
+- Graphic image: GFX/PlayerSprites/Nino.North.jpbf/01_EEN.png
+- Graphic image: GFX/PlayerSprites/Nino.North.jpbf/02_TWEE.png
+- Graphic image: GFX/PlayerSprites/Nino.North.jpbf/03_DRIE.png
+- Graphic image: GFX/PlayerSprites/Nino.North.jpbf/04_VIER.png
+- GINI Is Not Ini: GFX/PlayerSprites/Nino.North.jpbf/HotSpots.GINI
 ### These are assets that were not specifically set up for any project in particular and they may be used under the terms of the Creative Commons - By Attribution - Non-Commercial - Sharae-Alike license. Just credit me as its creator in your production, and we're fine ^_^
 - Audio: Audio/Combat/CardSlide.ogg
 - Audio: Audio/Gen/Crystal.wav
