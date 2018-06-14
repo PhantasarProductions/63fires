@@ -48,7 +48,7 @@ local ugd = {
                  }         
      },
      Nino = {
-         Weapon = { name="Paladin's Sword",
+         Weapon = { name="Fencing Rapier",
                     u1 = {Power=8, Accuracy=1, Intelligence=1},
                     u2 = {Power=4, Accuracy=1, Intelligence=1},
                     u3 = {Power=3}
