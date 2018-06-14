@@ -199,8 +199,11 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/WorldMap/Hub.png
 ### These are files specifically set up for this game and other personal projects and remain my property and may NOT be extracted from this game nor any other production of Jeroen P. Broks, without prior WRITTEN permission from Jeroen P. Broks
 - GINI Is Not Ini: Data/Foes/Boss/UltraSlime.gini
+- File: Data/Foes/Reg/Bat
+- GINI Is Not Ini: Data/Foes/Reg/Bat.gini
 - GINI Is Not Ini: Data/Foes/Reg/EyeBlob.gini
 - GINI Is Not Ini: Data/Foes/Reg/goblin.gini
+- GINI Is Not Ini: Data/Foes/Reg/MageBlob.gini
 - Data: Data/GJ_ANNA/Awards_Anna.GHD
 - Data: Data/GJ_ANNA/Awards_GameJolt.GHD
 - Data: Data/GJ_ANNA/GJ_ANNA.ghd
@@ -212,6 +215,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Actors/Windville/Nino.png
 - PikoPixel source file: GFX/Actors/Windville/NinoN.piko
 - Graphic image: GFX/Actors/Windville/NinoN.png
+- Graphic image: GFX/Combat/Arena/Caves_Starrow.png
 - Graphic image: GFX/Combat/Arena/Forest_Spar.png
 - PikoPixel source file: GFX/Combat/Cards/Heroes.piko
 - Graphic image: GFX/Combat/Cards/Hero_Ryanna.png
@@ -219,6 +223,10 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_Lucifer_Attack.png
    1. Alias: GFX/Combat/Fighters/Hero/Demon_Ryanna_Lucifer_Cast.png
 - Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_Lucifer_Idle.png
+- PikoPixel source file: GFX/Combat/Fighters/Hero/Nino Attack (Autosaved).piko
+- PikoPixel source file: GFX/Combat/Fighters/Hero/Nino Attack.piko
+- Graphic image: GFX/Combat/Fighters/Hero/Nino_Cast.png
+- Graphic image: GFX/Combat/Fighters/Hero/Nino_IDLE.png
 - Graphic image: GFX/Combat/Fighters/Hero/Ryanna_Cast.png
 - PikoPixel source file: GFX/Combat/Fighters/Hero/Ryanna_Transformed_Source.piko
 - Graphic image: GFX/Combat/Fighters/Hero/Untitled.png
@@ -280,7 +288,6 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_LUCIFER_F1.lua
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_LUCIFER_F2.lua
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_LUCIFER_F3.lua
-- Script: Script/Data/IAA/ABL_HERO_HERO_DEMON_RYANNA_LUCIFER_F1.lua
 - Script: Script/Data/IAA/ABL_HERO_NINO_CUREPD.lua
 - Script: Script/Data/IAA/ABL_HERO_NINO_ESUNA.lua
 - Script: Script/Data/IAA/ABL_HERO_NINO_FEROSLASH.lua
@@ -560,6 +567,11 @@ Also note that some files have "alias" files attached to them. This credits.md f
 ## Nick's Fonts
 ### Downloaded from DaFont.com -- 100% Free -- Or so it says
 - Font: Fonts/CHANTICL.TTF
+
+
+## Pippi2011
+### Public Domain
+- Graphic image: GFX/Combat/Foe/Reg/Bat.png
 
 
 ## qubodup
