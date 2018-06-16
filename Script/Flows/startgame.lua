@@ -1,6 +1,6 @@
 --[[
   startgame.lua
-  Version: 18.04.21
+  Version: 18.06.16
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -162,8 +162,11 @@ function finit.arrive()
               until ok=='true'
         end}
      end
+     iacts[#iacts+1]={CSay,"Resetting input"}
+     iacts[#iacts+1]={flushkeys}
      iacts[#iacts+1]={CSay,"Starting Clock"}
      iacts[#iacts+1]={addupdatefunc,update_time}
+     
 end
 
 function finit.update()
