@@ -42,6 +42,12 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Treasure/Tools/Gauntlet.png
 
 
+## GR-Sites
+### The background textures and fonts found on this site were not created by GRSites, but were obtained from various sources on the internet that described these graphics as freeware. They are free to use for personal and commercial use.
+- Graphic image: GFX/General/Wood.gif
+- Graphic image: GFX/General/Wood.png
+
+
 ## http://freesfx.co.uk
 ### The license of this file does NOT allow you to extract this file from this JCR file!!! You MUST go to http://freesfx.co.uk to download it there. Full license is set up here: http://www.freesfx.co.uk/info/eula/
 - Audio: Audio/Gen/NoWay.mp3
@@ -308,10 +314,12 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/IAA/ACT_ATTACK.lua
 - Script: Script/Data/IAA/ACT_GUARD.lua
 - Script: Script/Data/IAA/FISH_CAVECRAB.lua
+- Script: Script/Data/IAA/FISH_NEONTETRA.lua
 - Script: Script/Data/IAA/FISH_PIRANHA.lua
 - Script: Script/Data/IAA/FISH_RUBBERDUCK.lua
 - Script: Script/Data/IAA/FISH_RUSTYCAN.lua
 - Script: Script/Data/IAA/FISH_SHOE.lua
+- Script: Script/Data/IAA/FISH_TROUT.lua
 - Script: Script/Data/IAA/ITM_ANKH.lua
 - Script: Script/Data/IAA/ITM_ANTIDOTE.lua
 - Script: Script/Data/IAA/ITM_BELL.lua
