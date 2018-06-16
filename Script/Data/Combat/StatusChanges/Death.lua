@@ -1,6 +1,6 @@
 --[[
   Death.lua
-  Version: 18.03.15
+  Version: 18.06.16
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -35,7 +35,7 @@
   3. This notice may not be removed or altered from any source distribution.
 ]]
 
-local exprandomrates = {{125,200},{1,150},{0,1}}
+local exprandomrates = {{125,200},{100,150},{0,100}}
 
 local  fd = { Hero = function(self,chtag)
          end,
@@ -50,7 +50,7 @@ local  fd = { Hero = function(self,chtag)
                 local rate
                 for pch in each(RPGParty) do 
                     rate = love.math.random(exprandomrates[skill][1],exprandomrates[skill][2])/100
-                    local get = math.ceil(exp/rate)
+                    local get = math.ceil(exp*rate)
                     if get>0 and rpg:Stat(pch,"Level")<Var.G("%LEVELCAP") then
                        rpg:DecStat(pch,"Experience",get)
                        self:TagMessage(pch,get.." experience points",100,180,0)
