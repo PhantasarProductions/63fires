@@ -50,6 +50,7 @@ function bos:NPC_FishingPole()
    MapText("HENGEL")
    field:GiveTool('Ryanna',1)
    field:kill('NPC_FishingPole',true) 
+   Award("TOOL_HENGEL")
 end
 
 local function PostBoss()
