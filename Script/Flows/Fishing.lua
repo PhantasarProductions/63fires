@@ -1,6 +1,6 @@
 --[[
   Fishing.lua
-  Version: 18.03.08
+  Version: 18.06.16
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -232,9 +232,10 @@ local stages = {
               end        
               
 }
-function vis:LoadSpot(spot)
+function vis:LoadSpot(aspot)
    -- $USE libs/klok
    bed = {}
+   local spot = aspot:upper()
    assert(FishSpot[spot],"There is no fishing spot named: "..sval(spot))
    for ft in each(chk) do
        for i=1,10 do
