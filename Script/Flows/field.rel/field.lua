@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.06.10
+  Version: 18.06.16
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -270,6 +270,15 @@ function field:LoadMap(KthuraMap,layer,spawn)
        map.script = Use(scr)
        TrickAssert(type(map.script)=='table','MapScripts must return tables, but this is not a table.',{['Loaded Script']=scr,['Returned type']=type(map.script)})
     end
+    CSay("= Auto-attachments")
+    for k,v in pairs(self.xmapscript) do
+        if k=="me" or k=="v" then
+           CSay("  = skip:     "..k)
+        else   
+           CSay("  = check on: "..k)
+           map.script[k] = map.script[k] or v
+        end   
+    end    
     CSay("= MapText")
     local lfile = 'Scenario/'..Var.C('$LANG')..'/Maps/'..KthuraMap
     CSay("  "..lfile)
