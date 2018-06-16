@@ -36,6 +36,12 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Network/GJ.png
 
 
+## GDJ
+### Public Domain
+- Graphic image: GFX/Treasure/Tools/Eric.png
+- Graphic image: GFX/Treasure/Tools/Gauntlet.png
+
+
 ## http://freesfx.co.uk
 ### The license of this file does NOT allow you to extract this file from this JCR file!!! You MUST go to http://freesfx.co.uk to download it there. Full license is set up here: http://www.freesfx.co.uk/info/eula/
 - Audio: Audio/Gen/NoWay.mp3
@@ -218,12 +224,11 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Combat/Arena/Caves_Starrow.png
 - Graphic image: GFX/Combat/Arena/Forest_Spar.png
 - PikoPixel source file: GFX/Combat/Cards/Heroes.piko
+- Graphic image: GFX/Combat/Cards/Hero_Nino.png
 - Graphic image: GFX/Combat/Cards/Hero_Ryanna.png
-- Graphic image: GFX/Combat/Cards/Nino.png
 - Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_Lucifer_Attack.png
    1. Alias: GFX/Combat/Fighters/Hero/Demon_Ryanna_Lucifer_Cast.png
 - Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_Lucifer_Idle.png
-- PikoPixel source file: GFX/Combat/Fighters/Hero/Nino Attack (Autosaved).piko
 - PikoPixel source file: GFX/Combat/Fighters/Hero/Nino Attack.piko
 - Graphic image: GFX/Combat/Fighters/Hero/Nino_Cast.png
 - Graphic image: GFX/Combat/Fighters/Hero/Nino_IDLE.png
@@ -302,7 +307,9 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/IAA/ABL_HERO_RYANNA_PICKPOCKET.lua
 - Script: Script/Data/IAA/ACT_ATTACK.lua
 - Script: Script/Data/IAA/ACT_GUARD.lua
+- Script: Script/Data/IAA/FISH_CAVECRAB.lua
 - Script: Script/Data/IAA/FISH_PIRANHA.lua
+- Script: Script/Data/IAA/FISH_RUBBERDUCK.lua
 - Script: Script/Data/IAA/FISH_RUSTYCAN.lua
 - Script: Script/Data/IAA/FISH_SHOE.lua
 - Script: Script/Data/IAA/ITM_ANKH.lua
@@ -370,6 +377,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Maps/Script/DUNG_BeaufortForest.lua
 - Script: Script/Maps/Script/DUNG_BluePalace.lua
 - Script: Script/Maps/Script/DUNG_Graveyard.lua
+- Script: Script/Maps/Script/DUNG_Starrow.lua
 - Script: Script/Maps/Script/NET_Anna.lua
 - Markdown document: Script/Maps/Script/readme.md
 - Script: Script/Maps/Script/TOWN_Windville.lua
@@ -555,6 +563,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Textures/Windville/Put.png
 ### This file has been created by Man of Steel under leadership of Jeroen P. Broks, meaning the latter owns the file AND its copyright, and this file may NOT be extracted from this project without prior license permission of Jeroen P. Broks.
 - Graphic image: GFX/Actors/Cameo/Aziella.png
+- Graphic image: GFX/Actors/Cameo/Eric.png
 - Graphic image: GFX/Actors/Cameo/Irravonia.png
 - Graphic image: GFX/Actors/Cameo/Merya.png
 
