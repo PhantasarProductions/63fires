@@ -1,6 +1,6 @@
 --[[
   Fishing.lua
-  Version: 18.06.16
+  Version: 18.06.17
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -176,7 +176,7 @@ local stages = {
                    stage = fightchain[caught.ctype][pointx>tr[1] and pointx<tr[2]]    
                    flushkeys()               
                 end
-                timer:wait(.002)
+                timer:wait(.05)
               end,
       fail  = function()
                  local map = field:GetMap()
