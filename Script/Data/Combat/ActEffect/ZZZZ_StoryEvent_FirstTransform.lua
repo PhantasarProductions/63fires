@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.04.21
+version: 18.06.23
 ]]
 
 return function(s,tar,exe,a)
@@ -44,6 +44,7 @@ return function(s,tar,exe,a)
   s:RyannaTransform('Lucifer')
   MapText("TUT_TRANS")
   gamedata.learned = gamedata.learned or {}
+  gamedata.learned.Ryanna = gamedata.learned.Ryanna or {}
   gamedata.learned.Ryanna.Access = true
   rpg:Points("FOE_1","HP").Minimum=0
   return true
