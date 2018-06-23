@@ -1,6 +1,6 @@
 --[[
   Transform.h.lua
-  Version: 18.06.07
+  Version: 18.06.23
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -50,6 +50,8 @@ function AddTransform(form)
       SerialBoxText("NEWTRANS",'GETRYANNA')
       TransMake(form)
       field:kill("DemonCrystal",true)
+      local m=field:GetMap()
+      m.map:remapall()
       gamedata.transform[#gamedata.transform+1]=form
    else
       SerialBoxText("NEWTRANS",'NO.'..(ac:upper()))
