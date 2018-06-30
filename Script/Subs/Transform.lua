@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.04.11
+version: 18.06.30
 ]]
 local megatron={}
 
@@ -94,6 +94,37 @@ function megatron.make(form)
            end
         end
     end
+end
+
+local posx,posy
+local font = GetBoxTextFont()
+local portret = {}
+
+function megatron.list(x,y,w,h,clicked)
+   -- -- $USE script/subs/screen
+   posx = posx or {x,x+math.ceil(w*.33),x+math.ceil(w*.66)}
+   posy = posy or {y,y+120,y+240,y+360}
+   local dems = gamedata.transform
+   if (not dems) or #dems==0 then
+      red()
+      itext.write("You don't have any transfomations yet",w/2,h/2,2,2)
+      return
+   end
+   local maxrows = math.ceil(#dems/3)
+   local row,col=1,1
+   for demon in each(dems) do
+       white()
+       portret[demon]=portret[demon] or LoadImage('GFX/Portret/Demon_Ryanna_'..demon..'/General.png')
+       DrawImage(portret[demon],posx[col],posy[row])
+       if mousex()>posx[col] and mousex()<(posx[col+1] or w) and mousey()>posy[row] and mousey()<posy[row]+120 then
+          color(0,180,255)
+          if clicked then return true end
+       end
+       itext.write(demon,posx[col]+x+100,posy[row]+y)
+       row=row+1
+       if row>maxrows then row=1 col=col+1 end
+   end  
+   
 end
 
 

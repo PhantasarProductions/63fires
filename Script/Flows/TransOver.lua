@@ -1,5 +1,5 @@
 --[[
-  Transform.h.lua
+  TransOver.lua
   Version: 18.06.30
   Copyright (C) 2018 Jeroen Petrus Broks
   
@@ -34,31 +34,16 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
-local transform
+local tover = {}
 
 
-function TransMake(form)
-   -- $USE script/subs/transform
-   transform.make(form)
-end   
-
-function AddTransform(form)
-   LoadScenario("NEWTRANS",'TRANSCRYSTAL')
-   local ac = field:GetActive()
-   if ac=='Ryanna' then
-      Var.D("$NEWDEMON",form)
-      SerialBoxText("NEWTRANS",'GETRYANNA')
-      TransMake(form)
-      field:kill("DemonCrystal",true)
-      local m=field:GetMap()
-      m.map:remapall()
-      gamedata.transform[#gamedata.transform+1]=form
-   else
-      SerialBoxText("NEWTRANS",'NO.'..(ac:upper()))
-   end
+function tover:odraw()
+    -- $USE script/subs/screen
+    self.clicked = mousehit(1)
+    white()
+    console.sback()
+    TransList(5,5,screen.w-10,screen.h-140,false)
+    if mousehit(2) then flow.set(field) end
 end
 
-function TransList(x,y,w,h,choose)
-    -- $USE script/subs/transform
-    return transform.list(x,y,w,h,choose)
-end         
+return tover
