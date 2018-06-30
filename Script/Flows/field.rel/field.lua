@@ -61,6 +61,8 @@ if full then is[1]={ icon='stoppen', tut='Quits the game\nWarning unsaved data w
 -- Tools. By default all empty. Can be set by changing characters providing they have the tool
 for i=1,3 do is[#is+1]={icon='empty', tut='???', cb=nothing, tool_id=i} end
 
+is[#is+1] = {icon='Demoon', tut="Overview of all of Ryann's transformation forms", ch=function() flow.use('trans','Script/Flows/TransOver.lua') flow.set("trans") end}
+
 is[#is+1] = {icon='Prestaties', tut='Overview of your earned achievements', cb=function() flow.use('ach','Script/Flows/Achievements.lua') flow.set('ach') end}
 
 -- Help! Must ALWAYS be last!!
