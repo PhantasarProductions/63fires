@@ -194,6 +194,8 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Textures/Objects/Grave Lid.png
 - Graphic image: GFX/Textures/Objects/Open Grave.png
 - Graphic image: GFX/Textures/Objects/Signs/Blanco Bordje.png
+- PikoPixel source file: GFX/Textures/Special/Crack.piko
+- Graphic image: GFX/Textures/Special/Crack.png
 - PikoPixel source file: GFX/Textures/Windville/Molen/Milltower.piko
 - Graphic image: GFX/Textures/Windville/Molen/Milltower.png
 - PikoPixel source file: GFX/Textures/Windville/Straat.piko
@@ -352,12 +354,15 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Flows/combat.rel/flw_foeinput.lua
 - Script: Script/Flows/combat.rel/flw_idle.lua
 - Script: Script/Flows/combat.rel/flw_playerinput.lua
+- Script: Script/Flows/field.rel/crack.lua
 - Script: Script/Flows/field.rel/crystal.lua
 - Script: Script/Flows/field.rel/field.lua
 - Script: Script/Flows/field.rel/renc.lua
 - Script: Script/Flows/field.rel/ToolPics.lua
+- Script: Script/Flows/field.rel/xmapscript.lua
 - Script: Script/Flows/field.rel/zone action.lua
 - Script: Script/Flows/Fishing.lua
+- Script: Script/Flows/FishSign.lua
 - Script: Script/Flows/init.lua
 - Script: Script/Flows/mainmenu.lua
 - Script: Script/Flows/menu.rel/Algemeen.lua
