@@ -289,7 +289,7 @@ function field:LoadMap(KthuraMap,layer,spawn)
        console.writeln("MapText has not been found for this map!",255,255,0)
     end      
     CSay("= Changes")
-    field:ReadMapChanges()
+    self:ReadMapChanges()
     CSay("= Music function")
     if map.script.music then
        CSay("= running mapscript music routine") 
@@ -302,7 +302,9 @@ function field:LoadMap(KthuraMap,layer,spawn)
     if map.script.Boss then
        CSay("= Boss event link")
        self:ZA_Enter('Boss',map.script.Boss)
-    end       
+    end
+    CSay("= Cracks")
+    self:InitCracks()           
     CSay("= OnLoad")
     ;(map.script.onload or nothing)()
     self.map=map    
