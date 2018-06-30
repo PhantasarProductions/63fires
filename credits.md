@@ -376,6 +376,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Flows/PUZ_WindvilleVault.lua
 - Script: Script/Flows/SaveLoadScreen.lua
 - Script: Script/Flows/startgame.lua
+- Script: Script/Flows/TransOver.lua
 - Script: Script/Flows/WorldMap.lua
 - Script: Script/Maps/Kthura/DUNG_BeaufortForest.lua
 - Script: Script/Maps/Kthura/DUNG_BluePalace.lua
