@@ -63,7 +63,12 @@ return {
                 if act:WalkTo(Fishx,Fishy) then field:SetArrival({fish,fisha.DATA.SPOT}) end
             end
        },
-       Nino={},
+       Nino={
+           function() -- Gauntlet
+              CSay("Nino will smash the closest wall")
+              field:DoCrack()
+           end
+       },
        Shirley={},
        Lirmen={}
    },
