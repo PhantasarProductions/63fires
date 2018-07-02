@@ -340,6 +340,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/Shops/IRRAVONIA.lua
 - Script: Script/Data/transform_make/IJsblokje.lua
 - Script: Script/Data/transform_make/Lucifer.lua
+- Script: Script/Data/transform_make/Stopcontact.lua
 - Script: Script/Flows/combat.rel/com_arena.lua
 - Script: Script/Flows/combat.rel/com_cards.lua
 - Script: Script/Flows/combat.rel/com_foecompiler.lua
