@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.06.30
+  Version: 18.07.03
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -240,7 +240,7 @@ function field:ReadMapChanges()
     f()
 end
 
-function field:LoadMap(KthuraMap,layer,spawn)
+function field:LoadMap(KthuraMap,layer,spawn,nocracks)
     if not laura.assert(layer,"No layer requested!",{LoadMap=KthuraMap}) then return end    
     map= {layer=layer,file=KthuraMap}
     self:ZA_Clear()    
@@ -305,8 +305,10 @@ function field:LoadMap(KthuraMap,layer,spawn)
        CSay("= Boss event link")
        self:ZA_Enter('Boss',map.script.Boss)
     end
-    CSay("= Cracks")
-    self:InitCracks()           
+    if not nocracks then
+       CSay("= Cracks")
+       self:InitCracks()
+    end              
     CSay("= OnLoad")
     ;(map.script.onload or nothing)()
     self.map=map    

@@ -1,6 +1,6 @@
 --[[
   crack.lua
-  Version: 18.06.30
+  Version: 18.07.03
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -47,6 +47,7 @@ local crack = {}
 function crack:InitCracks()
    local add = {}
    local hide = {}
+   self:getmap().map:remapall() -- make sure no odd things remain here...
    for obj,lay in self:getmap().map:allobjects() do
        if prefixed(obj.TAG,"CRACK") then
           local nob = {}

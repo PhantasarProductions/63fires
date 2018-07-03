@@ -1,6 +1,6 @@
 --[[
   LoadGame.lua
-  Version: 18.06.09
+  Version: 18.07.03
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -115,6 +115,10 @@ local function altdir(dir)
    return ret
 end
 
+local function Cracks()
+    field:InitCracks()
+end    
+
 local function lg(file,nocrash)
       RPGJCRDIR=""
       flow.use('startgame','script/Flows/startgame')
@@ -135,13 +139,15 @@ local function lg(file,nocrash)
          return false
       else
          error("I can't find: "..file)
-      end
+      end      
       LoadGameData() 
       LoadGameVars() 
       LoadRPGCharData()
       LoadPlayerSprites()   
       startgame.add({CSay,"Extracting swap files"})
       startgame.add({ExtractSwapFiles,file}) 
+      startgame.add({CSay,"Handling cracks"})
+      startgame.add({Cracks})
       flow.set('startgame')
       --flow.undef('loadgame')
       return true      
