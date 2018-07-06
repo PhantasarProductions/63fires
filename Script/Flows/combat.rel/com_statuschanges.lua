@@ -1,6 +1,6 @@
 --[[
   com_statuschanges.lua
-  Version: 18.04.12
+  Version: 18.07.06
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -83,5 +83,17 @@ function csc:StatusProperty(ch,prop)
     end
     return false
 end
+
+function csc:StatusPropertyValues(ch,prop)
+    local t = {}
+    for _,std in self:statuses(ch) do
+        if std[prop] then t[#t+1]=std[prop] end
+    end
+    local i=0
+    return function()
+        i = i + 1
+        return t[i]
+    end
+end        
 
 return csc

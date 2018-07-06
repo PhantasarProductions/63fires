@@ -1,6 +1,6 @@
 --[[
   flw_playerinput.lua
-  Version: 18.04.11
+  Version: 18.07.07
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -57,7 +57,14 @@ end
 -- Set up to work with both multi-target as single target
 local tcol = {Foe={255,180,180},Hero={180,255,180}}
 function invoer:flow_heroselecttarget()
-     local mx,my=love.mouse.getPosition()
+     if self.selecttype=="OS" then
+        self.nextmove.targets={self.invoeren}
+        self.nextmove.pose=true
+        self.flow='execution'
+        self.invoeren=nil             
+        return
+     end
+     local mx,my=love.mouse.getPosition()     
      if mousehit(2) then self.flow='playerinput' self.selecttype=nil flushkeys() self.invoeren=nil return end
      white()
      love.graphics.setFont(console.font)
@@ -169,10 +176,22 @@ function invoer:flow_selectability()
        self.nextmove.act=i 
        self.nextmove.takeap=item.ABL_APCost
        self.nextmove.checksilence=item.ABL_silenceblock
+       if item.InputXtraScript and item.InputXtraScript~="" then
+          local ixs = Use("Script/Data/Combat/InputXtraScript/"..item.InputXtraScript..".lua")
+          assert( ixs , "InputXtraScript not in order" )
+          ixs(self,item.InputXtraScript_Arg)
+       end    
        flushkeys() 
     end
 end
 
+function invoer:OutAPAutoRestore()
+   --local item = ItemGet("ZPECIAL_REVERT")
+   self.nextmove.targets = {self.invoeren}
+   self.nextmove.act = "ZPECIAL_REVERT"
+   self.flow='execution'
+   self.invoeren=nil
+end
 
 
 -- Combat main menu
@@ -180,7 +199,19 @@ function invoer:flow_playerinput()
    if not self.invoeren then
       QuickPlay("Audio/Combat/Ready.ogg")
       self.invoeren = self.Cards[1].data.tag
-      self.nextmove={executor=self.invoeren}
+      local apb = self:StatusProperty(self.invoeren,'PreTurnAPDrain')
+      if apb then for apd in self:StatusPropertyValues(self.invoeren,'PreTurnAPDrain') do         
+         local a = rpg:Points(self.invoeren,"AP")
+         a.Have = a.Have - apd
+         self:TagMessage(self.invoeren,apd,200,100,150)
+         if a.Have<=0 then
+            if self.fighters[self.invoeren].statuschanges.Transformed then
+               self.nextmove={executor=self.invoeren}
+               return self:OutAPAutoRestore()
+            end
+         end
+      end end   
+      self.nextmove={executor=self.invoeren}      
    end
    -- $USE script/subs/screen
    local midx =  screen.w     /2

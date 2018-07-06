@@ -1,6 +1,6 @@
 --[[
   com_transform.lua
-  Version: 18.04.12
+  Version: 18.07.06
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -56,6 +56,7 @@ local function trans_do(self,form)
        mytrans.x=myhero.x -- math.floor(midx + ((midx/(#RPGParty+1))*i) )
        mytrans.y=myhero.y -- math.floor(midy + ((midy/(#RPGParty+1))*i) )
        mytrans.statuschanges = {Transformed=Use('Script/Data/Combat/StatusChanges/Transformed.lua')}
+       mytrans.statuschanges.Transformed.PreTurnAPDrain = Var.G("%TRANSMAINTAIN")              
        self.hero.Ryanna=nil
        self.hero[tag]=mytrans
        rpg:SetParty(1,tag)
@@ -82,7 +83,7 @@ local function trans_ani(self,form)
      local action = 'TransStage2'
      myhero.images[action] = myhero.images[action] or self:LoadHeroImage(myhero.tag,action)
      local boolfool = {[true]=1, [false]=2}
-     local t2 = klok:CreateTimer(6)
+     local t2 = klok:CreateTimer(4)
      local boolframe
      repeat
          boolframe = not boolframe
@@ -98,7 +99,7 @@ local function trans_ani(self,form)
      end 
      -- Stage #4: Ryanna in sphere (transforming)
      TransImg = TransImg or {}
-     local t3 = klok:CreateTimer(8)
+     local t3 = klok:CreateTimer(5)
      local straal
      local i = 0
      repeat
@@ -120,14 +121,18 @@ function trans:RyannaTransform(form)
 end
 
 function trans:RyannaRestore(ch)       
-       self.hero.Ryanna=self.RyannaHuman
+       self.hero.Ryanna     = self.RyannaHuman
+       self.fighters.Ryanna = self.RyannaHuman
        local nilit
        for ch,_ in pairs(self.hero) do
            if prefixed(ch,"DEMON_RYANNA_") then nilit=ch end
        end
-       self.hero[nilit]=nil       
+       self.hero[nilit]=nil            
+       --self.hero[ch]=nil
+       self.fighters[nilit]=nil
        rpg:SetParty(1,'Ryanna')
-       self:RemoveCharCards('DEMON_RYANNA',true)
+       --self:RemoveCharCards('DEMON_RYANNA',true)
+       self:RemoveCharCards(ch,true)
        self:CreateOrder()
 end
 

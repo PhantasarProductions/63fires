@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.06.30
+version: 18.07.06
 ]]
 local megatron={}
 
@@ -49,7 +49,7 @@ function megatron.make(form)
     local data = Use("script/data/transform_make/"..form..".lua")
     local tag = 'DEMON_RYANNA_'..form
     local already = rpg:CharExists(tag) 
-    if not aleady then
+    if not already then
        CSay("Creating: "..tag)
        rpg:CreateChar(tag)
     else
@@ -118,7 +118,7 @@ function megatron.list(x,y,w,h,clicked)
        DrawImage(portret[demon],posx[col],posy[row])
        if mousex()>posx[col] and mousex()<(posx[col+1] or w) and mousey()>posy[row] and mousey()<posy[row]+120 then
           color(0,180,255)
-          if clicked then return true end
+          if clicked then return demon end
        end
        itext.write(demon,posx[col]+x+100,posy[row]+y)
        row=row+1

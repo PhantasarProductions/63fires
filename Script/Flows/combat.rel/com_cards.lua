@@ -1,6 +1,6 @@
 --[[
   com_cards.lua
-  Version: 18.04.11
+  Version: 18.07.06
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -70,7 +70,7 @@ function ccards:RemoveCharCards(ch,pref)
    end
    CSay("All cards for character "..ch.." will be removed")
    for ci in each(remove) do
-       CSay("= Removing card #"..ci)
+       CSay("= Removing card #"..ci..serialize("\t",self.Cards[ci]))
        self.Cards[ci]={}
    end
 end

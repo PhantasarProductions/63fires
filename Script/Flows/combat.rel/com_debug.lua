@@ -1,5 +1,5 @@
 --[[
-  com_main.lua
+  com_debug.lua
   Version: 18.07.06
   Copyright (C) 2018 Jeroen Petrus Broks
   
@@ -34,52 +34,44 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
--- $USE Script/Subs/Headers.h AS Headers_h
-local cmain = {}
+
+local fuck = {} -- Sorry! I was frustrated, mind you!
+fuck.consolecommands={}
 
 
-
-
-function cmain:TagMessage(tag,message,r,g,b,ymod)
-    local x,y = 0,0
-    x = self.fighters[tag].x
-    y = self.fighters[tag].y + (ymod or 0)
-    MiniMSG(message,{r or 255,g or 255, b or 255},{x,y})
+function fuck.consolecommands.FIGHTERS(self,para)
+      CSay(serialize("combat.fighters",self.fighters))
+end      
+function fuck.consolecommands.ESF(self)
+      CSay(serialize('esf',self.esf))
+end      
+function fuck.consolecommands.BATTLEFLOW(self)
+      for k,v in spairs(self) do
+          if v==self then
+             CSay("self "..k)
+          else
+             CSay(serialize(type(v).." "..k,v))
+          end
+      end      
 end
-
-function cmain:basedraw()
-      self:DrawArena()
-      self:DrawCards()
-      self:StatusPreDraw()
-      self:DrawFoes(self.targeted,self.inaction)
-      self:DrawHeroes(self.targeted,self.inaction,self.acting,self.heroframe)      
-end
-
-cmain.BoxTextBack = cmain.basedraw
-
-function cmain:odraw()
-      self:basedraw()
-      self.flow = self.flow or "idle"
-      assert(self["flow_"..self.flow],"No combat flow function for "..self.flow)
-      self['flow_'..self.flow](self)
-      StatusBar(false,true)
-      dbgcon()    
-      ShowMiniMSG()
-end
+function fuck.consolecommands.KILL(self,para)
+    if not(self.fighters[para]) then return console.writeln("Fighter list does not contain a record named: "..para) end
+    CSay("Assasinating character: "..para)
+    rpg:Points(para,"HP").Have=0
+end          
 
 
+function fuck.consolecommands.CARDS(self,apara)
+   local c = serialize('cards',self.Cards)
+   local sc = mysplit(c,"\n")
+   local r,g,b
+   for i,l in ipairs(sc) do
+       local r=math.ceil((i/#sc)*255)
+       local b=255-r
+       local g=255-math.ceil((r+b)/2)
+       console.writeln(l,r,g,b)       
+   end
+end  
 
 
-
-
-
-
-
-
-
-
-
-
-
-return cmain
-
+return fuck

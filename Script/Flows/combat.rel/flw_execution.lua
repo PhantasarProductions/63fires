@@ -1,6 +1,6 @@
 --[[
   flw_execution.lua
-  Version: 18.04.11
+  Version: 18.07.06
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -223,6 +223,7 @@ local poses = {
 function beul:esf_pose()
    local myexe = self.fighters[self.nextmove.executor]
    --itext.write("posing: "..sval(myexe.group),5,5) --- Debug line
+   if prefixed(self.nextmove.executor,"DEMON_RYANNA") and (not myexe) then self.esf='backtoidle' return end
    TrickAssert(myexe,"myexe is nil",{executor=self.nextmove.executor})
    TrickAssert(poses[myexe.group],"I cannot pose non-existent group:"..sval(myexe.group),myexe)
    poses[myexe.group](self)
@@ -298,7 +299,11 @@ end
 function beul:esf_backtoidle()
    for _,v in pairs(self.fighters) do v.posestage=nil end
    self:RemoveFirstCard()
-   self.flow='idle'
+   -- if self.noidle and self.noidle>0 then
+   --    self.noidle = self.noidle - 1
+   --else
+      self.flow='idle'
+   --end   
    self.esf = nil
 end
 

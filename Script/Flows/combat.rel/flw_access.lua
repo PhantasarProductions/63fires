@@ -1,5 +1,5 @@
 --[[
-  com_main.lua
+  flw_access.lua
   Version: 18.07.06
   Copyright (C) 2018 Jeroen Petrus Broks
   
@@ -34,52 +34,40 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
--- $USE Script/Subs/Headers.h AS Headers_h
-local cmain = {}
+local toegang = {}
+local skill=Var.G("%SKILL")
 
 
-
-
-function cmain:TagMessage(tag,message,r,g,b,ymod)
-    local x,y = 0,0
-    x = self.fighters[tag].x
-    y = self.fighters[tag].y + (ymod or 0)
-    MiniMSG(message,{r or 255,g or 255, b or 255},{x,y})
+function toegang:flow_selectdemon()
+   -- $USE script/subs/screen
+    local ch=self.invoeren
+    -- local i,c,item
+    local d,c
+    local win = {x=math.floor(screen.w*.05), y=math.floor(screen.h*0.05),w=math.floor(screen.w*.90),h=math.floor(screen.h*70)}     
+    Color(0,0,180,180)
+    Rect(win.x,win.y,win.w,win.h)
+    c = mousehit(1)
+    d = TransList(win.x, win.y, win.w, win.h,c)
+    if mousehit(2) then self.flow='playerinput' end
+    if d then
+       self.flow="idle"
+       local level = rpg:Stat("Ryanna","Level")
+       local APCost = math.ceil(level/({50,10,5})[skill])
+       if rpg:Points("Ryanna","HP").Have<APCost then
+          combat:TagMessage("Ryanna","Fail!")
+          return
+       end
+       rpg:Points("Ryanna","HP").Have = rpg:Points("Ryanna","HP").Have - APCost
+       if skill==1 then
+          Var.D("%TRANSMAINTAIN",0)
+       else
+          Var.D("%TRANSMAINTAIN",math.ceil(level/({1,2,1.25})[skill]))
+       end 
+       self:RemoveFirstCard()
+       self.invoeren=nil
+       combat:RyannaTransform(d)              
+    end    
 end
 
-function cmain:basedraw()
-      self:DrawArena()
-      self:DrawCards()
-      self:StatusPreDraw()
-      self:DrawFoes(self.targeted,self.inaction)
-      self:DrawHeroes(self.targeted,self.inaction,self.acting,self.heroframe)      
-end
 
-cmain.BoxTextBack = cmain.basedraw
-
-function cmain:odraw()
-      self:basedraw()
-      self.flow = self.flow or "idle"
-      assert(self["flow_"..self.flow],"No combat flow function for "..self.flow)
-      self['flow_'..self.flow](self)
-      StatusBar(false,true)
-      dbgcon()    
-      ShowMiniMSG()
-end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-return cmain
-
+return toegang

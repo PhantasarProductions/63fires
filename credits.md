@@ -213,7 +213,6 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/WorldMap/Hub.png
 ### These are files specifically set up for this game and other personal projects and remain my property and may NOT be extracted from this game nor any other production of Jeroen P. Broks, without prior WRITTEN permission from Jeroen P. Broks
 - GINI Is Not Ini: Data/Foes/Boss/UltraSlime.gini
-- File: Data/Foes/Reg/Bat
 - GINI Is Not Ini: Data/Foes/Reg/Bat.gini
 - GINI Is Not Ini: Data/Foes/Reg/EyeBlob.gini
 - GINI Is Not Ini: Data/Foes/Reg/goblin.gini
@@ -288,8 +287,10 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/CharAbility/Nino.lua
 - Script: Script/Data/CharAbility/Ryanna.lua
 - Script: Script/Data/Combat/ActEffect/Access_Start.lua
+- Script: Script/Data/Combat/ActEffect/RyannaRestore.lua
 - Script: Script/Data/Combat/ActEffect/ZZZZ_StoryEvent_FirstTransform.lua
 - Script: Script/Data/Combat/AI/default.lua
+- Script: Script/Data/Combat/InputXtraScript/Access_Start.lua
 - Script: Script/Data/Combat/StatusChanges/Death.lua
 - Script: Script/Data/Combat/StatusChanges/Transformed.lua
 - Script: Script/Data/General/Achievements.lua
@@ -347,6 +348,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/transform_make/Stopcontact.lua
 - Script: Script/Flows/combat.rel/com_arena.lua
 - Script: Script/Flows/combat.rel/com_cards.lua
+- Script: Script/Flows/combat.rel/com_debug.lua
 - Script: Script/Flows/combat.rel/com_foecompiler.lua
 - Script: Script/Flows/combat.rel/com_heroes.lua
 - Script: Script/Flows/combat.rel/com_init.lua
@@ -600,7 +602,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 
 ## Pippi2011
 ### Public Domain
-- Graphic image: GFX/Combat/Foe/Reg/Bat.png
+- Graphic image: GFX/Combat/FIGHTERS/Foe/Reg/Bat.png
 
 
 ## qubodup
