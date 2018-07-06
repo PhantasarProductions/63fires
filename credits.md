@@ -254,7 +254,6 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Portret/Demon_Ryanna_IJsblokje/General.png
 - PikoPixel source file: GFX/Portret/Demon_Ryanna_Lucifer/General.piko
 - Graphic image: GFX/Portret/Demon_Ryanna_Lucifer/General.png
-- File: GFX/Portret/Demon_Ryanna_Stopcontact/General (Autosaved).piko-png
 - PikoPixel source file: GFX/Portret/Demon_Ryanna_Stopcontact/General.piko
 - Graphic image: GFX/Portret/Demon_Ryanna_Stopcontact/General.png
 - GIMP source file: GFX/Portret/Demon_Ryanna_Stopcontact/General.xcf
@@ -288,6 +287,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/CharAbility/Demon_Ryanna_Lucifer.lua
 - Script: Script/Data/CharAbility/Nino.lua
 - Script: Script/Data/CharAbility/Ryanna.lua
+- Script: Script/Data/Combat/ActEffect/Access_Start.lua
 - Script: Script/Data/Combat/ActEffect/ZZZZ_StoryEvent_FirstTransform.lua
 - Script: Script/Data/Combat/AI/default.lua
 - Script: Script/Data/Combat/StatusChanges/Death.lua
@@ -354,6 +354,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Flows/combat.rel/com_pain.lua
 - Script: Script/Flows/combat.rel/com_statuschanges.lua
 - Script: Script/Flows/combat.rel/com_transform.lua
+- Script: Script/Flows/combat.rel/flw_access.lua
 - Script: Script/Flows/combat.rel/flw_end.lua
 - Script: Script/Flows/combat.rel/flw_execution.lua
 - Script: Script/Flows/combat.rel/flw_foeinput.lua
