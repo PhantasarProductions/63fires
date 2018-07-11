@@ -194,6 +194,9 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Textures/Objects/Grave Lid.png
 - Graphic image: GFX/Textures/Objects/Open Grave.png
 - Graphic image: GFX/Textures/Objects/Signs/Blanco Bordje.png
+- Graphic image: GFX/Textures/PressurePlates/Circular/Pressed.png
+- PikoPixel source file: GFX/Textures/PressurePlates/Circular/PressurePlates.piko
+- Graphic image: GFX/Textures/PressurePlates/Circular/Unpressed.png
 - PikoPixel source file: GFX/Textures/Special/Crack.piko
 - Graphic image: GFX/Textures/Special/Crack.png
 - PikoPixel source file: GFX/Textures/Windville/Molen/Milltower.piko
