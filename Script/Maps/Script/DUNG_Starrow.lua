@@ -34,6 +34,8 @@
  
 version: 18.07.05
 ]]
+
+local skill=Var.G("%SKILL")
 local sta = {}
 local primes = {
   2,
@@ -62,6 +64,14 @@ local primes = {
   89,
   97,
 }
+
+local puzmaxanswer=(skill*2)+1
+if skill<3 then
+   for i=puzmaxanswer+1,7 do
+      field:laykill('#005','PUZ_SIGN'..i,false)
+      field:laykill('#005','PUZ_BUT' ..i,false)
+   end
+end
 
 local puzgens = {}
 local puzseq
