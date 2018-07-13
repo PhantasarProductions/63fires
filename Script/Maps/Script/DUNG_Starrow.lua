@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.07.05
+version: 18.07.13
 ]]
 
 local skill=Var.G("%SKILL")
@@ -123,12 +123,31 @@ local puzskill = {
 
 local puzzlesolved="&DONE.CAVESOFSTARROW.SEQUENCEPUZZLE.SOLVED"
 local skill = Var.G("%SKILL")
+local goed
 
 field:ZA_Enter("PUZZLE_GEN",function()
    if Var.C(puzzlesolved)=="TRUE" then return end
    if puzseq then return end
    local ps = puzskill[skill]
    puzgens[ps[rnd(1,#1)]](puzgens)
+   goed=rnd(1,puzmaxanswer)
+   for i=1,puzmaxanswer do
+       if i~=goed then
+          local r
+          repeat
+             r = rnd(math.ceil(puzseq[3]/2),puzseq[3]*5)
+             Var.D("$STARROW_ANSWER"..i,""..r)
+          until r~=puzseq[3]   
+       else
+          Var.D("$STARROW_ANSWER"..i,puzseq[3].."")
+       end       
+   end
+   local q=""
+   for i=1,5 do
+       q = q .. puzseq[3]
+       if i<5 then q=q.."," end
+   end
+   Var.D("$STARROW_SEQUENCE",q)
 end)
 
 field:ZA_Enter("PUZZLE_FORGET",function()
