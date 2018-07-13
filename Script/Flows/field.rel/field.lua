@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.07.03
+  Version: 18.07.13
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -244,6 +244,7 @@ function field:LoadMap(KthuraMap,layer,spawn,nocracks)
     if not laura.assert(layer,"No layer requested!",{LoadMap=KthuraMap}) then return end    
     map= {layer=layer,file=KthuraMap}
     self:ZA_Clear()    
+    self:CA_Clear()
     MapWorldLinks()
     print("Loading map: ",KthuraMap)
     CSay("Loading map: "..KthuraMap)
@@ -350,6 +351,7 @@ function field:objectclicked()
            elseif prefixed(utag,"CHEST_")  and act:WalkTo(stx,sty) then arrival={TreasureChest,tag,tag=tag} return true
            elseif prefixed(utag,"TRAVEL_") and act:WalkTo(stx,sty) then arrival={TravelMedal,self,tag,tag=tag} return true
            elseif tag=="DemonCrystal"      and act:WalkTo(stx,sty) then arrival={AddTransform,obj.DATA['DEMON']} return true
+           elseif self.clickactions[utag]  and act:WalkTo(stx,sty) then arrival={self.clickactions[utag].action,self.clickactions[utag].para} return true
            else   ret=false
            end
         else
@@ -583,6 +585,19 @@ function field.consolecommands:GAMEDATA()
         b = 255 - r
         console.writeln(l,r,g,b)
     end
+end
+
+function field.consolecommands.CLICKABLES(self)
+    local ca=self.clickactions
+    local r,g,b
+    --if #ca==0 then console.writeln("There are no clickable objects") return end
+    local cas=mysplit(serialize("clikables",ca),'\n')
+    for i,l in ipairs(cas) do
+        r = math.floor(255 - ((i/#cas)*255))
+        b = 255 - r
+        g = math.ceil(math.sin(r+b)*255)
+        console.writeln(l,r,g,b)
+    end    
 end  
 
 return field

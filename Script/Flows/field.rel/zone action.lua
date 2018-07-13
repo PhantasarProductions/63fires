@@ -1,6 +1,6 @@
 --[[
   zone action.lua
-  Version: 18.01.19
+  Version: 18.07.13
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -35,6 +35,8 @@
   3. This notice may not be removed or altered from any source distribution.
 ]]
 local za = {}
+za . clickactions = {}
+
 
 local zoneactions = {}
 local inzone = {}
@@ -133,6 +135,22 @@ function za:ZA_Dump() -- ONLY FOR DEBUGGING PURPOSES
        local r=255-g
        console.writeln(l,r,g,0)
    end
+end
+
+function za:CA_Click(object,action,para)
+   local ca=self.clickactions
+   ca[object:upper()]={action=action,para=para}
+   console.write  (object:upper(),0,255,255)
+   console.write  (' has been registered as a ',255,255,0)
+   console.writeln('Clickable object',0,255,255)
+   --CSay(serialize('ca',ca))
 end       
+
+function za:CA_Clear()
+   console.write  ("Clickable object list",0,255,255)
+   console.write  (' has been ',255,255,0)
+   console.writeln('cleared',255,0,0)
+   cleartable(self.clickactions)
+end   
 
 return za

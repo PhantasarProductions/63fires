@@ -129,7 +129,7 @@ field:ZA_Enter("PUZZLE_GEN",function()
    if Var.C(puzzlesolved)=="TRUE" then return end
    if puzseq then return end
    local ps = puzskill[skill]
-   puzgens[ps[rnd(1,#1)]](puzgens)
+   puzgens[ps[rnd(1,#puzgens)]](puzgens)
    goed=rnd(1,puzmaxanswer)
    for i=1,puzmaxanswer do
        if i~=goed then
@@ -161,6 +161,19 @@ function sta:NPC_Gauntlet()
    field:GiveTool('Nino',1)
    field:kill('NPC_Gauntlet',true)
    Award("TOOL_GAUNTLET") 
+end
+
+local function sign(i)
+   MapText("SIGN_ANSWER"..i)
+end
+
+local function plate(i)
+end
+
+for i=1,puzmaxanswer do
+    CSay("Linking stuff for puzzle slot: "..i)
+    field:CA_Click("PUZ_SIGN"..i,sign,i)
+    field:ZA_Enter("PUZ_BUT" ..i,plate,i)
 end
 
 return sta
