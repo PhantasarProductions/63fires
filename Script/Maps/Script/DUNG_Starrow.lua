@@ -144,8 +144,8 @@ field:ZA_Enter("PUZZLE_GEN",function()
    end
    local q=""
    for i=1,5 do
-       q = q .. puzseq[3]
-       if i<5 then q=q.."," end
+       if i==3 then q = q .. "..." else q = q .. puzseq[i] end
+       if i<5 then q=q..", " end
    end
    Var.D("$STARROW_SEQUENCE",q)
 end)
@@ -167,7 +167,39 @@ local function sign(i)
    MapText("SIGN_ANSWER"..i)
 end
 
+local function qdraw()
+    local map=field:GetMap()
+    kthura.drawmap(map.map,map.layer,field.cam.x,field.cam.y)
+    StatusBar(false,false)
+end    
+
+
 local function plate(i)
+   if Var.C(puzzlesolved)=='TRUE' then return end
+   local tex="GFX/Textures/PressurePlates/Circular/Pressed.png"
+   local map=field:GetMap().map
+   local obj=map.TagMap["#005"]["PUZ_BUT"..i]
+   local otx=obj.TEXTURE
+   local bar=map.TagMap["#005"]["PUZ_BARRIER"]
+   obj.TEXTURE=tex
+   qdraw(map)
+   love.graphics.present()
+   love.timer.sleep(5)
+   if i==goed then
+      for y=0,-100,-1 do
+          bar.COORD.y=y
+          bar.ALPHA=bar.ALPHA-.01
+          bar.IMPASSIBLE=false
+          qdraw(map)
+          love.graphics.present()
+          Done(puzzlesolved)
+      end
+      map:remapall()
+   else
+       obj.TEXTURE=otx
+       field:GoToLayer("#004",'Einde')
+       MapText("PUZFAIL")  
+   end
 end
 
 for i=1,puzmaxanswer do
