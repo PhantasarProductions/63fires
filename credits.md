@@ -216,7 +216,6 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - PikoPixel source file: GFX/WorldMap/Hub.piko
 - Graphic image: GFX/WorldMap/Hub.png
 ### These are files specifically set up for this game and other personal projects and remain my property and may NOT be extracted from this game nor any other production of Jeroen P. Broks, without prior WRITTEN permission from Jeroen P. Broks
-- File: Data/Foes/Boss/Angelique
 - GINI Is Not Ini: Data/Foes/Boss/Angelique.gini
 - GINI Is Not Ini: Data/Foes/Boss/UltraSlime.gini
 - GINI Is Not Ini: Data/Foes/Reg/Bat.gini
@@ -242,6 +241,8 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_Lucifer_Attack.png
    1. Alias: GFX/Combat/Fighters/Hero/Demon_Ryanna_Lucifer_Cast.png
 - Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_Lucifer_Idle.png
+- Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_Stopcontact_Attack.png
+- Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_Stopcontact_Idle.png
 - PikoPixel source file: GFX/Combat/Fighters/Hero/Nino Attack.piko
 - Graphic image: GFX/Combat/Fighters/Hero/Nino_Cast.png
 - Graphic image: GFX/Combat/Fighters/Hero/Nino_IDLE.png
@@ -312,6 +313,9 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_LUCIFER_F1.lua
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_LUCIFER_F2.lua
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_LUCIFER_F3.lua
+- Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_STOPCONTACT_F1.lua
+- Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_STOPCONTACT_F2.lua
+- Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_STOPCONTACT_F3.lua
 - Script: Script/Data/IAA/ABL_HERO_NINO_CUREPD.lua
 - Script: Script/Data/IAA/ABL_HERO_NINO_ESUNA.lua
 - Script: Script/Data/IAA/ABL_HERO_NINO_FEROSLASH.lua
