@@ -242,6 +242,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
    1. Alias: GFX/Combat/Fighters/Hero/Demon_Ryanna_Lucifer_Cast.png
 - Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_Lucifer_Idle.png
 - Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_Stopcontact_Attack.png
+   1. Alias: GFX/Combat/Fighters/Hero/Demon_Ryanna_Stopcontact_Cast.png
 - Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_Stopcontact_Idle.png
 - PikoPixel source file: GFX/Combat/Fighters/Hero/Nino Attack.piko
 - Graphic image: GFX/Combat/Fighters/Hero/Nino_Cast.png
@@ -291,6 +292,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Markdown document: license.md
 - Markdown document: README.md
 - Script: Script/Data/CharAbility/Demon_Ryanna_Lucifer.lua
+   1. Alias: Script/Data/CharAbility/Demon_Ryanna_Stopcontact.lua
 - Script: Script/Data/CharAbility/Nino.lua
 - Script: Script/Data/CharAbility/Ryanna.lua
 - Script: Script/Data/Combat/ActEffect/Access_Start.lua
