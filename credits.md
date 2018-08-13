@@ -38,6 +38,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 
 ## GDJ
 ### Public Domain
+- Graphic image: GFX/Combat/Fighters/Foe/Boss/Angelique.png
 - Graphic image: GFX/Treasure/Tools/Eric.png
 - Graphic image: GFX/Treasure/Tools/Gauntlet.png
 
@@ -215,6 +216,8 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - PikoPixel source file: GFX/WorldMap/Hub.piko
 - Graphic image: GFX/WorldMap/Hub.png
 ### These are files specifically set up for this game and other personal projects and remain my property and may NOT be extracted from this game nor any other production of Jeroen P. Broks, without prior WRITTEN permission from Jeroen P. Broks
+- File: Data/Foes/Boss/Angelique
+- GINI Is Not Ini: Data/Foes/Boss/Angelique.gini
 - GINI Is Not Ini: Data/Foes/Boss/UltraSlime.gini
 - GINI Is Not Ini: Data/Foes/Reg/Bat.gini
 - GINI Is Not Ini: Data/Foes/Reg/EyeBlob.gini
