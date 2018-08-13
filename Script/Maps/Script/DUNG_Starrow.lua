@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.07.13
+version: 18.08.13
 ]]
 
 local skill=Var.G("%SKILL")
@@ -81,7 +81,8 @@ local rnd = math.random
 function puzgens:add()
    puzseq = {}
    local av = rnd(1,10)
-   for i=1,5 do puzseq[i]=i*av end
+   local as = rnd(2,10+(skill^skill))
+   for i=1,5 do puzseq[i]=(i*av)+as end
 end
 
 function puzgens:sub()
@@ -94,7 +95,7 @@ function puzgens:mul()
    puzseq = {}
    local av = rnd(1,10)
    local vv = rnd(1,10)
-   for i=1,5 do vv=vv*av puzseq[i]=v end
+   for i=1,5 do vv=vv*av puzseq[i]=vv end
 end
 
 function puzgens:prime()
@@ -109,7 +110,7 @@ function puzgens:addsub()
    local v=rnd(5,25)
    puzseq = {}
    for i=1,5 do 
-       if i==1 or i==3 or i==3 then v = v + a1 else v = v - b1 end
+       if i==1 or i==3 or i==5 then v = v + a1 else v = v - b1 end
        puzseq[i]=v
    end
 end   
@@ -129,13 +130,13 @@ field:ZA_Enter("PUZZLE_GEN",function()
    if Var.C(puzzlesolved)=="TRUE" then return end
    if puzseq then return end
    local ps = puzskill[skill]
-   puzgens[ps[rnd(1,#puzgens)]](puzgens)
+   puzgens[ps[rnd(1,#ps)]](puzgens)
    goed=rnd(1,puzmaxanswer)
    for i=1,puzmaxanswer do
        if i~=goed then
           local r
           repeat
-             r = rnd(math.ceil(puzseq[3]/2),puzseq[3]*5)
+             r = rnd(math.ceil(puzseq[3]/2),puzseq[3]*5-skill)
              Var.D("$STARROW_ANSWER"..i,""..r)
           until r~=puzseq[3]   
        else
@@ -187,6 +188,7 @@ local function plate(i)
    love.timer.sleep(5)
    if i==goed then
       for y=0,-100,-1 do
+          love.graphics.clear()
           bar.COORD.y=y
           bar.ALPHA=bar.ALPHA-.01
           bar.IMPASSIBLE=false
@@ -196,6 +198,7 @@ local function plate(i)
       end
       map:remapall()
    else
+       puzseq=nil
        obj.TEXTURE=otx
        field:GoToLayer("#004",'Einde')
        MapText("PUZFAIL")  
@@ -207,5 +210,10 @@ for i=1,puzmaxanswer do
     field:CA_Click("PUZ_SIGN"..i,sign,i)
     field:ZA_Enter("PUZ_BUT" ..i,plate,i)
 end
+
+
+field:ZA_Enter("RyannaSpeakPuzzle",function()
+       if not Done("&RYANNA.STARROW.SPEAK.PUZZLE.START") then MapText("PUZSTART") end 
+end)
 
 return sta
