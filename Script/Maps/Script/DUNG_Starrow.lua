@@ -216,4 +216,15 @@ field:ZA_Enter("RyannaSpeakPuzzle",function()
        if not Done("&RYANNA.STARROW.SPEAK.PUZZLE.START") then MapText("PUZSTART") end 
 end)
 
+function sta:Boss()
+     if Done("&DONE.BOSS.ANGELIQUENIGHTSAME") then return end
+     MapText("BOSS")
+     BossFight("Restless Zombie Girl","Angelique Nightshame",
+         {
+           foes={'boss/angelique'},
+           arena="caves_starrow",           
+    })
+    field:kill("Angelique",1)     
+end
+
 return sta
