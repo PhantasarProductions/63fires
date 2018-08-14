@@ -148,10 +148,10 @@ end
 function AwardEXP(con,points,char)
    if con and Done(con) then return true end
    if not char then
-      for ch,_ in pairs(RPGParty) do AwardEXP(nil,points,ch) end
+      for _,ch in pairs(RPGParty) do AwardEXP(nil,points,ch) end
       return
    end    
-   local skill=Var.G("SKILL")
+   local skill=Var.G("%SKILL")
    local m={2,1,.01}
    rpg:DecStat(char,"Experience",points*m[skill])
    return not con
