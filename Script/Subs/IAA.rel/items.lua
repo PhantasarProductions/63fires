@@ -122,7 +122,7 @@ function itemsm:ItemGive(itemcode,amount)
        local ic=itemcode:upper()
        local skill=Var.G("%SKILL")
        if not (prefixed(ic,"ITM_") or prefixed(ic,"FISH_")) then
-          if JCR_Exists("JWL_"..ic) then
+          if JCR_Exists('Script/Data/IAA/JWL_'..ic..".lua") then
              ic="JWL_"..ic
           else 
              ic="ITM_"..ic
