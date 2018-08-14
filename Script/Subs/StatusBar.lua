@@ -1,6 +1,6 @@
 --[[
   StatusBar.lua
-  Version: 18.06.02
+  Version: 18.08.14
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -77,7 +77,7 @@ local function StatusBar(highlight,menuchain,chat)
    local time=love.timer.getTime()
    local lr = math.floor(math.sin(time)    *255)
    local lg = math.floor(math.cos(time)    *255)
-   local lb = math.floor(math.sin(time/500)*255)
+   local lb = math.floor(math.sin(time/300)*255)
    local lf = GetBoxTextFont()
    itext.setfont(lf)
    quad = quad or love.graphics.newQuad(0,height-120,width,120,ImageWidth(background),ImageHeight(background))
@@ -145,5 +145,16 @@ local function StatusBar(highlight,menuchain,chat)
    end
 end
 
+function AwardEXP(con,points,char)
+   if con and Done(con) then return true end
+   if not char then
+      for ch,_ in pairs(RPGParty) do AwardEXP(nil,points,ch) end
+      return
+   end    
+   local skill=Var.G("SKILL")
+   local m={2,1,.01}
+   rpg:DecStat(char,"Experience",points*m[skill])
+   return not con
+end
 
 return StatusBar
