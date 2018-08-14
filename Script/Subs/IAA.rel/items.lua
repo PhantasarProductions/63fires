@@ -121,7 +121,13 @@ end
 function itemsm:ItemGive(itemcode,amount)
        local ic=itemcode:upper()
        local skill=Var.G("%SKILL")
-       if not (prefixed(ic,"ITM_") or prefixed(ic,"FISH_")) then ic="ITM_"..ic end
+       if not (prefixed(ic,"ITM_") or prefixed(ic,"FISH_")) then
+          if JCR_Exists("JWL_"..ic) then
+             ic="JWL_"..ic
+          else 
+             ic="ITM_"..ic
+          end 
+       end
        local item=self:ItemGet(ic)
        if gamedata.inventory[ic] and gamedata.inventory[ic]>=self.itemmax[skill] then return false,item.Title end -- Max reached
        gamedata.inventory[ic] = (gamedata.inventory[ic] or 0) + (amount or 1)
