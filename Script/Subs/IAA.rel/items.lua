@@ -1,6 +1,6 @@
 --[[
   items.lua
-  Version: 18.06.11
+  Version: 18.08.14
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
