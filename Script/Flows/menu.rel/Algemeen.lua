@@ -1,6 +1,6 @@
 --[[
   Algemeen.lua
-  Version: 18.05.26
+  Version: 18.08.14
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -40,6 +40,10 @@ local width, height = love.graphics.getDimensions(  )
 local tw = width-60
 local cols = {{x=60,w=tw/2},{x=60+(tw/2),w=tw/2}}
 local mod = {}
+
+local equipdivfactor = ({5,10,25})[skill]
+local equipabsolutemax = ({25,20,10})[skill]
+local equippoint = 1
 
 mod.menutype = "field"
 
@@ -99,6 +103,13 @@ function mod:showstatus(cd)
        itext.write("Experience:",x,380)
        color(0,180,255)
        diginum(rpg:Stat(self.char,"Experience"),x+math.ceil (w*.75),380)
+    end  
+    local eqm = math.floor(level/equipdivfactor)
+    if eqm>equipabsolutemax then eqm=equipabsolutemax end 
+    if eqm>0 then
+       color(180,255,  0) itext.write("+", x      ,450)
+       color(255,  0,  0) itext.write("-",(x+w)-25,450)
+       color(  0,180,255) itext.write(equippoint.."/"..eqm)
     end              
 end
 

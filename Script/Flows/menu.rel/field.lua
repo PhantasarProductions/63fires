@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.03.09
+  Version: 18.08.14
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -40,6 +40,8 @@
 local width, height = love.graphics.getDimensions(  )
 local fld = { nomerge=true }
 local stats = {"Power","Defense","Intelligence","Resistance","Speed","Accuracy","Evasion"} --,"HP","AP","Awareness"}
+
+local skill = Var.G("%SKILL")
 
 fld.mode = 'status'
 
