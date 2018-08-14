@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.08.13
+version: 18.08.14
 ]]
 
 local skill=Var.G("%SKILL")
@@ -226,5 +226,10 @@ function sta:Boss()
     })
     field:kill("Angelique",1)     
 end
+
+field:ZA_Enter("EndDungeon",function()
+      AwardEXP("&DONE.STARROW.COMPLETE",100)
+      WorldMap_Unlock("D_BLACKTOWER") 
+end)
 
 return sta
