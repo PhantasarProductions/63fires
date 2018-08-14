@@ -34,6 +34,11 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
+
+-- $IF IGNORE
+local IAA
+-- $FI
+
 function InitIAA()
     local skill = Var.G("%SKILL")
     gamedata.inventory = gamedata.inventory or { ITM_HERB=12/skill, ITM_ANTIDOTE=6/skill}
