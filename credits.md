@@ -308,7 +308,6 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/General/Sex.lua
 - Script: Script/Data/General/upgradedata.lua
 - Script: Script/Data/General/WorldMap.lua
-- Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_F2.lua
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_IJSBLOKJE_F1.lua
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_IJSBLOKJE_F2.lua
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_IJSBLOKJE_F3.lua
@@ -351,6 +350,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/IAA/ITM_PIXIEDUST.lua
 - Script: Script/Data/IAA/ITM_SOFT.lua
 - Script: Script/Data/IAA/ITM_VIOLETROSE.lua
+- Script: Script/Data/IAA/JWL_EMERALD.lua
 - Script: Script/Data/IAA/ZPECIAL_MEGASLAM_ACCESS.lua
 - Script: Script/Data/IAA/ZPECIAL_REVERT.lua
 - Markdown document: Script/Data/readme.md
