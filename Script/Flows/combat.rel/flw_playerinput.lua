@@ -1,6 +1,6 @@
 --[[
   flw_playerinput.lua
-  Version: 18.07.07
+  Version: 18.08.15
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -123,9 +123,12 @@ function invoer:flow_heroselecttarget()
                itext.write("?",d.x+50,d.y-6,2,2)
             else
                color(180,255,0)
-               local deel = rpg:Points(seltag,'HP').Have / rpg:Points(seltag,'HP').Maximum
-               local bar  = math.floor(deel*98)
-               Rect(d.x+1,d.y-11,98,10)
+               local deel   = rpg:Points(seltag,'HP').Have 
+               local geheel = rpg:Points(seltag,'HP').Maximum               
+               local ratio  = deel/geheel
+               local bar    = math.floor(ratio*98)
+               --itext.write("DEBUG: "..deel.." of "..geheel.." ratio:"..ratio.." bar:"..bar,d.x,d.y) --> Debug Line!
+               Rect(d.x+1,d.y-11,bar,10)
             end   
          end    
      end
