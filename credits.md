@@ -189,6 +189,30 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Menu/item6.png
 - Graphic image: GFX/Puzzle/KVault/Controller.png
 - Graphic image: GFX/System/Console.png
+- Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/000.png
+- Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/005.png
+- Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/010.png
+- Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/015.png
+- Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/020.png
+- Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/025.png
+- Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/030.png
+- Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/035.png
+- Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/040.png
+- Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/045.png
+- Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/050.png
+- Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/055.png
+- Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/060.png
+- Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/065.png
+- Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/070.png
+- Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/075.png
+- Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/080.png
+- Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/085.png
+- Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/090.png
+- Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/095.png
+- Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/100.png
+- Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/105.png
+- Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/110.png
+- Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/115.png
 - Graphic image: GFX/Textures/HookSpot.png
 - Graphic image: GFX/Textures/Muur Toorts/Uit.png
 - Graphic image: GFX/Textures/Objects/Closed Grave.png
@@ -419,6 +443,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Maps/Kthura/Test Map.lua
 - Script: Script/Maps/Kthura/TOWN_Windville.lua
 - Script: Script/Maps/Script/DUNG_BeaufortForest.lua
+- Script: Script/Maps/Script/DUNG_BlackTower.lua
 - Script: Script/Maps/Script/DUNG_BluePalace.lua
 - Script: Script/Maps/Script/DUNG_Graveyard.lua
 - Script: Script/Maps/Script/DUNG_Starrow.lua
