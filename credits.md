@@ -200,6 +200,10 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Textures/PressurePlates/Circular/Unpressed.png
 - PikoPixel source file: GFX/Textures/Special/Crack.piko
 - Graphic image: GFX/Textures/Special/Crack.png
+- Graphic image: GFX/Textures/Stairs/32/Down.png
+- Graphic image: GFX/Textures/Stairs/32/Up.png
+- Graphic image: GFX/Textures/Stairs/64/Down.png
+- Graphic image: GFX/Textures/Stairs/64/Up.png
 - PikoPixel source file: GFX/Textures/Windville/Molen/Milltower.piko
 - Graphic image: GFX/Textures/Windville/Molen/Milltower.png
 - PikoPixel source file: GFX/Textures/Windville/Straat.piko
@@ -230,6 +234,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - File: Data/Levels/Ryanna
 - File: Data/Levels/Shirley
 - Graphic image: GFX/Actors/Cameo/Dienstmeid Marrilona.png
+- Graphic image: GFX/Actors/Cameo/Yirl.png
 - Graphic image: GFX/Actors/Windville/Nino.png
 - PikoPixel source file: GFX/Actors/Windville/NinoN.piko
 - Graphic image: GFX/Actors/Windville/NinoN.png
@@ -238,6 +243,9 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - PikoPixel source file: GFX/Combat/Cards/Heroes.piko
 - Graphic image: GFX/Combat/Cards/Hero_Nino.png
 - Graphic image: GFX/Combat/Cards/Hero_Ryanna.png
+- PikoPixel source file: GFX/Combat/Fighters/Hero/Demon_Ryanna_IJsblokje_Attack.piko
+- Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_IJsblokje_Attack.png
+- Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_IJsblokje_Idle.png
 - Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_Lucifer_Attack.png
    1. Alias: GFX/Combat/Fighters/Hero/Demon_Ryanna_Lucifer_Cast.png
 - Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_Lucifer_Idle.png
@@ -291,7 +299,8 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Markdown document: credits.md
 - Markdown document: license.md
 - Markdown document: README.md
-- Script: Script/Data/CharAbility/Demon_Ryanna_Lucifer.lua
+- Script: Script/Data/CharAbility/Demon_Ryanna_IJsblokje.lua
+   1. Alias: Script/Data/CharAbility/Demon_Ryanna_Lucifer.lua
    1. Alias: Script/Data/CharAbility/Demon_Ryanna_Stopcontact.lua
 - Script: Script/Data/CharAbility/Nino.lua
 - Script: Script/Data/CharAbility/Ryanna.lua
@@ -399,6 +408,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Flows/TransOver.lua
 - Script: Script/Flows/WorldMap.lua
 - Script: Script/Maps/Kthura/DUNG_BeaufortForest.lua
+- Script: Script/Maps/Kthura/DUNG_BlackTower.lua
 - Script: Script/Maps/Kthura/DUNG_BluePalace.lua
 - Script: Script/Maps/Kthura/DUNG_Freddy.lua
 - Script: Script/Maps/Kthura/DUNG_Graveyard.lua
@@ -497,6 +507,18 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Textures/Cave/Basic/Vloer + Oever.png
 - Graphic image: GFX/Textures/Cave/Basic/Vloer + Water.png
 - Graphic image: GFX/Textures/Cave/Basic/Vloer.png
+- Graphic image: GFX/Textures/Dungeon/Black/Bars.png
+- Graphic image: GFX/Textures/Dungeon/Black/Floor.png
+- Graphic image: GFX/Textures/Dungeon/Black/WCSE.png
+- Graphic image: GFX/Textures/Dungeon/Black/WCSW.png
+- Graphic image: GFX/Textures/Dungeon/Black/WSWNE.png
+- Graphic image: GFX/Textures/Dungeon/Black/WSWNW.png
+- Graphic image: GFX/Textures/Dungeon/Black/WSWSE.png
+- Graphic image: GFX/Textures/Dungeon/Black/WSWSW.png
+- Graphic image: GFX/Textures/Dungeon/Black/WWE.png
+- Graphic image: GFX/Textures/Dungeon/Black/WWN.png
+- Graphic image: GFX/Textures/Dungeon/Black/WWS.png
+- Graphic image: GFX/Textures/Dungeon/Black/WWW.png
 - Graphic image: GFX/Textures/House_Inside/Houten rand - Horizontaal.png
 - Graphic image: GFX/Textures/House_Inside/Houten rand - Veritcaal.png
 - Graphic image: GFX/Textures/House_Inside/Toonbank.png
