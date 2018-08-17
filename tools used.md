@@ -81,6 +81,9 @@ For editing the Lua code
 
 For editing the Go code and other kinds of text files!
 
+## Zip
+For additional packaging LÖVE requires
+
 
 # Software I wrote myself
 
@@ -93,8 +96,7 @@ Like the name implies, it's used to create the dungeon and city maps.
 ## JCR6
 For the actual packaging
 
-## Zip
-For additional packaging LÖVE requires
+
 
 ## jcrx
 Dependency required to read JCR6 resources
