@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.08.17
+version: 18.08.18
 ]]
 
 -- $USE script/subs/screen
@@ -61,6 +61,7 @@ end
 
 local function gate_out(ol)
       showgate(ol[1],ol[2])
+      field:StopPlayer(true)
       for i=0,255 do
           love.graphics.clear()
           qdraw()
