@@ -48,7 +48,7 @@ end
 
 local function showgate(l,o)
     o.VISIBLE=true
-    o.FRAMESPEED = math.random(0,4)
+    o.FRAMESPEED = math.random(1,4)-1
     gates[gatetag(l,o)]=true
 end       
 
