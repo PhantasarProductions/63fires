@@ -1,6 +1,6 @@
 --[[
   flw_execution.lua
-  Version: 18.07.06
+  Version: 18.08.30
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -261,8 +261,9 @@ function beul:true_perform(tag,targettag)
    end
    for i,cs in ipairs(cure) do TagMessage(tag,"Cure: "..cs,180,255,0,-(i*20)) hit=true end
    -- Heal
-   -- $USE Script/Subs/HealCalc
-   local heal = HealCalc(item,tag,targettag)
+   -- $USE Script/Subs/HealCalc   
+   local heal = 0 
+   if (item.Heal or 0)>0 then HealCalc(item,tag,targettag) end
    if heal>0 and (not self:StatusProperty(targettag,'blockheaing')) then
       if self:StatusProperty(targettag,'undead') then
          self:Hurt(targettag,heal)
