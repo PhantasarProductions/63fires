@@ -79,7 +79,7 @@ function hero:DrawHeroes(targeted,inaction,action,actionframe)
          local paction='IDLE'
          local f = 1
          if inaction==k or inaction=='ALL' or inaction=='ALLHEROES' then paction=action f=actionframe end
-         --CSay(serialize(k..', my hero',v))
+         --CSay(serialize(k..', my hero',v))         
          self:DrawHero(v,targeted,paction,f)
      end
 end     
