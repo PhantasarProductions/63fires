@@ -264,6 +264,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Actors/Windville/Nino.png
 - PikoPixel source file: GFX/Actors/Windville/NinoN.piko
 - Graphic image: GFX/Actors/Windville/NinoN.png
+- Graphic image: GFX/Combat/Arena/Black_Tower.png
 - Graphic image: GFX/Combat/Arena/Caves_Starrow.png
 - Graphic image: GFX/Combat/Arena/Forest_Spar.png
 - PikoPixel source file: GFX/Combat/Cards/Heroes.piko
@@ -336,6 +337,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/Combat/AI/default.lua
 - Script: Script/Data/Combat/InputXtraScript/Access_Start.lua
 - Script: Script/Data/Combat/StatusChanges/Death.lua
+- Script: Script/Data/Combat/StatusChanges/Poison.lua
 - Script: Script/Data/Combat/StatusChanges/Transformed.lua
 - Script: Script/Data/General/Achievements.lua
 - Script: Script/Data/General/Fish.lua
