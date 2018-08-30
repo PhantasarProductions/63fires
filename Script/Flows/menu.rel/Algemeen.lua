@@ -1,6 +1,6 @@
 --[[
   Algemeen.lua
-  Version: 18.08.14
+  Version: 18.08.30
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -41,6 +41,7 @@ local tw = width-60
 local cols = {{x=60,w=tw/2},{x=60+(tw/2),w=tw/2}}
 local mod = {}
 
+local skill = Var.G("%SKILL")
 local equipdivfactor = ({5,10,25})[skill]
 local equipabsolutemax = ({25,20,10})[skill]
 local equippoint = 1
