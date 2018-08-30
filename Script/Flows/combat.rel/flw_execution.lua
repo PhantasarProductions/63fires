@@ -292,6 +292,17 @@ function beul:true_perform(tag,targettag)
       hit = hit or effectscript(self,targettag,tag,item.EffectScript_Arg)
    end     
    -- Cause Status Changes
+   for k,v in pairs(item) do if prefixed(k,"Cause") and v then
+       local mystatus = Right(k,#k-5)
+       self.statusdata[mystatus] = self.statusdata[mystatus] or Use('script/data/combat/statuschanges/'..mystatus..'.lua')
+       local r=rpg:SafeStat(tag,"END_SR_"..mystatus)
+       local die = math.random(0,99)
+       if die>r then
+          self.fighters[tag].statuschanges = self.fighters[tag].statuschanges or {}
+          self.fighters[tag].statuschanges[mystatus] = self.statusdata[mystatus]
+          self:TagMessage(tag,mystatus,180,0,0,-20)
+       end
+   end end
    -- Allowing counter attack
    -- Not miss?
    if not hit then self:TagMessage(tag,"Miss") end

@@ -1,6 +1,6 @@
 --[[
   flw_idle.lua
-  Version: 18.07.06
+  Version: 18.08.30
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -49,10 +49,12 @@ function zooi:flow_idle()
       if (prefixed(tag,"HERO") or prefixed(tag,"FOE")) and (rpg:Points(ctag,'HP').Have==0 or self:StatusProperty(ctag,'skipturn')) then
          return self:RemoveFirstCard()
       end 
-      if prefixed(tag,"HERO") then         
+      if prefixed(tag,"HERO") then
+         for f in self:StatusPropertyValues(ctag) do f() end
          self.flow = firstcard.altplayinput or "playerinput"
       end
       if prefixed(tag,"FOE") or prefixed(tag,"BOSS") then
+         for f in self:StatusPropertyValues(ctag) do f() end
          self.flow = firstcard.altplayinput or "foeinput"
       end
 end
