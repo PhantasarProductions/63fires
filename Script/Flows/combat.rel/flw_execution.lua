@@ -304,9 +304,9 @@ function beul:true_perform(tag,targettag)
        local r=rpg:SafeStat(tag,"END_SR_"..mystatus)
        local die = math.random(0,99)
        if die>r then
-          self.fighters[tag].statuschanges = self.fighters[tag].statuschanges or {}
-          self.fighters[tag].statuschanges[mystatus] = self.statusdata[mystatus]
-          self:TagMessage(tag,mystatus,180,0,0,-20)
+          self.fighters[targettag].statuschanges = self.fighters[targettag].statuschanges or {}
+          self.fighters[targettag].statuschanges[mystatus] = self.statusdata[mystatus]
+          self:TagMessage(targettag,mystatus,180,0,0,-20)
        end
    end end
    -- Allowing counter attack
