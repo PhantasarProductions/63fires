@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.03.08
+version: 18.10.03
 ]]
 local chryanna = {
 
@@ -50,7 +50,10 @@ local chryanna = {
         },
   TutTeach = function (self,abl)
                if self.abl[abl].scenario then return "???" end
-               local ra = Var.G("%RYANNA.ABILITYUSED") * Var.G("%SKILL")
+               gamedata.xchardata = gamedata.xchardata or {}
+               gamedata.xchardata.Ryanna = gamedata.xchardata.Ryanna or {}                
+               -- local ra = Var.G("%RYANNA.ABILITYUSED") * Var.G("%SKILL")
+               local ra = gamedata.xchardata.Ryanna.AbilitiesUsed or 0               
                local na = self.abl[abl].points or 0
                local za = na - ra
                if za<=0 then return "Attack a random target to obtain this ability" end

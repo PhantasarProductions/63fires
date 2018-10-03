@@ -1,6 +1,6 @@
 --[[
   flw_execution.lua
-  Version: 18.08.30
+  Version: 18.10.03
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -57,6 +57,11 @@ function beul:esf_prewait()
      oldprewait=nil
      self.esf='pose'
      if self.nextmove.removeitem then RemoveItem(self.nextmove.removeitem) end
+     if prefixed(self.nextmove.act,"ABL_") and self.nextmove.executor=='Ryanna' then
+        gamedata.xchardata = gamedata.xchardata or {}
+        gamedata.xchardata.Ryanna = gamedata.xchardata.Ryanna or {} 
+        gamedata.xchardata.Ryanna.AbilitiesUsed = (gamedata.xchardata.Ryanna.AbilitiesUsed or 0)+1;
+     end
 end
 
 local poses = {
