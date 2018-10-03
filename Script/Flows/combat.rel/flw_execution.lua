@@ -260,12 +260,12 @@ function beul:true_perform(tag,targettag)
          hit=true
       end   
    end
-   -- Cure Status Changes
+   -- Cure Status Changes (after revival one of the first things to do)
    local cure = {}
    for k,v in pairs(warrior.statuschanges) do
        if item['Cure'..k] then cure[#cure+1]=k end
    end
-   for i,cs in ipairs(cure) do TagMessage(tag,"Cure: "..cs,180,255,0,-(i*20)) hit=true end
+   for i,cs in ipairs(cure) do TagMessage(tag,"Cure: "..cs,180,255,0,-(i*20)) hit=true end   
    -- Heal
    -- $USE Script/Subs/HealCalc   
    local heal = 0 
@@ -297,7 +297,7 @@ function beul:true_perform(tag,targettag)
       assert(type(effectscript)=='function',"Effect "..item.EffectScript.." is not a function but a "..type(effectscript))
       hit = hit or effectscript(self,targettag,tag,item.EffectScript_Arg)
    end     
-   -- Cause Status Changes
+   -- Cause Status Changes (last thing to do before counter and miss message)
    for k,v in pairs(item) do if prefixed(k,"Cause") and v then
        local mystatus = Right(k,#k-5)
        self.statusdata[mystatus] = self.statusdata[mystatus] or Use('script/data/combat/statuschanges/'..mystatus..'.lua')
