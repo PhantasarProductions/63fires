@@ -36,6 +36,16 @@
 ]]
 local function Ik_ben_Gerrit_en_ik_steel_als_de_raven(knokken,slachtoffer,dief,verdere_efffecten_die_hier_niet_relevant_zijn)
       if prefixed(slachtoffer,"FOE_") then
+         local myfoe=knokken.foes[slachtoffer]
+         local buit=myfoe.steals
+         if #buit==0 then return false end
+         local r=math.random(1,#buit)
+         local gejat = buit[r]
+         local gelukt,naamitem = ItemGive(gejat)
+         if (not gelukt) then return false end
+         knokken:TagMessage(dief,"Stolen: "..naamitem,math.random(127,255),math.random(127,255),math.random(127,255))
+         myfoe.steals={}
+         return true
       else
          error("No support yet for stealing from allies.")
       end

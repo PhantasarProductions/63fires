@@ -54,11 +54,11 @@ function beul:esf_prewait()
      if math.abs(newprewait-oldprewait)<.5 then -- ABS is used to prevent freezes if the timer suddenly turns 'minus' in the middle of a wait.        
         return
      end
-     --CSay("PreWait Ended!\n"..serialize("nextmove",self.nextmove))
+     CSay("PreWait Ended!\n"..serialize("nextmove",self.nextmove))
      oldprewait=nil
      self.esf='pose'
      if self.nextmove.removeitem then RemoveItem(self.nextmove.removeitem) end
-     if prefixed(self.nextmove.act,"ABL_HERO_RYANNA") then --and self.nextmove.executor=='Ryanna' then
+     if prefixed(self.nextmove.act:upper(),"ABL_HERO_RYANNA") then --and self.nextmove.executor=='Ryanna' then
         gamedata.xchardata = gamedata.xchardata or {}
         gamedata.xchardata.Ryanna = gamedata.xchardata.Ryanna or {} 
         gamedata.xchardata.Ryanna.AbilitiesUsed = (gamedata.xchardata.Ryanna.AbilitiesUsed or 0)+1;
