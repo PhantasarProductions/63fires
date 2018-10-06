@@ -40,6 +40,9 @@ version: 18.08.30
 local blackie = {} -- Named after my ex-wife's cat. I guess you can guess the color of her fur... :-/
 local gates
 local skill=Var.G("%SKILL")
+local bosses = {
+      ['#010'] = {"Very very big slime","SupaSlime"}
+}
 
 
 local function gatetag(l,o)
@@ -69,7 +72,7 @@ local function gate_out(ol)
           love.graphics.rectangle("fill",0,0,screen.w,screen.h)
           love.graphics.present()
       end
-      field:GoToLayer("#000",'Start')
+      field:GoToLayer(gamedata.BlackTowerGates.terug or "#000",'Start')
       if not Done("&DONE.BLACKTOWER.STEPONGATE") then
          MapText("STEPONGATE")
          AwardEXP(nil,250)
@@ -109,6 +112,18 @@ field:ZA_Enter("tien",function() if skill~=3 then gates.terug=field:getmap().lay
 
 function blackie:NPC_Yirl()
      MapText("YIRL") 
+end
+
+local function removebossbarrier()
+   field:kill("NPC_Boss",true)
+   field:kill("BossBarrier",true)
+end
+
+function blackie:NPC_Boss()
+    local boss = bosses[field:getmap().layer]
+    assert(boss,"No boss was for this floor, yet an NPC was tagged as one!")
+    field:Schedule(removebossbarrier)
+    BossFight(boss[1],boss[2],{foes={"Boss/"..boss[2]},arena='Black_Tower'})
 end
 
 return blackie
