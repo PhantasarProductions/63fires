@@ -1,6 +1,6 @@
 --[[
   Algemeen.lua
-  Version: 18.08.30
+  Version: 18.10.06
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -110,7 +110,7 @@ function mod:showstatus(cd)
     if eqm>0 then
        color(180,255,  0) itext.write("+", x      ,450)
        color(255,  0,  0) itext.write("-",(x+w)-25,450)
-       color(  0,180,255) itext.write(equippoint.."/"..eqm)
+       color(  0,180,255) itext.write(equippoint.."/"..eqm, (x+(w/2)),450,2,0)
     end              
 end
 
