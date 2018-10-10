@@ -1,5 +1,5 @@
 --[[
-  com_main.lua
+  Silence.lua
   Version: 18.10.10
   Copyright (C) 2018 Jeroen Petrus Broks
   
@@ -34,56 +34,9 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
--- $USE Script/Subs/Headers.h AS Headers_h
-local cmain = {}
-
-
-
-function cmain:statusicon(tag,icon)
-    -- $USE Script/Data/Combat/StatusChanges/__ScrollEffect AS statusicons
-    statusicons:newico(tag,icon)
-end
-
-function cmain:TagMessage(tag,message,r,g,b,ymod)
-    local x,y = 0,0
-    x = self.fighters[tag].x
-    y = self.fighters[tag].y + (ymod or 0)
-    MiniMSG(message,{r or 255,g or 255, b or 255},{x,y})
-end
-
-function cmain:basedraw()
-      self:DrawArena()
-      self:DrawCards()
-      self:StatusPreDraw()
-      self:DrawFoes(self.targeted,self.inaction)
-      self:DrawHeroes(self.targeted,self.inaction,self.acting,self.heroframe)      
-end
-
-cmain.BoxTextBack = cmain.basedraw
-
-function cmain:odraw()
-      self:basedraw()
-      self.flow = self.flow or "idle"
-      assert(self["flow_"..self.flow],"No combat flow function for "..self.flow)
-      self['flow_'..self.flow](self)
-      StatusBar(false,true)
-      dbgcon()    
-      ShowMiniMSG()
-end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-return cmain
-
+local SimonAndGarfunkel = {
+    silence=true,
+    predraw=function(s,tag)
+      combat:statusicon(tag,"SILENCE")
+    end
+}

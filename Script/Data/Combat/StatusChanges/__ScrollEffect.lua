@@ -1,5 +1,5 @@
 --[[
-  com_main.lua
+  __ScrollEffect.lua
   Version: 18.10.10
   Copyright (C) 2018 Jeroen Petrus Broks
   
@@ -34,56 +34,42 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 ]]
--- $USE Script/Subs/Headers.h AS Headers_h
-local cmain = {}
+local s={}
 
+local stimer={}
+local sicons={}
+local picons={}
 
+--[[ This is not a status change by itself, but rather a helper that several status changes will use to cause a certain effect ]]
 
-function cmain:statusicon(tag,icon)
-    -- $USE Script/Data/Combat/StatusChanges/__ScrollEffect AS statusicons
-    statusicons:newico(tag,icon)
+function s:ico(tag,statusicon)
+    -- $USE libs/klok
+    local ts = tag..statusicon
+    stimer[ts] = stimer[ts] or klok:CreateTimer(0.15)
+    local tm = stimer[ts]
+    if not tm:enough() then return end
+    local warrior=combat.fighters[tag]
+    local newico = {
+        x = math.random((warrior.x or 25)-16,(warrior.x or 25)+16),
+        y = warrior.y or 1000,
+        timeout = math.random(50,100),
+        spd = math.random(1,4),
+        icon=statusicon 
+    }
+    sicons[#sicons+1] = newico
 end
 
-function cmain:TagMessage(tag,message,r,g,b,ymod)
-    local x,y = 0,0
-    x = self.fighters[tag].x
-    y = self.fighters[tag].y + (ymod or 0)
-    MiniMSG(message,{r or 255,g or 255, b or 255},{x,y})
-end
-
-function cmain:basedraw()
-      self:DrawArena()
-      self:DrawCards()
-      self:StatusPreDraw()
-      self:DrawFoes(self.targeted,self.inaction)
-      self:DrawHeroes(self.targeted,self.inaction,self.acting,self.heroframe)      
-end
-
-cmain.BoxTextBack = cmain.basedraw
-
-function cmain:odraw()
-      self:basedraw()
-      self.flow = self.flow or "idle"
-      assert(self["flow_"..self.flow],"No combat flow function for "..self.flow)
-      self['flow_'..self.flow](self)
-      StatusBar(false,true)
-      dbgcon()    
-      ShowMiniMSG()
-end
+function s:icoshow()
+    local kill = {}
+    for idx,ico in pairs(sicons) do
+        picons[ico.icon] = picons.icon or LoadImage("GFX/COMBAT/STATUSCHANGEICONS/"..ico.icon..".PNG")
+        ico.y=ico.y-ico.spd
+        DrawImage(picons[ico.icon],ico.x,ico.y)
+        ico.timeout = ico.timeout - 1
+        if ico.timeout<=0 then kill[#kill+1]=idx end -- Prevent spooking up the loop, as Lua is pretty sensitive to such things!
+    end
+    for k in each(kill) do sicons[k]=nil end
+end    
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-return cmain
-
+return s

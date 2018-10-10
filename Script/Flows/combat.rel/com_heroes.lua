@@ -1,6 +1,6 @@
 --[[
   com_heroes.lua
-  Version: 18.08.30
+  Version: 18.10.10
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -71,6 +71,7 @@ function hero:DrawHero(myhero,targeted,action,actionframe)
      myhero.images[action] = myhero.images[action] or self:LoadHeroImage(myhero.tag,action)
      local f = actionframe
      if f>#myhero.images[action].images then f=1 end
+     if statusicons then statusicons:icoshow(myhero.tag) end
      DrawImage(myhero.images[action],myhero.x,myhero.y,f)     
 end
 
