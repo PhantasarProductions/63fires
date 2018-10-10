@@ -174,6 +174,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Combat/Fighters/Foe/Reg/RedSlime.png
 - Graphic image: GFX/Combat/Fighters/Foe/Reg/YellowSlime.png
    1. Alias: GFX/Combat/RENC/Gauge.png
+- Graphic image: GFX/Combat/StatusChangeIcons/Silence.png
 - Graphic image: GFX/Flags/Dutch.png
 - Graphic image: GFX/General/FishPointer.png
 - Graphic image: GFX/General/Level_Up.png
@@ -245,6 +246,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/WorldMap/Hub.png
 ### These are files specifically set up for this game and other personal projects and remain my property and may NOT be extracted from this game nor any other production of Jeroen P. Broks, without prior WRITTEN permission from Jeroen P. Broks
 - GINI Is Not Ini: Data/Foes/Boss/Angelique.gini
+- GINI Is Not Ini: Data/Foes/Boss/SupaSlime.gini
 - GINI Is Not Ini: Data/Foes/Boss/UltraSlime.gini
 - GINI Is Not Ini: Data/Foes/Reg/Bat.gini
 - GINI Is Not Ini: Data/Foes/Reg/EyeBlob.gini
@@ -333,12 +335,15 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/CharAbility/Ryanna.lua
 - Script: Script/Data/Combat/ActEffect/Access_Start.lua
 - Script: Script/Data/Combat/ActEffect/RyannaRestore.lua
+- Script: Script/Data/Combat/ActEffect/Steal.lua
 - Script: Script/Data/Combat/ActEffect/ZZZZ_StoryEvent_FirstTransform.lua
 - Script: Script/Data/Combat/AI/default.lua
 - Script: Script/Data/Combat/InputXtraScript/Access_Start.lua
 - Script: Script/Data/Combat/StatusChanges/Death.lua
 - Script: Script/Data/Combat/StatusChanges/Poison.lua
+- Script: Script/Data/Combat/StatusChanges/Silence.lua
 - Script: Script/Data/Combat/StatusChanges/Transformed.lua
+- Script: Script/Data/Combat/StatusChanges/__ScrollEffect.lua
 - Script: Script/Data/General/Achievements.lua
 - Script: Script/Data/General/Fish.lua
 - Script: Script/Data/General/FishSpot.lua
@@ -365,8 +370,14 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/IAA/ABL_HERO_NINO_SANCTIFY.lua
 - Script: Script/Data/IAA/ABL_HERO_NINO_VITALIZE.lua
 - Script: Script/Data/IAA/ABL_HERO_RYANNA_ACCESS.lua
+- Script: Script/Data/IAA/ABL_HERO_RYANNA_BACKSTAB.lua
+- Script: Script/Data/IAA/ABL_HERO_RYANNA_BACTERIASTAB.lua
+- Script: Script/Data/IAA/ABL_HERO_RYANNA_FASTDRAW.lua
+- Script: Script/Data/IAA/ABL_HERO_RYANNA_FOLLOWME.lua
 - Script: Script/Data/IAA/ABL_HERO_RYANNA_MYSTIC.lua
+- Script: Script/Data/IAA/ABL_HERO_RYANNA_PARALYSINGSTAB.lua
 - Script: Script/Data/IAA/ABL_HERO_RYANNA_PICKPOCKET.lua
+- Script: Script/Data/IAA/ABL_HERO_RYANNA_VENOMSTAB.lua
 - Script: Script/Data/IAA/ACT_ATTACK.lua
 - Script: Script/Data/IAA/ACT_GUARD.lua
 - Script: Script/Data/IAA/FISH_CAVECRAB.lua
