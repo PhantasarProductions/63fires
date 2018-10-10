@@ -40,3 +40,5 @@ local SimonAndGarfunkel = {
       combat:statusicon(tag,"SILENCE")
     end
 }
+
+return SimonAndGarfunkel

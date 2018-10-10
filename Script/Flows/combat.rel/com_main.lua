@@ -43,6 +43,8 @@ function cmain:statusicon(tag,icon)
     -- $USE Script/Data/Combat/StatusChanges/__ScrollEffect AS statusicons
     statusicons:newico(tag,icon)
 end
+cmain.newico  = cmain.statusicon
+cmain.newicon = cmain.statusicon;
 
 function cmain:TagMessage(tag,message,r,g,b,ymod)
     local x,y = 0,0
@@ -53,10 +55,11 @@ end
 
 function cmain:basedraw()
       self:DrawArena()
-      self:DrawCards()
+      self:DrawCards()      
       self:StatusPreDraw()
       self:DrawFoes(self.targeted,self.inaction)
-      self:DrawHeroes(self.targeted,self.inaction,self.acting,self.heroframe)      
+      self:DrawHeroes(self.targeted,self.inaction,self.acting,self.heroframe)
+      if statusicons then statusicons:icoshow() end      
 end
 
 cmain.BoxTextBack = cmain.basedraw

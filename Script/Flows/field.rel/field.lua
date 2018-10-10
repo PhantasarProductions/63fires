@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.07.13
+  Version: 18.10.10
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -496,6 +496,16 @@ PF_Block = function(x,y) -- needed for the pathfinder to function correctly
 end   
 
 field.consolecommands = {}
+
+function field.consolecommands.FULLAP(self,para)
+     if (not para) or para=="" then
+        for i=1,#RPGParty do if RPGParty[i]~="" then field.consolecommands.FULLAP(self,RPGParty[i]) end end
+        return
+     end
+     rpg:Points(para,"AP").Have = rpg:Points(para,"AP").Maximum
+     CSay(para.." now has full AP!")
+end
+
 function field.consolecommands.BLOCKMAP(self,para)
      local bm,w,h = kthura.serialblock(map.map,map.layer)
      for bl in each(bm) do 

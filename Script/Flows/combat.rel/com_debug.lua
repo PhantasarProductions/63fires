@@ -1,6 +1,6 @@
 --[[
   com_debug.lua
-  Version: 18.07.06
+  Version: 18.10.10
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -72,6 +72,14 @@ function fuck.consolecommands.CARDS(self,apara)
        console.writeln(l,r,g,b)       
    end
 end  
+
+function fuck.consolecommands.FULLAP(self,para)
+   if not field then 
+      console.writeln("HUH? Field flow is not there???",255,0,0)
+      return
+   end   
+   field.consolecommands.FULLAP(self,para)
+end   
 
 
 return fuck

@@ -42,17 +42,19 @@ local picons={}
 
 --[[ This is not a status change by itself, but rather a helper that several status changes will use to cause a certain effect ]]
 
-function s:ico(tag,statusicon)
+function s:newico(tag,statusicon)
     -- $USE libs/klok
     local ts = tag..statusicon
-    stimer[ts] = stimer[ts] or klok:CreateTimer(0.15)
+    stimer[ts] = stimer[ts] or klok:CreateTimer(0.65)
     local tm = stimer[ts]
     if not tm:enough() then return end
+    tm:reset()
+    if math.random(1,#sicons)~=1 then return end
     local warrior=combat.fighters[tag]
     local newico = {
         x = math.random((warrior.x or 25)-16,(warrior.x or 25)+16),
         y = warrior.y or 1000,
-        timeout = math.random(50,100),
+        timeout = math.random(50,60),
         spd = math.random(1,4),
         icon=statusicon 
     }
@@ -61,14 +63,15 @@ end
 
 function s:icoshow()
     local kill = {}
-    for idx,ico in pairs(sicons) do
+    for idx,ico in ipairs(sicons) do
         picons[ico.icon] = picons.icon or LoadImage("GFX/COMBAT/STATUSCHANGEICONS/"..ico.icon..".PNG")
         ico.y=ico.y-ico.spd
         DrawImage(picons[ico.icon],ico.x,ico.y)
         ico.timeout = ico.timeout - 1
         if ico.timeout<=0 then kill[#kill+1]=idx end -- Prevent spooking up the loop, as Lua is pretty sensitive to such things!
     end
-    for k in each(kill) do sicons[k]=nil end
+    for k in each(kill) do sicons[k]=nil; TablePack(sicons) end
+    
 end    
 
 

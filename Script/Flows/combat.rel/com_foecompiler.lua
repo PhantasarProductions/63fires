@@ -161,7 +161,7 @@ function foecom:DrawFoe(myfoe,targeted,acting)
        if gtv<5 then scale=-1 end
     end    
     -- Status changes if applicable
-    if statusicons then statusicons:icoshow(myfoe.tag) end
+    -- if statusicons then statusicons:icoshow(myfoe.tag) end
     -- Drawing
     DrawImage(myfoe.image,myfoe.x,myfoe.y,myfoe.frame,0,scale,myfoe.deathscale or 1)
 end
