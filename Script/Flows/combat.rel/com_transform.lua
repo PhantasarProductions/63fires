@@ -134,9 +134,17 @@ function trans:RyannaRestore(ch)
        --self:RemoveCharCards('DEMON_RYANNA',true)
        local level = rpg:Stat('Ryanna','Level')
        local ap = rpg:Points(ch,'AP').Have
+       local hp = 1 -- default and also the value for the hard mode.
+       local skill=Var.G("%SKILL")
+       if     skill==1 then hp = rpg:Points('Ryanna','HP').Maximum 
+       elseif skill==2 then
+          local p = rpg:Points(ch,'HP').Have/rpg:Points(ch,'HP').Maximum
+          hp = math.ceil(rpg:Points("Ryanna","HP").Maximum*p)
+          if hp<=0 then hp=1 end
+       end
        laura.setlevel('Ryanna',level,true)
        rpg:Points('Ryanna','AP').Have=ap
-       rpg:Points('Ryanna','HP').Have=1 
+       rpg:Points('Ryanna','HP').Have=hp 
        self:RemoveCharCards(ch,true)
        self:CreateOrder()
        rpg:DelCharacter(ch) -- Prevent messed up transformation forms (and saves savegame space too).
