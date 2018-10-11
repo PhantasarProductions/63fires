@@ -1,6 +1,6 @@
 --[[
   com_statuschanges.lua
-  Version: 18.07.06
+  Version: 18.10.11
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -52,6 +52,11 @@ function csc:statuses(chtag)
      end
      return function()
          frame = frame + 1
+         if (not rpg:CharExists(chtag)) then
+            console.write("WARNING! ",180,100,0)
+            console.write("Char: "..chtag.."; Frame: "..frame.."; Character no longer exists! Aborting foreach loop!\n",255,255,0) 
+            return nil 
+         end         
          if rpg:Points(chtag,"HP").Have==0 then
             if frame<2 then return "Death",csc.statusdata.Death end    
             return nil

@@ -1,6 +1,6 @@
 --[[
   com_transform.lua
-  Version: 18.07.06
+  Version: 18.10.11
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -132,8 +132,15 @@ function trans:RyannaRestore(ch)
        self.fighters[nilit]=nil
        rpg:SetParty(1,'Ryanna')
        --self:RemoveCharCards('DEMON_RYANNA',true)
+       local level = rpg:Stat('Ryanna','Level')
+       local ap = rpg:Points(ch,'AP').Have
+       laura.setlevel('Ryanna',level,true)
+       rpg:Points('Ryanna','AP').Have=ap
+       rpg:Points('Ryanna','HP').Have=1 
        self:RemoveCharCards(ch,true)
        self:CreateOrder()
+       rpg:DelCharacter(ch) -- Prevent messed up transformation forms (and saves savegame space too).
+       self.fighters[ch]=nil
 end
 
 
