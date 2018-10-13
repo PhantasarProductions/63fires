@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.10.06
+version: 18.10.13
 ]]
 
 -- $USE script/subs/screen
@@ -53,6 +53,7 @@ local function showgate(l,o)
     o.VISIBLE=true
     o.FRAMESPEED = math.random(1,4)-1
     gates[gatetag(l,o)]=true
+    o.IMPASSIBLE=true
 end       
 
 local function qdraw()
@@ -77,6 +78,7 @@ local function gate_out(ol)
          MapText("STEPONGATE")
          AwardEXP(nil,250)
       end
+      field:getmap().map:remapall()
 end        
 
 
