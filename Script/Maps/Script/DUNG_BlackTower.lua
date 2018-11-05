@@ -143,6 +143,7 @@ field:ZA_Enter("Leeroy",function()
     MapText("LEEROY1")
     -- Leeroy enters
     for alpha=0,255,5 do    
+        cls()
         leeroy.ALPHA=alpha/255
         kthura.drawmap(globmap.map,globmap.layer,field.cam.x,field.cam.y)
         StatusBar(false,true)
@@ -161,10 +162,11 @@ field:ZA_Enter("Leeroy",function()
     local b={foes={},arena="Black_Tower"}
     for i=1,3*Var.G("%SKILL") do b.foes[#b.foes+1]="BOSS/WHELP" end
     field:Schedule(function() 
+          cls()
           field:kill("BossBarrier",true)
           field:kill("LeeroyJenkins",true)
           for i=1,9 do
-              field:kill("whelp"..i,true)
+              field:kill("dragonwhelp"..i,true)
           end 
           MapText("LEEROY4")
            
