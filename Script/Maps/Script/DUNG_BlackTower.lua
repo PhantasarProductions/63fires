@@ -128,4 +128,29 @@ function blackie:NPC_Boss()
     BossFight(boss[1],boss[2],{foes={"Boss/"..boss[2]},arena='Black_Tower'})
 end
 
+
+-- Dirty scripting!
+field:ZA_Enter("Leeroy",function()
+    local globmap = field:getmap()
+    local map = globmap.map    
+    local leeroy = map.TagMap["#010"]["LeeroyJenkins"]
+    if (Done("&DONE.LEEROY.JENKINS")) then return end
+    field:PartyPop("Leeroy","South")
+    MapText("LEEROY1")
+    -- Leeroy enters
+    for alpha=0,255,5 do    
+        leeroy=alpha/255
+        kthura.drawmap(globmap.map,globmap.layer,field.cam.x,field.cam.y)
+        StatusBar(false,true)
+        love.graphics.present()
+    end
+    MapText("LEEROY2")
+    -- Leeroy throws himself in
+    MapText("LEEROY3")
+    local b={foes={},arena="Black_Tower"}
+    for i=1,3*Var.G("%SKILL") do b.foes[#b.foes]="BOSS/WHELP" end
+    field:Schedule(function() field:Kill("BossBarrier,true") MapText("LEEROY4") end)
+    BossFight("LEEROOOOOOOOY JENNKINS","Dragon Whelps",b) 
+end)
+
 return blackie

@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.10.10
+  Version: 18.11.05
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -143,6 +143,14 @@ function field:SetTools()
             end
         end
     end
+end
+
+function field:PartyPop(maptag,wind)
+   for i,tag in ipairs(RPGParty) do if tag~="" then
+       local a=map.map:obj(map.layer,"PLAYER"..i)
+       a:WalkTo(maptag.."_"..tag)
+       a.WIND=wind
+   end end   
 end
 
 function field:SetLeader(l)
