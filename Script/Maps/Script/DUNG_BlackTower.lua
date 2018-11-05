@@ -133,23 +133,42 @@ end
 field:ZA_Enter("Leeroy",function()
     local globmap = field:getmap()
     local map = globmap.map    
-    local leeroy = map.TagMap["#010"]["LeeroyJenkins"]
+    local leeroy = map.TagMap["#020"]["LeeroyJenkins"]
+    local leeroyspot = map.TagMap['#020']["LeeroySpot"] 
     if (Done("&DONE.LEEROY.JENKINS")) then return end
+    for i=1,9 do
+        map.TagMap["#020"]["whelp"..i] = i <= Var.G("%SKILL")
+    end
     field:PartyPop("Leeroy","South")
     MapText("LEEROY1")
     -- Leeroy enters
     for alpha=0,255,5 do    
-        leeroy=alpha/255
+        leeroy.ALPHA=alpha/255
         kthura.drawmap(globmap.map,globmap.layer,field.cam.x,field.cam.y)
         StatusBar(false,true)
         love.graphics.present()
     end
     MapText("LEEROY2")
     -- Leeroy throws himself in
+    repeat
+        if leeroy.COORD.x>leeroyspot.COORD.x then leeroy.COORD.x=leeroy.COORD.x-1 end
+        leeroy.COORD.y=leeroy.COORD.y+2
+        kthura.drawmap(globmap.map,globmap.layer,field.cam.x,field.cam.y)
+        StatusBar(false,true)
+        love.graphics.present()
+    until leeroy.COORD.y>leeroyspot.COORD.y
     MapText("LEEROY3")
     local b={foes={},arena="Black_Tower"}
-    for i=1,3*Var.G("%SKILL") do b.foes[#b.foes]="BOSS/WHELP" end
-    field:Schedule(function() field:Kill("BossBarrier,true") MapText("LEEROY4") end)
+    for i=1,3*Var.G("%SKILL") do b.foes[#b.foes+1]="BOSS/WHELP" end
+    field:Schedule(function() 
+          field:kill("BossBarrier",true)
+          field:kill("LeeroyJenkins",true)
+          for i=1,9 do
+              field:kill("whelp"..i,true)
+          end 
+          MapText("LEEROY4")
+           
+    end)
     BossFight("LEEROOOOOOOOY JENNKINS","Dragon Whelps",b) 
 end)
 
