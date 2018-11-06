@@ -1,6 +1,6 @@
 --[[
   flw_execution.lua
-  Version: 18.10.06
+  Version: 18.11.06
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -269,8 +269,8 @@ function beul:true_perform(tag,targettag)
    -- Heal
    -- $USE Script/Subs/HealCalc   
    local heal = 0 
-   if (item.Heal or 0)>0 then HealCalc(item,tag,targettag) end
-   if heal>0 and (not self:StatusProperty(targettag,'blockheaing')) then
+   if (item.Heal or 0)>0 then heal = HealCalc(item,tag,targettag) end
+   if heal>0 and (not self:StatusProperty(targettag,'blockhealing')) then
       if self:StatusProperty(targettag,'undead') then
          self:Hurt(targettag,heal)
          hit=true

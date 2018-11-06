@@ -1,6 +1,6 @@
 --[[
   com_foecompiler.lua
-  Version: 18.10.10
+  Version: 18.11.06
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -122,12 +122,17 @@ end
 
 function foecom:LoadFoes()
   -- $USE libs/nothing
+  -- $USE script/subs/screen
+  local sw = screen.w
+  local hw = sw/2
   self.fighters = self.fighters or {}
   self.foes={}
   self.foe=self.foes
   self.foedrawordertag = {}
   self.foedraworder = {}
   local rows = math.floor((#self.combatdata.foes-1)/3)
+  local rx = math.floor(hw/rows)
+  CSay("Enemy rows needed: "..rows)
   -- Compile the foe data into game usable data
   for i,foefile in ipairs(self.combatdata.foes) do
       local tag = self:CompileFoe(i,foefile)
@@ -138,7 +143,7 @@ function foecom:LoadFoes()
       -- $USE script/subs/screen
       local midx = screen.w/2
       local midy = (screen.h-120)/2
-      myfoe.x = math.floor(rows*xpos)+100
+      myfoe.x = xpos*(rx+1) --math.floor(rows*xpos)+100
       myfoe.y = math.floor((midy/4)*ypos) + midy
       myfoe.dominance = 20
       myfoe.tag = tag
