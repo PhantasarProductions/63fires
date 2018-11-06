@@ -130,6 +130,7 @@ field:ZA_Enter("Leeroy",function()
     BossFight("LEEROOOOOOOOY JENNKINS","Dragon Whelps",b) 
 end)
 
+field:ZA_Enter("LeeroyAchievement",function() Award("SCEN_LEEROY") end)
 
 local function InitGates()
    local g=0
