@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.11.05
+version: 18.11.06
 ]]
 
 -- $USE script/subs/screen
@@ -152,6 +152,7 @@ field:ZA_Enter("Leeroy",function()
     MapText("LEEROY2")
     -- Leeroy throws himself in
     repeat
+        cls()
         if leeroy.COORD.x>leeroyspot.COORD.x then leeroy.COORD.x=leeroy.COORD.x-1 end
         leeroy.COORD.y=leeroy.COORD.y+2
         kthura.drawmap(globmap.map,globmap.layer,field.cam.x,field.cam.y)
@@ -160,13 +161,13 @@ field:ZA_Enter("Leeroy",function()
     until leeroy.COORD.y>leeroyspot.COORD.y
     MapText("LEEROY3")
     local b={foes={},arena="Black_Tower"}
-    for i=1,3*Var.G("%SKILL") do b.foes[#b.foes+1]="BOSS/WHELP" end
+    for i=1,3*Var.G("%SKILL") do b.foes[#b.foes+1]="BOSS/DRAGONWHELP" end
     field:Schedule(function() 
           cls()
           field:kill("BossBarrier",true)
           field:kill("LeeroyJenkins",true)
           for i=1,9 do
-              field:kill("dragonwhelp"..i,true)
+              field:kill("whelp"..i,true)
           end 
           MapText("LEEROY4")
            
