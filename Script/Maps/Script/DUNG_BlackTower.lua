@@ -81,53 +81,8 @@ local function gate_out(ol)
       field:getmap().map:remapall()
 end        
 
-
-local function InitGates()
-   local g=0
-   local map = field:getmap().map
-   gamedata.BlackTowerGates = gamedata.BlackTowerGates or {}; gates=gamedata.BlackTowerGates
-   gates.terug = gates.terug or "#000"
-   local old
-   for o,l in map:allobjects() do
-       if l~=old then
-          old=l
-          CSay("Analying:"..l)
-          console.show()
-          love.graphics.present()
-       end   
-       if o.TEXTURE=="GFX/TEXTURES/DUNGEON/BLACK/WARDINGGATES.JPBF" then
-          if gates[gatetag(l,o)] then 
-             showgate(l,o)
-          else
-              o.VISIBLE=false
-          end
-          o.TAG="WGATE"..g
-          field:ZA_Enter(o.TAG,gate_out,{l,o})
-          g=g+1              
-       end
-   end
-   map:remapall()    
-end InitGates()
-
 field:ZA_Enter("vijf",function() if skill==1 then gates.terug=field:getmap().layer end end)
 field:ZA_Enter("tien",function() if skill~=3 then gates.terug=field:getmap().layer end end)
-
-function blackie:NPC_Yirl()
-     MapText("YIRL") 
-end
-
-local function removebossbarrier()
-   field:kill("NPC_Boss",true)
-   field:kill("BossBarrier",true)
-end
-
-function blackie:NPC_Boss()
-    local boss = bosses[field:getmap().layer]
-    assert(boss,"No boss was for this floor, yet an NPC was tagged as one!")
-    field:Schedule(removebossbarrier)
-    BossFight(boss[1],boss[2],{foes={"Boss/"..boss[2]},arena='Black_Tower'})
-end
-
 
 -- Dirty scripting!
 field:ZA_Enter("Leeroy",function()
@@ -174,5 +129,52 @@ field:ZA_Enter("Leeroy",function()
     end)
     BossFight("LEEROOOOOOOOY JENNKINS","Dragon Whelps",b) 
 end)
+
+
+local function InitGates()
+   local g=0
+   local map = field:getmap().map
+   gamedata.BlackTowerGates = gamedata.BlackTowerGates or {}; gates=gamedata.BlackTowerGates
+   gates.terug = gates.terug or "#000"
+   local old
+   for o,l in map:allobjects() do
+       if l~=old then
+          old=l
+          CSay("Analying:"..l)
+          console.show()
+          love.graphics.present()
+       end   
+       if o.TEXTURE=="GFX/TEXTURES/DUNGEON/BLACK/WARDINGGATES.JPBF" then
+          if gates[gatetag(l,o)] then 
+             showgate(l,o)
+          else
+              o.VISIBLE=false
+          end
+          o.TAG="WGATE"..g
+          field:ZA_Enter(o.TAG,gate_out,{l,o})
+          g=g+1              
+       end
+   end
+   map:remapall()    
+end InitGates()
+
+
+function blackie:NPC_Yirl()
+     MapText("YIRL") 
+end
+
+local function removebossbarrier()
+   field:kill("NPC_Boss",true)
+   field:kill("BossBarrier",true)
+end
+
+function blackie:NPC_Boss()
+    local boss = bosses[field:getmap().layer]
+    assert(boss,"No boss was for this floor, yet an NPC was tagged as one!")
+    field:Schedule(removebossbarrier)
+    BossFight(boss[1],boss[2],{foes={"Boss/"..boss[2]},arena='Black_Tower'})
+end
+
+
 
 return blackie
