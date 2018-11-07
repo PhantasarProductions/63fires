@@ -124,27 +124,29 @@ function foecom:LoadFoes()
   -- $USE libs/nothing
   -- $USE script/subs/screen
   local sw = screen.w
+  local sh = screen.h - 200
   local hw = sw/2
+  local hh = sh/2
   self.fighters = self.fighters or {}
   self.foes={}
   self.foe=self.foes
   self.foedrawordertag = {}
   self.foedraworder = {}
   local rows = math.floor((#self.combatdata.foes-1)/3)
-  local rx = math.floor(hw/rows)
+  local rx = math.floor(hw/(rows+2))
   CSay("Enemy rows needed: "..rows)
   -- Compile the foe data into game usable data
   for i,foefile in ipairs(self.combatdata.foes) do
       local tag = self:CompileFoe(i,foefile)
       local myfoe = self.foes[tag]
       self.fighters[tag] = myfoe
-      local xpos = math.floor((i-1)/3)
-      local ypos = i - (xpos*3)
+      local xpos = math.floor((i-1)/3)+1
+      local ypos = ((((i-1)%3)+1)*((hh/4)+1))+hh -- i - (xpos*3)
       -- $USE script/subs/screen
       local midx = screen.w/2
       local midy = (screen.h-120)/2
       myfoe.x = xpos*(rx+1) --math.floor(rows*xpos)+100
-      myfoe.y = math.floor((midy/4)*ypos) + midy
+      myfoe.y = ypos --math.floor((midy/4)*ypos) + midy
       myfoe.dominance = 20
       myfoe.tag = tag
       myfoe.group="Foe"
