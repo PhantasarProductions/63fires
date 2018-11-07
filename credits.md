@@ -99,6 +99,8 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - PikoPixel source file: GFX/Actors/Anna Monk/Base Female.piko
 - Graphic image: GFX/Actors/Anna Monk/Human Female.png
 - Graphic image: GFX/Actors/Anna Monk/Winged Female.png
+- PikoPixel source file: GFX/Actors/Black Tower/Leeroy Jenkins.piko
+- Graphic image: GFX/Actors/Black Tower/Leeroy Jenkins.png
 - Graphic image: GFX/Actors/Village/Agent.png
 - Graphic image: GFX/Actors/Village/Bouwvakker.png
 - Graphic image: GFX/Actors/Village/Cowboy.png
@@ -246,6 +248,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/WorldMap/Hub.png
 ### These are files specifically set up for this game and other personal projects and remain my property and may NOT be extracted from this game nor any other production of Jeroen P. Broks, without prior WRITTEN permission from Jeroen P. Broks
 - GINI Is Not Ini: Data/Foes/Boss/Angelique.gini
+- GINI Is Not Ini: Data/Foes/Boss/DragonWhelp.gini
 - GINI Is Not Ini: Data/Foes/Boss/SupaSlime.gini
 - GINI Is Not Ini: Data/Foes/Boss/UltraSlime.gini
 - GINI Is Not Ini: Data/Foes/Reg/Bat.gini
@@ -350,6 +353,8 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/General/Sex.lua
 - Script: Script/Data/General/upgradedata.lua
 - Script: Script/Data/General/WorldMap.lua
+- Script: Script/Data/IAA/ABL_FOE_FLAME.lua
+- Script: Script/Data/IAA/ABL_FOE_FLAMESTRIKE.lua
 - Script: Script/Data/IAA/ABL_FOE_SPEWVENOW.lua
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_IJSBLOKJE_F1.lua
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_IJSBLOKJE_F2.lua
@@ -397,6 +402,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/IAA/ITM_MEDICINE.lua
 - Script: Script/Data/IAA/ITM_PHOENIX.lua
 - Script: Script/Data/IAA/ITM_PIXIEDUST.lua
+- Script: Script/Data/IAA/ITM_POTION.lua
 - Script: Script/Data/IAA/ITM_SOFT.lua
 - Script: Script/Data/IAA/ITM_VIOLETROSE.lua
 - Script: Script/Data/IAA/JWL_EMERALD.lua
@@ -448,17 +454,6 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Flows/startgame.lua
 - Script: Script/Flows/TransOver.lua
 - Script: Script/Flows/WorldMap.lua
-- Script: Script/Maps/Kthura/DUNG_BeaufortForest.lua
-- Script: Script/Maps/Kthura/DUNG_BlackTower.lua
-- Script: Script/Maps/Kthura/DUNG_BluePalace.lua
-- Script: Script/Maps/Kthura/DUNG_Freddy.lua
-- Script: Script/Maps/Kthura/DUNG_Graveyard.lua
-- Script: Script/Maps/Kthura/DUNG_PrimosTunnel.lua
-- Script: Script/Maps/Kthura/DUNG_Starrow.lua
-- Script: Script/Maps/Kthura/NET_Anna.lua
-- Markdown document: Script/Maps/Kthura/ReadMe.md
-- Script: Script/Maps/Kthura/Test Map.lua
-- Script: Script/Maps/Kthura/TOWN_Windville.lua
 - Script: Script/Maps/Script/DUNG_BeaufortForest.lua
 - Script: Script/Maps/Script/DUNG_BlackTower.lua
 - Script: Script/Maps/Script/DUNG_BluePalace.lua
@@ -694,6 +689,11 @@ Also note that some files have "alias" files attached to them. This credits.md f
 ## s.a.x. Software
 ### Downloaded from dafont.com -- All that is said about the license is "100% free".
 - Font: Fonts/saxmono.ttf
+
+
+## talekids
+### Public Domain
+- Graphic image: GFX/Combat/fighters/Foe/boss/DragonWhelp.png
 
 
 ## Unknown Artist
