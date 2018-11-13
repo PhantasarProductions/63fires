@@ -1,6 +1,6 @@
 --[[
   flw_execution.lua
-  Version: 18.11.06
+  Version: 18.11.13
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -237,7 +237,13 @@ end
 
 function beul:esf_spellani()
    local item = ItemGet(self.nextmove.act)
-   if item.SpellAni == "" then self.esf="perform" end
+   if (not item.SpellAni) or item.SpellAni == "" then self.esf="perform" return end
+   beul.l_spellani = beul.l_spellani or Use(("Script/Data/Combat/SpellAni/%s.lua"):format(item.SpellAni))
+   local sa = beul.l_spellani;
+   if not sa:EXE(self,self.nextmove) then 
+      beul.l_spellani=nil
+      self.esf="perform"
+   end    
 end
 
 function beul:true_perform(tag,targettag)

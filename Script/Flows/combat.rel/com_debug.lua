@@ -1,6 +1,6 @@
 --[[
   com_debug.lua
-  Version: 18.10.10
+  Version: 18.11.13
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -81,5 +81,11 @@ function fuck.consolecommands.FULLAP(self,para)
    field.consolecommands.FULLAP(self,para)
 end   
 
+function fuck.consolecommands.COMBATFLOW(self)
+  CSay("Current Combat Flow: "..self.flow)
+  if self.flow=="execution" then
+     CSay("= Execution Sub Flow: "..self.esf)
+  end
+end  
 
 return fuck
