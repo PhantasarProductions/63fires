@@ -1,6 +1,6 @@
 --[[
   HealCalc.lua
-  Version: 18.03.12
+  Version: 18.11.13
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -47,7 +47,7 @@ local HealByType={
     StatPercent=function(item,exe,tar)
         local sn = item.Heal_StatPercent
         local st = rpg:Stat(exe,"END_"..sn)
-        local pr = (st/100)
+        local pr = (st*item.Heal)/10
         return math.floor(pr+.5)
     end
     
