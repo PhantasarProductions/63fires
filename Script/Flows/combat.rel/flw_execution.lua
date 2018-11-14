@@ -1,6 +1,6 @@
 --[[
   flw_execution.lua
-  Version: 18.11.13
+  Version: 18.11.14
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -271,7 +271,7 @@ function beul:true_perform(tag,targettag)
    for k,v in pairs(warrior.statuschanges) do
        if item['Cure'..k] then cure[#cure+1]=k end
    end
-   for i,cs in ipairs(cure) do TagMessage(tag,"Cure: "..cs,180,255,0,-(i*20)) hit=true end   
+   for i,cs in ipairs(cure) do self:TagMessage(tag,"Cure: "..cs,180,255,0,-(i*20)) hit=true end   
    -- Heal
    -- $USE Script/Subs/HealCalc   
    local heal = 0 

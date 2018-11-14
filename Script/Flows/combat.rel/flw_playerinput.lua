@@ -1,6 +1,6 @@
 --[[
   flw_playerinput.lua
-  Version: 18.08.15
+  Version: 18.11.14
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -52,6 +52,45 @@ function invoer:hc(x,y,w,h,clicked,item)
      return hover,click(x,y,w,h,clicked,item.tut,item.fun or nothing,self)
 end
 
+
+
+function invoer:CheckCanLearn(hero)
+        local mydebug = true
+        local mychat=function(m) if mydebug then CSay(m) end end 
+        --data[ch] = data[ch] or Use("Script/Data/CharAbility/"..ch..".lua")
+        local data = Use("Script/Data/CharAbility/"..hero..".lua")
+        gamedata.learned = gamedata.learned or {}
+        local learned = gamedata.learned
+        learned[hero] = learned[hero] or {}
+        local has = learned[hero]
+        mychat(("Action is %s:"):format(self.nextmove.act))
+        if self.nextmove.act:upper()=="ACT_ATTACK" then
+           for a,_ in pairs(data.abl) do
+               if (not has[a]) and (data:Teach(a)) then
+                  local item = ItemGet('ABL_HERO_'..hero.."_"..a)
+                  has[a]=true;
+                  white()
+                  LoadScenario("LEARN","Learn") -- ('Scenario/%s/Learn'):format(Var.C('$LANG')))                  
+                  SerialBoxText("LEARN",string.upper(hero))
+                  self:TagMessage(hero,("\"%s\" learned"):format(item.Title),123,0,255)
+                  self.nextmove.act=('ABL_HERO_%s_%s'):format(hero,a)
+                  if item.Target=="1A" or item.Target=="OS" then
+                     self.nextmove.targets={hero}
+                  elseif item.Target=="AA" then
+                     self.nextmove.targets={}
+                     for k,_ in pairs(self.heroes) do self.nextmove.targets[#self.nextmove.targets+1]=k end 
+                  elseif item.Target=="AF" then
+                     self.nextmove.targets={}
+                     for k,_ in pairs(self.foes) do self.nextmove.targets[#self.nextmove.targets+1]=k end
+                  elseif item.Target=="EV" then
+                     self.nextmove.targets={}
+                     for k,_ in pairs(self.fighters) do self.nextmove.targets[#self.nextmove.targets+1]=k end                       
+                  end
+                  return
+               end
+           end
+        end  
+end
 
 -- Target selector 
 -- Set up to work with both multi-target as single target
@@ -136,6 +175,7 @@ function invoer:flow_heroselecttarget()
         self.nextmove.targets=infotags
         self.nextmove.pose=true
         self.flow='execution'
+        self:CheckCanLearn(self.invoeren)
         self.invoeren=nil
      end   
 end
