@@ -41,7 +41,8 @@ local blackie = {} -- Named after my ex-wife's cat. I guess you can guess the co
 local gates
 local skill=Var.G("%SKILL")
 local bosses = {
-      ['#010'] = {"Very very big slime","SupaSlime"}
+      ['#010'] = {"Very very big slime","SupaSlime"},
+      ['#030'] = {"Dump stinking idiot","Troll"}
 }
 
 
@@ -179,7 +180,7 @@ end
 function blackie:NPC_KRINKEL()
     local obj = field:getmap().map.TagMap["#029"].NPC_KRINKEL
     MapText("KRINKEL")
-    obj.TEXTURE = "GFX/ACTORS/BLACK TOWER/KRINKFAINT.png"    
+    obj.TEXTURE = "GFX/Actors/Black Tower/Krinkel_Faint.png"    
     MapText("KRINKEL2")
     field:kill("NPC_KRINKEL",true)
     field:kill("KRINKZONE",true)    
