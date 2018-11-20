@@ -1,6 +1,6 @@
 --[[
   startgame.lua
-  Version: 18.06.16
+  Version: 18.11.19
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -150,8 +150,8 @@ function finit.arrive()
                 local token = Var.C("$GAMEJOLT.TOKEN")
                 laura.assert(token,"'nil' for token",VarList())
                 print("GJ LOGIN:",user,token)
-                local ok = gjapi:users_auth(user,token)                
-                if ok~='true' then
+                local gelukt,ok = pcall(gjapi.users_auth,gjapi,user,token)                
+                if (not gelukt) or ok~='true' then
                    local p = love.window.showMessageBox("Game Jolt Error", "Logging in to Game Jolt failed!\n- Is your internet connection up?\n- Is the game not blocked by firewalls?\n- Any issues with Game Jolt itself?\n- Login data correct?\n- You did enter your TOKEN and not your password, right?\n- Login data changed?",{"Ignore","Retry","Quit",escapebutton=3})
                    if p==1 then ok = 'true' end
                    if p==2 then retries=retries+1 laura.assert(retries<20,"Sorry, with this many retries I am not gonna continue anymore.") CSay("Retry attempt #"..retries) if retries>=20 then ok='true' end end 

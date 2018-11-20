@@ -1,6 +1,6 @@
 --[[
   BoxText.lua
-  Version: 18.05.29
+  Version: 18.11.19
   Copyright (C) 2016, 2018 Jeroen Petrus Broks
   
   ===========================
@@ -164,7 +164,7 @@ function me.ShowBox(data,boxback,highlight)
  --print(serialize("boxtext",data))
  -- Text itself
  local ax,ay,y
- if data.AltTxtFont then
+ if false and data.AltTxtFont then
    -- $IF BOXTEXTDEBUG
    CSay("Wanting font: "..data.AltTxtFont,fonts.BoxText[2])
    -- $FI
@@ -229,8 +229,8 @@ function me.RunBoxText(file,tag,idx,boxback)
   if rec.PicRef and ImageLoaded(rec.PicRef) then
    width = width - ImageWidth(rec.PicRef)   
   end
-  if rec.AltTxtFont then -- CRASH!
-   CSay("Setting font: "..rec.AltTxtFont,fonts.BoxText[2])
+  if false and rec.AltTxtFont and rec.AltTxtFont~="" and rec.AltTxtFont~="%" then -- CRASH!
+   CSay("Setting font: "..rec.AltTxtFont) --,fonts.BoxText[2])
    Image.Font(rec.AltTxtFont,fonts.BoxText[2])
   else
    itext.setfont(boxtextitextfont) -- setfont("BoxTextContent")

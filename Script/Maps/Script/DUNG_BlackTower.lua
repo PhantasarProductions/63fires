@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.11.07
+version: 18.11.20
 ]]
 
 -- $USE script/subs/screen
@@ -176,6 +176,14 @@ function blackie:NPC_Boss()
     BossFight(boss[1],boss[2],{foes={"Boss/"..boss[2]},arena='Black_Tower'})
 end
 
+function blackie:NPC_KRINKEL()
+    local obj = field:getmap().map.TagMap["#029"].NPC_KRINKEL
+    MapText("KRINKEL")
+    obj.TEXTURE = "GFX/ACTORS/BLACK TOWER/KRINKFAINT.png"    
+    MapText("KRINKEL2")
+    field:kill("NPC_KRINKEL",true)
+    field:kill("KRINKZONE",true)    
+end
 
 
 return blackie

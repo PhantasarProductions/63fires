@@ -1,6 +1,6 @@
 --[[
   Ryanna_Main.lua
-  Version: 18.01.17
+  Version: 18.11.19
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -75,6 +75,7 @@ end
 
 
 function save_gcfg()
+   if CSay then CSay("Saving global config") end
    love.filesystem.write("globalconfig.lua",serialize('local ret',globalconfig).."\n\nreturn ret\n\n\n\n\n\n")
 end   
 
