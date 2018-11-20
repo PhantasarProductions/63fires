@@ -142,7 +142,7 @@ local function InitGates()
    for o,l in map:allobjects() do
        if l~=old then
           old=l
-          CSay("Analying:"..l)
+          CSay("Analysing:"..l)
           console.show()
           love.graphics.present()
        end   
