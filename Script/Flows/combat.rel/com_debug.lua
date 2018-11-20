@@ -59,7 +59,17 @@ function fuck.consolecommands.KILL(self,para)
     CSay("Assasinating character: "..para)
     rpg:Points(para,"HP").Have=0
 end          
-
+function fuck.consolecommands.SHOWHP(self,para)
+    if para then
+       if not self.fighters[para] then
+          CSay("Who the hell is: "..para.."?")
+          return
+       end
+       CSay(("%s has %4d out of %4d HP"):format(para,rpg:Points(para,"HP").Have,rpg:Points(para,"HP").Maximum))
+    else
+       for ch,_ in spairs(self.fighters) do self.consolecommands.KILL(self,ch) end
+    end
+end
 
 function fuck.consolecommands.CARDS(self,apara)
    local c = serialize('cards',self.Cards)
