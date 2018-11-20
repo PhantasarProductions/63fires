@@ -1,6 +1,6 @@
 --[[
   com_debug.lua
-  Version: 18.11.13
+  Version: 18.11.20
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
