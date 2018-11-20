@@ -1,6 +1,6 @@
 --[[
   BoxText.lua
-  Version: 18.11.19
+  Version: 18.11.20
   Copyright (C) 2016, 2018 Jeroen Petrus Broks
   
   ===========================
@@ -253,7 +253,7 @@ function me.RunBoxText(file,tag,idx,boxback)
   -- if tonumber(LC('screen.margin.right') )~=0 then sb_data.width=sb_data.width-25 end
   -- if tonumber(LC('screen.margin.left') )~=0 then sb_data.width=sb_data.width-25 end
   -- Voice acting, if available
-  if sb_data.Voice and JCR_Exists(sb_data.Voice)~=0 then
+  if sb_data.Voice and sb_data.Voice~="" and JCR_Exists(sb_data.Voice)~=0 then
    if BOXTEXTAUDIO and BOXTEXTAUDIO:isPlaying() then love.audio.stop(BOXTEXTAUDIO) end -- if Audio.Playing('BOXTEXTCHANNEL')~=0 then Audio.Stop('BOXTEXTCHANNEL') end
    BOXTEXTAUDIO = love.audio.newSource(JCR_D(sb_data.Voice)) -- Audio.Load(sb_data.Voice,'BOXTEXTVOICE')
    love.audio.play(BOXTEXTAUDIO) -- Audio.Play("BOXTEXTVOICE","BOXTEXTCHANNEL")
