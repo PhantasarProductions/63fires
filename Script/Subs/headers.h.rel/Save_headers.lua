@@ -1,6 +1,6 @@
 --[[
   Save_headers.lua
-  Version: 18.01.18
+  Version: 18.11.20
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -41,6 +41,18 @@ end
 
 function GoSaveGame(todo)
    -- $USE Script/Flows/SaveLoadScreen
+   for i=1,#RPGParty do
+       local tag=RPGParty[i]
+       if tag and tag~="" then
+          if rpg:Stat(tag,'Experience')<=0 then
+             if rpg:Stat(tag,"Level")<Var.G('%LEVELCAP') then 
+                return  -- Don't save until Level Up secquence has been finished
+             else
+                rpg:DefStat(tag,"Experience",0)
+             end
+          end
+       end 
+   end    
    SaveLoadScreen.todo(todo)
    flow.set(SaveLoadScreen)
 end
