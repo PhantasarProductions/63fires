@@ -186,5 +186,7 @@ function blackie:NPC_KRINKEL()
     field:kill("KRINKZONE",true)    
 end
 
+field:ZA_Enter("RyannaWardWhine",function() if not Done("&DONE.BLACKTOWER.RYANNAWARDWHINE") then MapText("RYANNAWARDWHINE") end end)
+
 
 return blackie
