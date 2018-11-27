@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.11.20
+version: 18.11.26
 ]]
 
 -- $USE script/subs/screen
@@ -42,9 +42,13 @@ local gates
 local skill=Var.G("%SKILL")
 local bosses = {
       ['#010'] = {"Very very big slime","SupaSlime"},
-      ['#030'] = {"Dump stinking idiot","Troll"}
+      ['#030'] = {"Dump stinking idiot","Troll"},
+      ['#050'] = {"Lord of the mountains","MountainKing",tname="Mountain King",music="Music/BossSpecial/Hall of the Mountain King.ogg"},
+      ['#060'] = {"Gigantic bird of prey","GiantEagle",tname="Giant Eagle"}
 }
 
+
+local keyfloors = {"#040","#060","#090"}
 
 local function gatetag(l,o)
    return l..";"..o.COORD.x..","..o.COORD.y
@@ -160,6 +164,19 @@ local function InitGates()
    map:remapall()    
 end InitGates()
 
+local function InitKeys()
+    for iskill,ifloor in ipairs(keyfloors) do
+        if iskill~=skill then
+           field:laykill(ifloor,"NPC_Key")
+           field:laykill(ifloor,"KEY_Barrier")
+           console.Write("Key on floor ",255,255,0)
+           console.Write(ifloor,0,255,255)
+           console.Write(" has been removed because the skill is not ",255,255,0)
+           console.Write(iskill,255,0,0)
+           console.WriteLn("!",255,255,0)                      
+        end
+    end
+end InitKeys()
 
 function blackie:NPC_Yirl()
      MapText("YIRL") 
@@ -174,7 +191,7 @@ function blackie:NPC_Boss()
     local boss = bosses[field:getmap().layer]
     assert(boss,"No boss was for this floor, yet an NPC was tagged as one!")
     field:Schedule(removebossbarrier)
-    BossFight(boss[1],boss[2],{foes={"Boss/"..boss[2]},arena='Black_Tower'})
+    BossFight(boss[1],boss.tname or boss[2],{foes={"Boss/"..boss[2]},arena='Black_Tower', music=boss.music})
 end
 
 function blackie:NPC_KRINKEL()
@@ -186,7 +203,25 @@ function blackie:NPC_KRINKEL()
     field:kill("KRINKZONE",true)    
 end
 
-field:ZA_Enter("RyannaWardWhine",function() if not Done("&DONE.BLACKTOWER.RYANNAWARDWHINE") then MapText("RYANNAWARDWHINE") end end)
+function blackie:NPC_Exodus()
+    if not Done("&TUTORIAL.BLACKTOWER.EXODUSORB") then MapText("EXODUS") end
+    if RunQuestion('MAP','EXQUESTION')==1 then
+       field:GoToLayer("#000",'Start')
+    end   
+end
 
+function blackie:NPC_Key()
+    MapText("KEY")
+    ItemGive("ITM_BLACKTOWER_KEY")
+    Done("&KEY.TO_PRIMOSTUNNEL")
+    field:kill("NPC_Key",true)
+    field:kill("KEY_Barrier",true)
+end
+
+field:ZA_Enter("RyannaWardWhine",function() if not Done("&DONE.BLACKTOWER.RYANNAWARDWHINE") then MapText("RYANNAWARDWHINE") end end)
+field:ZA_Enter("RyannaForgot",function() if not Done("&DONE.BLACKTOWER.RYANNAFORGOT") then MapText("RYANNAFORGOT") end end)
+field:ZA_Enter("HardForceBoss",function()
+      if skill==3 and (not Done(("&DONE.HARDMODEONLY.BLACKTOWER.BOSS%s"):format(field:getmap().layer))) then blackie:NPC_Boss() end
+end)
 
 return blackie

@@ -230,5 +230,10 @@ function ccards:DrawCards()
     self:AutoAddFighterCard()
 end
 
+function ccards:FirstCardDone(othercard)
+      local firstcard=othercard or self.Cards[1] -- Mostly only the first card, but sometimes other cards MAY be required... Well, this is only a just in case measure!
+      firstcard.done=true
+end
+
 
 return ccards

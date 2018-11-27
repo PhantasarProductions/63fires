@@ -1,6 +1,6 @@
 --[[
   com_statuschanges.lua
-  Version: 18.10.11
+  Version: 18.11.24
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -81,6 +81,37 @@ end
 function csc:StatusPostDraw()
     self:StatusTDRAW('post')
 end         
+
+function csc:StatusTagDRAW(tag,stage)
+   -- CSay("Status: "..tag)
+   if not self.fighters[tag] then
+      --[[ debug
+      console.Write  ("NOTE!!! ",255,0,0)
+      console.Write  ("There is no fighter tagged ",255,255,0)
+      console.WriteLn(tag,0,180,255)
+      -- ]] -- end debug 
+      return 
+   end
+   for _,std in self:statuses(tag) do
+       if std ["tag"..stage..'draw'] then 
+          std ["tag"..stage..'draw'](self,tag)
+          -- CSay("tag"..stage..'draw on '..tag) -- debug
+       --[[ debug
+       else 
+          CSay("There is no ".."tag"..stage..'draw'.." function in this status")
+       -- ]] 
+       end
+   end
+end   
+
+function csc:StatusTagPreDraw(tag)
+    self:StatusTagDRAW(tag,'pre')
+end         
+
+function csc:StatusTagPstDraw(tag)
+    self:StatusTagDRAW(tag,'post')
+end         
+
 
 function csc:StatusProperty(ch,prop)
     for _,std in self:statuses(ch) do

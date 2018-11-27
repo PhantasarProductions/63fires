@@ -1,6 +1,6 @@
 --[[
   com_foecompiler.lua
-  Version: 18.11.07
+  Version: 18.11.24
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -168,9 +168,11 @@ function foecom:DrawFoe(myfoe,targeted,acting)
        if gtv<5 then scale=-1 end
     end    
     -- Status changes if applicable
+    self:StatusTagPreDraw(myfoe.tag)
     -- if statusicons then statusicons:icoshow(myfoe.tag) end
     -- Drawing
     DrawImage(myfoe.image,myfoe.x,myfoe.y,myfoe.frame,0,scale,myfoe.deathscale or 1)
+    self:StatusTagPstDraw(myfoe.tag)
 end
 
 

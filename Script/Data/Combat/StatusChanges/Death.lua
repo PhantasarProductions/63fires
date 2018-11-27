@@ -1,6 +1,6 @@
 --[[
   Death.lua
-  Version: 18.06.16
+  Version: 18.11.24
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -57,14 +57,41 @@ local  fd = { Hero = function(self,chtag)
                     end
                 end
                 -- item drops
+                local dropped
+                local inum = math.random(0,#warrior.drops or {})
+                local itag = warrior.drops[inum]
+                if inum>0 and itag then
+                   local item = ItemGet(itag)
+                   local name
+                   dropped,name = ItemGive(itag)
+                   if dropped then self:TagMessage(chtag,("%s dropped"):format(name),255,225,200) end
+                end
                 -- money if no items
+                if not dropped then
+                   local getcash = rpg:Stat(chtag,"Cash")
+                   local dump = DumpCash(getcash)
+                   if getcash<128000000 then
+                      self:TagMessage(chtag,("%s dropped"):format(dump),225,200,255)
+                      Var.D('%CASH',Var.G("%CASH")+getcash)
+                   end 
+                end
                 -- update bestiary
                 gamedata.bestiary = gamedata.bestiary or {}
                 -- CSay(serialize('warrior',warrior))
                 gamedata.bestiary[warrior.ufil] = (gamedata.bestiary[warrior.ufil] or 0) + 1
                 -- cleanup
                 self.fighters[chtag]=nil
-                self.foe[chtag]=nil                
+                self.foe[chtag]=nil
+                self.foedraworder={}
+                local orderkill={}
+                for k,myfoe in spairs(self.foedrawordertag) do
+                    if myfoe.tag==chtag then 
+                       orderkill[#orderkill+1]=k
+                    else   
+                       self.foedraworder[#self.foedraworder+1]=myfoe
+                    end    
+                end
+                for k in each(orderkill) do self.foedrawordertag[k]=nil end                 
              end
          end
        }

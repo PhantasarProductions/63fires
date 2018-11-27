@@ -1,6 +1,6 @@
 --[[
   flw_playerinput.lua
-  Version: 18.11.14
+  Version: 18.11.24
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -78,10 +78,10 @@ function invoer:CheckCanLearn(hero)
                      self.nextmove.targets={hero}
                   elseif item.Target=="AA" then
                      self.nextmove.targets={}
-                     for k,_ in pairs(self.heroes) do self.nextmove.targets[#self.nextmove.targets+1]=k end 
+                     for k,_ in pairs(self.hero) do self.nextmove.targets[#self.nextmove.targets+1]=k end 
                   elseif item.Target=="AF" then
                      self.nextmove.targets={}
-                     for k,_ in pairs(self.foes) do self.nextmove.targets[#self.nextmove.targets+1]=k end
+                     for k,_ in pairs(self.foe) do self.nextmove.targets[#self.nextmove.targets+1]=k end
                   elseif item.Target=="EV" then
                      self.nextmove.targets={}
                      for k,_ in pairs(self.fighters) do self.nextmove.targets[#self.nextmove.targets+1]=k end                       

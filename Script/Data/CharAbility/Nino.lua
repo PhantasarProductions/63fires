@@ -32,20 +32,22 @@
   
  **********************************************
  
-version: 18.06.07
+version: 18.11.24
 ]]
 local chnino = {
+
     abl = { heal = {start=true},
             curepd = {lv=7},
-            rejuvenate = {lv=11},
-            feroslash = {lv=14},
-            vitalize = {lv=19},
-            esuna = {lv=20},
-            holystrike = {lv=25},
-            sanctify = {lv=27},
-            firestorm = {lv=30},
-            resurrection = {lv=40}
+            rejuvenate = {lv=20},
+            feroslash = {lv=17},
+            vitalize = {lv=30},
+            esuna = {lv=25},
+            holystrike = {lv=22},
+            sanctify = {lv=32},
+            firestorm = {lv=50},
+            resurrection = {lv=80}
           },
+          
     TutTeach = function(self,abl)
         local lv = rpg:Stat('Nino','Level')
         if lv>=(self.abl[abl].lv or 1) then
@@ -53,11 +55,11 @@ local chnino = {
         end
         return ("Nino will learn this ability once he has reached level %2d"):format(self.abl[abl].lv or 1)   
     end,
+    
     Teach = function(self,abl)
         local lv = rpg:Stat('Nino','Level')
         return lv>=(self.abl[abl].lv or 1)
-    end 
-    
+    end    
 
 }
 

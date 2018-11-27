@@ -21,7 +21,7 @@ local ret={
 	["Attack_AttackStat"] = "Intelligence",
 	["Attack_DefenseStat"] = "Resistance",
 	["Attack_Desperate"] = false,
-	["Attack_Element"] = "Frost",
+	["Attack_Element"] = "Wind",
 	["BUFF_Accuracy"] = 0,
 	["BUFF_Defense"] = 0,
 	["BUFF_Evasion"] = 0,
@@ -49,7 +49,7 @@ local ret={
 	["CureSilence"] = false,
 	["CureSleep"] = false,
 	["CureUndead"] = false,
-	["Desc"] = "Let it go! Let it go!",
+	["Desc"] = "Can you paint with all the colors of the wind?",
 	["EffectScript"] = "",
 	["EffectScript_Arg"] = "",
 	["EQP_STAT_Accuracy"] = 0,
@@ -100,7 +100,7 @@ local ret={
 	["Stance_JumpToEnemy"] = false,
 	["Target"] = "1F",
 	["Target_Discriminate"] = false,
-	["Title"] = "Icicle",
+	["Title"] = "Fan",
 	["Type"] = "Item",
 }
 

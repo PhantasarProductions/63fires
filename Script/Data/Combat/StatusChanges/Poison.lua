@@ -1,6 +1,6 @@
 --[[
   Poison.lua
-  Version: 18.08.30
+  Version: 18.11.24
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -36,11 +36,9 @@
 ]]
 local AliceCooper = {}
 
-function AliceCooper:predraw()
-     Color(0,255,0)
-end
+function AliceCooper:tagpredraw() Color(0,255,0) end
 
-AliceCooper.postdraw=white
+function AliceCooper:tagpostdraw() white() end
 
 AliceCooper.Damage = {
      {.01,.250},

@@ -322,7 +322,8 @@ end
 
 function beul:esf_backtoidle()
    for _,v in pairs(self.fighters) do v.posestage=nil end
-   self:RemoveFirstCard()
+   --self:RemoveFirstCard()
+   self:FirstCardDone()
    -- if self.noidle and self.noidle>0 then
    --    self.noidle = self.noidle - 1
    --else

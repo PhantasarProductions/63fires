@@ -1,6 +1,6 @@
 --[[
   com_heroes.lua
-  Version: 18.10.10
+  Version: 18.11.24
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -72,7 +72,9 @@ function hero:DrawHero(myhero,targeted,action,actionframe)
      local f = actionframe
      if f>#myhero.images[action].images then f=1 end
      --if statusicons then statusicons:icoshow(myhero.tag) end
+     self:StatusTagPreDraw(myhero.tag)      
      DrawImage(myhero.images[action],myhero.x,myhero.y,f)     
+     self:StatusTagPstDraw(myhero.tag)      
 end
 
 function hero:DrawHeroes(targeted,inaction,action,actionframe)
@@ -80,7 +82,7 @@ function hero:DrawHeroes(targeted,inaction,action,actionframe)
          local paction='IDLE'
          local f = 1
          if inaction==k or inaction=='ALL' or inaction=='ALLHEROES' then paction=action f=actionframe end
-         --CSay(serialize(k..', my hero',v))         
+         --CSay(serialize(k..', my hero',v))   
          self:DrawHero(v,targeted,paction,f)
      end
 end     
