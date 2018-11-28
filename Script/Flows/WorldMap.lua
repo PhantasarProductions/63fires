@@ -127,7 +127,7 @@ end
 
 local function WorldMapChat(pch)
    local ch = pch
-   SerialBoxText("WMCHAT",Var.C('$WMCHAT').."."..ch,"FLOW_WORLDMAP")
+   SerialBoxText("WMCHAT",Var.C('$WMCHAT').."_"..ch,"FLOW_WORLDMAP")
 end
 
 local wmfont = GetBoxTextFont()
