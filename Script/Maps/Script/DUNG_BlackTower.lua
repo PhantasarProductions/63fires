@@ -216,6 +216,7 @@ function blackie:NPC_Key()
     Done("&KEY.TO_PRIMOSTUNNEL")
     field:kill("NPC_Key",true)
     field:kill("KEY_Barrier",true)
+    Var.D("$WMCHAT","ENDBLACK")
 end
 
 field:ZA_Enter("RyannaWardWhine",function() if not Done("&DONE.BLACKTOWER.RYANNAWARDWHINE") then MapText("RYANNAWARDWHINE") end end)
