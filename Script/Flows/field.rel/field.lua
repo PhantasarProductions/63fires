@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.11.05
+  Version: 18.11.28
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -303,7 +303,7 @@ function field:LoadMap(KthuraMap,layer,spawn,nocracks)
     self:ReadMapChanges()
     CSay("= Music function")
     if map.script.music then
-       CSay("= running mapscript music routine") 
+       CSay("= Running mapscript music routine") 
        map.script:music({layer=layer,spawn=spawn,map=map}) 
     elseif map.map.Meta.Music~="" then 
        console.write  ('  Loading: ',255,255,0)

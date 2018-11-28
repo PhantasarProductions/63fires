@@ -1,6 +1,6 @@
 --[[
   WorldMap.lua
-  Version: 18.04.27
+  Version: 18.11.28
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
