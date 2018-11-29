@@ -1,6 +1,6 @@
 --[[
   Fishing.lua
-  Version: 18.06.17
+  Version: 18.11.29
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -227,8 +227,16 @@ local stages = {
                 end
                 if mousehit(1) then flow.set(field) end
               end,
-      mster = function() 
-                error("Monster catch not scripted yet")
+      mster = function()
+                   local map = field.getmap()
+                   local Maps = map.map
+                   local skill = Var.G('%SKILL')
+                   local countparty = #RPGParty --CountPartyMembers()
+                   local rand = love.math.random
+                   local arena = FishSpot.Arena or Maps.Meta.Arena or ""; if not suffixed(arena:lower(),".png") then arena = arena..".png" end
+                   local combatdata = {foes={caught.caught}, arena=arena}
+                   StartCombat(combatdata)
+                   -- error("Monster catch not scripted yet")
               end        
               
 }
