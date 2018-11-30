@@ -1,6 +1,6 @@
 --[[
   Fishing.lua
-  Version: 18.11.29
+  Version: 18.11.30
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
