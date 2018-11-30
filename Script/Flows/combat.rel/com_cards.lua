@@ -146,7 +146,7 @@ function ccards:CardTag(data)
       if not data then return "BACK" end
       if not data.tag then return "BACK" end
       -- If a card is actually an extra ability card
-      if data.nextact then return "ABILITY" end
+      if data.nextmove then return "ABILITY" end
       -- If a foe
       if prefixed(data.tag,"FOE_") then
          if not self.foes then for k,v in spairs(self) do CSay("COMBAT MODULE:  "..type(v).." "..k) end end
@@ -184,7 +184,7 @@ function ccards:AutoAddFighterCard()
         for tag,data in pairs(self.fighters) do
             k = nil
             for _,crd in pairs(self.cards) do -- Looking for the card
-                k = k or (crd.data and crd.data.tag==tag and (not crd.data.nextact)) 
+                k = k or (crd.data and crd.data.tag==tag and (not crd.data.nextmove)) 
             end 
             if not k then self:AddCard({group=data.group,tag=data.tag, letter=data.letter}) end
         end

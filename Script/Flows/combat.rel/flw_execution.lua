@@ -57,7 +57,7 @@ function beul:esf_prewait()
      -- CSay("PreWait Ended!\n"..serialize("nextmove",self.nextmove))
      oldprewait=nil
      self.esf='pose'
-     if self.nextmove.removeitem then RemoveItem(self.nextmove.removeitem) end
+     if self.nextmove.removeitem and (not self.nextmove.xcard) then RemoveItem(self.nextmove.removeitem) end
      if prefixed(self.nextmove.act:upper(),"ABL_HERO_RYANNA") then --and self.nextmove.executor=='Ryanna' then
         gamedata.xchardata = gamedata.xchardata or {}
         gamedata.xchardata.Ryanna = gamedata.xchardata.Ryanna or {} 
@@ -340,7 +340,10 @@ function beul:esf_perform()
       local adding = { xcard=true }
       for k,v in pairs(self.nextmove) do if (not prefixed(k,"ADDCARD_")) then adding[k]=v end end
       if item.ADDCARD_Action_Act~="Self" then adding.act=item.ADDCARD_Action_Act end
-      for i=1,ADDCARD_Action_Number do self:AddCard({nextact=adding},i*item.ADDCARD_Action_Interval) end
+      for i=1,item.ADDCARD_Action_Number do 
+          self:AddCard({nextmove=adding,tag=self.nextmove.executor},i*item.ADDCARD_Action_Interval) 
+          CSay(("Adding card at position #%4d"):format(i*item.ADDCARD_Action_Interval))
+      end
    end
    if warrior.posestage then
       warrior.posestage.stage=10

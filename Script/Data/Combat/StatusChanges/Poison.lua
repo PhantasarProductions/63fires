@@ -55,7 +55,7 @@ function AliceCooper.startturn(self,chtag)
      local maxhp = rpg:Points(chtag,"HP").Maximum
      local damage = math.ceil(maxhp*damrate)
      self:TagMessage(chtag,"Poison: "..damage,0,100,0,20)
-     rpg:Points(chtag,"HP").Dec (damage)          
+     rpg:Points(chtag,"HP"):Dec (damage)          
 end
 
 return AliceCooper
