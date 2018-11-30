@@ -45,7 +45,7 @@ function zooi:flow_idle()
       self:DidAnyoneWin()
       if tag=="BACK" then
          return self:RemoveFirstCard()
-      end     
+      end
       if (prefixed(tag,"HERO") or prefixed(tag,"FOE")) and (rpg:Points(ctag,'HP').Have==0 or self:StatusProperty(ctag,'skipturn')) then
          for f in self:StatusPropertyValues(ctag,"skipturnexpire") do f(self,tag) end
          return self:RemoveFirstCard()
@@ -53,6 +53,11 @@ function zooi:flow_idle()
       if firstcard.done then
          return self:RemoveFirstCard()
       end   
+      if firstcard.data.nextact then
+         self.nextmove=firstcard.data.nextact
+         self.flow="execution"
+         return         
+      end     
       if prefixed(tag,"HERO") then      
          for f in self:StatusPropertyValues(ctag,"startturn") do f(self,tag) end         
          self.flow = firstcard.altplayinput or "playerinput"

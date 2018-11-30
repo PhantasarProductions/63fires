@@ -1,6 +1,6 @@
 --[[
   com_cards.lua
-  Version: 18.11.28
+  Version: 18.11.30
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -145,6 +145,8 @@ function ccards:CardTag(data)
       -- If card's really empty!
       if not data then return "BACK" end
       if not data.tag then return "BACK" end
+      -- If a card is actually an extra ability card
+      if data.nextact then return "ABILITY" end
       -- If a foe
       if prefixed(data.tag,"FOE_") then
          if not self.foes then for k,v in spairs(self) do CSay("COMBAT MODULE:  "..type(v).." "..k) end end

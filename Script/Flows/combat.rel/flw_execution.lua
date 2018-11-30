@@ -1,6 +1,6 @@
 --[[
   flw_execution.lua
-  Version: 18.11.28
+  Version: 18.11.30
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -336,6 +336,12 @@ function beul:esf_perform()
    local item = ItemGet(self.nextmove.act)
    local warrior = self.fighters[self.nextmove.executor]
    for tag in each(self.nextmove.targets) do self:true_perform(self.nextmove.executor,tag) end
+   if not self.nextmove.xcard and (item.ADDCARD_Action_Number or 0)>=1 then
+      local adding = { xcard=true }
+      for k,v in pairs(self.nextmove) do if (not prefixed(k,"ADDCARD_")) then adding[k]=v end end
+      if item.ADDCARD_Action_Act~="Self" then adding.act=item.ADDCARD_Action_Act end
+      for i=1,ADDCARD_Action_Number do self:AddCard({nextact=adding},i*item.ADDCARD_Action_Interval) end
+   end
    if warrior.posestage then
       warrior.posestage.stage=10
       self.esf='pose'

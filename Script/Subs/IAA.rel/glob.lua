@@ -1,6 +1,6 @@
 --[[
   glob.lua
-  Version: 18.06.10
+  Version: 18.11.30
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -67,6 +67,9 @@ function glob:itemhelp(item)
                       if prefixed(k,"Cure")  and v then helptext = helptext .. "\nCures "..right(k,#k-4) end
                       if prefixed(k,"Cause") and v then helptext = helptext .. "\nCauses "..right(k,#k-5) end
                end
+               if (item.ADDCARD_Action_Number or 0)>=1 then
+                  if item.ADDCARD_Action_Act=="Self" then helptext = helptext .. "\nAdds "..item.ADDCARD_Action_Number.." extra cards of itself" else helptext = helptext .."\nAdds "..ADDCARD_Action.." cards containing the ability "..ItemGet(item.ADDCARD_Action_Act).Title end
+               end   
                return helptext
 end
 
