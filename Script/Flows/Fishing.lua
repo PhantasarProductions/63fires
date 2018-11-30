@@ -76,6 +76,25 @@ local fightcount
 local pointer = LoadImage('GFX/General/FishPointer.png'); QHot(pointer,'cb')
 local pointx,pointd
 
+-- "Slave" is a regular term in the world of computers, so any "slave" activists, put the axes down.... slowly! 
+local function HideSlaves()
+   local map = field:GetMap()
+   for i=2,4 do
+       local slave = map.map.TagMap[map.layer][("PLAYER%d"):format(i)]
+       if slave then slave.VISIBLE=false end
+   end
+end
+
+local function ShowSlaves()
+   local map = field:GetMap()
+   for i=2,4 do
+       local slave = map.map.TagMap[map.layer][("PLAYER%d"):format(i)]
+       if slave then slave.VISIBLE=true end
+   end
+end
+
+
+
 local function bite() 
    local rand = love.math.random
    local skill = Var.G('%SKILL')
@@ -188,6 +207,7 @@ local stages = {
                  countdown=countdown-1
                  if countdown<=0 then
                     flow.set(field)
+                    ShowSlaves()
                  end
                  timer:wait(1)   
               end,
@@ -225,7 +245,7 @@ local stages = {
                    sd("Note:","The fish is calculated in your fish statistics, but")
                    sd("","as you've reached the max amount for this item it's NOT added to your inventory.")
                 end
-                if mousehit(1) then flow.set(field) end
+                if mousehit(1) then flow.set(field) ShowSlaves() end
               end,
       mster = function()
                    local map = field.getmap()
@@ -235,6 +255,7 @@ local stages = {
                    local rand = love.math.random
                    local arena = FishSpot.Arena or Maps.Meta.Arena or ""; if not suffixed(arena:lower(),".png") then arena = arena..".png" end
                    local combatdata = {foes={caught.caught}, arena=arena}
+                   ShowSlaves()
                    StartCombat(combatdata)
                    -- error("Monster catch not scripted yet")
               end        
@@ -255,6 +276,7 @@ function vis:LoadSpot(aspot)
    countdown=5 --2500
    timer=klok:CreateTimer()
    shot=nil
+   HideSlaves()
 end
 
 function vis:odraw()

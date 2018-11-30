@@ -44,5 +44,6 @@ field:ZA_Enter("ActivateBarrier",function()
       end
 end)
 
+field:ZA_Enter("IntroGap",function() if not Done("&DONE.PRIMOSTUNNEL.INTRO.GAP") then MapText("INTROGAP") end end )
 
 return Primos
