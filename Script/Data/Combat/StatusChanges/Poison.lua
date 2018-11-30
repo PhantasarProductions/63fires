@@ -1,6 +1,6 @@
 --[[
   Poison.lua
-  Version: 18.11.24
+  Version: 18.11.30
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -46,7 +46,7 @@ AliceCooper.Damage = {
      {.25,.005} 
 }
 
-function AliceCooper:startturn(chtag)
+function AliceCooper.startturn(self,chtag)
      local fof = 1
      if prefixed(chtag,"FOE_") then fof=2 end
      -- fof => Friend(1) or Foe(2)
