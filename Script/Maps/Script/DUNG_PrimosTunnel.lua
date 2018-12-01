@@ -44,6 +44,22 @@ field:ZA_Enter("ActivateBarrier",function()
       end
 end)
 
-field:ZA_Enter("IntroGap",function() if not Done("&DONE.PRIMOSTUNNEL.INTRO.GAP") then MapText("INTROGAP") end end )
+field:ZA_Enter("IntroGap",function() 
+    if not Done("&DONE.PRIMOSTUNNEL.INTRO.GAP") then MapText("INTROGAP") end
+    if Var.G("&DONE.PRIMOSTUNNEL.GOTHOOK") then 
+       if not Done("&DONE.PRIMOSTUNNEL.TUTORIAL.HOOK") then
+          MapText("TUTOR_HOOK")
+       end
+    end    
+end )
+
+
+function Primos:NPC_TOOL_HOOK()
+      MapText("GRIJPHAAK")
+      Done("&DONE.PRIMOSTUNNEL.GOTHOOK")
+      field:GiveTool('Ryanna',2)
+      field:kill('NPC_TOOL_HOOK',true)
+      Award("TOOL_GRIJPHAAK")      
+end
 
 return Primos
