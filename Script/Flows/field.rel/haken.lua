@@ -78,6 +78,8 @@ local function ShowSlaves(adjust)
           if adjust then
              slave.COORD.x=master.COORD.x
              slave.COORD.y=master.COORD.y
+             slave.walking=false
+             slave.moving=false
           end   
        end
    end
@@ -91,6 +93,7 @@ local function HookCross(self,coords)
     local map = self:getmap()
     local Ryanna = map.map:obj(map.layer,"PLAYER1")
     repeat
+          cls()
           if Ryanna.COORD.x<coords.x then Ryanna.COORD.x=Ryanna.COORD.x+4 end
           if Ryanna.COORD.x>coords.x then Ryanna.COORD.x=Ryanna.COORD.x-4 end
           if Ryanna.COORD.y<coords.y then Ryanna.COORD.y=Ryanna.COORD.y+4 end

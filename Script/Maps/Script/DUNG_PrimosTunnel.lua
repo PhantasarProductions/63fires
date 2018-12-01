@@ -53,6 +53,13 @@ field:ZA_Enter("IntroGap",function()
     end    
 end )
 
+field:ZA_Enter("GoToPrimos",function()
+    if not Done("&DONE.PRIMOSTUNNEL.EINDE") then MapText("EINDE") end
+    WorldMap_Unlock('C_PRIMOS')
+    WorldMap_Unlock('D_PRIMOSTUNNEL2')    
+    WorldMap("PrimosRegion") 
+end)
+
 
 function Primos:NPC_TOOL_HOOK()
       MapText("GRIJPHAAK")
