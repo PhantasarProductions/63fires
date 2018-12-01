@@ -100,7 +100,7 @@ local function HookCross(self,coords)
           StatusBar(false,false)
           showstrip()
           Color(0,180,255)
-          love.graphics.line(Ryanna.COORD.x-map.cam.x,(Ryanna.COORD.y-32)-map.cam.y,coords.x-map.cam.x,(coords.y-16)-map.cam.y)
+          love.graphics.line(Ryanna.COORD.x-self.cam.x,(Ryanna.COORD.y-32)-self.cam.y,coords.x-self.cam.x,(coords.y-16)-self.cam.y)
           love.graphics.present()                   
     until math.abs(Ryanna.COORD.x-coords.x)<60 and math.abs(Ryanna.COORD.y-coords.y)<60       
     ShowSlaves(true)
