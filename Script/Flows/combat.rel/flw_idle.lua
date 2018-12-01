@@ -1,6 +1,6 @@
 --[[
   flw_idle.lua
-  Version: 18.11.30
+  Version: 18.12.01
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -36,6 +36,26 @@
 ]]
 local zooi = {  }
 
+function zooi:validcard(card,allowondead)
+       if not self.Cards[1].data then return CSay("= Invalid card: No data!") end
+       if card.data.nextmove then
+          local nmv  = card.data.nextmove
+          local ctag = nmv.executor if not ctag then return CSay("= Invalid card: No executor!") end
+          local exe  = self.fighters[ctag]    if not ctag then return CSay("= Invalid card: Executor no longer exists. Dead maybe?") elseif rpg:Points(ctag,'HP').Have==0 then return CSay("= Invalid card: Executor has 0 HP") end
+          local tar  = nmv.targets if (not tar) then return CSay("= Invalid card: Targets not set at all") elseif #nmv.targets==0 then return CSay("= Invalid Card: No targets set") end
+          local newtar = {}
+          for nt in each(tar) do
+              if      not self.fighters[nt]       then CSay(("= Target %s is non-existent"):format(nt))
+              elseif  rpg:Points(nt,"HP").Have==0               
+                 and  (prefixed(nt,"FOE_") or (not allowdead))
+                                                  then CSsay("= Target %s has zero hp!")
+              else newtar[#newtar+1]=nt end                                                  
+          end
+          if #newtar==0 then return CSay("= Invalid card: No more valid targets") end
+          return true          
+       end   
+        
+end
 
 function zooi:flow_idle()
       local firstcard=self.Cards[1]
@@ -54,9 +74,14 @@ function zooi:flow_idle()
          return self:RemoveFirstCard()
       end   
       if firstcard.data.nextmove then
-         self.nextmove=firstcard.data.nextmove
-         self.flow="execution"
-         return         
+         if self:validcard(firstcard) then
+            self.nextmove=firstcard.data.nextmove
+            self.flow="execution"
+            return
+         else
+            CSay("Extra card no longer valid! Disposing!")
+            return self:RemoveFirstCard()
+         end            
       end     
       if prefixed(tag,"HERO") then      
          for f in self:StatusPropertyValues(ctag,"startturn") do f(self,ctag) end         
