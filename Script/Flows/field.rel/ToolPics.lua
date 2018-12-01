@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.06.30
+version: 18.12.01
 ]]
 
 local function fish(spot)
@@ -61,6 +61,9 @@ return {
                 local fisha = map.map.TagMap[map.layer].Fish
                 local Fishx,Fishy=math.floor(fisha.COORD.x/32),math.floor(fisha.COORD.y/32)
                 if act:WalkTo(Fishx,Fishy) then field:SetArrival({fish,fisha.DATA.SPOT}) end
+            end,
+            function () -- hook
+                field:findClosestHookSpot()
             end
        },
        Nino={
