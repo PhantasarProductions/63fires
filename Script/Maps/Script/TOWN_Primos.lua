@@ -63,7 +63,13 @@ end
 
 function Primos:Welcome()
   
-end    
+end
+
+function Primos:NPC_UPGRADE()
+    MapText("UPGRADER")
+    UpgradeShop()
+end
+    
 
 field:ZA_Enter("Welcome",Primos.Welcome,Primos)
 field:ZA_Enter("I_WANT_ANNA",function()
