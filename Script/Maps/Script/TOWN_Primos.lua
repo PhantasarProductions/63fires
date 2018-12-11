@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.12.05
+version: 18.12.11
 ]]
 
 
@@ -51,6 +51,9 @@ version: 18.12.05
 -- Start Module
 local Primos={}
 
+-- Anna
+local ANNAMONK
+
 
 -- Scyndi
 function Primos:NPC_Scyndi()
@@ -58,7 +61,14 @@ function Primos:NPC_Scyndi()
          Shop("SCYNDI")     
 end
 
+function Primos:Welcome()
+  
+end    
 
+field:ZA_Enter("Welcome",Primos.Welcome,Primos)
+field:ZA_Enter("I_WANT_ANNA",function()
+  -- $USE script/subs/ANNAMONK
+end)
 
 -- Return Module
 return Primos
