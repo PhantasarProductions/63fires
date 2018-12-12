@@ -1,6 +1,6 @@
 --[[
   init.lua
-  Version: 18.06.10
+  Version: 18.12.12
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -114,7 +114,7 @@ function finit.arrive()
    console.csaycolor = {r=0,g=180,b=255}
    CSay("Loading: "..RYANNA_TITLE)
    local w,h = love.graphics.getDimensions( )
-   CSay("Screen dimensions: "..w.."x.."..h)
+   CSay("Screen dimensions: "..w.."x"..h)
    CSay("")
 end
 
