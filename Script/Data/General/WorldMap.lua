@@ -108,10 +108,21 @@ local ret = {
 	["D_ODDMAZE"] = {
 		["Dungeon"] = true,
 		["Folder"] = "PrimosRegion",
-		["Kthura"] = "TOWN_Primos",
+		["Kthura"] = "DUNG_OddMaze",
 		["Layer"] = "#001",
 		["LocationName"] = "Odd Maze",
 		["LocationPrefix"] = "",
+		["Start"] = "Start",
+		["UnlockedFromStart"] = false,
+
+	},
+	["D_PRAIRIE"] = {
+		["Dungeon"] = true,
+		["Folder"] = "PrimosRegion",
+		["Kthura"] = "",
+		["Layer"] = "Surface",
+		["LocationName"] = "Prairie",
+		["LocationPrefix"] = "The",
 		["Start"] = "Start",
 		["UnlockedFromStart"] = false,
 
