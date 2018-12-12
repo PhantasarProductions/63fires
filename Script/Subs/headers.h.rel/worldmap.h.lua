@@ -1,6 +1,6 @@
 --[[
   worldmap.h.lua
-  Version: 18.04.27
+  Version: 18.12.12
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -46,6 +46,7 @@ end
 
 function MapWorldLinks()
    field:ZA_Enter('Beaufort',WorldMap,'Beaufort')
+   field:ZA_Enter('PrimosRegion',WorldMap,'PrimosRegion')
 end   
 
 return true
