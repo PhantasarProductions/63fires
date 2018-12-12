@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.12.11
+version: 18.12.12
 ]]
 
 
@@ -64,6 +64,11 @@ end
 function Primos:Welcome()
   
 end
+
+function Primos:NPC_Guyapi()
+     MapText("GUYAPI")
+     WorldMap_Unlock("D_ODDMAZE")
+end     
 
 function Primos:NPC_UPGRADE()
     MapText("UPGRADER")
