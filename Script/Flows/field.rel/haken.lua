@@ -1,6 +1,6 @@
 --[[
   haken.lua
-  Version: 18.12.01
+  Version: 18.12.13
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -119,7 +119,7 @@ function haken:findClosestHookSpot()
    local available = {}
    -- Hoe ver zijn alle punten verwijderd van Ryanna?
    -- Dit kunnen me in 2D zo makkelijk checken dankzij de stelling van Pythagoras.
-   for k,spot in pairs(spots[lay]) do
+   for k,spot in pairs(spots[lay] or {}) do
        local sx,sy = spot.FROM.x,spot.FROM.y
        local rechthoekszijde1 = math.abs(px-sx)
        local rechthoekszijde2 = math.abs(py-sy)
