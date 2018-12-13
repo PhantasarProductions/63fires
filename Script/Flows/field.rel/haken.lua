@@ -113,7 +113,7 @@ function haken:findClosestHookSpot()
    local map = self:getmap()
    local spots = map.hookspots
    local lay = map.layer
-   if not spots[lay] then CSay(("Ignored! No hookspots on this layer >> %s"):format(lay)) end
+   if not spots[lay] then CSay(("Ignored! No hookspots on this layer >> %s"):format(lay)) return end
    local player = map.map:obj(map.layer,"PLAYER1")
    local px,py = player.COORD.x,player.COORD.y
    local available = {}
