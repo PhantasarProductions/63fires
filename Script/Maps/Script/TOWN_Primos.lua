@@ -77,12 +77,14 @@ end
 
 
 function Primos:NPC_Chief()
+    -- Activating the quest to find Shirley
     if (not Done("&DONE.PRIMOS.CHIEF")) then
        MapText("PHILIP1")
        WorldMap_Unlock("D_PRAIRIE")
        return
     end
-    if (not Var.G("&DONE.SHIRLEY.JOINED")) then
+    -- Shirley quest started, but Shirley not yet found
+    if (not Var.C("&DONE.SHIRLEY.JOINED")) then
        MapText("PHILIP2")
        return
     end   
@@ -91,11 +93,13 @@ end
 
 
 function Primos:NPC_Rose()
-    if (not Var.G("&DONE.PRIMOS.CHIEF")) then
+    -- Must talk to Philip to start Shirley quest
+    if (not Var.C("&DONE.PRIMOS.CHIEF")) then
        MapText("ROSE1")
        return
     end
-    if (not Var.G("&DONE.SHIRLEY.JOINED")) then
+    -- Shirley quest started, but Shirley not yet found
+    if (not Var.C("&DONE.SHIRLEY.JOINED")) then
        MapText("ROSE2")
        return
     end   
