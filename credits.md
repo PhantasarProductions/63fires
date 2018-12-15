@@ -26,9 +26,19 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Font: Fonts/OldLondonAlternate.ttf
 
 
+## Ed Kasap
+### Public Domain
+- Graphic image: gfx/combat/fighters/foe/boss/Troll.png
+
+
 ## Eric Matyas
 ### You can see all the license stuff on http://soundimage.org/sample-page/
 - Music: Music/Town/Tower Defense.ogg
+
+
+## Firkin
+### Public Domain
+- Graphic image: gfx/combaT/Fighters/fOe/Boss/GiantEagle.png
 
 
 ## Game Jolt
@@ -47,6 +57,10 @@ Also note that some files have "alias" files attached to them. This credits.md f
 ### The background textures and fonts found on this site were not created by GRSites, but were obtained from various sources on the internet that described these graphics as freeware. They are free to use for personal and commercial use.
 - Graphic image: GFX/General/Wood.gif
 - Graphic image: GFX/General/Wood.png
+- Graphic image: GFX/Textures/Dungeon/StoneTunnel/Floor.png
+- Graphic image: GFX/Textures/Dungeon/StoneTunnel/RockWall.png
+- Graphic image: GFX/Textures/Dungeon/StoneTunnel/RockWall_LV.png
+- Graphic image: GFX/Textures/Dungeon/StoneTunnel/RockWall_RV.png
 
 
 ## http://freesfx.co.uk
@@ -57,6 +71,11 @@ Also note that some files have "alias" files attached to them. This credits.md f
 ## J
 ### I don't give a damn about this file! All it had to do was exist!
 - Markdown document: music.md
+
+
+## J.W.H. Broeders
+### Was written in dedication of Jeroen Broks' work as a game programmer. This song may only be extracted from this game with permission of the respective composer.
+- Music: Music/Dungeon/Dungeon1.ogg
 
 
 ## Jeroen P. Broks
@@ -99,8 +118,14 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - PikoPixel source file: GFX/Actors/Anna Monk/Base Female.piko
 - Graphic image: GFX/Actors/Anna Monk/Human Female.png
 - Graphic image: GFX/Actors/Anna Monk/Winged Female.png
+- Graphic image: GFX/Actors/Black Tower/Krinkel.png
+- PikoPixel source file: GFX/Actors/Black Tower/Krinkel_Faint.piko
+- Graphic image: GFX/Actors/Black Tower/Krinkel_Faint.png
 - PikoPixel source file: GFX/Actors/Black Tower/Leeroy Jenkins.piko
 - Graphic image: GFX/Actors/Black Tower/Leeroy Jenkins.png
+- Graphic image: GFX/Actors/Primos/Man.png
+- PikoPixel source file: GFX/Actors/Primos/Woman.piko
+- Graphic image: GFX/Actors/Primos/Woman.png
 - Graphic image: GFX/Actors/Village/Agent.png
 - Graphic image: GFX/Actors/Village/Bouwvakker.png
 - Graphic image: GFX/Actors/Village/Cowboy.png
@@ -176,6 +201,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Combat/Fighters/Foe/Reg/RedSlime.png
 - Graphic image: GFX/Combat/Fighters/Foe/Reg/YellowSlime.png
    1. Alias: GFX/Combat/RENC/Gauge.png
+- PikoPixel source file: GFX/Combat/StatusChangeIcons/Paralysis.piko
 - Graphic image: GFX/Combat/StatusChangeIcons/Silence.png
 - Graphic image: GFX/Flags/Dutch.png
 - Graphic image: GFX/General/FishPointer.png
@@ -192,6 +218,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Menu/item6.png
 - Graphic image: GFX/Puzzle/KVault/Controller.png
 - Graphic image: GFX/System/Console.png
+- Graphic image: GFX/Textures/Black Tower/Key.png
 - Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/000.png
 - Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/005.png
 - Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/010.png
@@ -225,17 +252,30 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Textures/PressurePlates/Circular/Pressed.png
 - PikoPixel source file: GFX/Textures/PressurePlates/Circular/PressurePlates.piko
 - Graphic image: GFX/Textures/PressurePlates/Circular/Unpressed.png
+- Graphic image: GFX/Textures/Primos/Floor.png
+- Graphic image: GFX/Textures/Primos/Floor_Sand.png
+- Graphic image: GFX/Textures/Primos/Floor_Sand32.png
+- Graphic image: GFX/Textures/Primos/Floor_Sand32_Bright.png
+- Graphic image: GFX/Textures/Primos/Obstacle_Cactus.png
+- PikoPixel source file: GFX/Textures/Primos/Tipi.piko
+- Graphic image: GFX/Textures/Primos/Tipi_Blue.png
+- Graphic image: GFX/Textures/Primos/Tipi_Green.png
+- Graphic image: GFX/Textures/Primos/Tipi_Red.png
 - PikoPixel source file: GFX/Textures/Special/Crack.piko
 - Graphic image: GFX/Textures/Special/Crack.png
 - Graphic image: GFX/Textures/Stairs/32/Down.png
 - Graphic image: GFX/Textures/Stairs/32/Up.png
 - Graphic image: GFX/Textures/Stairs/64/Down.png
 - Graphic image: GFX/Textures/Stairs/64/Up.png
+- PikoPixel source file: GFX/Textures/Trees/Palm.piko
+- Graphic image: GFX/Textures/Trees/Palm.png
 - PikoPixel source file: GFX/Textures/Windville/Molen/Milltower.piko
 - Graphic image: GFX/Textures/Windville/Molen/Milltower.png
 - PikoPixel source file: GFX/Textures/Windville/Straat.piko
 - Graphic image: GFX/Textures/Windville/Straat.png
 - Graphic image: GFX/Treasure/Crystal.png
+- PikoPixel source file: GFX/Treasure/Tools/Hook.piko
+- Graphic image: GFX/Treasure/Tools/Hook.png
 - PikoPixel source file: GFX/Treasure/Tools/Pole.piko
 - Graphic image: GFX/Treasure/Tools/Pole.png
 - PikoPixel source file: GFX/Treasure/Travel.piko
@@ -249,14 +289,20 @@ Also note that some files have "alias" files attached to them. This credits.md f
 ### These are files specifically set up for this game and other personal projects and remain my property and may NOT be extracted from this game nor any other production of Jeroen P. Broks, without prior WRITTEN permission from Jeroen P. Broks
 - GINI Is Not Ini: Data/Foes/Boss/Angelique.gini
 - GINI Is Not Ini: Data/Foes/Boss/DragonWhelp.gini
+- GINI Is Not Ini: Data/Foes/Boss/GiantEagle.gini
+- GINI Is Not Ini: Data/Foes/Boss/MountainKing.gini
 - GINI Is Not Ini: Data/Foes/Boss/SupaSlime.gini
+- GINI Is Not Ini: Data/Foes/Boss/Troll.gini
 - GINI Is Not Ini: Data/Foes/Boss/UltraSlime.gini
+- GINI Is Not Ini: Data/Foes/Reg/AquaGoblin.gini
 - GINI Is Not Ini: Data/Foes/Reg/Bat.gini
 - GINI Is Not Ini: Data/Foes/Reg/EyeBlob.gini
 - GINI Is Not Ini: Data/Foes/Reg/goblin.gini
 - GINI Is Not Ini: Data/Foes/Reg/MageBlob.gini
+- GINI Is Not Ini: Data/Foes/Reg/Ninja.gini
 - GINI Is Not Ini: Data/Foes/Reg/Snake.gini
 - GINI Is Not Ini: Data/Foes/Reg/StrongGoblin.gini
+- GINI Is Not Ini: Data/Foes/Reg/WindElemental.gini
 - Data: Data/GJ_ANNA/Awards_Anna.GHD
 - Data: Data/GJ_ANNA/Awards_GameJolt.GHD
 - Data: Data/GJ_ANNA/GJ_ANNA.ghd
@@ -265,6 +311,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - File: Data/Levels/Ryanna
 - File: Data/Levels/Shirley
 - Graphic image: GFX/Actors/Cameo/Dienstmeid Marrilona.png
+- Graphic image: GFX/Actors/Cameo/Scyndi.png
 - Graphic image: GFX/Actors/Cameo/Yirl.png
 - Graphic image: GFX/Actors/Windville/Nino.png
 - PikoPixel source file: GFX/Actors/Windville/NinoN.piko
@@ -272,6 +319,8 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Combat/Arena/Black_Tower.png
 - Graphic image: GFX/Combat/Arena/Caves_Starrow.png
 - Graphic image: GFX/Combat/Arena/Forest_Spar.png
+- Graphic image: GFX/Combat/Arena/StoneTunnel.png
+- Graphic image: GFX/Combat/Arena/ZZZ_FishingSpot.png
 - PikoPixel source file: GFX/Combat/Cards/Heroes.piko
 - Graphic image: GFX/Combat/Cards/Hero_Nino.png
 - Graphic image: GFX/Combat/Cards/Hero_Ryanna.png
@@ -342,19 +391,27 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/Combat/ActEffect/ZZZZ_StoryEvent_FirstTransform.lua
 - Script: Script/Data/Combat/AI/default.lua
 - Script: Script/Data/Combat/InputXtraScript/Access_Start.lua
+- Script: Script/Data/Combat/SpellAni/Sparkle.lua
 - Script: Script/Data/Combat/StatusChanges/Death.lua
+- Script: Script/Data/Combat/StatusChanges/Paralysis.lua
 - Script: Script/Data/Combat/StatusChanges/Poison.lua
 - Script: Script/Data/Combat/StatusChanges/Silence.lua
 - Script: Script/Data/Combat/StatusChanges/Transformed.lua
 - Script: Script/Data/Combat/StatusChanges/__ScrollEffect.lua
 - Script: Script/Data/General/Achievements.lua
 - Script: Script/Data/General/Fish.lua
+- File: Script/Data/General/FishSpot
 - Script: Script/Data/General/FishSpot.lua
 - Script: Script/Data/General/Sex.lua
 - Script: Script/Data/General/upgradedata.lua
 - Script: Script/Data/General/WorldMap.lua
+- Script: Script/Data/IAA/ABL_FOE_AQUASTRIKE.lua
+- Script: Script/Data/IAA/ABL_FOE_CLUMSINESS.lua
+- Script: Script/Data/IAA/ABL_FOE_DIVE.lua
 - Script: Script/Data/IAA/ABL_FOE_FLAME.lua
 - Script: Script/Data/IAA/ABL_FOE_FLAMESTRIKE.lua
+- Script: Script/Data/IAA/ABL_FOE_REGENERATION.lua
+- Script: Script/Data/IAA/ABL_FOE_SHURIKEN.lua
 - Script: Script/Data/IAA/ABL_FOE_SPEWVENOW.lua
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_IJSBLOKJE_F1.lua
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_IJSBLOKJE_F2.lua
@@ -386,31 +443,45 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/IAA/ACT_ATTACK.lua
 - Script: Script/Data/IAA/ACT_GUARD.lua
 - Script: Script/Data/IAA/FISH_CAVECRAB.lua
+- Script: Script/Data/IAA/FISH_LOBSTER.lua
+- Script: Script/Data/IAA/FISH_MOONFISH.lua
 - Script: Script/Data/IAA/FISH_NEONTETRA.lua
+- Script: Script/Data/IAA/FISH_OLDTIRE.lua
 - Script: Script/Data/IAA/FISH_PIRANHA.lua
+- Script: Script/Data/IAA/FISH_RAINBOW_TROUT.lua
 - Script: Script/Data/IAA/FISH_RUBBERDUCK.lua
 - Script: Script/Data/IAA/FISH_RUSTYCAN.lua
 - Script: Script/Data/IAA/FISH_SHOE.lua
 - Script: Script/Data/IAA/FISH_TROUT.lua
+- Script: Script/Data/IAA/ITM_AMBROSIA.lua
 - Script: Script/Data/IAA/ITM_ANKH.lua
 - Script: Script/Data/IAA/ITM_ANTIDOTE.lua
+- Script: Script/Data/IAA/ITM_BATTERY.lua
 - Script: Script/Data/IAA/ITM_BELL.lua
+- Script: Script/Data/IAA/ITM_BLACKTOWER_KEY.lua
 - Script: Script/Data/IAA/ITM_CURINGSALVE.lua
+- Script: Script/Data/IAA/ITM_FAN.lua
 - Script: Script/Data/IAA/ITM_FLARE.lua
 - Script: Script/Data/IAA/ITM_HERB.lua
 - Script: Script/Data/IAA/ITM_HOLYWATER.lua
+- Script: Script/Data/IAA/ITM_ICICLE.lua
 - Script: Script/Data/IAA/ITM_MEDICINE.lua
+- Script: Script/Data/IAA/ITM_MULTIVITAMIN.lua
 - Script: Script/Data/IAA/ITM_PHOENIX.lua
 - Script: Script/Data/IAA/ITM_PIXIEDUST.lua
 - Script: Script/Data/IAA/ITM_POTION.lua
+- Script: Script/Data/IAA/ITM_ROCK.lua
+- Script: Script/Data/IAA/ITM_SAUERKRAUT.lua
 - Script: Script/Data/IAA/ITM_SOFT.lua
 - Script: Script/Data/IAA/ITM_VIOLETROSE.lua
+- Script: Script/Data/IAA/ITM_VITAMIN.lua
 - Script: Script/Data/IAA/JWL_EMERALD.lua
 - Script: Script/Data/IAA/JWL_RUBY.lua
 - Script: Script/Data/IAA/ZPECIAL_MEGASLAM_ACCESS.lua
 - Script: Script/Data/IAA/ZPECIAL_REVERT.lua
 - Markdown document: Script/Data/readme.md
 - Script: Script/Data/Shops/IRRAVONIA.lua
+- Script: Script/Data/Shops/SCYNDI.lua
 - Script: Script/Data/transform_make/IJsblokje.lua
 - Script: Script/Data/transform_make/Lucifer.lua
 - Script: Script/Data/transform_make/Stopcontact.lua
@@ -433,6 +504,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Flows/field.rel/crack.lua
 - Script: Script/Flows/field.rel/crystal.lua
 - Script: Script/Flows/field.rel/field.lua
+- Script: Script/Flows/field.rel/haken.lua
 - Script: Script/Flows/field.rel/renc.lua
 - Script: Script/Flows/field.rel/ToolPics.lua
 - Script: Script/Flows/field.rel/xmapscript.lua
@@ -458,9 +530,11 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Maps/Script/DUNG_BlackTower.lua
 - Script: Script/Maps/Script/DUNG_BluePalace.lua
 - Script: Script/Maps/Script/DUNG_Graveyard.lua
+- Script: Script/Maps/Script/DUNG_PrimosTunnel.lua
 - Script: Script/Maps/Script/DUNG_Starrow.lua
 - Script: Script/Maps/Script/NET_Anna.lua
 - Markdown document: Script/Maps/Script/readme.md
+- Script: Script/Maps/Script/TOWN_Primos.lua
 - Script: Script/Maps/Script/TOWN_Windville.lua
 - Markdown document: Script/readme.md
 - Script: Script/Ryanna_Main.lua
@@ -497,12 +571,19 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Markdown document: tools used.md
 
 
+## Joseph
+### Public Domain
+- Graphic image: gfx/combat/fighters/foe/reg/Ninja.png
+
+
 ## Kevin McLeod
 ### Creative Commons License -- Check out incompetech.com for detailed information about this!
 - Music: Music/Boss/Metalmania.mp3
+- Music: Music/BossSpecial/Hall of the Mountain King.ogg
 - Music: Music/Combat/Outfoxing the Fox.mp3
 - Music: Music/CutScenes/BluePalace_PostBoss_CutScene.mp3
    1. Alias: Music/Ori/Comfortable Mystery.mp3
+- Music: Music/Dungeon/Bama Country.mp3
 - Music: Music/Dungeon/Danger Storm.mp3
 - Music: Music/Dungeon/Forest1.mp3
    1. Alias: Music/Ori/Dewdrop Fantasy.mp3
@@ -513,6 +594,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Music: Music/Special/Angel Share.mp3
 - Music: Music/Special/Angevin.ogg
 - Music: Music/Town/Desert City.mp3
+   1. Alias: Music/WorldMap/PrimosRegion.mp3
 - Music: Music/Town/Vivacity.mp3
 
 
@@ -529,6 +611,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - PikoPixel source file: GFX/Actors/Windville/King.piko
 - Graphic image: GFX/Actors/Windville/King.png
 - Graphic image: GFX/Actors/Windville/Male.png
+- Graphic image: GFX/Combat/Fighters/Foe/Reg/AquaGoblin.png
 - Graphic image: GFX/Combat/Fighters/Foe/Reg/Goblin.png
 - Graphic image: GFX/Textures/Cave/Basic/Hoek - Noord-Oost.png
 - Graphic image: GFX/Textures/Cave/Basic/Hoek - Noord-West.png
@@ -698,4 +781,8 @@ Also note that some files have "alias" files attached to them. This credits.md f
 
 ## Unknown Artist
 ### The artist of these pictures is not known, but this picture was taken from a public domain picture site.<br>If this is not in the Public Domain, please let me know and send me some proper evidence, and I shall remove it as soon as your claim has been confirmed.
+- Graphic image: GFX/Combat/Fighters/Foe/Boss/BigTornado.png
+- Graphic image: GFX/Combat/Fighters/Foe/Boss/MountainKing.png
+- Graphic image: GFX/Combat/Fighters/Foe/Reg/WindElemental.png
+- Graphic image: GFX/Combat/SpellAni/Wind/Tornado.png
 - Graphic image: GFX/Network/Anna.png
