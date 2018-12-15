@@ -84,10 +84,23 @@ function Primos:NPC_Chief()
     end
     if (not Var.G("&DONE.SHIRLEY.JOINED")) then
        MapText("PHILIP2")
+       return
     end   
     error("This part has not yet been scripted.\nRest awhile in the Y.M.C.A while I take care of that!")
 end
 
+
+function Primos:NPC_Rose()
+    if (not Var.G("&DONE.PRIMOS.CHIEF")) then
+       MapText("ROSE1")
+       return
+    end
+    if (not Var.G("&DONE.SHIRLEY.JOINED")) then
+       MapText("ROSE2")
+       return
+    end   
+    error("This part has not yet been scripted.\nThey may call her the wild Rose, while her name is Eleisa Day, but that doesn't make me work faster!")
+end
 
     
 
