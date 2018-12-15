@@ -1,6 +1,6 @@
 --[[
   haken.lua
-  Version: 18.12.13
+  Version: 18.12.15
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -128,7 +128,7 @@ function haken:findClosestHookSpot()
        available[hypotenusa] = k
    end
    -- Dat hebben we nu!
-   -- En welke is het dichsta bij?
+   -- En welke is het dichste bij?
    for distance,spotkey in spairs(available,function(available,k1,k2) return k1<k2 end) do
        -- CSay(serialize('spots',spots).. "\nfrom\nSpotkey = "..spotkey.." distance: "..distance)   
        local stx,sty = math.floor(spots[lay][spotkey].FROM.x/32),math.floor(spots[lay][spotkey].FROM.y/32)
