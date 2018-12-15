@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.12.12
+version: 18.12.15
 ]]
 
 
@@ -74,6 +74,21 @@ function Primos:NPC_UPGRADE()
     MapText("UPGRADER")
     UpgradeShop()
 end
+
+
+function Primos:NPC_Chief()
+    if (not Done("&DONE.PRIMOS.CHIEF")) then
+       MapText("PHILIP1")
+       WorldMap_Unlock("D_PRAIRIE")
+       return
+    end
+    if (not Var.G("&DONE.SHIRLEY.JOINED")) then
+       MapText("PHILIP2")
+    end   
+    error("This part has not yet been scripted.\nRest awhile in the Y.M.C.A while I take care of that!")
+end
+
+
     
 
 field:ZA_Enter("Welcome",Primos.Welcome,Primos)
