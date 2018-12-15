@@ -84,7 +84,7 @@ function Primos:NPC_Chief()
        return
     end
     -- Shirley quest started, but Shirley not yet found
-    if (not Var.C("&DONE.SHIRLEY.JOINED")) then
+    if (not Var.G("&DONE.SHIRLEY.JOINED")~=0) then
        MapText("PHILIP2")
        return
     end   
@@ -94,12 +94,12 @@ end
 
 function Primos:NPC_Rose()
     -- Must talk to Philip to start Shirley quest
-    if (not Var.C("&DONE.PRIMOS.CHIEF")) then
+    if (not Var.G("&DONE.PRIMOS.CHIEF")~=0) then
        MapText("ROSE1")
        return
     end
     -- Shirley quest started, but Shirley not yet found
-    if (not Var.C("&DONE.SHIRLEY.JOINED")) then
+    if (not Var.G("&DONE.SHIRLEY.JOINED")~=0) then
        MapText("ROSE2")
        return
     end   
