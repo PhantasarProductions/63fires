@@ -91,6 +91,10 @@ function Primos:NPC_Chief()
     error("This part has not yet been scripted.\nRest awhile in the Y.M.C.A while I take care of that!")
 end
 
+function Primos:oncycle()
+    math.random(1,5)
+end    
+
 
 function Primos:NPC_Rose()
     -- Must talk to Philip to start Shirley quest
