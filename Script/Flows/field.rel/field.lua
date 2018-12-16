@@ -466,6 +466,7 @@ function field:odraw()
        end   
     --]]
     StatusBar(false,true)
+    ;(map.script.overdraw or nothing)(map.script)
     runSchedule(self)
     showstrip()
     love.graphics.setFont(console.font)
