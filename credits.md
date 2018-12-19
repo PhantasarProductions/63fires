@@ -20,6 +20,11 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Audio: Audio/Gen/ChaChing.ogg
 
 
+## Dee Yan-Key
+### Released under a Creative Commons - By Attribute - Non-Commerical - Share-Alike license
+- Music: Music/BossSpecial/Dee_Yan-Key_-_03_-_A_Childrens_Song.mp3
+
+
 ## Dieter Steffman
 ### Downloaded from DaFont.com and said to be 100% free.
 - Font: Fonts/OldLondon.ttf
@@ -291,6 +296,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - GINI Is Not Ini: Data/Foes/Boss/DragonWhelp.gini
 - GINI Is Not Ini: Data/Foes/Boss/GiantEagle.gini
 - GINI Is Not Ini: Data/Foes/Boss/MountainKing.gini
+- GINI Is Not Ini: Data/Foes/Boss/Shirley.gini
 - GINI Is Not Ini: Data/Foes/Boss/SupaSlime.gini
 - GINI Is Not Ini: Data/Foes/Boss/Troll.gini
 - GINI Is Not Ini: Data/Foes/Boss/UltraSlime.gini
@@ -319,11 +325,13 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Combat/Arena/Black_Tower.png
 - Graphic image: GFX/Combat/Arena/Caves_Starrow.png
 - Graphic image: GFX/Combat/Arena/Forest_Spar.png
+- Graphic image: GFX/Combat/Arena/Prairie.png
 - Graphic image: GFX/Combat/Arena/StoneTunnel.png
 - Graphic image: GFX/Combat/Arena/ZZZ_FishingSpot.png
 - PikoPixel source file: GFX/Combat/Cards/Heroes.piko
 - Graphic image: GFX/Combat/Cards/Hero_Nino.png
 - Graphic image: GFX/Combat/Cards/Hero_Ryanna.png
+- Graphic image: GFX/Combat/Fighters/Foe/Boss/Shirley.png
 - PikoPixel source file: GFX/Combat/Fighters/Hero/Demon_Ryanna_IJsblokje_Attack.piko
 - Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_IJsblokje_Attack.png
 - Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_IJsblokje_Idle.png
@@ -363,6 +371,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Portret/Shirley/General.png
 - Graphic image: GFX/Skills/1.png
 - Graphic image: GFX/Skills/2.png
+- Graphic image: GFX/Textures/Prairie/Shirley.png
 - PikoPixel source file: GFX/Textures/Windville/Ryanna Statue.piko
 - Graphic image: GFX/Textures/Windville/Ryanna Statue.png
 - File: Scenario/BK
@@ -526,6 +535,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Flows/startgame.lua
 - Script: Script/Flows/TransOver.lua
 - Script: Script/Flows/WorldMap.lua
+- Script: Script/Maps/Generation/DUNG_Prairie.lua
 - Script: Script/Maps/Script/DUNG_BeaufortForest.lua
 - Script: Script/Maps/Script/DUNG_BlackTower.lua
 - Script: Script/Maps/Script/DUNG_BluePalace.lua
@@ -536,6 +546,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Markdown document: Script/Maps/Script/readme.md
 - Script: Script/Maps/Script/TOWN_Primos.lua
 - Script: Script/Maps/Script/TOWN_Windville.lua
+- Script: Script/Maps/Script/TRUE_Prairie.lua
 - Markdown document: Script/readme.md
 - Script: Script/Ryanna_Main.lua
 - Script: Script/Subs/Achievements.lua
@@ -655,6 +666,8 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Textures/Marble/Wall_NW.png
 - Graphic image: GFX/Textures/Pond/P.PNG
 - Graphic image: GFX/Textures/Pond/PBS.PNG
+- Graphic image: GFX/Textures/Prairie/DrogeStruik.png
+- Graphic image: GFX/Textures/Prairie/Dry_Grass.png
 - Graphic image: GFX/Textures/Road/cliffside.png
 - Graphic image: GFX/Textures/Road/Dead Grass.png
 - Graphic image: GFX/Textures/Road/Grass1.png
