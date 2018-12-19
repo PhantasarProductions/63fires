@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.12.16
+version: 18.12.19
 ]]
 
 
@@ -47,7 +47,7 @@ return function (map,surf)
 
   local tagmap = map.TagMap["surface"]
 
-  local panw=math.random(125,555)
+  local panw=math.random(255,1023)
   local panh=math.random(125,555)
   local totw=panw*10
   local toth=panh*10
