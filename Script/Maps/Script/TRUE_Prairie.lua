@@ -45,7 +45,7 @@ local Shirley = tagmap.surface.NPC_Shirley
 function prairie:overdraw()
     -- --[[ DEBUG: Shirley does not appear!
     -- $USE Script/Subs/Screen
-    if Shirley then
+    if Shirley and debugmode() then
        local line = love.graphics.line
        local sx = Shirley.COORD.x-field.cam.x
        local sy = Shirley.COORD.y-field.cam.y

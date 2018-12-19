@@ -73,6 +73,9 @@ function dbgcon()
    if allowdebug and keydown.rshift and keydown.lshift and keydown['kp-'] then laura.goconsole() end
 end   
 
+function debugmode()
+    return allowdebug
+end
 
 function save_gcfg()
    if CSay then CSay("Saving global config") end
