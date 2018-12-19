@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.12.16
+version: 18.12.19
 ]]
 CSay("Welcome to the prairie!")
 
@@ -58,6 +58,30 @@ function prairie:overdraw()
        -- CSay('No Shirley!')   
     end       
     -- ]]
+end
+
+local function PostShirley()
+    local shirleylevel = Var.G('%LEVELCAP') or 0 -- Shirley's level equal to the current level cap 
+    if shirleylevel<1 then shirleylevel=1 end -- If some players are trying to do a "no travel medal" challenge (fools) the game could crash when the cap is 0, so this should make sure Shirley's level is always 1 at least!
+    MapText("SHIRLEY2")
+    field:kill('NPC_Shirley',true)
+    Done("&DONE.SHIRLEY.JOINED")
+    -- Shirley joins the party
+    laura.makechar("Shirley",shirleylevel)
+    rpg:SetParty(3,"Shirley")
+    -- All done, back the the world map
+    WorldMap("PrimosRegion")
+end
+
+function prairie:NPC_Shirley()
+    MapText("SHIRLEY1") 
+    field:Schedule(PostShirley)
+    BossFight("Pretty Little Girl with a Pretty Big Sword","Shirley",
+         {
+           foes={'boss/Shirley'},
+           arena="prairie",
+           music="Music/BossSpecial/Dee_Yan-Key_-_03_-_A_Childrens_Song.mp3"
+    })
 end
     
 return prairie
