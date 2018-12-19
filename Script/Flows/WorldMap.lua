@@ -1,6 +1,6 @@
 --[[
   WorldMap.lua
-  Version: 18.11.28
+  Version: 18.12.19
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -36,6 +36,9 @@
 ]]
 
 local wmm = {}
+
+wmm.iconstrip = {} -- Crash preventer as we do not need this
+
 gamedata.worldmap = gamedata.worldmap or {}
 gamedata.worldmap.unlocked  = gamedata.worldmap.unlocked  or {} 
 gamedata.worldmap.beenthere = gamedata.worldmap.beenthere or {}
