@@ -1,6 +1,6 @@
 --[[
   iconstrip.lua
-  Version: 18.01.30
+  Version: 18.12.19
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -78,7 +78,7 @@ end
 function showstrip()
      white()
      local f = flow.get()
-     assert(f.iconstrip,"Hey? There is no iconstrop set for this flow!")
+     assert(f.iconstrip,"Hey? There is no iconstrip set for this flow!")
      local is=f.iconstrip
      local x,y=love.mouse.getPosition()
      is.x = is.x or 100
