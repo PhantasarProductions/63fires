@@ -394,6 +394,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
    1. Alias: Script/Data/CharAbility/Demon_Ryanna_Stopcontact.lua
 - Script: Script/Data/CharAbility/Nino.lua
 - Script: Script/Data/CharAbility/Ryanna.lua
+- Script: Script/Data/CharAbility/Shirley.lua
 - Script: Script/Data/Combat/ActEffect/Access_Start.lua
 - Script: Script/Data/Combat/ActEffect/RyannaRestore.lua
 - Script: Script/Data/Combat/ActEffect/Steal.lua
@@ -431,6 +432,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_STOPCONTACT_F1.lua
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_STOPCONTACT_F2.lua
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_STOPCONTACT_F3.lua
+- Script: Script/Data/IAA/ABL_HERO_EARTH_CRACK.lua
 - Script: Script/Data/IAA/ABL_HERO_NINO_CUREPD.lua
 - Script: Script/Data/IAA/ABL_HERO_NINO_ESUNA.lua
 - Script: Script/Data/IAA/ABL_HERO_NINO_FEROSLASH.lua
@@ -449,6 +451,16 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/IAA/ABL_HERO_RYANNA_PARALYSINGSTAB.lua
 - Script: Script/Data/IAA/ABL_HERO_RYANNA_PICKPOCKET.lua
 - Script: Script/Data/IAA/ABL_HERO_RYANNA_VENOMSTAB.lua
+- Script: Script/Data/IAA/ABL_HERO_SHIRLEY_ABSORB.lua
+- Script: Script/Data/IAA/ABL_HERO_SHIRLEY_CUT_DOWN.lua
+- Script: Script/Data/IAA/ABL_HERO_SHIRLEY_EARTH_CRACK.lua
+- Script: Script/Data/IAA/ABL_HERO_SHIRLEY_MAYHEM.lua
+- Script: Script/Data/IAA/ABL_HERO_SHIRLEY_PS2X.lua
+- Script: Script/Data/IAA/ABL_HERO_SHIRLEY_PS3X.lua
+- Script: Script/Data/IAA/ABL_HERO_SHIRLEY_PS5X.lua
+- Script: Script/Data/IAA/ABL_HERO_SHIRLEY_SHIELD.lua
+- Script: Script/Data/IAA/ABL_HERO_SHIRLEY_WAR_SHOUT.lua
+- Script: Script/Data/IAA/ABL_HERO_SHIRLEY_WILLPOWER.lua
 - Script: Script/Data/IAA/ACT_ATTACK.lua
 - Script: Script/Data/IAA/ACT_GUARD.lua
 - Script: Script/Data/IAA/FISH_CAVECRAB.lua
@@ -577,6 +589,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Subs/SaveGame.lua
 - Script: Script/Subs/screen.lua
 - Script: Script/Subs/ScrollThrough.lua
+- Script: Script/Subs/ShirleyAbsorb.lua
 - Script: Script/Subs/StatusBar.lua
 - Script: Script/Subs/Transform.lua
 - Markdown document: tools used.md
