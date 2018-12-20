@@ -61,6 +61,8 @@ local chryanna = {
              end,
   Teach = function(self,abl)
                if self.abl[abl].scenario then return false end
+               gamedata.xchardata = gamedata.xchardata or {}
+               gamedata.xchardata.Ryanna = gamedata.xchardata.Ryanna or {}                
                --local ra = Var.G("%RYANNA.ABILITYUSED") -- * Var.G("%SKILL")
                local ra = gamedata.xchardata.Ryanna.AbilitiesUsed or 0               
                local na = (self.abl[abl].points or 0) * Var.G("%SKILL")
