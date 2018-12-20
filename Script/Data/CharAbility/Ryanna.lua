@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.10.03
+version: 18.12.20
 ]]
 local chryanna = {
 
@@ -54,15 +54,16 @@ local chryanna = {
                gamedata.xchardata.Ryanna = gamedata.xchardata.Ryanna or {}                
                -- local ra = Var.G("%RYANNA.ABILITYUSED") * Var.G("%SKILL")
                local ra = gamedata.xchardata.Ryanna.AbilitiesUsed or 0               
-               local na = self.abl[abl].points or 0
+               local na = (self.abl[abl].points or 0) * Var.G("%SKILL")
                local za = na - ra
                if za<=0 then return "Attack a random target to obtain this ability" end
                return "Rynna needs to perform "..za.." special abilities in order to learn this one"      
              end,
   Teach = function(self,abl)
                if self.abl[abl].scenario then return false end
-               local ra = Var.G("%RYANNA.ABILITYUSED") * Var.G("%SKILL")
-               local na = self.abl[abl].points or 0
+               --local ra = Var.G("%RYANNA.ABILITYUSED") -- * Var.G("%SKILL")
+               local ra = gamedata.xchardata.Ryanna.AbilitiesUsed or 0               
+               local na = (self.abl[abl].points or 0) * Var.G("%SKILL")
                local za = na - ra
                return za<=0
           end           
