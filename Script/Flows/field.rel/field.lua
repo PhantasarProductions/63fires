@@ -1,6 +1,6 @@
 --[[
   field.lua
-  Version: 18.12.16
+  Version: 18.12.21
   Copyright (C) 2018 Jeroen Petrus Broks
   
   ===========================
@@ -185,6 +185,9 @@ end
 function field:followdaleader()
   for i=1,#RPGParty do
       local a=map.map:obj(map.layer,"PLAYER"..i)
+      a.DATA = a.DATA or {}
+      a.DATA.CWIND = a.DATA.CWIND or a.WIND
+      if a.DATA.CWIND~=a.WIND then a.FRAME=1 a.DATA.CWIND=a.WIND end
       a.TEXTURE = "GFX/PlayerSprites/"..RPGParty[i].."."..a.WIND..".jpbf"
       if i~=self.leader then
          if i==1 then follow("PLAYER1","PLAYER"..#RPGParty) 
