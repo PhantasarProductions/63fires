@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.12.19
+version: 18.12.21
 ]]
 
 
@@ -81,13 +81,16 @@ return function (map,surf)
     map.TagMap["surface"]["Start"]=KNO
     
     KNO={}
+    surf[#surf+1] = KNO
     KNO["KIND"]="Zone"
     KNO["COORD"]={x=0,y=toth-64}
     KNO["SIZE"]={width=totw,height=76}
     KNO["TAG"]="PrimosRegion"
     KNO["IMPASSIBLE"] = false
     KNO["FORCEPASSIBLE"] = false
-    map.TagMap["surface"]["PrimosRegion"]=KNO    
+    KNO["DOMINACE"] = 1
+    map.TagMap["surface"]["PrimosRegion"]=KNO  
+    for f,_ in spairs(map.TagMap.surface) do CSay("I have now: "..f) end 
   end
   
   -- The grass panels
@@ -102,8 +105,8 @@ return function (map,surf)
     KNO["INSERT"] = { x = 0-(ox%32), y = 0-(oy%32) } 
     KNO["ROTATION"] = 0
     KNO["SIZE"] = { width = panw, height = panh } 
-    KNO["TAG"] = ("MyPanel %d.%d"):format(x,y)
-      map.TagMap["surface"][("Panel %d.%d"):format(x,y)] = KNO
+    KNO["TAG"] = "" --("MyPanel %d.%d"):format(x,y)
+      -- map.TagMap["surface"][("Panel %d.%d"):format(x,y)] = KNO
     KNO["LABELS"] = ""
     KNO["DOMINANCE"] = 2
     KNO["TEXTURE"] = "GFX/Textures/Prairie/Dry_Grass.png"
