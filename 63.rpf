@@ -134,6 +134,7 @@ Music/Ori/Dewdrop Fantasy.mp3 => Music/Dungeon/Forest1.mp3
 
 [List:ALIASES]
 GFX/PlayerSprites/Ryanna.West.jpbf/000000000.png => GFX/Combat/Fighters/Hero/Ryanna_IDLE.png
+GFX/PlayerSprites/Shirley.West.jpbf/000000000.png => GFX/Combat/Fighters/Hero/Shirley_IDLE.png
 GFX/Combat/Fighters/Hero/Demon_Ryanna_Lucifer_Attack.png => GFX/Combat/Fighters/Hero/Demon_Ryanna_Lucifer_Cast.png
 GFX/Combat/Fighters/Hero/Demon_Ryanna_Stopcontact_Attack.png => GFX/Combat/Fighters/Hero/Demon_Ryanna_Stopcontact_Cast.png
 GFX/Skills/3.png => GFX/Portret/Ryanna/TotalFury.png
