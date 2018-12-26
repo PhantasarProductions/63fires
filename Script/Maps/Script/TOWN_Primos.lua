@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.12.16
+version: 18.12.22
 ]]
 
 
@@ -88,7 +88,13 @@ function Primos:NPC_Chief()
        MapText("PHILIP2")
        return
     end   
-    error("This part has not yet been scripted.\nRest awhile in the Y.M.C.A while I take care of that!")
+    if (not Done("&DONE.PRIMOS.SHRILEYJOINED.CHIEF")) then
+       MapText("PHILIP3")
+       WorldMap_Unlock('D_HAUNTEDTUNNEL')
+       Var.D("$WMCHAT","HAUNTED")
+    end
+    MapText("PHILIP4")    
+    --error("This part has not yet been scripted.\nRest awhile in the Y.M.C.A while I take care of that!")
 end
 
 function Primos:oncycle()
@@ -107,7 +113,8 @@ function Primos:NPC_Rose()
        MapText("ROSE2")
        return
     end   
-    error("This part has not yet been scripted.\nThey may call her the wild Rose, while her name is Eleisa Day, but that doesn't make me work faster!")
+    MapText("ROSE2")
+    --error("This part has not yet been scripted.\nThey may call her the wild Rose, while her name is Eleisa Day, but that doesn't make me work faster!")
 end
 
     
