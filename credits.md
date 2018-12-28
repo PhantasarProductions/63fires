@@ -346,6 +346,14 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Combat/Fighters/Hero/Nino_IDLE.png
 - Graphic image: GFX/Combat/Fighters/Hero/Ryanna_Cast.png
 - PikoPixel source file: GFX/Combat/Fighters/Hero/Ryanna_Transformed_Source.piko
+- Graphic image: GFX/Combat/Fighters/Hero/Shirley_Attack.jpbf/001.1.png
+   1. Alias: GFX/Combat/Fighters/Hero/Shirley_Attack.jpbf/001.2.png
+- Graphic image: GFX/Combat/Fighters/Hero/Shirley_Attack.jpbf/002.png
+- Graphic image: GFX/Combat/Fighters/Hero/Shirley_Attack.jpbf/003.1.png
+   1. Alias: GFX/Combat/Fighters/Hero/Shirley_Attack.jpbf/003.2.png
+   1. Alias: GFX/Combat/Fighters/Hero/Shirley_Attack.jpbf/003.3.png
+   1. Alias: GFX/Combat/Fighters/Hero/Shirley_Attack.jpbf/003.4.png
+- File: GFX/Combat/Fighters/Hero/Shirley_Cast (Autosaved).piko-png
 - Graphic image: GFX/Combat/Fighters/Hero/Shirley_Cast.png
 - Graphic image: GFX/Combat/Fighters/Hero/Untitled.png
 - Graphic image: GFX/Inventory_Head/1.png
