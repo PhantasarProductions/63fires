@@ -146,8 +146,14 @@ GFX/StoryFont/83.76.png => GFX/Puzzle/KVault/Buttons/Select.png
 GFX/StoryFont/83.84.png => GFX/Puzzle/KVault/Buttons/Start.png
 GFX/StoryFont/65.png => GFX/Puzzle/KVault/Buttons/A.png
 GFX/StoryFont/66.png => GFX/Puzzle/KVault/Buttons/B.png
+GFX/Combat/Fighters/Hero/Shirley_Attack.jpbf/001.1.png => GFX/Combat/Fighters/Hero/Shirley_Attack.jpbf/001.2.png
+GFX/Combat/Fighters/Hero/Shirley_Attack.jpbf/003.1.png => GFX/Combat/Fighters/Hero/Shirley_Attack.jpbf/003.2.png
+GFX/Combat/Fighters/Hero/Shirley_Attack.jpbf/003.1.png => GFX/Combat/Fighters/Hero/Shirley_Attack.jpbf/003.3.png
+GFX/Combat/Fighters/Hero/Shirley_Attack.jpbf/003.1.png => GFX/Combat/Fighters/Hero/Shirley_Attack.jpbf/003.4.png
 Script/Data/CharAbility/Demon_Ryanna_Lucifer.lua => Script/Data/CharAbility/Demon_Ryanna_Stopcontact.lua
 Script/Data/CharAbility/Demon_Ryanna_Lucifer.lua => Script/Data/CharAbility/Demon_Ryanna_IJsblokje.lua
+
+
 
 [List:DYNAMICJCR.DARWIN]
 /VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/buildmusic/63FOLD.Music.jcr
