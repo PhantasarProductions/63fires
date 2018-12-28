@@ -32,12 +32,13 @@
   
  **********************************************
  
-version: 18.12.20
+version: 18.12.28
 ]]
 local dontcallmeShirley = {} -- Yeah this is a referrence to Leslie Nielsen!
 
 gamedata.xchardata.Shirley = gamedata.xchardata.Shirley or {}
 gamedata.xchardata.Shirley.AbsorbList = gamedata.xchardata.Shirley.AbsorbList or {}
+gamedata.xchardata.Shirley.AbsorbCount = gamedata.xchardata.Shirley.AbsorbCount or {}
 dontcallmeShirley.list = gamedata.xchardata.Shirley.AbsorbList
 
 function dontcallmeShirley:Total()
