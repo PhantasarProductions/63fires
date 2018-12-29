@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.08.14
+version: 18.12.29
 ]]
 
 local skill=Var.G("%SKILL")
@@ -196,6 +196,7 @@ local function plate(i)
           love.graphics.present()
           Done(puzzlesolved)
       end
+      field:kill('PUZ_BARRIER',true)
       map:remapall()
    else
        puzseq=nil
