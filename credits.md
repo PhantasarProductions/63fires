@@ -302,6 +302,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - GINI Is Not Ini: Data/Foes/Boss/UltraSlime.gini
 - GINI Is Not Ini: Data/Foes/Reg/AquaGoblin.gini
 - GINI Is Not Ini: Data/Foes/Reg/Bat.gini
+- GINI Is Not Ini: Data/Foes/Reg/Coyote.gini
 - GINI Is Not Ini: Data/Foes/Reg/EyeBlob.gini
 - GINI Is Not Ini: Data/Foes/Reg/goblin.gini
 - GINI Is Not Ini: Data/Foes/Reg/MageBlob.gini
@@ -430,6 +431,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/IAA/ABL_FOE_DIVE.lua
 - Script: Script/Data/IAA/ABL_FOE_FLAME.lua
 - Script: Script/Data/IAA/ABL_FOE_FLAMESTRIKE.lua
+- Script: Script/Data/IAA/ABL_FOE_HOWLING.lua
 - Script: Script/Data/IAA/ABL_FOE_REGENERATION.lua
 - Script: Script/Data/IAA/ABL_FOE_SHURIKEN.lua
 - Script: Script/Data/IAA/ABL_FOE_SPEWVENOW.lua
