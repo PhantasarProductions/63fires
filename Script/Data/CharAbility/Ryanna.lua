@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.12.20
+version: 18.12.29
 ]]
 local chryanna = {
 
@@ -40,7 +40,7 @@ local chryanna = {
                Mystic = { start=true },
                Access = { scenario=true},
                Pickpocket = { start=true },
-               StunStab = { points=5 },
+               ParalysingStab = { points=5 },
                PoisonStab = { points=7 },
                BackStab = { points=20 },
                FollowMe = { points=40},
