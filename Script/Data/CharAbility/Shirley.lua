@@ -40,14 +40,14 @@ local chShirley = {
    abl = {
    
        Absorb = { start=true },
-       PS2X = { need = 20 },
-       PS3X = { need = 40 },
-       War_Shout = { need = 80 },
-       Cut_Down = { need = 160 },
-       Earth_Crack = { need = 320 },
-       PS5X = { need = 640 },
-       Shield = { need = 1280 },
-       Mayhem = { need = 2560 }
+       PS2X = { need = 200 },
+       PS3X = { need = 400 },
+       War_Shout = { need = 800 },
+       Cut_Down = { need = 1600 },
+       Earth_Crack = { need = 3200 },
+       PS5X = { need = 6400 },
+       Shield = { need = 12800 },
+       Mayhem = { need = 25600 }
        
    },
    
