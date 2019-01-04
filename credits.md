@@ -328,7 +328,6 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Combat/Arena/Prairie.png
 - Graphic image: GFX/Combat/Arena/StoneTunnel.png
 - Graphic image: GFX/Combat/Arena/ZZZ_FishingSpot.png
-- PikoPixel source file: GFX/Combat/Cards/Heroes (Autosaved).piko
 - PikoPixel source file: GFX/Combat/Cards/Heroes.piko
 - Graphic image: GFX/Combat/Cards/Hero_Nino.png
 - Graphic image: GFX/Combat/Cards/Hero_Ryanna.png
@@ -355,7 +354,6 @@ Also note that some files have "alias" files attached to them. This credits.md f
    1. Alias: GFX/Combat/Fighters/Hero/Shirley_Attack.jpbf/003.2.png
    1. Alias: GFX/Combat/Fighters/Hero/Shirley_Attack.jpbf/003.3.png
    1. Alias: GFX/Combat/Fighters/Hero/Shirley_Attack.jpbf/003.4.png
-- File: GFX/Combat/Fighters/Hero/Shirley_Cast (Autosaved).piko-png
 - Graphic image: GFX/Combat/Fighters/Hero/Shirley_Cast.png
 - Graphic image: GFX/Combat/Fighters/Hero/Untitled.png
 - Graphic image: GFX/Inventory_Head/1.png
@@ -382,7 +380,6 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Portret/Shirley/General.png
 - Graphic image: GFX/Skills/1.png
 - Graphic image: GFX/Skills/2.png
-- File: GFX/Textures/Prairie/Shirley (Autosaved).piko-png
 - Graphic image: GFX/Textures/Prairie/Shirley.png
 - PikoPixel source file: GFX/Textures/Windville/Ryanna Statue.piko
 - Graphic image: GFX/Textures/Windville/Ryanna Statue.png
@@ -797,6 +794,11 @@ Also note that some files have "alias" files attached to them. This credits.md f
 ## Nick's Fonts
 ### Downloaded from DaFont.com -- 100% Free -- Or so it says
 - Font: Fonts/CHANTICL.TTF
+
+
+## papapishu
+### Public Domain
+- Graphic image: gfx/combat/fighters/foe/reg/Coyote.png
 
 
 ## Pippi2011
