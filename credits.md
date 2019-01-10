@@ -248,6 +248,10 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/105.png
 - Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/110.png
 - Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/115.png
+- PikoPixel source file: GFX/Textures/Freddy/Board (Autosaved).piko
+- PikoPixel source file: GFX/Textures/Freddy/Board.piko
+- Graphic image: GFX/Textures/Freddy/Board_Freddy.png
+- Graphic image: GFX/Textures/Freddy/Board_Menu.png
 - Graphic image: GFX/Textures/HookSpot.png
 - Graphic image: GFX/Textures/Muur Toorts/Uit.png
 - Graphic image: GFX/Textures/Objects/Closed Grave.png
