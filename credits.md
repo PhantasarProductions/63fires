@@ -66,6 +66,8 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Textures/Dungeon/StoneTunnel/RockWall.png
 - Graphic image: GFX/Textures/Dungeon/StoneTunnel/RockWall_LV.png
 - Graphic image: GFX/Textures/Dungeon/StoneTunnel/RockWall_RV.png
+- Graphic image: GFX/Textures/Freddy/Floor.png
+- Graphic image: GFX/Textures/Freddy/Wall.png
 
 
 ## http://freesfx.co.uk
@@ -252,6 +254,8 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - PikoPixel source file: GFX/Textures/Freddy/Board.piko
 - Graphic image: GFX/Textures/Freddy/Board_Freddy.png
 - Graphic image: GFX/Textures/Freddy/Board_Menu.png
+- Graphic image: GFX/Textures/Freddy/Booth.png
+- Graphic image: GFX/Textures/Freddy/Soft Door.png
 - Graphic image: GFX/Textures/HookSpot.png
 - Graphic image: GFX/Textures/Muur Toorts/Uit.png
 - Graphic image: GFX/Textures/Objects/Closed Grave.png
