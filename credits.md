@@ -66,6 +66,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Textures/Dungeon/StoneTunnel/RockWall.png
 - Graphic image: GFX/Textures/Dungeon/StoneTunnel/RockWall_LV.png
 - Graphic image: GFX/Textures/Dungeon/StoneTunnel/RockWall_RV.png
+- Graphic image: GFX/Textures/Freddy/Booth wall.png
 - Graphic image: GFX/Textures/Freddy/Floor.png
 - Graphic image: GFX/Textures/Freddy/Wall.png
 
