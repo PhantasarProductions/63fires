@@ -38,7 +38,7 @@ local Freddy = {}
 
 field:ZA_Enter("Entrance",function()
     if not Done("&DONE.FREDDY.ENTER") then
-       MapText("ENTRACE")
+       MapText("ENTRANCE")
     end
  end       
 )
