@@ -807,6 +807,11 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Font: Fonts/CHANTICL.TTF
 
 
+## Nihilore
+### Creative Commons BY 4.0 license -- http://www.nihilore.com/license/
+- Music: Music/Dungeon/All the wasted smiles.mp3
+
+
 ## papapishu
 ### Public Domain
 - Graphic image: gfx/combat/fighters/foe/reg/Coyote.png
