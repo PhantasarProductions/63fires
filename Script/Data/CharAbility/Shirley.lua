@@ -2,7 +2,7 @@
 **********************************************
   
   Shirley.lua
-  (c) Jeroen Broks, 2018, All Rights Reserved.
+  (c) Jeroen Broks, 2018, 2019, All Rights Reserved.
   
   This file contains material that is related 
   to a storyline that is which is strictly
@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.12.20
+version: 19.01.12
 ]]
 local skill = Var.G("%SKILL")
 local chShirley = {
