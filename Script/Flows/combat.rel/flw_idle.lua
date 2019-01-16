@@ -48,7 +48,7 @@ function zooi:validcard(card,allowondead)
               if      not self.fighters[nt]       then CSay(("= Target %s is non-existent"):format(nt))
               elseif  rpg:Points(nt,"HP").Have==0               
                  and  (prefixed(nt,"FOE_") or (not allowdead))
-                                                  then CSsay("= Target %s has zero hp!")
+                                                  then CSay(("= Target %s has zero hp!"):format(nt))
               else newtar[#newtar+1]=nt end                                                  
           end
           if #newtar==0 then return CSay("= Invalid card: No more valid targets") end

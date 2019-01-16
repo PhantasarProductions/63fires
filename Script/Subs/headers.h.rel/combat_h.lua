@@ -71,7 +71,11 @@ LoadedFoeImages = LoadedFoeImages or {} -- Should remain in the memory even afte
 
 function FoeImage(imgfile)
    local ifile = imgfile:upper()
-   LoadedFoeImages[ifile] = LoadedFoeImages[ifile] or LoadImage(imgfile)
+   if suffixed(ifile,"/") then
+      -- $USE libs/RandomFile 
+      ifile = RandomFile(ifile)
+   end   
+   LoadedFoeImages[ifile] = LoadedFoeImages[ifile] or LoadImage(ifile)
    return LoadedFoeImages[ifile]
 end   
 
