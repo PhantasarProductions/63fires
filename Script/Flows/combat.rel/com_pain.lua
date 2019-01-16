@@ -42,6 +42,7 @@ local pijn = {}
 function pijn:Hurt(targettag,damage,element)
    local ret = damage
    local effect = 3
+   element = element or "None"
    local function p() return math.floor(ret+.5) end
    if rpg:StatExists(targettag,"END_ER_"..element) then
       effect = rpg:Stat(targettag,"END_ER_"..element)
