@@ -1,7 +1,7 @@
 --[[
   flw_execution.lua
-  Version: 18.12.01
-  Copyright (C) 2018 Jeroen Petrus Broks
+  Version: 19.01.16
+  Copyright (C) 2018, 2019 Jeroen Petrus Broks
   
   ===========================
   This file is part of a project related to the Phantasar Chronicles or another
@@ -58,6 +58,10 @@ function beul:esf_prewait()
      oldprewait=nil
      self.esf='pose'
      if self.nextmove.removeitem and (not self.nextmove.xcard) then RemoveItem(self.nextmove.removeitem) end
+     if self.nextmove.takeap and (not self.nextmove.xcard) then
+        local ch=self.nextmove.executor
+        rpg:Points(ch,'AP').Have = rpg:Points(ch,'AP').Have - self.nextmove.takeap
+     end
      if prefixed(self.nextmove.act:upper(),"ABL_HERO_RYANNA") then --and self.nextmove.executor=='Ryanna' then
         gamedata.xchardata = gamedata.xchardata or {}
         gamedata.xchardata.Ryanna = gamedata.xchardata.Ryanna or {} 

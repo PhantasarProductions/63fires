@@ -1,7 +1,7 @@
 --[[
   flw_idle.lua
-  Version: 18.12.01
-  Copyright (C) 2018 Jeroen Petrus Broks
+  Version: 19.01.16
+  Copyright (C) 2018, 2019 Jeroen Petrus Broks
   
   ===========================
   This file is part of a project related to the Phantasar Chronicles or another

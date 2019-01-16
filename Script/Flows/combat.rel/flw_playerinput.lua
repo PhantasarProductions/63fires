@@ -1,7 +1,7 @@
 --[[
   flw_playerinput.lua
-  Version: 18.11.24
-  Copyright (C) 2018 Jeroen Petrus Broks
+  Version: 19.01.16
+  Copyright (C) 2018, 2019 Jeroen Petrus Broks
   
   ===========================
   This file is part of a project related to the Phantasar Chronicles or another
@@ -212,19 +212,21 @@ function invoer:flow_selectability()
     i = SelectAbility('combat',ch,c,win)
     if mousehit(2) then self.flow='playerinput' end
     -- Item selected, let's work it out!
-    if i then
+    if i then 
        item = ItemGet(i)
-       self.flow='heroselecttarget' 
-       self.selecttype=item.Target
-       self.nextmove.act=i 
-       self.nextmove.takeap=item.ABL_APCost
-       self.nextmove.checksilence=item.ABL_silenceblock
-       if item.InputXtraScript and item.InputXtraScript~="" then
-          local ixs = Use("Script/Data/Combat/InputXtraScript/"..item.InputXtraScript..".lua")
-          assert( ixs , "InputXtraScript not in order" )
-          ixs(self,item.InputXtraScript_Arg)
-       end    
+       if rpg:Points(ch,'AP').Have>=(item.ABL_APCost or 0) then
+          self.flow='heroselecttarget' 
+          self.selecttype=item.Target
+          self.nextmove.act=i 
+          self.nextmove.takeap=item.ABL_APCost
+          self.nextmove.checksilence=item.ABL_silenceblock
+          if item.InputXtraScript and item.InputXtraScript~="" then
+             local ixs = Use("Script/Data/Combat/InputXtraScript/"..item.InputXtraScript..".lua")
+             assert( ixs , "InputXtraScript not in order" )
+             ixs(self,item.InputXtraScript_Arg)
+          end   
        flushkeys() 
+       end    
     end
 end
 
