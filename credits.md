@@ -68,6 +68,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Textures/Dungeon/StoneTunnel/RockWall_RV.png
 - Graphic image: GFX/Textures/Freddy/Booth wall.png
 - Graphic image: GFX/Textures/Freddy/Floor.png
+- Graphic image: GFX/Textures/Freddy/Freddy's.png
 - Graphic image: GFX/Textures/Freddy/Wall.png
 
 
@@ -202,6 +203,9 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Combat/End/you_win.png
 - PikoPixel source file: GFX/Combat/Fighters/Foe/Boss/UltraSlime.piko
 - Graphic image: GFX/Combat/Fighters/Foe/Boss/UltraSlime.png
+- Graphic image: GFX/Combat/Fighters/Foe/Reg/Animatronics/Bo.png
+- Graphic image: GFX/Combat/Fighters/Foe/Reg/Animatronics/Ch.png
+- Graphic image: GFX/Combat/Fighters/Foe/Reg/Animatronics/Fr.png
 - Graphic image: GFX/Combat/Fighters/Foe/Reg/BlueSlime.png
 - Graphic image: GFX/Combat/Fighters/Foe/Reg/GreySlime.png
 - Graphic image: GFX/Combat/Fighters/Foe/Reg/LightGreenSlime.png
@@ -251,7 +255,6 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/105.png
 - Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/110.png
 - Graphic image: GFX/Textures/Dungeon/Black/WardingGates.jpbf/115.png
-- PikoPixel source file: GFX/Textures/Freddy/Board (Autosaved).piko
 - PikoPixel source file: GFX/Textures/Freddy/Board.piko
 - Graphic image: GFX/Textures/Freddy/Board_Freddy.png
 - Graphic image: GFX/Textures/Freddy/Board_Menu.png
@@ -309,6 +312,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - GINI Is Not Ini: Data/Foes/Boss/SupaSlime.gini
 - GINI Is Not Ini: Data/Foes/Boss/Troll.gini
 - GINI Is Not Ini: Data/Foes/Boss/UltraSlime.gini
+- GINI Is Not Ini: Data/Foes/Reg/Animatronic.gini
 - GINI Is Not Ini: Data/Foes/Reg/AquaGoblin.gini
 - GINI Is Not Ini: Data/Foes/Reg/Bat.gini
 - GINI Is Not Ini: Data/Foes/Reg/Coyote.gini
@@ -335,6 +339,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Combat/Arena/Black_Tower.png
 - Graphic image: GFX/Combat/Arena/Caves_Starrow.png
 - Graphic image: GFX/Combat/Arena/Forest_Spar.png
+- Graphic image: GFX/Combat/Arena/Freddy.png
 - Graphic image: GFX/Combat/Arena/Prairie.png
 - Graphic image: GFX/Combat/Arena/StoneTunnel.png
 - Graphic image: GFX/Combat/Arena/ZZZ_FishingSpot.png
@@ -572,6 +577,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Maps/Script/DUNG_BeaufortForest.lua
 - Script: Script/Maps/Script/DUNG_BlackTower.lua
 - Script: Script/Maps/Script/DUNG_BluePalace.lua
+- Script: Script/Maps/Script/DUNG_Freddy.lua
 - Script: Script/Maps/Script/DUNG_Graveyard.lua
 - Script: Script/Maps/Script/DUNG_PrimosTunnel.lua
 - Script: Script/Maps/Script/DUNG_Starrow.lua
