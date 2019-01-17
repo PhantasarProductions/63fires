@@ -155,6 +155,7 @@ GFX/Combat/Fighters/Hero/Shirley_Attack.jpbf/003.1.png => GFX/Combat/Fighters/He
 GFX/Combat/Fighters/Hero/Shirley_Attack.jpbf/003.1.png => GFX/Combat/Fighters/Hero/Shirley_Attack.jpbf/003.4.png
 Script/Data/CharAbility/Demon_Ryanna_Lucifer.lua => Script/Data/CharAbility/Demon_Ryanna_Stopcontact.lua
 Script/Data/CharAbility/Demon_Ryanna_Lucifer.lua => Script/Data/CharAbility/Demon_Ryanna_IJsblokje.lua
+Script/Data/Combat/StatusChanges/Guard.lua => Script/Data/Combat/StatusChanges/Guarding.lua
 
 [List:DYNAMICJCR.DARWIN]
 /VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/63/buildmusic/63FOLD.Music.jcr

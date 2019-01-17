@@ -1,7 +1,7 @@
 --[[
   com_pain.lua
-  Version: 18.02.03
-  Copyright (C) 2018 Jeroen Petrus Broks
+  Version: 19.01.17
+  Copyright (C) 2018, 2019 Jeroen Petrus Broks
   
   ===========================
   This file is part of a project related to the Phantasar Chronicles or another
@@ -36,12 +36,20 @@
 ]]
 local pijn = {}
 
+local rgrd = {
+     
+         Hero = {.60,.50,.5},
+         Foe  = {.2,.50,.95}     
+}
 
-
+local skill = Var.G("%SKILL")
 
 function pijn:Hurt(targettag,damage,element)
    local ret = damage
    local effect = 3
+   -- local target = fighters[targettag]
+   local ttype  = "Hero" if prefixed(targettag,"FOE_") then ttype="Foe" end
+   if self:StatusProperty(targettag,"dmgreduce") then ret = math.ceil(ret*rgrd[ttype][skill]) end
    element = element or "None"
    local function p() return math.floor(ret+.5) end
    if rpg:StatExists(targettag,"END_ER_"..element) then

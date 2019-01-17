@@ -37,11 +37,20 @@
 local invoer = {}
 
 
+local function letsguard(self)
+        self.nextmove.targets={self.invoeren}
+        self.nextmove.pose=true
+        self.nextmove.act="ACT_Guard"
+        self.flow='execution'
+        self.invoeren=nil                
+end
+
+
 invoer.items = {
           { tit = "Attack",x=100,y=5, tut="Physically attack on enemy", fun=function(self) self.flow='heroselecttarget' self.selecttype="1F" flushkeys() self.nextmove.act='ACT_Attack' end},
           { tit = "Ability", x=300,y=5, tut="Use special skills, spells or other abilities", fun=function(self) self.flow='selectability' end},
           { tit = "Item",x=100,y=50, tut="Use an item from your inventory", fun=function(self) self.flow='selectitem' end},
-          { tit = "Guard",x=300,y=50, tut="Take a defensive stand\nThis will half damage received and recover a few AP"}
+          { tit = "Guard",x=300,y=50, tut="Take a defensive stand\nThis will half damage received and recover a few AP", fun=letsguard}
 }
 
 -- Hover click

@@ -1,7 +1,7 @@
 --[[
   com_statuschanges.lua
-  Version: 18.11.24
-  Copyright (C) 2018 Jeroen Petrus Broks
+  Version: 19.01.17
+  Copyright (C) 2018, 2019 Jeroen Petrus Broks
   
   ===========================
   This file is part of a project related to the Phantasar Chronicles or another
@@ -131,5 +131,17 @@ function csc:StatusPropertyValues(ch,prop)
         return t[i]
     end
 end        
+
+function csc:StatusRemoveByProperty(ctag,prop)
+    local kill = {}
+    for st,std in self:statuses(ctag) do
+        if std[prop] then kill[#kill+1]=st end
+    end
+    local c = self.fighters[ctag]
+    for killstatus in each(kill) do
+        c[killstatus]=nil
+    end
+end        
+
 
 return csc

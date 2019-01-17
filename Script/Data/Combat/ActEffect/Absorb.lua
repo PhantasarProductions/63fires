@@ -2,7 +2,7 @@
 **********************************************
   
   Absorb.lua
-  (c) Jeroen Broks, 2018, All Rights Reserved.
+  (c) Jeroen Broks, 2018, 2019, All Rights Reserved.
   
   This file contains material that is related 
   to a storyline that is which is strictly
@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.12.28
+version: 19.01.17
 ]]
 local penalty = {.5,1,5}
 local failpc  = {0,1,10} -- Penalty count on failed absorbs
@@ -91,9 +91,9 @@ return function(combat,targettag,shirleytag,params)
    
    -- Fail
    if math.random(1,10)<=failpc[skill] then sac[ufil] = sac[ufil] + 1 end
-   local verschil = srol-frol
+   local verschil = math.abs(srol-frol)
    combat:Hurt("Shirley",verschil)
-   combat.TagMessage(targettag,"Absorb Resisted!",255,34,0)
+   combat:TagMessage(targettag,"Absorb Resisted!",255,34,0)
    return true
    
 end
