@@ -70,6 +70,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Textures/Freddy/Floor.png
 - Graphic image: GFX/Textures/Freddy/Freddy's.png
 - Graphic image: GFX/Textures/Freddy/Wall.png
+- Graphic image: GFX/Textures/SS_Transporter/Metal Floor.png
 
 
 ## http://freesfx.co.uk
