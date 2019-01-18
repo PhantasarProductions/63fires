@@ -43,6 +43,9 @@ field:ZA_Enter("Entrance",function()
  end       
 )
 
+field:ZA_Enter("Activate_Scotty",function()
+     error("The boss is not yet present! Please wait another five nights or so and he'll be implemented... I hope :P")
+end)
 
 
 return Freddy
