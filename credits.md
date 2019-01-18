@@ -281,6 +281,10 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Textures/Primos/Tipi_Red.png
 - PikoPixel source file: GFX/Textures/Special/Crack.piko
 - Graphic image: GFX/Textures/Special/Crack.png
+- Graphic image: GFX/Textures/SS_Transporter/Blue Backwall -- Left -- Diagonally.png
+- Graphic image: GFX/Textures/SS_Transporter/Blue Backwall -- Right -- Diagonally.png
+- Graphic image: GFX/Textures/SS_Transporter/Blue Backwall.png
+- Graphic image: GFX/Textures/SS_Transporter/Transpad.png
 - Graphic image: GFX/Textures/Stairs/32/Down.png
 - Graphic image: GFX/Textures/Stairs/32/Up.png
 - Graphic image: GFX/Textures/Stairs/64/Down.png
