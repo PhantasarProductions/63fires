@@ -391,6 +391,8 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - PikoPixel source file: GFX/Portret/Demon_Ryanna_Stopcontact/General.piko
 - Graphic image: GFX/Portret/Demon_Ryanna_Stopcontact/General.png
 - GIMP source file: GFX/Portret/Demon_Ryanna_Stopcontact/General.xcf
+- Graphic image: GFX/Portret/Demon_Ryanna_Ventilator/General.png
+- GIMP source file: GFX/Portret/Demon_Ryanna_Ventilator/General.xcf
 - Graphic image: GFX/Portret/Nino/General.png
 - Graphic image: GFX/Portret/Ryanna/General.png
 - Graphic image: GFX/Portret/Ryanna/TotalFury.png
