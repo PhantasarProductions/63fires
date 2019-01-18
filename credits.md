@@ -397,6 +397,22 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Skills/1.png
 - Graphic image: GFX/Skills/2.png
 - Graphic image: GFX/Textures/Prairie/Shirley.png
+- Graphic image: GFX/Textures/SS_Facility/Binnenhoek_Noord_Oost.png
+- Graphic image: GFX/Textures/SS_Facility/Binnenhoek_Noord_West.png
+- Graphic image: GFX/Textures/SS_Facility/Binnenhoek_Zuid_Oost.png
+- Graphic image: GFX/Textures/SS_Facility/Binnenhoek_Zuid_West.png
+- Graphic image: GFX/Textures/SS_Facility/Buitenhoek_Noord_Oost.png
+- Graphic image: GFX/Textures/SS_Facility/Buitenhoek_Noord_west.png
+- Graphic image: GFX/Textures/SS_Facility/Buitenhoek_Zuid_Oost.png
+- Graphic image: GFX/Textures/SS_Facility/Buitenhoek_Zuid_West.png
+- Graphic image: GFX/Textures/SS_Facility/Deurstel_Oost.png
+- Graphic image: GFX/Textures/SS_Facility/Deurstel_West.png
+- Graphic image: GFX/Textures/SS_Facility/Muur_Noord.png
+- Graphic image: GFX/Textures/SS_Facility/Muur_Oost.png
+- Graphic image: GFX/Textures/SS_Facility/Muur_West.png
+- Graphic image: GFX/Textures/SS_Facility/Muur_Zuid.png
+- Graphic image: GFX/Textures/SS_Facility/Schuifdeur.png
+- Graphic image: GFX/Textures/SS_Facility/Vloer.png
 - PikoPixel source file: GFX/Textures/Windville/Ryanna Statue.piko
 - Graphic image: GFX/Textures/Windville/Ryanna Statue.png
 - File: Scenario/BK
@@ -422,6 +438,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/CharAbility/Shirley.lua
 - Script: Script/Data/Combat/ActEffect/Absorb.lua
 - Script: Script/Data/Combat/ActEffect/Access_Start.lua
+- Script: Script/Data/Combat/ActEffect/Concentrate.lua
 - Script: Script/Data/Combat/ActEffect/RyannaRestore.lua
 - Script: Script/Data/Combat/ActEffect/Steal.lua
 - Script: Script/Data/Combat/ActEffect/ZZZZ_StoryEvent_FirstTransform.lua
@@ -429,6 +446,8 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/Combat/InputXtraScript/Access_Start.lua
 - Script: Script/Data/Combat/SpellAni/Sparkle.lua
 - Script: Script/Data/Combat/StatusChanges/Death.lua
+- Script: Script/Data/Combat/StatusChanges/Guard.lua
+   1. Alias: Script/Data/Combat/StatusChanges/Guarding.lua
 - Script: Script/Data/Combat/StatusChanges/Paralysis.lua
 - Script: Script/Data/Combat/StatusChanges/Poison.lua
 - Script: Script/Data/Combat/StatusChanges/Silence.lua
