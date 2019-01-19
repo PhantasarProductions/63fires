@@ -202,6 +202,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Combat/Cards/Joker.png
 - Graphic image: GFX/Combat/End/Game_Over.png
 - Graphic image: GFX/Combat/End/you_win.png
+- Graphic image: GFX/Combat/Fighters/Foe/Boss/Scott.png
 - PikoPixel source file: GFX/Combat/Fighters/Foe/Boss/UltraSlime.piko
 - Graphic image: GFX/Combat/Fighters/Foe/Boss/UltraSlime.png
 - Graphic image: GFX/Combat/Fighters/Foe/Reg/Animatronics/Bo.png
