@@ -100,7 +100,7 @@ local ret={
 	["Stance_JumpToEnemy"] = false,
 	["Target"] = "AF",
 	["Target_Discriminate"] = true,
-	["Title"] = "Ye cannae break the laws of physics",
+	["Title"] = "Ye cannae change the laws of physics",
 	["Type"] = "Ability",
 }
 
