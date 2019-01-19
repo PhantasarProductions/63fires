@@ -34,6 +34,11 @@
  
 version: 19.01.19
 ]]
+
+-- $IF IGNORE
+local field
+-- $FI
+
 local Freddy = {}
 
 field:ZA_Enter("Entrance",function()
@@ -41,6 +46,16 @@ field:ZA_Enter("Entrance",function()
        MapText("ENTRANCE")
     end
  end       
+)
+
+field:ZA_Enter("Hide_Einde", function()
+      field:getmap().map:hidelabels('Einde',true) 
+  end
+)
+
+field:ZA_Enter("Show_Einde", function()
+      field:getmap().map:showlabels('Einde',true) 
+  end
 )
 
 field:ZA_Enter("Activate_Scotty",function()
