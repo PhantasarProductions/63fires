@@ -68,6 +68,7 @@ field:ZA_Enter("Activate_Scotty",function()
            foes={'boss/scott'},
            arena="ss_facility",           
     })
+    field:kill("Scott",true)
 end)
 
 
