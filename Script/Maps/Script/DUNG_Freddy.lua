@@ -58,8 +58,16 @@ field:ZA_Enter("Show_Einde", function()
   end
 )
 
+
+
 field:ZA_Enter("Activate_Scotty",function()
-     error("The boss is not yet present! Please wait another five nights or so and he'll be implemented... I hope :P")
+     -- error("The boss is not yet present! Please wait another five nights or so and he'll be implemented... I hope :P")
+     MapText("SCOTTY")
+     BossFight("Specialized technician","Scott",
+         {
+           foes={'boss/scott'},
+           arena="ss_facility",           
+    })
 end)
 
 
