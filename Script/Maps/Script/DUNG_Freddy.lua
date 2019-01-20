@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 19.01.19
+version: 19.01.20
 ]]
 
 -- $IF IGNORE
@@ -58,7 +58,7 @@ field:ZA_Enter("OperateDoor",function()
 end)
 
 field:ZA_Enter("OperateDoor",function()
-    for deur in each(schuifdeuren) do deur.m=-math.abs(eur.deur.COORD.x-deur.x) end
+    for deur in each(schuifdeuren) do deur.m=-math.abs(deur.deur.COORD.x-deur.x) end
 end)
 
 function Freddy:overdraw()
