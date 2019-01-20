@@ -53,18 +53,20 @@ end
 schuifdeuren[1].d = -1
 schuifdeuren[2].d =  1
 
-field:ZA_Enter("OperateDoor",function()
+field:ZA_Enter("OperateDoor",function()    
     for deur in each(schuifdeuren) do deur.m=30-math.abs(deur.deur.COORD.x-deur.x)  end
+    CSay("Sesam open u!")
 end)
 
-field:ZA_Enter("OperateDoor",function()
+field:ZA_Leave("OperateDoor",function()
+    CSay("Sesam sluit u!")
     for deur in each(schuifdeuren) do deur.m=-math.abs(deur.deur.COORD.x-deur.x) end
 end)
 
-function Freddy:overdraw()
+function Freddy:oncycle()
     for deur in each(schuifdeuren) do
-        if     deur.m>0 then deur.deur.COORD.x = deur.deur.COORD.x + deur.d
-        elseif deur.m<0 then deur.deur.COORD.x = deur.deur.COORD.x - deur.d end
+        if     deur.m>0 then deur.deur.COORD.x = deur.deur.COORD.x + deur.d deur.m=deur.m-1
+        elseif deur.m<0 then deur.deur.COORD.x = deur.deur.COORD.x - deur.d deur.m=deur.m+1 end
     end
 end    
 
@@ -91,6 +93,7 @@ field:ZA_Enter("Show_Einde", function()
 
 field:ZA_Enter("Activate_Scotty",function()
      -- error("The boss is not yet present! Please wait another five nights or so and he'll be implemented... I hope :P")
+     if Done("&DONE.FREDDY.SCOTTY") then return end
      MapText("SCOTTY")
      BossFight("Specialized technician","Scott",
          {
