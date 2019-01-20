@@ -54,11 +54,11 @@ schuifdeuren[1].d = -1
 schuifdeuren[2].d =  1
 
 field:ZA_Enter("OperateDoor",function()
-    for deur in each(schuifdeuren) do deur.m=30-math.abs(deur.deur.COORD.X-deur.x)  end
+    for deur in each(schuifdeuren) do deur.m=30-math.abs(deur.deur.COORD.x-deur.x)  end
 end)
 
 field:ZA_Enter("OperateDoor",function()
-    for deur in each(schuifdeuren) do deur.m=-math.abs(eur.deur.COORD.X-deur.x) end
+    for deur in each(schuifdeuren) do deur.m=-math.abs(eur.deur.COORD.x-deur.x) end
 end)
 
 function Freddy:overdraw()
