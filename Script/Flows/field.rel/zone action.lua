@@ -1,7 +1,7 @@
 --[[
   zone action.lua
-  Version: 18.07.13
-  Copyright (C) 2018 Jeroen Petrus Broks
+  Version: 19.01.20
+  Copyright (C) 2018, 2019 Jeroen Petrus Broks
   
   ===========================
   This file is part of a project related to the Phantasar Chronicles or another
@@ -106,12 +106,19 @@ function za:ZA_Check()
         --zoneactions[check][lay] = zoneactions[check][lay] or {}
         for tag,funcs in pairs(zoneactions[check]) do
            local now = self:ActorInZone(act,tag)
-           if inzone[tag]==condition.was and now==condition.zone then
+           -- CSay(sprintf("check = %s, tag = %s; inzone = %s; now = %s; condition = { was = %s, wordt = %s, zone = %s}; wascheck = %s, wordtcheck=%s",check,tag,inzone[tag],now,condition.was,condition.wordt,condition.zone,(inzone[tag]==condition.was), (now==condition.wordt) )) -- DEBUG LINE
+           if (inzone[tag]==condition.was) and (now==condition.wordt) and condition.zone then
               --inzone[tag] =condition.wordt
               for actions in each(funcs) do actions[1](actions[2]) end              
-           end
-           inzone[tag]=now
+           end           
         end
+    end    
+    -- Conflict prevention, this may not happen in the same loop.
+    for check,condition in pairs(checkup) do
+        for tag,funcs in pairs(zoneactions[check]) do
+           local now = self:ActorInZone(act,tag)
+           inzone[tag]=now
+        end        
     end    
 end
 
