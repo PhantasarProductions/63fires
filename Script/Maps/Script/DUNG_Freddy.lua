@@ -41,6 +41,34 @@ local field
 
 local Freddy = {}
 
+
+local schuifdeuren = {}
+for deur in each({field:getmap().map.TagMap['#004'].Deur_Links,field:getmap().map.TagMap['#004'].Deur_Rechts}) do
+    schuifdeuren[#schuifdeuren+1] = {
+         deur = deur,
+         x    = deur.COORD.x,
+         m    = 0
+    }
+end
+schuifdeuren[1].d = -1
+schuifdeuren[2].d =  1
+
+field:ZA_Enter("OperateDoor",function()
+    for deur in each(schuifdeuren) do deur.m=30-math.abs(deur.deur.COORD.X-deur.x)  end
+end)
+
+field:ZA_Enter("OperateDoor",function()
+    for deur in each(schuifdeuren) do deur.m=-math.abs(eur.deur.COORD.X-deur.x) end
+end)
+
+function Freddy:overdraw()
+    for deur in each(schuifdeuren) do
+        if     deur.m>0 then deur.deur.COORD.x = deur.deur.COORD.x + deur.d
+        elseif deur.m<0 then deur.deur.COORD.x = deur.deur.COORD.x - deur.d end
+    end
+end    
+
+
 field:ZA_Enter("Entrance",function()
     if not Done("&DONE.FREDDY.ENTER") then
        MapText("ENTRANCE")
@@ -55,6 +83,7 @@ field:ZA_Enter("Hide_Einde", function()
 
 field:ZA_Enter("Show_Einde", function()
       field:getmap().map:showlabels('Einde',true) 
+      Award("SIDEQUEST_FREDDY")
   end
 )
 
