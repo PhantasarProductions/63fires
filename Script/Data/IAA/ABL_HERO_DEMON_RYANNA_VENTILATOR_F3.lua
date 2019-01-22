@@ -30,12 +30,12 @@ local ret={
 	["BUFF_Resistance"] = 0,
 	["BUFF_Speed"] = 0,
 	["CauseCharmed"] = false,
-	["CauseConfusion"] = false,
+	["CauseConfusion"] = true,
 	["CauseCurse"] = false,
 	["CauseDeath"] = false,
 	["CauseDisease"] = false,
 	["CauseGuarding"] = false,
-	["CauseParalysis"] = true,
+	["CauseParalysis"] = false,
 	["CausePetrification"] = false,
 	["CausePoison"] = false,
 	["CauseSilence"] = false,
@@ -100,7 +100,7 @@ local ret={
 	["Stance_JumpToEnemy"] = false,
 	["Target"] = "AF",
 	["Target_Discriminate"] = false,
-	["Title"] = "Hoogspanning",
+	["Title"] = "Orkaan",
 	["Type"] = "Ability",
 }
 

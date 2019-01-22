@@ -3,7 +3,7 @@
 
 local ret={
 	["ABL_allowfield"] = false,
-	["ABL_APCost"] = 10,
+	["ABL_APCost"] = 3,
 	["ABL_HPCost"] = 0,
 	["ABL_silenceblock"] = false,
 	["Acc_PreTurn"] = "",
@@ -13,7 +13,7 @@ local ret={
 	["ADDCARD_Action_Number"] = 10,
 	["ADDCARD_Char_Interval"] = 5,
 	["ADDCARD_Char_Number"] = 0,
-	["Attack"] = 180,
+	["Attack"] = 100,
 	["Attack_AccuracyRate"] = 100,
 	["Attack_AllowAccuracy"] = false,
 	["Attack_AllowCritical"] = false,
@@ -30,7 +30,7 @@ local ret={
 	["BUFF_Resistance"] = 0,
 	["BUFF_Speed"] = 0,
 	["CauseCharmed"] = false,
-	["CauseConfusion"] = false,
+	["CauseConfusion"] = true,
 	["CauseCurse"] = false,
 	["CauseDeath"] = false,
 	["CauseDisease"] = false,
@@ -49,7 +49,7 @@ local ret={
 	["CureSilence"] = false,
 	["CureSleep"] = false,
 	["CureUndead"] = false,
-	["Desc"] = "Lightning attack on group",
+	["Desc"] = "Wind attack on one group",
 	["EffectScript"] = "",
 	["EffectScript_Arg"] = "",
 	["EQP_STAT_Accuracy"] = 0,
@@ -100,7 +100,7 @@ local ret={
 	["Stance_JumpToEnemy"] = false,
 	["Target"] = "AF",
 	["Target_Discriminate"] = false,
-	["Title"] = "Hoogspanning",
+	["Title"] = "Stormpje",
 	["Type"] = "Ability",
 }
 
