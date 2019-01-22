@@ -315,6 +315,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - GINI Is Not Ini: Data/Foes/Boss/DragonWhelp.gini
 - GINI Is Not Ini: Data/Foes/Boss/GiantEagle.gini
 - GINI Is Not Ini: Data/Foes/Boss/MountainKing.gini
+- GINI Is Not Ini: Data/Foes/Boss/Scott.gini
 - GINI Is Not Ini: Data/Foes/Boss/Shirley.gini
 - GINI Is Not Ini: Data/Foes/Boss/SupaSlime.gini
 - GINI Is Not Ini: Data/Foes/Boss/Troll.gini
@@ -348,6 +349,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Combat/Arena/Forest_Spar.png
 - Graphic image: GFX/Combat/Arena/Freddy.png
 - Graphic image: GFX/Combat/Arena/Prairie.png
+- Graphic image: GFX/Combat/Arena/SS_Facility.png
 - Graphic image: GFX/Combat/Arena/StoneTunnel.png
 - Graphic image: GFX/Combat/Arena/ZZZ_FishingSpot.png
 - PikoPixel source file: GFX/Combat/Cards/Heroes.piko
@@ -364,6 +366,9 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_Stopcontact_Attack.png
    1. Alias: GFX/Combat/Fighters/Hero/Demon_Ryanna_Stopcontact_Cast.png
 - Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_Stopcontact_Idle.png
+- Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_Ventilator_Attack.png
+- Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_Ventilator_Idle.png
+- GIMP source file: GFX/Combat/Fighters/Hero/Demon_Ryanna_Ventilator_Idle.xcf
 - PikoPixel source file: GFX/Combat/Fighters/Hero/Nino Attack.piko
 - Graphic image: GFX/Combat/Fighters/Hero/Nino_Cast.png
 - Graphic image: GFX/Combat/Fighters/Hero/Nino_IDLE.png
@@ -441,6 +446,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/CharAbility/Demon_Ryanna_IJsblokje.lua
    1. Alias: Script/Data/CharAbility/Demon_Ryanna_Lucifer.lua
    1. Alias: Script/Data/CharAbility/Demon_Ryanna_Stopcontact.lua
+   1. Alias: Script/Data/CharAbility/Demon_Ryanna_Ventilator.lua
 - Script: Script/Data/CharAbility/Nino.lua
 - Script: Script/Data/CharAbility/Ryanna.lua
 - Script: Script/Data/CharAbility/Shirley.lua
@@ -474,6 +480,8 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/IAA/ABL_FOE_FLAME.lua
 - Script: Script/Data/IAA/ABL_FOE_FLAMESTRIKE.lua
 - Script: Script/Data/IAA/ABL_FOE_HOWLING.lua
+- Script: Script/Data/IAA/ABL_FOE_LAWSOFPHYSICS.lua
+- Script: Script/Data/IAA/ABL_FOE_NOMOREPOWER.lua
 - Script: Script/Data/IAA/ABL_FOE_REGENERATION.lua
 - Script: Script/Data/IAA/ABL_FOE_SHURIKEN.lua
 - Script: Script/Data/IAA/ABL_FOE_SPEWVENOW.lua
@@ -486,6 +494,9 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_STOPCONTACT_F1.lua
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_STOPCONTACT_F2.lua
 - Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_STOPCONTACT_F3.lua
+- Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_VENTILATOR_F1.lua
+- Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_VENTILATOR_F2.lua
+- Script: Script/Data/IAA/ABL_HERO_DEMON_RYANNA_VENTILATOR_F3.lua
 - Script: Script/Data/IAA/ABL_HERO_EARTH_CRACK.lua
 - Script: Script/Data/IAA/ABL_HERO_NINO_CUREPD.lua
 - Script: Script/Data/IAA/ABL_HERO_NINO_ESUNA.lua
@@ -560,6 +571,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/transform_make/IJsblokje.lua
 - Script: Script/Data/transform_make/Lucifer.lua
 - Script: Script/Data/transform_make/Stopcontact.lua
+- Script: Script/Data/transform_make/Ventilator.lua
 - Script: Script/Flows/combat.rel/com_arena.lua
 - Script: Script/Flows/combat.rel/com_cards.lua
 - Script: Script/Flows/combat.rel/com_debug.lua
