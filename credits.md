@@ -461,6 +461,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/Combat/AI/default.lua
 - Script: Script/Data/Combat/InputXtraScript/Access_Start.lua
 - Script: Script/Data/Combat/SpellAni/Sparkle.lua
+- Script: Script/Data/Combat/StatusChanges/Confusion.lua
 - Script: Script/Data/Combat/StatusChanges/Death.lua
 - Script: Script/Data/Combat/StatusChanges/Guard.lua
    1. Alias: Script/Data/Combat/StatusChanges/Guarding.lua
