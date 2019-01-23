@@ -367,6 +367,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
    1. Alias: GFX/Combat/Fighters/Hero/Demon_Ryanna_Stopcontact_Cast.png
 - Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_Stopcontact_Idle.png
 - Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_Ventilator_Attack.png
+   1. Alias: GFX/Combat/Fighters/Hero/Demon_Ryanna_Ventilator_Cast.png
 - Graphic image: GFX/Combat/Fighters/Hero/Demon_Ryanna_Ventilator_Idle.png
 - GIMP source file: GFX/Combat/Fighters/Hero/Demon_Ryanna_Ventilator_Idle.xcf
 - PikoPixel source file: GFX/Combat/Fighters/Hero/Nino Attack.piko
