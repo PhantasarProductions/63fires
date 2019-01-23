@@ -1,6 +1,6 @@
 --[[
   flw_idle.lua
-  Version: 19.01.19
+  Version: 19.01.23
   Copyright (C) 2018, 2019 Jeroen Petrus Broks
   
   ===========================
@@ -86,13 +86,17 @@ function zooi:flow_idle()
       if prefixed(tag,"HERO") then      
          for f in self:StatusPropertyValues(ctag,"startturn") do f(self,ctag) end         
          self:StatusRemoveByProperty(ctag,"endonturn")
-         self.flow = firstcard.altplayinput or "playerinput"
+         if not self:StatusExecuteProperty(ctag,prop) then
+            self.flow = firstcard.altplayinput or "playerinput"
+         end   
       end
       if prefixed(tag,"FOE") or prefixed(tag,"BOSS") then
          if rpg:Points(ctag,"HP").Have==0 then return self:RemoveFirstCard() end -- Let's force the AI to skip dead foes!   
          for f in self:StatusPropertyValues(ctag,"startturn") do f(self,ctag) end
          self:StatusRemoveByProperty(ctag,"endonturn")
-         self.flow = firstcard.altplayinput or "foeinput"
+         if not self: StatusExecuteProperty(ctag,prop) then 
+            self.flow = firstcard.altplayinput or "foeinput"
+         end   
       end
 end
 

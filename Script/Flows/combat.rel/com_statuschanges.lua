@@ -1,6 +1,6 @@
 --[[
   com_statuschanges.lua
-  Version: 19.01.19
+  Version: 19.01.23
   Copyright (C) 2018, 2019 Jeroen Petrus Broks
   
   ===========================
@@ -141,7 +141,14 @@ function csc:StatusRemoveByProperty(ctag,prop)
     for killstatus in each(kill) do
         c[killstatus]=nil
     end
-end        
+end
 
+function csc:StatusExecuteProperty(ctag,prop)
+    local done = false        
+    for st,std in self:statuses(ctag) do
+        if std[prop] then done = std[prop](self,ctag) or done end
+    end
+    return done
+end
 
 return csc
