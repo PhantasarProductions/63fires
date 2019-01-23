@@ -1,7 +1,7 @@
 --[[
   __ScrollEffect.lua
-  Version: 18.10.10
-  Copyright (C) 2018 Jeroen Petrus Broks
+  Version: 19.01.23
+  Copyright (C) 2018, 2019 Jeroen Petrus Broks
   
   ===========================
   This file is part of a project related to the Phantasar Chronicles or another
@@ -64,7 +64,7 @@ end
 function s:icoshow()
     local kill = {}
     for idx,ico in ipairs(sicons) do
-        picons[ico.icon] = picons.icon or LoadImage("GFX/COMBAT/STATUSCHANGEICONS/"..ico.icon..".PNG")
+        picons[ico.icon] = picons[ico.icon] or LoadImage("GFX/COMBAT/STATUSCHANGEICONS/"..ico.icon..".PNG")
         ico.y=ico.y-ico.spd
         DrawImage(picons[ico.icon],ico.x,ico.y)
         ico.timeout = ico.timeout - 1
