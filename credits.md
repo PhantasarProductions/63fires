@@ -550,6 +550,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/IAA/ITM_BLACKTOWER_KEY.lua
 - Script: Script/Data/IAA/ITM_CURINGSALVE.lua
 - Script: Script/Data/IAA/ITM_FAN.lua
+- Script: Script/Data/IAA/ITM_FISHHEAD.lua
 - Script: Script/Data/IAA/ITM_FLARE.lua
 - Script: Script/Data/IAA/ITM_HERB.lua
 - Script: Script/Data/IAA/ITM_HOLYWATER.lua
@@ -565,6 +566,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/IAA/ITM_VIOLETROSE.lua
 - Script: Script/Data/IAA/ITM_VITAMIN.lua
 - Script: Script/Data/IAA/JWL_EMERALD.lua
+- Script: Script/Data/IAA/JWL_GARNET.lua
 - Script: Script/Data/IAA/JWL_RUBY.lua
 - Script: Script/Data/IAA/ZPECIAL_MEGASLAM_ACCESS.lua
 - Script: Script/Data/IAA/ZPECIAL_REVERT.lua
