@@ -215,6 +215,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Combat/Fighters/Foe/Reg/RedSlime.png
 - Graphic image: GFX/Combat/Fighters/Foe/Reg/YellowSlime.png
    1. Alias: GFX/Combat/RENC/Gauge.png
+- Graphic image: GFX/Combat/StatusChangeIcons/Confusion.png
 - PikoPixel source file: GFX/Combat/StatusChangeIcons/Paralysis.piko
 - Graphic image: GFX/Combat/StatusChangeIcons/Paralysis.png
 - Graphic image: GFX/Combat/StatusChangeIcons/Silence.png
