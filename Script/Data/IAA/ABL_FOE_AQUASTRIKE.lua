@@ -42,6 +42,7 @@ local ret={
 	["CauseSilence"] = false,
 	["CauseSleep"] = false,
 	["CauseUndead"] = false,
+	["CureConfusion"] = false,
 	["CureCurse"] = false,
 	["CureDisease"] = false,
 	["CureParalysis"] = false,
