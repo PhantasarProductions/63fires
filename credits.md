@@ -565,8 +565,11 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/IAA/ITM_SOFT.lua
 - Script: Script/Data/IAA/ITM_VIOLETROSE.lua
 - Script: Script/Data/IAA/ITM_VITAMIN.lua
+- Script: Script/Data/IAA/JWL_AMETHYST.lua
 - Script: Script/Data/IAA/JWL_EMERALD.lua
 - Script: Script/Data/IAA/JWL_GARNET.lua
+- Script: Script/Data/IAA/JWL_ONYX.lua
+- Script: Script/Data/IAA/JWL_PEARL.lua
 - Script: Script/Data/IAA/JWL_RUBY.lua
 - Script: Script/Data/IAA/ZPECIAL_MEGASLAM_ACCESS.lua
 - Script: Script/Data/IAA/ZPECIAL_REVERT.lua
