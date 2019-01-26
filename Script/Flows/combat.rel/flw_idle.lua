@@ -1,6 +1,6 @@
 --[[
   flw_idle.lua
-  Version: 19.01.23
+  Version: 19.01.26
   Copyright (C) 2018, 2019 Jeroen Petrus Broks
   
   ===========================
@@ -92,6 +92,10 @@ function zooi:flow_idle()
       end
       if prefixed(tag,"FOE") or prefixed(tag,"BOSS") then
          if rpg:Points(ctag,"HP").Have==0 then return self:RemoveFirstCard() end -- Let's force the AI to skip dead foes!   
+         if self:StatusProperty(ctag,'skipturn') then -- Since the OFFICIAL way fails, let's FORCE it....
+            for f in self:StatusPropertyValues(ctag,"skipturnexpire") do f(self,ctag) end
+            return self:RemoveFirstCard()
+         end  
          for f in self:StatusPropertyValues(ctag,"startturn") do f(self,ctag) end
          self:StatusRemoveByProperty(ctag,"endonturn")
          if not self: StatusExecuteProperty(ctag,prop) then 
