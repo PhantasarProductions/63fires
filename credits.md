@@ -219,6 +219,8 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - PikoPixel source file: GFX/Combat/StatusChangeIcons/Paralysis.piko
 - Graphic image: GFX/Combat/StatusChangeIcons/Paralysis.png
 - Graphic image: GFX/Combat/StatusChangeIcons/Silence.png
+- PikoPixel source file: GFX/Combat/StatusChangeIcons/Sleep.piko
+- Graphic image: GFX/Combat/StatusChangeIcons/Sleep.png
 - Graphic image: GFX/Flags/Dutch.png
 - Graphic image: GFX/General/FishPointer.png
 - Graphic image: GFX/General/Level_Up.png
@@ -468,6 +470,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/Combat/StatusChanges/Paralysis.lua
 - Script: Script/Data/Combat/StatusChanges/Poison.lua
 - Script: Script/Data/Combat/StatusChanges/Silence.lua
+- Script: Script/Data/Combat/StatusChanges/Sleep.lua
 - Script: Script/Data/Combat/StatusChanges/Transformed.lua
 - Script: Script/Data/Combat/StatusChanges/__ScrollEffect.lua
 - Script: Script/Data/General/Achievements.lua
@@ -545,6 +548,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/IAA/ITM_AMBROSIA.lua
 - Script: Script/Data/IAA/ITM_ANKH.lua
 - Script: Script/Data/IAA/ITM_ANTIDOTE.lua
+- Script: Script/Data/IAA/ITM_BANANA.lua
 - Script: Script/Data/IAA/ITM_BATTERY.lua
 - Script: Script/Data/IAA/ITM_BELL.lua
 - Script: Script/Data/IAA/ITM_BLACKTOWER_KEY.lua
