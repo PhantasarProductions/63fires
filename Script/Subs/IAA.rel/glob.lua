@@ -1,7 +1,7 @@
 --[[
   glob.lua
-  Version: 18.11.30
-  Copyright (C) 2018 Jeroen Petrus Broks
+  Version: 19.01.27
+  Copyright (C) 2018, 2019 Jeroen Petrus Broks
   
   ===========================
   This file is part of a project related to the Phantasar Chronicles or another
@@ -51,8 +51,16 @@ function glob:itemhelp(item)
                if item.Heal and item.Heal>0 then
                   if     item.Heal_Type == 'Absolute' then helptext = helptext .. "\nHeals "..item.Heal.." HP"
                   elseif item.Heal_Type == "Percent"  then helptext = helptext .. "\nHeals "..item.Heal.."% of your maximum HP"
+                  else                                     helptext = helptext .. "\nHeals certain amount of HP"
                   end
                end    
+               if item.APRecover and item.APRecover>0 then
+                  if     item.APRecover_Type == 'Absolute' then helptext = helptext .. "\nRecovers "..item.APRecover.." AP"
+                  elseif item.APRecover_Type == "Percent"  then helptext = helptext .. "\nRecovers "..item.APRecover.."% of your maximum AP"
+                  else                                          helptext = helptext .. "\nRecovers certain amount of AP"
+                  end
+               end    
+               if item.VITRecover and item.VITRecover>0 then helptext = helptext .. "\nRecovers "..item.VITRecover.." vitality points" end
                if item.Attack and item.Attack>0 then
                   helptext = helptext .."\nAttack rate "..item.Attack.."% of user's "..item.Attack_AttackStat..". Target defends with their "..item.Attack_DefenseStat
                   if item.Attack_AllowAccuracy then 
