@@ -1,7 +1,7 @@
 --[[
   Fishing.lua
-  Version: 18.11.30
-  Copyright (C) 2018 Jeroen Petrus Broks
+  Version: 19.01.28
+  Copyright (C) 2018, 2019 Jeroen Petrus Broks
   
   ===========================
   This file is part of a project related to the Phantasar Chronicles or another
@@ -75,6 +75,32 @@ local range
 local fightcount
 local pointer = LoadImage('GFX/General/FishPointer.png'); QHot(pointer,'cb')
 local pointx,pointd
+
+
+
+local achs = {
+                caught = {},
+                points = {},
+                total = 0
+                
+                }
+
+-- $USE Script/Data/General/Achievements.lua AS achs.raw
+
+for f1,f2 in pairs(Fish) do achs.total = achs.total + 1 end
+for ach,_ in spairs(achs.raw) do
+    local tt
+    tt = mysplit(ach,"_")
+    if     tt[1]=="FISH"  and 
+           tt[2]=="ALL"   then achs.caught[achs.total]      = ach
+    elseif tt[1]=="FISH"  then achs.caught[tonumber(tt[2])] = ach
+    elseif tt[1]=="FISHP" then achs.points[tonumber(tt[2])] = ach end
+end
+achs.raw=nil -- No longer needed                
+CSay(serialize("achs",achs)) -- debug
+
+
+
 
 -- "Slave" is a regular term in the world of computers, so any "slave" activists, put the axes down.... slowly! 
 local function HideSlaves()
