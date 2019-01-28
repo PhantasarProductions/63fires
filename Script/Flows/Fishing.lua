@@ -159,10 +159,13 @@ local function extracatchdata()
       gamedata.fishscore[caught.catch] = xcd.score
    end
    local total=0
-   for _,t in pairs(gamedata.fishscore) do total = total + t end
+   local totalcaught=0
+   for _,t in pairs(gamedata.fishscore) do total = total + t   totalcaught = totalcaught + 1 end
    while gamedata.fishlevel<15 and total>2^(gamedata.fishlevel+1) do gamedata.fishlevel=gamedata.fishlevel+1 end
    gamedata.fishcaught = gamedata.fishcaught + 1
-   xcd.total=total   
+   xcd.total=total
+   for points,ach in pairs(achs.points) do if points<=total       then Award(ach) end end   
+   for number,ach in pairs(achs.caught) do if number<=totalcaught then Award(ach) end end
    return xcd
 end   
 
