@@ -543,6 +543,7 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/IAA/FISH_RAINBOW_TROUT.lua
 - Script: Script/Data/IAA/FISH_RUBBERDUCK.lua
 - Script: Script/Data/IAA/FISH_RUSTYCAN.lua
+- Script: Script/Data/IAA/FISH_SEABASS.lua
 - Script: Script/Data/IAA/FISH_SHOE.lua
 - Script: Script/Data/IAA/FISH_TROUT.lua
 - Script: Script/Data/IAA/ITM_AMBROSIA.lua
@@ -552,7 +553,10 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/IAA/ITM_BATTERY.lua
 - Script: Script/Data/IAA/ITM_BELL.lua
 - Script: Script/Data/IAA/ITM_BLACKTOWER_KEY.lua
+- Script: Script/Data/IAA/ITM_CARROT.lua
 - Script: Script/Data/IAA/ITM_CURINGSALVE.lua
+- Script: Script/Data/IAA/ITM_ECHOSCREEN.lua
+- Script: Script/Data/IAA/ITM_ETHER.lua
 - Script: Script/Data/IAA/ITM_FAN.lua
 - Script: Script/Data/IAA/ITM_FISHHEAD.lua
 - Script: Script/Data/IAA/ITM_FLARE.lua
@@ -564,11 +568,13 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Script: Script/Data/IAA/ITM_PHOENIX.lua
 - Script: Script/Data/IAA/ITM_PIXIEDUST.lua
 - Script: Script/Data/IAA/ITM_POTION.lua
+- Script: Script/Data/IAA/ITM_POTIONVITALITY.lua
 - Script: Script/Data/IAA/ITM_ROCK.lua
 - Script: Script/Data/IAA/ITM_SAUERKRAUT.lua
 - Script: Script/Data/IAA/ITM_SOFT.lua
 - Script: Script/Data/IAA/ITM_VIOLETROSE.lua
 - Script: Script/Data/IAA/ITM_VITAMIN.lua
+- Script: Script/Data/IAA/ITM_WISDOMFRUIT.lua
 - Script: Script/Data/IAA/JWL_AMETHYST.lua
 - Script: Script/Data/IAA/JWL_EMERALD.lua
 - Script: Script/Data/IAA/JWL_GARNET.lua
