@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 19.01.12
+version: 19.02.08
 ]]
 local skill = Var.G("%SKILL")
 local chShirley = {
@@ -64,6 +64,7 @@ local chShirley = {
    
    Teach = function(self,abl)
        -- $USE Script/Subs/ShirleyAbsorb
+       if self.abl[abl].start then return false end
        local t = ShirleyAbsorb:Total()
        local n = self.abl[abl].need * skill
        return t>=n

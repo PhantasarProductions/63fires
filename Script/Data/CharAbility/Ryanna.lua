@@ -2,7 +2,7 @@
 **********************************************
   
   Ryanna.lua
-  (c) Jeroen Broks, 2018, All Rights Reserved.
+  (c) Jeroen Broks, 2018, 2019, All Rights Reserved.
   
   This file contains material that is related 
   to a storyline that is which is strictly
@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.12.29
+version: 19.02.08
 ]]
 local chryanna = {
 
@@ -61,6 +61,7 @@ local chryanna = {
              end,
   Teach = function(self,abl)
                if self.abl[abl].scenario then return false end
+               if self.abl[abl].start then return false end
                gamedata.xchardata = gamedata.xchardata or {}
                gamedata.xchardata.Ryanna = gamedata.xchardata.Ryanna or {}                
                --local ra = Var.G("%RYANNA.ABILITYUSED") -- * Var.G("%SKILL")

@@ -2,7 +2,7 @@
 **********************************************
   
   Nino.lua
-  (c) Jeroen Broks, 2018, All Rights Reserved.
+  (c) Jeroen Broks, 2018, 2019, All Rights Reserved.
   
   This file contains material that is related 
   to a storyline that is which is strictly
@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.11.24
+version: 19.02.08
 ]]
 local chnino = {
 
@@ -57,6 +57,7 @@ local chnino = {
     end,
     
     Teach = function(self,abl)
+        if self.abl[abl].start then return false end
         local lv = rpg:Stat('Nino','Level')
         return lv>=(self.abl[abl].lv or 1)
     end    
