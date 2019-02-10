@@ -272,6 +272,11 @@ Also note that some files have "alias" files attached to them. This credits.md f
 - Graphic image: GFX/Textures/Objects/Grave Lid.png
 - Graphic image: GFX/Textures/Objects/Open Grave.png
 - Graphic image: GFX/Textures/Objects/Signs/Blanco Bordje.png
+- File: GFX/Textures/oddmaze/CORNER.PCX
+- Graphic image: GFX/Textures/oddmaze/Corner.png
+- Graphic image: GFX/Textures/oddmaze/Horizontal.png
+- File: GFX/Textures/oddmaze/VER.PCX
+- Graphic image: GFX/Textures/oddmaze/Vertical.png
 - Graphic image: GFX/Textures/PressurePlates/Circular/Pressed.png
 - PikoPixel source file: GFX/Textures/PressurePlates/Circular/PressurePlates.piko
 - Graphic image: GFX/Textures/PressurePlates/Circular/Unpressed.png
@@ -451,8 +456,10 @@ Also note that some files have "alias" files attached to them. This credits.md f
    1. Alias: Script/Data/CharAbility/Demon_Ryanna_Lucifer.lua
    1. Alias: Script/Data/CharAbility/Demon_Ryanna_Stopcontact.lua
    1. Alias: Script/Data/CharAbility/Demon_Ryanna_Ventilator.lua
+- Script: Script/Data/CharAbility/Lirmen.lua
 - Script: Script/Data/CharAbility/Nino.lua
 - Script: Script/Data/CharAbility/Ryanna.lua
+- Script: Script/Data/CharAbility/Seratefobo.lua
 - Script: Script/Data/CharAbility/Shirley.lua
 - Script: Script/Data/Combat/ActEffect/Absorb.lua
 - Script: Script/Data/Combat/ActEffect/Access_Start.lua
