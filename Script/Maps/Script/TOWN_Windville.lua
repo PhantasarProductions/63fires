@@ -2,7 +2,7 @@
 **********************************************
   
   TOWN_Windville.lua
-  (c) Jeroen Broks, 2018, All Rights Reserved.
+  (c) Jeroen Broks, 2018, 2019, All Rights Reserved.
   
   This file contains material that is related 
   to a storyline that is which is strictly
@@ -32,7 +32,7 @@
   
  **********************************************
  
-version: 18.06.11
+version: 19.02.10
 ]]
 
 --[[
@@ -208,7 +208,8 @@ end
 
 -- Unlock the next dungeons once Nino joined the party
 field:ZA_Enter('UnlockStarrow',function()
-     if not Var.G("&DONE.WINDVILLE.NINOJOIN") then return end
+     --if not Var.G("&DONE.WINDVILLE.NINOJOIN") then return end
+     if not rpg:IsInParty("Nino") then return end
      if Done("&DONE.WINDVILLE.UNLOCK.STARROW") then return end
      MapText("UNLOCKSTARROW")
      WorldMap_Unlock("D_STARROW")
