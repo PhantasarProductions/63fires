@@ -50,7 +50,7 @@ function lam.skipturnexpire(s,tag)
     else 
       e = math.random(0,skill^skill)
     end   
-    if e==0 then self.fighters[tag].Paralysis=nil end
+    if e==0 then s.fighters[tag].Paralysis=nil end
 end
 
 
