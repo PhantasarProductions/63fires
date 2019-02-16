@@ -624,5 +624,14 @@ function field.consolecommands.CLICKABLES(self)
         console.writeln(l,r,g,b)
     end    
 end  
+function field.consolecommands.VIT(self,para)
+    local sc=mysplit(para," ")
+    if #sc==0 or sc[1]=="" then console.writeln("I need more info than this!") return end
+    if #sc==1 or sc[2]=="" then 
+       for c in each(RPGParty) do field.consolecommands.VIT(self,sprintf("%s %s",c,sc[1])) end
+    end
+    rpg:Points(sc[1],tonumber(sc[2]))
+end
+
 
 return field
