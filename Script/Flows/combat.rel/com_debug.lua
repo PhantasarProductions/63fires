@@ -98,6 +98,12 @@ function fuck.consolecommands.COMBATFLOW(self)
   end
 end  
 
-
+function fuck.consolecommands.VIT(self,para)
+    if not field then 
+      console.writeln("HUH? Field flow is not there???",255,0,0)
+      return
+   end   
+   field.consolecommands.VIT(self,para)
+end
 
 return fuck
