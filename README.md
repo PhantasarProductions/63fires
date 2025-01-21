@@ -1,3 +1,11 @@
+# Notes
+
+In this form this project is discontinued and canceled.
+I hope I can plan things well to re-create this game for SCI, but then things will be roughly redone from scratch. This *is* after all a LÖVE2D project and I've grown to hate that engine (and its community to be frank). Now SCI does support pure lua code, but I prefer to get things converted anyway and SCI approaches many things differently than Löve2D does. So one way or another, this project will either end in this form, regardless if it's redone in another form.
+
+So this repository will now be archived and over time it will even be moved to my personal graveyard.
+
+
 # Sixty-Three Fires of Lung
 
 
